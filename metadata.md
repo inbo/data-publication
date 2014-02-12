@@ -30,3 +30,54 @@ The dataset description has this default format, unless it has been changed for 
 Example:
 
 > VIS - Fishes in inland waters in Flanders, Belgium is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 350.000 fish occurrences sampled between 1992 and 2012 from over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 75 fish species, as well as a number of bycatch Crustaceans, some of which are invasive. The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/vis-inland-occurrences
+
+### Metadata & resource language
+
+Default to `English`. The resource language should be the same as in the `language` field in the data.
+
+    Metadata language: English
+    Resource language: English
+
+### Resource type and subtype
+
+    Observations only:          Occurrence > Observation
+    Observations and specimens: Occurrence > none
+
+### Resource contact info
+
+Example:
+
+    Name:         Gerlinde Van Thuyne
+    Position:     Researcher
+    Organisation: Research Institute for Nature and Forest (INBO)
+    Address:      Kliniekstraat 25, Brussels, Brussels Capital Region, BELGIUM, Postal Code: 1070
+    Contact:      gerlinde.vanthuyne@inbo.be
+
+## Geographic coverage
+
+## Taxonomic description
+
+## Temporal coverage
+
+## Keywords
+
+## Associated parties
+
+The associated parties are (in order):
+
+    point of contact (required)
+    other researchers (optional)
+    organizations (optional)
+    processor(s) (required): Dimitri Brosens; Peter Desmet
+
+## Project data
+
+## Sampling methods
+
+## Citations
+
+## Collection data
+
+## External links
+
+## Additional metadata
