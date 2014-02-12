@@ -4,7 +4,7 @@
 
 ### Shortname
 
-The shortname is how you would write a repository name or url: `lowercase-with-hypens`. It starts with the dataset code and ends with the type of data.
+The shortname is how you would write a repository name or url: `lowercase-with-hypens`. It starts with the dataset code and ends with the type of dataset:
 
     Occurrence datasets: vis-inland-occurrences
     Checklist datasets: rl-libellen-checklist
@@ -18,6 +18,15 @@ The title is of the form `Dataset code - Short descriptive title of dataset`. Wh
 
 ### Description
 
-A good dataset description:
+The dataset description has this default format, unless it has been changed for a data paper:
+
+    <Name of dataset> is a <type of dataset> published by the Research Institute for Nature and Forest (INBO). 
+    The dataset contains over <number and type of occurrences> sampled between <dates> from <number of locations> from <area>. 
+    The dataset includes over <number of species with some info>. 
+    <Purpose of why the data was collected>. 
+    <Information on additional data>. 
+    Issues with the datset can be reported at https://github.com/LifeWatchINBO/dataset-shortname
+
+Example:
 
 > VIS - Fishes in inland waters in Flanders, Belgium is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 350.000 fish occurrences sampled between 1992 and 2012 from over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 75 fish species, as well as a number of bycatch Crustaceans, some of which are invasive. The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/vis-inland-occurrences
