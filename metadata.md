@@ -55,6 +55,10 @@ Example:
 
 ## Geographic coverage
 
+Short and concise description of the geographic area. Example:
+
+> Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
+
 ## Taxonomic description
 
 ## Temporal coverage
@@ -72,7 +76,19 @@ The associated parties are (in order):
 
 ## Project data
 
+### Study area description
+
+Identical to `Geographic coverage`, unless changed for data paper.
+
 ## Sampling methods
+
+### Study extent
+
+Somewhat longer description of the sampled area: sampling locations, calculation of `coordinateUncertainInMeters`, etc.
+
+Example:
+
+> Over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled since 1992. In 2001, these locations were consolidated in a monitoring network ("VISmeetnet") of 900 sampling points. The geographic coordinates in the dataset are those of the sampling locations. Since these do not always represent the actual coordinates of the catch, which may have occurred further up- or downriver, the coordinateUncertaintyInMeters has been set to 250.
 
 ## Citations
 
