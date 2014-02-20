@@ -1,13 +1,13 @@
-# Metadata publication guidelines
+# Metadata guidelines
 
 ## Basic metadata
 
 ### Shortname
 
-The shortname is how you would write a repository name or url: `lowercase-with-hypens`. It starts with the dataset code and ends with the type of dataset:
+The shortname is how you would write a repository name or url: `lowercase-with-hypens`. It starts with the dataset code and ends with the type of dataset (`occurrences`):
 
-    Occurrence datasets: vis-inland-occurrences
-    Checklist datasets: rl-libellen-checklist
+    saltabel-occurrences
+    vis-inland-occurrences
 
 ### Title
 
@@ -20,8 +20,8 @@ The title is of the form `Dataset code - Short descriptive title of dataset`. Wh
 
 The dataset description has this default format, unless it has been changed for a data paper:
 
-    <Name of dataset> is a <type of dataset> published by the Research Institute for Nature and Forest (INBO). 
-    The dataset contains over <number and type of occurrences> sampled between <dates> from <number of locations> from <area>. 
+    <Name of dataset> is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). 
+    The dataset contains over <number and type of> occurrences sampled between <dates> from <number of locations> in <area>. 
     The dataset includes over <number of species with some info>. 
     <Purpose of why the data was collected>. 
     <Information on additional data>. 
