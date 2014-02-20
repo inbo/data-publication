@@ -25,7 +25,7 @@ The dataset description has this default format, unless it has been changed for 
     The dataset includes over <number of species with some info>. 
     <Purpose of why the data was collected>. 
     <Information on additional data>. 
-    Issues with the datset can be reported at https://github.com/LifeWatchINBO/dataset-shortname
+    Issues with the dataset can be reported at https://github.com/LifeWatchINBO/dataset-shortname
 
 Example:
 
