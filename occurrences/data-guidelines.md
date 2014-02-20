@@ -1,4 +1,4 @@
-# Data publication guidelines
+# Data guidelines
 
 ## General guidelines
 
