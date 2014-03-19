@@ -11,10 +11,11 @@ The shortname is how you would write a repository name or url: `lowercase-with-h
 
 ### Title
 
-The title is of the form `Dataset code - Short descriptive title of dataset`. Where applicable, it indicates the region at the end.
+The title is of the form `Dataset code - Short descriptive title of dataset`. Where applicable, it indicates the region at the end. If the dataset is an important temporal subset, the year range is included between hyphens at the end:
 
     VIS - Fishes in inland waters in Flanders, Belgium
     Visherintroductie - Reintroduction of the fishes chub, dace, burbot, and brown trout in Flanders, Belgium
+    Broedvogel - Atlas of breeding birds in Flanders, Belgium (2000-2002)
 
 ### Description
 
