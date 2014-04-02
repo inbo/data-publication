@@ -2,9 +2,10 @@
 
 Author 1[^1], Author 2[^1] [^2]
 
-[^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
+[^1]: Affiliation. See `IPT > Basic metadata > Resource contact/Resource creator/Metadata provider` and `IPT > Associated parties` for contact information.
 
-[^2]: Affiliation 2
+[^2]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
+
 
 **Corresponding author**: Name (email)
 
@@ -18,7 +19,7 @@ Received {date} | Revised {date} | Accepted {date} | Published {date}
 
 ---
 
-**Resource Citation**: 
+**Resource Citation**: `IPT > Citations > Resource citation`. Leave empty until the paper is accepted by editor.
 
 ## Abstract
 
@@ -68,7 +69,7 @@ http://dataset.inbo.be/`dataset-shortname`
 
 ### Dataset description
 
-Text describing the technical details of how the dataset was built. Does not appear in the IPT metadata.
+Technical description of how the dataset was built. Does not appear in the IPT metadata.
 
 * **Object name**: Darwin Core Archive `title`
 * **Character encoding**: UTF-8
@@ -76,9 +77,9 @@ Text describing the technical details of how the dataset was built. Does not app
 * **Format version**: 1.0
 * **Distribution**: http://dataset.inbo.be/`dataset-shortname`
 * **Publication date of data**: `yyyy-mm-dd of first publication`
-* **Language**: English
+* **Language**: `IPT > Basic metadata > Resource language`
 * **Licenses of use**: http://creativecommons.org/publicdomain/zero/1.0/ & `norms`
-* **Metadata language**: English
+* **Metadata language**: `IPT > Basic metadata > Metadata language`
 * **Date of metadata creation**: 2`yyyy-mm-dd of first publication`
 * **Hierarchy level**: Dataset
 
