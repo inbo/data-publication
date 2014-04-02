@@ -123,10 +123,11 @@ Discussion of the dataset. Does not appear in the IPT metadata.
 
 Combination of `IPT > Basic metadata > Resource contact/Resource creator/Metadata provider`, `IPT > Associated parties`, and `IPT > Project data > Personnel`.
 
-* **Resource contact, resource creator, metadata provider, point of contact**: 
 * **Principal investigators**: 
+* **Resource contact, resource creator, point of contact**: 
+* **Metadata provider**: 
+* **Content providers**: 
 * **Developer**: 
-* **Data collectors**: 
 * **Processors**: Dimitri Brosens, Peter Desmet
 
 ### Funding
