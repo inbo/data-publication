@@ -44,13 +44,9 @@ http://dataset.inbo.be/`dataset-shortname`
 
 `IPT > Taxonomic coverage > Ranks`
 
-**Kingdom**: *Animalia*
+**Kingdom**: *Animalia (animals)*
 
-**Class**: *Actinopterygii*
-
-### Common names
-
-Animals, ray-finned fishes
+**Class**: *Actinopterygii (ray-finned fishes)*
 
 ## Geographic coverage
 
