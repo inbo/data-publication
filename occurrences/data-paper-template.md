@@ -133,10 +133,10 @@ Combination of `IPT > Basic metadata > Resource contact/Resource creator/Metadat
 
 `IPT > Project data > Funding`
 
-### Acknowledgements
+## Acknowledgements
 
 Does not appear in the IPT metadata.
 
-### References
+## References
 
 `IPT > Citations > Bibliography`
