@@ -6,8 +6,11 @@ One of our missions is to unlock the **biodiversity data** managed by the Resear
 
 ## Guidelines
 
-* [Occurrence data guidelines](occurrences/data-guidelines.md)
-* [Occurrence metadata guidelines](occurrences/metadata-guidelines.md)
+### Occurrence data
+
+* [Data guidelines](occurrences/data-guidelines.md)
+* [Metadata guidelines](occurrences/metadata-guidelines.md)
+* [Data paper guidelines](occurrences/paper-guidelines.md)
  
 ## Open publication process
 
