@@ -31,7 +31,7 @@ Received {date} | Revised {date} | Accepted {date} | Published {date}
     
 ## Data published through
 
-http://dataset.inbo.be/`dataset-shortname`
+http://dataset.inbo.be/ `dataset-shortname`
 
 ## Rationale
 
