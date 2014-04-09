@@ -75,7 +75,7 @@ Technical description of how the dataset was built. Does not appear in the IPT m
 * **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: http://dataset.inbo.be/`dataset-shortname`
+* **Distribution**: http://dataset.inbo.be/ `dataset-shortname`
 * **Publication date of data**: `yyyy-mm-dd of first publication`
 * **Language**: `IPT > Basic metadata > Resource language`
 * **Licenses of use**: http://creativecommons.org/publicdomain/zero/1.0/ & `norms`
