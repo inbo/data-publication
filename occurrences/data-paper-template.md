@@ -80,7 +80,7 @@ Technical description of how the dataset was built. Does not appear in the IPT m
 * **Language**: `IPT > Basic metadata > Resource language`
 * **Licenses of use**: http://creativecommons.org/publicdomain/zero/1.0/ & `norms`
 * **Metadata language**: `IPT > Basic metadata > Metadata language`
-* **Date of metadata creation**: 2`yyyy-mm-dd of first publication`
+* **Date of metadata creation**: `yyyy-mm-dd of first publication`
 * **Hierarchy level**: Dataset
 
 ### Additional information
