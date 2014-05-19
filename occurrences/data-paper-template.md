@@ -53,11 +53,11 @@ http://dataset.inbo.be/ `dataset-shortname`
 
 `IPT > Geographic coverage > Description`
 
-### Bounding box for covered area
+### Bounding coordinates
 
 `IPT > Geographic coverage > Coordinates`
 
-90°0'S and 90°0'N latitude; 180°0'W and 180°0'E longitude
+-90° to 90° latitude, -180° to 180 longitude
 
 ## Temporal coverage
 
