@@ -63,7 +63,7 @@ http://dataset.inbo.be/ `dataset-shortname`
 
 `IPT > Temporal coverage`
 
-1992-12-15 - recent
+1992-12-15 to now
 
 ## Dataset
 
