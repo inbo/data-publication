@@ -12,7 +12,7 @@ One of our missions is to unlock the **biodiversity data** managed by the Resear
 * [Metadata guidelines](occurrences/metadata-guidelines.md)
 * [Data paper template](occurrences/data-paper-template.md)
  
-## List of datasets
+## List of our datasets
 
 Source | GitHub repository | GBIF registration | Publication date
 --- | --- | --- | --- | ---
