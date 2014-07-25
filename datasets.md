@@ -2,7 +2,7 @@
 
 Source | GitHub repository | GBIF registration | Publication date
 --- | --- | --- | --- | ---
-[Florabank1 - A grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region)](http://dataset.inbo.be/florabank1-occurrences) | `not created` |  [271c444f-f8d8-4986-b748-e7367755c0c1](http://www.gbif.org/dataset/271c444f-f8d8-4986-b748-e7367755c0c1) | 2011-08-17
+[Florabank1 - A grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region)](http://dataset.inbo.be/florabank1-occurrences) | [florabank1-occurrences](https://github.com/LifeWatchINBO/florabank1-occurrences) |  [271c444f-f8d8-4986-b748-e7367755c0c1](http://www.gbif.org/dataset/271c444f-f8d8-4986-b748-e7367755c0c1) | 2011-08-17
 [TestWat - Macroinvertebrates and macrophytes of freshwater bodies in Flanders, Belgium](http://dataset.inbo.be/testwat-occurrences) | `not created` | [66178162-01dc-4133-9b3c-83265481c383](http://www.gbif.org/dataset/66178162-01dc-4133-9b3c-83265481c383) | 2011-08-18
 [Belgian Coccinellidae - Ladybird beetles in Belgium (INBO subset)](http://dataset.inbo.be/belgian-coccinellidae-inbo-occurrences) | `not created` | [42319b8f-9b9d-448d-969f-656792a69176](http://www.gbif.org/dataset/42319b8f-9b9d-448d-969f-656792a69176) | 2012-06-05
 [Trekvis - Migratory fishes in the river Scheldt](http://dataset.inbo.be/trekvis-occurrences) | `not created` | [b2d0f29e-4614-4001-93c8-f651878a86d2](http://www.gbif.org/dataset/b2d0f29e-4614-4001-93c8-f651878a86d2) | 2012-07-19
