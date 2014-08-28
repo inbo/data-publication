@@ -6,7 +6,6 @@ Author 1[^1], Author 2[^1] [^2]
 
 [^2]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
-
 **Corresponding author**: Name (email)
 
 ---
@@ -45,9 +44,9 @@ http://dataset.inbo.be/ `dataset-shortname`
 
 `IPT > Taxonomic coverage > Ranks`
 
-**Kingdom**: *Animalia (animals)*
+**Kingdom**: *Animalia* (animals)
 
-**Class**: *Actinopterygii (ray-finned fishes)*
+**Class**: *Actinopterygii* (ray-finned fishes)
 
 ## Geographic coverage
 
@@ -71,7 +70,7 @@ http://dataset.inbo.be/ `dataset-shortname`
 
 Technical description of how the dataset was built. Does not appear in the IPT metadata.
 
-* **Object name**: Darwin Core Archive `title`
+* **Object name**: `title`
 * **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
