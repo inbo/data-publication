@@ -1,6 +1,6 @@
 # List of our datasets
 
-Source | GitHub repository | GBIF page | Publication date
+Source | GitHub repository | GBIF page | Published at
 --- | --- | --- | --- | ---
 [Florabank1 - A grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region)](http://dataset.inbo.be/florabank1-occurrences) | [florabank1-occurrences](https://github.com/LifeWatchINBO/florabank1-occurrences) |  [271c444f-f8d8-4986-b748-e7367755c0c1](http://www.gbif.org/dataset/271c444f-f8d8-4986-b748-e7367755c0c1) | 2011-08-17
 [TestWat - Macroinvertebrates and macrophytes of freshwater bodies in Flanders, Belgium](http://dataset.inbo.be/testwat-occurrences) | `not created` | [66178162-01dc-4133-9b3c-83265481c383](http://www.gbif.org/dataset/66178162-01dc-4133-9b3c-83265481c383) | 2011-08-18
