@@ -85,9 +85,33 @@ Example:
     Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
 Example:
 
-    The birds were counted at 1,196 predefined locations (waterVogelTelgebieden, figure 1), covering the wetlands and coast of Flanders, Belgium. No birds were counted at sea. These locations are visited regularly during the wintering and migration season (midmonthly, from October to March). For each occurrence, the code for the "waterVogelTelgebied" is indicated in localityID. The polygon shape for most of these localities can be found at https://github.com/LifeWatchINBO/watervogels-occurrences/blob/master/localities/localities.geojson. The geographic coordinates for the occurrences represent the centroid of the locality. 
+    The birds were counted at 1,196 predefined locations (waterVogelTelgebieden, figure 1), covering the wetlands and coast of Flanders, Belgium. 
+    No birds were counted at sea. These locations are visited regularly during the wintering and migration season (midmonthly, from October to March). 
+    For each occurrence, the code for the "waterVogelTelgebied" is indicated in localityID. 
+    The polygon shape for most of these localities can be found at https://github.com/LifeWatchINBO/watervogels-occurrences/blob/master/localities/localities.geojson. 
+    The geographic coordinates for the occurrences represent the centroid of the locality. 
 
-## Taxonomic description
+## Taxonomic Coverage
+
+### Description
+
+A description of the range of taxa addressed in the data set or collection.
+
+Example:
+
+    The term waterfowl is used like defined in the AEWA treaty and thus, does not only include species which belong to the Anseriformes but all species which are migratory and related to wetlands.
+    The AEWA treaty deals with 225 bird species, 168 species are recorded in the dataset.
+
+### Add several taxa
+
+List taxa at a meaningful level, down to lowest common rank
+
+Example:
+
+    Kingdom: Animalia (animals)
+    Phylum: Chordata
+    Class: Aves (birds)
+    Families: Alcidae, Anatidae, Ardeidae, Charadriidae, Ciconiidae, Gaviidae, Gruidae, Haematopodidae, Laridae, Pelecanidae, Phalacrocoracidae, Phoenicopteridae, Podicipedidae, Rallidae, Recurvirostridae, Scolopacidae, Stercorariidae, Threskiornithidae
 
 ## Temporal coverage
 
