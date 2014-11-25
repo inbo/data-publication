@@ -102,6 +102,12 @@ Example:
     The term waterfowl is used like defined in the AEWA treaty and thus, does not only include species which belong to the Anseriformes but all species which are migratory and related to wetlands.
     The AEWA treaty deals with 225 bird species, 168 species are recorded in the dataset.
 
+Example:
+
+	The inland waters dataset contains 64 fish species reported from Flemish enclosed waters and watercourses (some of which are non-native or invasive species), as well as a number of non-target species (mainly crustaceans). This dataset also includes a number of typical brackish water fish species which sometimes can be found in inland water sites in proximity to the sea and/or behind the sluice gates. The class of Actinopterygii is best represented (63 species), along with one Petromyzontida (Lampetra planeri) and 7 crustaceans from the order Decapoda.
+	The estuarine waters dataset contains 116 fish species found in the estuaries of the River Yser and the River Scheldt, as well as 9 non-target crustacean species. The class of Actinopterygii is most represented (110 species), along with three Petromyzontida, and three Chondrichthyes. All the crustaceans in this dataset are from the order of the Decapoda.
+
+
 ### Add several taxa
 
 List taxa at a meaningful level, down to lowest common rank.
