@@ -115,6 +115,8 @@ Example:
 
 ## Temporal coverage
 
+Information about the time periods covered by the resource. Enter start date (Earliest date and end date 
+
 ## Keywords
 
 ## Associated parties
