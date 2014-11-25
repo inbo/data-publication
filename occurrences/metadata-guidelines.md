@@ -54,6 +54,28 @@ Example:
     Address:      Kliniekstraat 25, Brussels, Brussels Capital Region, BELGIUM, Postal Code: 1070
     Contact:      gerlinde.vanthuyne@inbo.be
 
+### Resource creator
+
+The resource creator is the person responsible for the original creation of the resource content.
+
+Example:
+
+    Name:         Gerlinde Van Thuyne
+    Position:     Researcher
+    Organisation: Research Institute for Nature and Forest (INBO)
+    Address:      Kliniekstraat 25, Brussels, Brussels Capital Region, BELGIUM, Postal Code: 1070
+    Contact:      gerlinde.vanthuyne@inbo.be
+    
+### Metadata providor
+
+The metadata provider is the person responsible for producing the resource metadata.
+
+    Name:         Dimitri Brosens
+    Position:     Biodiversity Data Liaison Officer
+    Organisation: Research Institute for Nature and Forest (INBO)
+    Address:      Kliniekstraat 25, Brussels, Brussels Capital Region, BELGIUM, Postal Code: 1070
+    Contact:      dimitri.brosens@inbo.be
+
 ## Geographic coverage
 
 Short and concise description of the geographic area. Example:
