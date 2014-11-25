@@ -80,7 +80,7 @@ The metadata provider is the person responsible for processing the resource meta
 
 Short and concise description of the geographic area. Example:
 
-> Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
+    Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
 
 ## Taxonomic description
 
