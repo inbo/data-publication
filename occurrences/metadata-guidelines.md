@@ -68,7 +68,7 @@ Example:
     
 ### Metadata providor
 
-The metadata provider is the person responsible for producing the resource metadata.
+The metadata provider is the person responsible for processing the resource metadata.
 
     Name:         Dimitri Brosens
     Position:     Biodiversity Data Liaison Officer
