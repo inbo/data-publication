@@ -78,9 +78,14 @@ The metadata provider is the person responsible for processing the resource meta
 
 ## Geographic coverage
 
-Short and concise description of the geographic area. Example:
+Short and concise description of the geographic area. 
+
+Example:
 
     Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
+Example:
+
+    The birds were counted at 1,196 predefined locations (waterVogelTelgebieden, figure 1), covering the wetlands and coast of Flanders, Belgium. No birds were counted at sea. These locations are visited regularly during the wintering and migration season (midmonthly, from October to March). For each occurrence, the code for the "waterVogelTelgebied" is indicated in localityID. The polygon shape for most of these localities can be found at https://github.com/LifeWatchINBO/watervogels-occurrences/blob/master/localities/localities.geojson. The geographic coordinates for the occurrences represent the centroid of the locality. 
 
 ## Taxonomic description
 
