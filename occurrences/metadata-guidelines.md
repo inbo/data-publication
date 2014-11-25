@@ -136,19 +136,72 @@ The associated parties are (in order):
 
 ## Project data
 
+Short description of the project, if any. 
+
+				Project title: Waterbird counts Flanders
+				
+				Personnel
+				
+				Combination of IPT > Basic metadata > Resource contact/Resource creator/Metadata provider, IPT > Associated parties, and IPT > Project data > Personnel.
+				
+				Principal investigators: Koen Devos
+				Resource contact: 
+				Resource creator: 
+				Point of contact:
+				Metadata provider:
+				Content providers:
+				Developer:
+				Processors: Dimitri Brosens, Peter Desmet
+				Funding: This monitoring project receives funding from the Flemish Government.
+
 ### Study area description
 
 Identical to `Geographic coverage`, unless changed for data paper.
 
 ## Sampling methods
 
-### Study extent
+### Study extent description
 
 Somewhat longer description of the sampled area: sampling locations, calculation of `coordinateUncertainInMeters`, etc.
 
-Example:
+Example1:
 
 > Over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled since 1992. In 2001, these locations were consolidated in a monitoring network ("VISmeetnet") of 900 sampling points. The geographic coordinates in the dataset are those of the sampling locations. Since these do not always represent the actual coordinates of the catch, which may have occurred further up- or downriver, the coordinateUncertaintyInMeters has been set to 250.
+
+Example2:
+> During the waterbird counts shall be aimed for maximal standardization. Each month and every winter, the same areas are counted in an identical manner. Only in this way reliable comparisons can be made between data originating from several months or years and from different areas.
+
+
+
+### Sampling description
+
+Example metadata:
+
+>The counts are done in fixed enclosed areas, the waterVogelTelGebieden named verbatimLocality in the dataset. In these enclosed areas the present species are counted as complete as possible. Clearly visible areas are often counted from one point with a telescope. Large and less visible areas are usually traversed on foot, by bicycle or by car. A special case are the monthly counts on the Zeeschelde wich are performed from boats by INBO staff.
+>
+It is also important that the risk of double-counting or missing groups of waterbirds is kept as small as possible. Therefore the count limit is set to only two days each month and volunteers are asked to count areas within close range one after another, or even better, simultaniously using more recorders.
+>
+The mid monthly counts are each done during the day. Counts birds resting places places are not. For certain species additional roosting counts were performed because it was shown that that kind of counts do give a better measure of the number of species on the spot. Since 2003 every winter two simultanious counts of cormorants are done (mid November and mid December). In January 2009 a first count of Curlews was organized and specific high tide counts were organized for typical coastal waders (hiding on high tide gather places). The Zeeschelde on the contrary, is mainly counted at low tide due to better visibility of the birds.
+
+Example datapaper:
+
+	In inland waters, standardized sampling methods were used as described in Belpaire et al., 2000 and Van Thuyne, 2010 and are specified in the dataset as dwc:samplingProtocol. Per water body, the same method was used for each sampling event. The default method is electric fishing, but additional techniques such as gill nets, fykes, and seine netting (variable sizes) were used as well. Electric fishing was carried out using a 5kW generator with an adjustable output voltage of 300-500V and a pulse frequency of 480Hz. The number of electric fishing devices and hand-held anodes used depends on the river width (Belpaire et al., 2000). In riverine environments, electric fishing was carried out on both riverbanks in upstream direction. All fishes were identified to species level, counted, and their length and weight was measured.
+	The default method used in estuarine waters is paired fyke netting, but additional techniques such as anchor netting, seine netting, pound netting, electric fishing, and eel fyke netting were used as well (Breine et al., 2011). All fishes were identified to species level, counted their length and weight was measured.
+				
+
+###Quality control description
+
+Extended information on the validation and quality control used in the dataset generation.
+
+Example metadata:
+
+    All records are validated.
+
+Example datapaper:
+
+    Strict field protocols where used. The Manual for Application of the European Fish Index (EFI) (Fame consortium, 2004) served as a guideline for electrofishing and was used in support of the EU water framework directive.
+    Users of the data can comment on the inland waters and estuarine waters dataset at https://github.com/LifeWatchINBO/vis-inland-occurrences and https://github.com/LifeWatchINBO/vis-estuarine-occurrences respectively.
+
 
 ## Citations
 
