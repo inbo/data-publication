@@ -104,7 +104,7 @@ Example:
 
 ### Add several taxa
 
-List taxa at a meaningful level, down to lowest common rank
+List taxa at a meaningful level, down to lowest common rank.
 
 Example:
 
@@ -115,9 +115,15 @@ Example:
 
 ## Temporal coverage
 
-Information about the time periods covered by the resource. Enter start date (Earliest date and end date 
+Information about the time periods covered by the resource. Enter start date (earliest `eventDate`) and end date (latest `eventDate`) 
 
 ## Keywords
+
+list keywords, use , as a separator. Thesaurus vocabulary, use n/a
+
+    waterfowl, birds, monitoring, wetlands, occurrence, observation, lifewatch
+
+
 
 ## Associated parties
 
