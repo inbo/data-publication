@@ -117,6 +117,11 @@ Example:
 
 Information about the time periods covered by the resource. Enter start date (earliest `eventDate`) and end date (latest `eventDate`) 
 
+Example:
+
+		1992-12-15 - 2012-11-27
+
+
 ## Keywords
 
 list keywords, use , as a separator. Thesaurus vocabulary, use n/a
@@ -236,3 +241,26 @@ Example:
 ## External links
 
 ## Additional metadata
+
+Hierarchy level: dataset
+
+###Purpose  - Rationale
+
+The rationale of the dataset. In a datapaper this will come directly under the `Data Published through` section
+
+Example:
+
+	Counting waterbirds has a long tradition in Flanders, going back to the 1960s. The aim of this long-running monitoring scheme is to gather reliable information on the numbers, trends, and distribution of these species during their winter and migration period. Through this project, required data become available for international treaties and conventions such as the European Union (EU) Birds and Habitats Directives, the Ramsar Convention on Wetlands, and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA). These results are also used for informed decision-making by conservation bodies, planners and developers, and contribute to the sustainable use and management of wetlands and their dependent waterbirds.
+
+
+###Additional information
+
+Example:
+
+	The overall coordination of the waterbird monitoring project is the responsibility of the Research Institute for Nature and Forest (INBO). To organize the counts, a regional network has been set up. Flanders is divided into 24 regions, each of them with a local coordinator. The fieldwork is mainly done by skilled volunteer birdwatchers, often working together within local bird clubs. The NGO "Natuurpunt" supports the majority of these bird clubs and volunteers and thereby delivers an important contribution to the waterbird project. A number of large and important wetland areas are counted by INBO staff (especially in the Scheldt estuary and along the Yser river).
+	The project "" waterbird counts Flanders "" includes six major censuses in the period from October to March. These counts take place during the weekend closest to the 15th of the month. Counts are made at all kind of wetland habitats such as lakes, ponds, reservoirs and rivers. Also agricultural areas, often holding large numbers of waterbirds (such as wintering geese), are included.
+	During the counts, numbers of all waterbird species are recorded. This includes divers, grebes, cormorants, herons and allies, swans, geese, ducks, coots and rails. Waders and gulls (optional) have been added on the species list in 1999. Counts of coastal waders are however available since 1992. For Great Cormorant, Eurasian Curlew and gulls there are also additional counts on roost sites.
+	Although the projects aims to a (nearly) complete coverage of all areas hosting substantial numbers of waterbirds, this is hard to achieve and the number of counted sites varies between months and years.
+	All data of the waterbird counts are entered in a central database managed by the Institute for Nature and Forest. Through a site, http://www.watervogels.inbo.be, volunteers have the opportunity to enter their count data and additional data directly into the central database. This special site is only available to permanent employees on the project waterbird counts.
+
+
