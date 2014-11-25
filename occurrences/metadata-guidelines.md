@@ -78,6 +78,8 @@ The metadata provider is the person responsible for processing the resource meta
 
 ## Geographic coverage
 
+###Description
+
 Short and concise description of the geographic area. 
 
 Example:
@@ -90,6 +92,10 @@ Example:
     For each occurrence, the code for the "waterVogelTelgebied" is indicated in localityID. 
     The polygon shape for most of these localities can be found at https://github.com/LifeWatchINBO/watervogels-occurrences/blob/master/localities/localities.geojson. 
     The geographic coordinates for the occurrences represent the centroid of the locality. 
+
+###Bounding coordinates
+
+     50.68° to 51.51° latitude, 2.54° to 5.92° longitude
 
 ## Taxonomic Coverage
 
