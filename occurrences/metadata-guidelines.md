@@ -139,19 +139,15 @@ The associated parties are (in order):
 Short description of the project, if any. 
 
 				Project title: Waterbird counts Flanders
-				
-				Personnel
-				
-				Combination of IPT > Basic metadata > Resource contact/Resource creator/Metadata provider, IPT > Associated parties, and IPT > Project data > Personnel.
-				
-				Principal investigators: Koen Devos
-				Resource contact: 
-				Resource creator: 
-				Point of contact:
-				Metadata provider:
-				Content providers:
-				Developer:
-				Processors: Dimitri Brosens, Peter Desmet
+				Personnel:
+					Principal investigators: Koen Devos
+					Resource contact: 
+					Resource creator: 
+					Point of contact:
+					Metadata provider:
+					Content providers:
+					Developer:
+					Processors: Dimitri Brosens, Peter Desmet
 				Funding: This monitoring project receives funding from the Flemish Government.
 
 ### Study area description
@@ -164,13 +160,13 @@ Identical to `Geographic coverage`, unless changed for data paper.
 
 Somewhat longer description of the sampled area: sampling locations, calculation of `coordinateUncertainInMeters`, etc.
 
-Example1:
+Example metadata:
 
-> Over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled since 1992. In 2001, these locations were consolidated in a monitoring network ("VISmeetnet") of 900 sampling points. The geographic coordinates in the dataset are those of the sampling locations. Since these do not always represent the actual coordinates of the catch, which may have occurred further up- or downriver, the coordinateUncertaintyInMeters has been set to 250.
-
-Example2:
 > During the waterbird counts shall be aimed for maximal standardization. Each month and every winter, the same areas are counted in an identical manner. Only in this way reliable comparisons can be made between data originating from several months or years and from different areas.
 
+Example datapaper:
+
+    Over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled since 1992. In 2001, these locations were consolidated in a monitoring network ("VISmeetnet") of 900 sampling points. The geographic coordinates in the dataset are those of the sampling locations. Since these do not always represent the actual coordinates of the catch, which may have occurred further up- or downriver, the coordinateUncertaintyInMeters has been set to 250.
 
 
 ### Sampling description
@@ -185,8 +181,12 @@ The mid monthly counts are each done during the day. Counts birds resting places
 
 Example datapaper:
 
-	In inland waters, standardized sampling methods were used as described in Belpaire et al., 2000 and Van Thuyne, 2010 and are specified in the dataset as dwc:samplingProtocol. Per water body, the same method was used for each sampling event. The default method is electric fishing, but additional techniques such as gill nets, fykes, and seine netting (variable sizes) were used as well. Electric fishing was carried out using a 5kW generator with an adjustable output voltage of 300-500V and a pulse frequency of 480Hz. The number of electric fishing devices and hand-held anodes used depends on the river width (Belpaire et al., 2000). In riverine environments, electric fishing was carried out on both riverbanks in upstream direction. All fishes were identified to species level, counted, and their length and weight was measured.
-	The default method used in estuarine waters is paired fyke netting, but additional techniques such as anchor netting, seine netting, pound netting, electric fishing, and eel fyke netting were used as well (Breine et al., 2011). All fishes were identified to species level, counted their length and weight was measured.
+	In inland waters, standardized sampling methods were used as described in Belpaire et al., 2000 and Van Thuyne, 2010 and are specified in the dataset as dwc:samplingProtocol.
+	Per water body, the same method was used for each sampling event. The default method is electric fishing, but additional techniques such as gill nets, fykes, and seine netting (variable sizes) were used as well.
+	Electric fishing was carried out using a 5kW generator with an adjustable output voltage of 300-500V and a pulse frequency of 480Hz. The number of electric fishing devices and hand-held anodes used depends on the river width (Belpaire et al., 2000).
+	In riverine environments, electric fishing was carried out on both riverbanks in upstream direction. All fishes were identified to species level, counted, and their length and weight was measured.
+	The default method used in estuarine waters is paired fyke netting, but additional techniques such as anchor netting, seine netting, pound netting, electric fishing, and eel fyke netting were used as well (Breine et al., 2011).
+	All fishes were identified to species level, counted their length and weight was measured.
 				
 
 ###Quality control description
@@ -204,6 +204,32 @@ Example datapaper:
 
 
 ## Citations
+
+For a datapaper:
+
+### References cited within the metadata
+
+Example:
+
+		Belpaire C, Smolders R, Vanden Auweele I, Erecken D, Breine J, Van Thuyne G, Ollevier F (2000) An Index of Biotic Integrity characterizing fish populations and the ecological quality of Flandrian water bodies, Hydrobiologia, 434: 17-33, 2000.
+		Breine, J, Maes, J., Ollevier F, Stevens M (2011) Fish assemblages across a salinity gradient in the Zeeschelde estuary (Belgium). Belgian Journal of Zoologie, 141 (2): 21-44.
+		Breine JJ, Maes J, Quataert P, Van den Bergh E, Simoens I, Van Thuyne G, Belpaire C (2007) A fish-based assessment tool for the ecological quality of the brackish Schelde estuary in Flanders (Belgium). Hydrobiologia, 575: 141-159.
+
+### Publications based on this dataset
+
+Example:
+
+		Adriaenssens V, Goethals P, Breine J, Maes J, Simoens I, Ercken D, Belpaire C, Ollevier F, De Pauw N (2002) Referenties voor een visindex. Landschap, 19 (1): 59-61.
+		Adriaenssens V, Goethals P, De Pauw N, Breine J, Simoens I, Belpaire C, Maes J, Ercken D, Ollevier F (2002) Ontwikkeling van een estuariene visindex in Vlaanderen. Water, 2: 1-13.
+		Bervoets L, Goemans G, Belpaire C, Van den Boeck H, De Boeck G, De Jonge M, Van Thuyne G, Breine J, Joosen S, Van De Vijver B, Ningtias P, De Temmerman L, De Cooman W (2007) Ecologische en Ecotoxicologische toestand van de Dommel vóór de sanering van de waterbodem. Statusrapport 1, 60 pp + bijlagen.
+
+### Publications describing the database
+
+Example:
+
+		Verbiest H, Belpaire C, Vandenabeele P, Ollevier F (1996) Het in werking stellen van de visdatabank met de nadruk op de gebruiksvriendelijkheid ervan IBW.Wb.V.R.96.042.
+		Verbiest H, Vandenabeele P, Belpaire C, Ollevier F (1994) Ontwerp van de visdatabank en implementatie van historische en recente gegevens IBW.Wb.V.R.94.029.
+
 
 ## Collection data
 
