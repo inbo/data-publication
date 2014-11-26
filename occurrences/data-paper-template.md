@@ -84,7 +84,13 @@ http://dataset.inbo.be/ `dataset-shortname`
 
 >Flanders is one of the three administrative regions in the country of Belgium, located in the centre of Western Europe. The Flemish region is situated in the north of the country and covers an area of 13,522km² (44,29% of Belgium). Belgian has a temperate maritime climate that is influenced by the North Sea and the Atlantic Ocean with substantial precipitation in all seasons. The summer is moderate and the winters are mild. The two main geographical regions of Flanders are the coastal plain in the North-West and the Central plain, further inland. With 470 inhabitants/km², Flanders is one of the most densely populated areas of Europe. The three major rivers are the River Yser, the River Scheldt, and the River Meuse. All rivers in Flanders flow into the North Sea, but only the River Yser drains directly into the sea within the jurisdiction of Flanders.
 
+###Geographical method `optional`
 
+Geographical method is not provided in the IPT metadata as such.
+
+>The Universal Transverse Mercator Projection (UTM), an adaptation of the standard Mercator projection, uses a two dimensional Cartesian co-ordinate system to identify locations on the surface of the Earth (Wikipedia).
+
+>The UTM 5 Km (Universal Transverse Mercator Projection) raster projection divides Belgium in approximately 1200 25 km² squares (Figure 3). A representative number of UTM squares has been sampled (1125 UTM 5×5 km squares of which 659 squares with more than 10 records: see Figures 3 and 4) to complete the dataset. All the records in FORMIDABEL are georeferenced through the centroid coordinates of the corresponding UTM 5 km square. Therefore, the uncertainty on these coordinates is 3.500 meters, the distance between the centre and the corner of the UTM square.
 
 ### Bounding coordinates
 
@@ -111,7 +117,7 @@ http://dataset.inbo.be/ `dataset-shortname`
 
 >The data are standardized to Darwin Core with a custom SQL view (figure 10) on the original VIS database. The Darwin Core terms (<http://rs.tdwg.org/dwc/terms/>) in the dataset at the time of publication are: `occurrenceID`, `type`, `language`, `rights`, `rightsholder`, `datasetID`, `institutionCode`, `collectionCode`, `datasetName`, `ownerInstitutionCode`, `basisOfRecord`, `informationWithheld`, `catalogNumber`, `recordedBy`, `individualCount`, `samplingProtocol`, `samplingEffort`, `eventDate`, `habitat`, `locationID`, `continent`, `waterBody`, `countryCode`, `verbatimLocality`, `verbatimLatitude`, `verbatimLongitude`, `verbatimCoordinateSystem`, `verbatimSRS`, `decimalLatitude`, `decimalLongitude`, `geodeticDatum`, `coordinateUncertaintyInMeters`, `identifiedBy`, `scientificName`, `kingdom`, `taxonRank`, `scientificNameAuthorship`, `vernacularName`, and `nomenclaturalCode`.
 
-
+>The data are dedicated to the public domain under a [Creative Commons Zero waiver](http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it if you follow our [norms for data use](https://github.com/LifeWatchINBO/norms-for-data-use) and notify the corresponding authors of the respective dataset if you use the data, especially for research purposes.
 
 * **Object name**: `title`
 * **Character encoding**: UTF-8
@@ -125,17 +131,66 @@ http://dataset.inbo.be/ `dataset-shortname`
 * **Date of metadata creation**: `yyyy-mm-dd of first publication`
 * **Hierarchy level**: Dataset
 
+>* **Object name**: VIS - Fishes in inland waters in Flanders, Belgium
+* **Character encoding**: UTF-8
+* **Format name**: Darwin Core Archive format
+* **Format version**: 1.0
+* **Distribution**: http://dataset.inbo.be/vis-inland-occurrences
+* **Publication date of data**: 2013-12-20
+* **Language**: English
+* **Licenses of use**: http://creativecommons.org/publicdomain/zero/1.0/ & https://github.com/LifeWatchINBO/norms-for-data-use
+* **Metadata language**: English
+* **Date of metadata creation**: 2013-12-20
+* **Hierarchy level**: Dataset
+
+
+
 ### Additional information
 
 `IPT > Additional metadata > Additional information`
 
+>Length and weight measurement data of the individual fishes, absence information, occurrence data since 2013, as well as abiotic data of the sampling points (pH, temperature, etc.) are not included in the Darwin Core Archives and are available upon request.
+
+
 ### Usage norms
 
-Norms on how to use the data. Does not appear in the IPT metadata.
+Norms on how to use the data. Does not appear in the IPT metadata. Or a link to the Lifewatch github repo on usage and norms should be provided, or provide norms and usage guidelines in text.
 
-## Discussion
+>Give credit where credit is due
 
-Discussion of the dataset. Does not appear in the IPT metadata.
+>As is common practice in scientific research, cite the sources you are using. Researchers, volunteers, and personnel have invested a lot of time and effort in creating and publishing the biodiversity information you are using, and they deserve credit for their work. For scholary publications, follow the citation practices that apply or the [GBIF best practices on data citation](http://www.gbif.org/resources/2381). In any other context, include at least a link to the original dataset if technically feasable (e.g. http://dataset.inbo.be/bird-tracking-gull-occurrences).
+
+>Be responsible
+
+>Use the data responsibly. The data are published to allow anyone to better study and understand the world around us, so do not use the data in any way that is unlawful, harmful, or misleading. Understand that the datasets are subject to change, errors, and sampling bias. Read the metadata to better understand the scope and original intent of the dataset.
+
+>Respect the data waiver
+
+>To help you [make greater use of the data](http://www.canadensys.net/2012/why-we-should-publish-our-data-under-cc0), we try to dedicate all our data to the public domain under a [Creative Commons Zero (CC0)](http://creativecommons.org/publicdomain/zero/1.0/) waiver. Do not provide false or misleading information about the open status of the data.
+
+>Get in touch
+
+>Get in touch! We are always interested to know how you have used or visualized the data, or to provide additional information and data. It helps both of us reach a wider audience and could be the start of a great collaboration. Our contact information can be found in the metadata or you can reach us at [@LifeWatchINBO](https://twitter.com/LifeWatchINBO). You can also report dataset issues via [GitHub](https://github.com/LifeWatchINBO/data-publication-guidelines/blob/master/datasets.md).
+
+
+## Discussion `optional`
+
+Discussion of the dataset. Does not appear in the IPT metadata. A discussion is optional in a data paper. 
+
+>Using citizen science data generated by an on line application is often a challenge for professional researchers (Crall et al., 2011). Scientists may be hindered by the perception that the data are of low quality. However, many studies indicate that the quality of data generated by volunteers differ little from data generated from professionals.  Especially, when given proper training and materials, volunteers can collect data comparable to data collected by professional scientists (Au et al., 2000; Canfield et al. 2002; Fore et al., 2001; Delaney et al., 2008). Studies indicate that citizens scientists who feel that they are making contributions to the scientific study return higher quality data (Nerbonne & Nelson, 2008). The global community around divers is large and diverse. But if only a small percentage of the active divers would log their dives in a GBIF connected online logbook, a great amount of data would become available for scientific use. By creating a personal standardized divelog for every diver, where exhaustive species information and dive locality information is automatically provided, we hope with this initiative to motivate more and more divers to publish their dives and observations on the internet.
+Sampling bias will occur, it is impossible to memorize every observed organism during a dive and divers obviously only remember the 'most impressive' organisms encountered. Several sorts of bias may be present in the data, such as under- and over detection of species (a huge share of Elasmobranchii are recorded in the dataset and only a small amount of invertebrates is reported) or the non-random distribution of effort (Crall et al., 2011).     
+Nevertheless, a 100% community generated dataset can provide a useful basis for science. This was showcased by the lionfish case. 
+
+## History of the dataset `optional`
+
+History of the dataset does not appear in the IPT metadata. The history of the dataset section is optional in a data paper.
+
+>Dataset history
+At the beginning of 2001 all available records of ants in Flanders (northern part of Belgium) were brought together for the first time and several inventories were started. More than 20.000 records (for the most part gathered after 1990) were assembled in the FORMIDABEL (FORMIcidaeDAtaBELgium) database resulting in the ‘Verspreidingsatlas en voorlopige Rode lijst van de mieren van Vlaanderen; Dekoninck et al. 2003. [Distribution atlas and preliminary Red list of ant species in Flanders, Belgium]. This report contains all available distribution data for Flanders. In the southern part of Belgium (Wallonia) intensive inventorying started in 2005. Until then knowledge on the distribution of ants in Wallonia was limited. Only a few areas (Haute Fagnes, Famenne and the Viroin valley) had already been inventoried. Thanks to the good cooperation between the Polyergus and the FourmisWalBru working groups; many Belgian ant records were brought together in the FORMIDABEL database. Since then, FORMIDABEL is updated with data originating from FourmisWalBru twice a year. The FORMIDABEL dataset was then used for the creation of the “Belgian Ant Atlas”, (Dekoninck et al. 2012). In 2010 a cooperation agreement between the authors of the atlas and the Belgian Biodiversity Platform (www.biodiversity.be) was made. Together with the publication of the book, the data was published in Darwin Core Archives to GBIF (url: http://data.gbif.org/datasets/resource/14697/) and a dedicated data portal was created: www.formicidae-atlas.be.
+
+>The original FORMIDABEL database was created in Microsoft Access. Later, this database was completely imported in a relational SQL database. During this process additional data cleaning was performed; see section Quality control description. The dataflow is illustrated in Figure 6. 
+
+
 
 ## Methodology
 
@@ -143,17 +198,41 @@ Discussion of the dataset. Does not appear in the IPT metadata.
 
 `IPT > Sampling methods > Study extent`
 
+>Over 2,000 locations in estuaries, inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled since 1992. In 2001, these locations were consolidated in a monitoring network ("VISmeetnet") of 900 sampling points. Four locations in the Yser estuary and 43 locations in the Scheldt were sampled since 1995. While the Yser estuary only covers a small geographical area, the Scheldt estuary is with 33,000 hectares one of the largest estuaries in Europe. It is also one of the few remaining European estuaries that includes the entire gradient from fresh to saltwater tidal areas (Van den Bergh et al., 2009). The 43 sampling locations in the Scheldt estuary are mainly located in the River Scheldt, but also in the Rivers Durme, Rupel, Dijle, Zenne and Nete.
+
+>The geographic coordinates in both datasets are those of the defined sampling locations (`dwc:locationID`). However, as these coordinates are not always exact the actual coordinates of the catch, which may be located further up- or downriver, the coordinate uncertainty (`dwc:coordinateUncertaintyInMeters`) has been set to 250 meter.
+
 ### Sampling description
 
 `IPT > Sampling methods > Sampling description`
+
+>In inland waters, standardized sampling methods were used as described in Belpaire et al., 2000 and Van Thuyne, 2010 and are specified in the dataset as `dwc:samplingProtocol`. Per water body, the same method was used for each sampling event. The default method is electric fishing, but additional techniques such as gill nets, fykes, and seine netting (variable sizes) were used as well. Electric fishing was carried out using a 5kW generator with an adjustable output voltage of 300-500V and a pulse frequency of 480Hz. The number of electric fishing devices and hand-held anodes used depends on the river width (Belpaire et al., 2000). In riverine environments, electric fishing was carried out on both riverbanks in upstream direction. All fishes were identified to species level, counted, and their length and weight was measured.
+
+>The default method used in estuarine waters is paired fyke netting, but additional techniques such as anchor netting, seine netting, pound netting, electric fishing, and eel fyke netting were used as well (Breine et al., 2011). All fishes were identified to species level, counted their length and weight was measured.
+
 
 ### Quality control description
 
 `IPT > Sampling methods > Quality control`
 
+>Strict field protocols where used. The Manual for Application of the European Fish Index (EFI) (Fame consortium, 2004) served as a guideline for electrofishing and was used in support of the EU water framework directive.
+
+>Users of the data can comment on the inland waters and estuarine waters dataset at <https://github.com/LifeWatchINBO/vis-inland-occurrences> and <https://github.com/LifeWatchINBO/vis-estuarine-occurrences> respectively.
+
 ### Method step description
 
 `IPT > Sampling methods > Step description`: all steps
+
+		Water type | Method | Effort
+		:--- | :---| :---
+		Running freshwaters (width: 1.5m, depth: <1.30m) | electrofishing with 1 anode by wading | 100m
+		Running freshwaters (width: 6m, depth: <1.30m) | electrofishing with 2 anodes by wading | 100m
+		Running freshwaters (width: >6m, depth: <1.30m) | electrofishing with 2 anodes by wading | 250m with 1 anode on each riverbank, 2m from bank
+		Running freshwaters, streaming rivers (width: >6m, depth: >1.30m) | electrofishing with 2 anodes by boat | 250m with 2 anodes on each riverbank, 2m from bank
+		Canals, slowly running rivers (width: >6m, depth: >1.30m) | electrofishing with 2 anodes by boat AND 2 fykes | 250m with 2 anodes on each riverbank, 2m from bank AND 1 fyke for 48 hours parallel with and on both riverbanks
+		Canalized rivers with too high conductivity for electrofishing (depth: <1.30m) | seine netting | 100m, two times complete seine netting
+		Lakes | electric fishing AND fykes | 15% of riverbank (minimum 1000m, maximum 2000m) or 100% if perimeter is less than 1000m AND 1 fyke/hectare (minimum 4, maximum 20 fykes)
+		Estuaries | fyke fishing, anchor netting, pound netting, electric fishing | Fykes: 2 paired nets for two successive days per site. Winged fyke: one per site for two successive days. Anchor netting: per site 4 surveys of one hour (two for each tide). Electric fishing: only in flood control areas (250m shore transects/ha).
 
 ## Project data
 
@@ -165,6 +244,7 @@ Discussion of the dataset. Does not appear in the IPT metadata.
 
 Combination of `IPT > Basic metadata > Resource contact/Resource creator/Metadata provider`, `IPT > Associated parties`, and `IPT > Project data > Personnel`.
 
+
 * **Principal investigators**: 
 * **Resource contact, resource creator, point of contact**: 
 * **Metadata provider**: 
@@ -172,14 +252,47 @@ Combination of `IPT > Basic metadata > Resource contact/Resource creator/Metadat
 * **Developer**: 
 * **Processors**: Dimitri Brosens, Peter Desmet
 
+>### Project title
+VIS - Fish Information System
+>### Personnel
+>* **Principal investigator**: Hugo Verreycken, Jan Breine, Gerlinde Van Thuyne
+* **Resource contact, resource creator, metadata provider, point of contact**: Gerlinde Van Thuyne (inland Waters), Jan Breine (estuarine Waters)
+* **Content providers**: Daniel Bombaerts, Jan Breine, Jean-Pierre Croonen, Adinda De Bruyn, Franky Dens, Marc De Wit, Linde Galle, Isabel Lambeens, Yves Maes, Gerlinde Van Thuyne
+* **Developer**: Tom De Boeck
+* **Processors**: Dimitri Brosens, Peter Desmet
+
+
 ### Funding
 
 `IPT > Project data > Funding`
 
+>### Funding
+Flemish government
+
 ## Acknowledgements
 
-Does not appear in the IPT metadata.
+Does not appear in the IPT metadata. 
+
+>Acknowledgements
+The authors would like to thank everybody who contributed to the creation of these datasets and paper, including [LifeWatch INBO](http://lifewatch.inbo.be), the [Belgian Biodiversity Platform](http://www.biodiversity.be), and [GBIF](http://www.gbif.org). Special thanks to the fishing team at the INBO for their unmatched talent for catching fish.
+
 
 ## References
 
 `IPT > Citations > Bibliography`
+
+>###references cited within the meatdata
+
+>Belpaire C, Smolders R, Vanden Auweele I, Erecken D, Breine J, Van Thuyne G, Ollevier F (2000) An Index of Biotic Integrity characterizing fish populations and the ecological quality of Flandrian water bodies, Hydrobiologia, 434: 17-33, 2000.
+
+>Breine, J, Maes, J., Ollevier F, Stevens M (2011) Fish assemblages across a salinity gradient in the Zeeschelde estuary (Belgium). Belgian Journal of Zoologie, 141 (2): 21-44.
+
+>Breine JJ, Maes J, Quataert P, Van den Bergh E, Simoens I, Van Thuyne G, Belpaire C (2007) A fish-based assessment tool for the ecological quality of the brackish Schelde estuary in Flanders (Belgium). Hydrobiologia, 575: 141-159.
+
+
+>###references based on this dataset
+
+>###references describing the dataset
+
+
+
