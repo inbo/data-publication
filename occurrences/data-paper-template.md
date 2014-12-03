@@ -59,6 +59,13 @@ http://dataset.inbo.be/ `dataset-shortname`
 
 >The Fish Information System or [VIS](http://vis.milieuinfo.be) (figure 2) is a database created by the Research Institute for Nature and Forest (INBO) to monitor the status of fishes and their habitats in Flanders, Belgium and to calculate the biotic integrity (Karr, 1981, Belpaire et al., 2000 & Breine et al., 2004, 2007, 2007) of fish assemblages. It contains data regarding occurrences, individual morphometrics, stocks, pollutants, indices, and non-native fish species. Sampling has been going on since 1992, the database model was designed in 1994 (Verbiest et al, 1994), the first database developed in 1996 (Verbiest et al, 1996), and the consolidated database set up in 2001. VIS is used for supporting NATURA 2000, an ecological network of protected areas in Europe and to calculate the EQR (Ecological Quality Ratio) in the framework of the EU Water Directive (Directive 2000/60/EC). Further, the database provides updated information for Flemish Red Lists of fishes and lampreys (Verreycken et al., 2014) and on the distribution status of non-native and invasive fish species. The data are also crucial in fish stock management and for reporting on the status of the European eel stock as required by the Eel Regulation (Council Regulation (EC) N° 1100/2007).
 
+## Collection
+
+`IPT  >  Collection Data > Collection`
+
+The collection metadata for the resource includes the *Collection Name* ; *Collection Identifier*; *Parent Collection Identifier* and the *Specimen preservation method*
+  
+
 ## Taxonomic coverage
 
 `IPT > Taxonomic coverage > Description`
