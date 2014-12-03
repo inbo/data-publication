@@ -64,6 +64,12 @@ http://dataset.inbo.be/ `dataset-shortname`
 `IPT  >  Collection Data > Collection`
 
 The collection metadata for the resource includes the *Collection Name* ; *Collection Identifier*; *Parent Collection Identifier* and the *Specimen preservation method*
+
+### Curatorial units
+
+Enter the counts of curatorial units covered by the resource. You may enter the count as a range or as a value with an uncertainty. Examples of units include skins, sheets, pins, boxes, jars.
+
+Add *Method Type* Between ` ` and ` ` ; and *Unit Type*
   
 
 ## Taxonomic coverage
