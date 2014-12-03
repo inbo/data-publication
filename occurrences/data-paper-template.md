@@ -76,6 +76,7 @@ Enter the counts of curatorial units covered by the resource. You may enter the 
 Add *Method Type* Between ` ` and ` ` ; and *Unit Type*
   
   > Wett collection between 10000 and 12000 jars
+  
   > Dry collection between 150000 and 160 000 specimen, mostly shells
 
 ## Taxonomic coverage
