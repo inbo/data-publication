@@ -14,7 +14,7 @@ One of our missions is to unlock the **biodiversity data** managed by the Resear
  
 ## Overview of our datasets
 
-* [See this list](datasets.md)
+* [See this list](datasets/README.md)
 
 ## Fork us
 
