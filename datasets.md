@@ -22,3 +22,4 @@ Source | GitHub repository | GBIF page | Published at
 Bird tracking - GPS tracking of Western Marsh Harrier breeding near the Belgium-Netherlands border | [bird-tracking-wmh-occurrences](https://github.com/LifeWatchINBO/bird-tracking-wmh-occurrences) | `not yet registered` | `not yet published`
 SAS - Seabirds at sea monitoring in the Belgian part of the North Sea | [sas-occurrences](https://github.com/LifeWatchINBO/sas-occurrences) | `not yet registered` | `not yet published`
 Broedvogel - Atlas of breeding birds in Flanders, Belgium (2000-2002) | [broedvogel-atlas-occurrences](https://github.com/LifeWatchINBO/broedvogel-atlas-occurrences) | `not yet registered` | `not yet published`
+Invasive Anserinae ‘summering Geese’ occurrences in Flanders, Belgium. (***) |`not yet registered` | `not yet published`
