@@ -137,7 +137,7 @@ For publication, the data is further processed:
 `georeferenceRemarks`.
 4. Taxonomy information is added based on the scientific name and expressed in `kingdom`, `phylum`, `class`, `taxonRank`, `nomenclaturalCode`, and `scientificNameAuthorship`, as well as an Euring code code (`taxonID`) and Dutch vernacular name `vernacularName`.
 5. Identification information is added based on the event information: `identifiedBy` = the observer, `dateIdentified` = `eventDate` without time information.
-5. Dataset metadata information is added (`type`, `basisOfRecord`, `language`, `datasetID`, `datasetName`, `institionCode`, `ownerInstitutionCode`) as well the rights holder (`rightsHolder`), the license (`rights`) and data use norms (`accessRights`).
+5. Dataset metadata information is added (`type`, `basisOfRecord`, `language`, `datasetID`, `datasetName`, `institutionCode`, `ownerInstitutionCode`) as well the rights holder (`rightsHolder`), the license (`rights`) and data use norms (`accessRights`).
 
 ## Project data
 
