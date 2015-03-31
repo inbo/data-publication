@@ -8,7 +8,7 @@ This repository is where we document data publication guidelines and track issue
 
 ## Overview of our datasets
 
-* [See this list](datasets/README.md)
+* [See this list](datasets/datasets.csv)
 
 ## Guidelines
 
