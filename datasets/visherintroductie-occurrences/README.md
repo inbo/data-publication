@@ -1,11 +1,9 @@
 # Visherintroductie - Reintroduction of the fishes chub, dace, burbot, and brown trout in Flanders, Belgium
 
-[Visherintroductie - Reintroduction of the fishes chub, dace, burbot, and brown trout in Flanders, Belgium](http://dataset.inbo.be/visherintroductie-occurrences) is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). This repository is mainly used for tracking issues with the dataset.
+*Visherintroductie - Reintroduction of the fishes chub, dace, burbot, and brown trout in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/visherintroductie-occurrences.
 
-## Noticed an issue?
+## Data publication process
 
-[You can submit it here](https://github.com/LifeWatchINBO/visherintroductie-occurrences/issues).
-
-## Metadata
-
-[Dataset metadata](metadata.md).
+* [Metadata](metadata.md) (working document)
+* [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/visherintroductie-occurrences)
+* [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
