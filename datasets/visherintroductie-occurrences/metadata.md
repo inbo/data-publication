@@ -69,7 +69,7 @@ Watercourses in Flanders, Belgium.
 * **Distribution**: <http://dataset.inbo.be/visherintroductie-occurrences>
 * **Publication date of data**: 2012-09-27
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/licenses/by-nc-sa/3.0/>
+* **Licenses of use**: <https://creativecommons.org/publicdomain/zero/1.0/>
 * **Metadata language**: English
 * **Date of metadata creation**: 2012-09-27
 * **Hierarchy level**: Dataset
