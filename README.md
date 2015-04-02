@@ -10,7 +10,11 @@ This repository is where we document data publication guidelines and track issue
 
 * [See this list](datasets/datasets.csv)
 
-## Guidelines
+## Standardization
+
+* [Darwin Core mapping](https://docs.google.com/a/inbo.be/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit?usp=sharing): a spreadsheet with the populated Darwin Core terms for all our datasets. Our working document for comparing datasets.
+
+## Draft guidelines
 
 * [Data guidelines](guidelines/data-guidelines.md)
 * [Metadata guidelines](guidelines/metadata-guidelines.md)
