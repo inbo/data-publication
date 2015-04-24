@@ -15,7 +15,7 @@ select
   'en'::text as language,
   'http://creativecommons.org/publicdomain/zero/1.0/'::text as license,
   'INBO'::text as rightsholder,
-  'http://www.inbo.be/en/norms-for-data-use'::text as accessRights,
+  'https://www.inbo.be/en/norms-for-data-use'::text as accessRights,
   'http://dataset.inbo.be/bird-tracking-gull-occurrences'::text as datasetID,
   'INBO'::text as institutionCode,
   'Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast'::text as datasetName,
