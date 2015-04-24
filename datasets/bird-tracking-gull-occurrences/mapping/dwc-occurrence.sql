@@ -1,9 +1,9 @@
-with bird_tracking_plus as (
+with no_outliers as (
   select
     *,
     extract(epoch from (date_time - lag(date_time,1) over(order by device_info_serial, date_time))) as intervalinseconds
   from
-    bird_tracking
+    lifewatch.bird_tracking
   where
     userflag is false
 )
@@ -15,7 +15,7 @@ select
   'en'::text as language,
   'http://creativecommons.org/publicdomain/zero/1.0/'::text as license,
   'INBO'::text as rightsholder,
-  'https://github.com/LifeWatchINBO/norms-for-data-use'::text as accessRights,
+  'http://www.inbo.be/en/norms-for-data-use'::text as accessRights,
   'http://dataset.inbo.be/bird-tracking-gull-occurrences'::text as datasetID,
   'INBO'::text as institutionCode,
   'Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast'::text as datasetName,
@@ -26,6 +26,7 @@ select
   d.sex::text as sex,
   'adult'::text as lifeStage,
   d.ring_code::text as organismID,
+  d.bird_name::text as organismName,
   'doi:10.1007/s10336-012-0908-1'::text as samplingProtocol,
   case
     when intervalinseconds >= 0 then ('{"secondsSinceLastOccurrence":' || intervalinseconds || '}')::text
@@ -64,8 +65,8 @@ select
   end::text as vernacularName,
   'ICZN'::text as nomenclaturalCode
 from
-bird_tracking_plus as t
-left join bird_tracking_devices as d
+no_outliers as t
+left join lifewatch.bird_tracking_devices as d
 on t.device_info_serial = d.device_info_serial
 where
   d.species_code = 'lbbg' or d.species_code = 'hg'
