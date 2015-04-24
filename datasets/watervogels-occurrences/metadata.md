@@ -20,7 +20,7 @@ Received {date} | Revised {date} | Accepted {date} | Published {date}
 
 ## Abstract
 
-The *Watervogels - Wintering waterbirds in Flanders, Belgium* dataset is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 75,000 bird counts, covering over 600,000 observations and 35 million individuals for the period 1991-2013. It includes information on 170 species in nearly 1,200 wetland sites. The aim of these bird counts is to gather information on the size, distribution and long term trends of wintering waterbird populations in Flanders. These data are also used to assess the importance of individual sites for waterbirds, using quantitative criteria. Furthermore, the waterbird counts contribute to international monitoring programs, such as the International Waterbird Census (coordinated by Wetlands International) and fulfil some of the objectives of the European Bird Directive, the Ramsar Convention, and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA). The data are released in bulk as open data. See the dataset metadata for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/issues>
+The *Watervogels - Wintering waterbirds in Flanders, Belgium* dataset is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 75,000 bird counts, covering over 600,000 observations and 35 million individuals for the period 1991-2013. It includes information on 170 species in nearly 1,200 wetland sites. The aim of these bird counts is to gather information on the size, distribution and long term trends of wintering waterbird populations in Flanders. These data are also used to assess the importance of individual sites for waterbirds, using quantitative criteria. Furthermore, the waterbird counts contribute to international monitoring programs, such as the International Waterbird Census (coordinated by Wetlands International) and fulfil some of the objectives of the European Bird Directive, the Ramsar Convention, and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA). The data are released in bulk as open data. See the dataset metadata for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/watervogels-occurrences>
 
 ## Keywords
 
@@ -79,7 +79,7 @@ The Darwin Core terms (<http://rs.tdwg.org/dwc/terms/>) in the dataset are: `occ
 * **Distribution**: <http://dataset.inbo.be/watervogels-occurrences>
 * **Publication date of data**: `2014-11-27`
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/> & <https://github.com/LifeWatchINBO/norms-for-data-use>
+* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
 * **Metadata language**: English
 * **Date of metadata creation**: `2014-11-27`
 * **Hierarchy level**: Dataset
