@@ -26,7 +26,7 @@ Eric Stienen [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 ## Abstract
 
-*Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 440,000 occurrences, recorded in 2013 by 27 GPS trackers mounted on 22 Lesser Black-backed Gulls and 5 Herring Gulls breeding at the Belgian coast (see <https://lifewatch-inbo.cartodb.com/viz/a12cbfc4-0e4b-11e4-8aa1-0e230854a1cb/public_map> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences>
+*Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 440,000 occurrences, recorded in 2013 by 27 GPS trackers mounted on 22 Lesser Black-backed Gulls and 5 Herring Gulls breeding at the Belgian coast (see <https://lifewatch-inbo.cartodb.com/viz/a12cbfc4-0e4b-11e4-8aa1-0e230854a1cb/public_map> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
 
 ## Keywords
 
@@ -85,7 +85,7 @@ The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and 
 * **Distribution**: <http://dataset.inbo.be/bird-tracking-gull-occurrences>
 * **Publication date of data**: 2014-06-18
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/> & <https://github.com/LifeWatchINBO/norms-for-data-use>
+* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
 * **Metadata language**: English
 * **Date of metadata creation**: 2014-06-18
 * **Hierarchy level**: Dataset
@@ -136,13 +136,13 @@ The measured data are stored on the tracker, until these can be transmitted auto
 
 Data received by the base stations are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS (<http://www.uva-bits.nl/virtual-lab>), accessible to the involved researchers only. We periodically export the tracking data to CartoDB for visualization purposes (see the External datasets section), removing test records and flagging outliers (see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>).
 
-To create the Darwin Core Archive, we extract the data from CartoDB and standardize these to Darwin Core using an SQL query (<https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql>). The dataset is documented, published via our IPT (<http://dataset.inbo.be/bird-tracking-gull-occurrences>), and registered with the Global Biodiversity Information System (<http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e>). Issues or remarks regarding the data or this procedure can be reported at <https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/>
+To create the Darwin Core Archive, we extract the data from CartoDB and standardize these to Darwin Core using an SQL query (<https://github.com/LifeWatchINBO/data-publication/blob/master/datasets/bird-tracking-gull-occurrences/mapping/dwc-occurrence.sql>). The dataset is documented, published via our IPT (<http://dataset.inbo.be/bird-tracking-gull-occurrences>), and registered with the Global Biodiversity Information System (<http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e>). Issues or remarks regarding the data or this procedure can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
 
 To extract data from one individual, one can use `individualID`, which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see <https://lifewatch-inbo.cartodb.com/tables/bird_tracking_devices/public>.
 
 ### Quality control description
 
-See the section Sampling description for more details: our import procedure (<https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>) and standardization to Darwin Core (<https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql>) are publicly documented.
+See the section Sampling description for more details: our import procedure (<https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>) and standardization to Darwin Core (<https://github.com/LifeWatchINBO/data-publication/blob/master/datasets/bird-tracking-gull-occurrences/mapping/dwc-occurrence.sql>) are publicly documented.
 
 ### Method step description
 
