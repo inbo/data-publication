@@ -70,11 +70,10 @@ The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and 
 
 ## Temporal coverage
 
-**Date range**: 2013-05-17 to 2014-02-12
-
-**Formation periods**: breeding season 2013
-**Formation periods**: winter season 2013
-**Formation periods**: breeding season 2014
+* **Date range**: 2013-05-17 to 2014-02-12
+* **Formation periods**: breeding season 2013
+* **Formation periods**: winter season 2013
+* **Formation periods**: breeding season 2014
 
 ## Datasets
 
