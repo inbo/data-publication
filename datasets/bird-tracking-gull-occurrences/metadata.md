@@ -62,7 +62,7 @@ The dataset contains tracking data from 44 Lesser Black-Backed Gulls (*Larus fus
 
 ## Geographic coverage
 
-The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and Ostend. Their foraging range includes the west of Belgium, northern France, the North Sea, and the English Channel. The Lesser Black-backed Gulls migrate south in winter, mainly hibernating in the south of Spain, Portugal, and North Africa. See <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the geospatial extent of the data.
+The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and Ostend. During the breeding season, their foraging range includes the west of Belgium, northern France, the North Sea, and the English Channel. The Lesser Black-backed Gulls migrate south in winter, mainly hibernating in the south of Spain, Portugal, and North Africa. See <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the geospatial extent of the data.
 
 ### Bounding coordinates
 
@@ -72,7 +72,7 @@ The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and 
 
 * **Date range**: 2013-05-17 to 2014-02-12
 * **Formation periods**: breeding season 2013
-* **Formation periods**: winter season 2013
+* **Formation periods**: migration/wintering season 2013-2014
 * **Formation periods**: breeding season 2014
 
 ## Datasets
@@ -121,11 +121,11 @@ To allow anyone to use this dataset, we have released the data to the public dom
 
 ### Study extent description
 
-The birds were trapped and tagged at or near their breeding colony at the Belgian coast.
+The birds were trapped and tagged at or near the breeding colony at the Belgian coast.
 
-The colony of Zeebrugge is situated in the western part of the port (51.341 latitude, 3.182 longitude) at sites that are not yet used for port activities and on roof tops. The first Herring Gulls (HG) nested here in 1987, followed by the first breeding record of Lesser Black-backed Gull (LBBG) in 1991. In the 1990s the number of breeding pairs strongly increased, with 2,336 pairs of HG and 4,760 pairs of LBBG in 2011. After 2011 the number of gulls strongly declined due to habitat loss and the presence of foxes.
+The colony of Zeebrugge is situated in the western part of the port (51.341 latitude, 3.182 longitude) at sites that are not yet used for port activities and on roof tops. The first Herring Gulls (HG) nested here in 1987, followed by the first breeding record of Lesser Black-backed Gull (LBBG) in 1991. In the 1990s, the number of breeding pairs strongly increased, with a maximum of 2,336 pairs of HG and 4,760 pairs of LBBG in 2011. Maximum numbers amounted to 2.6% and 1.2% of the biogeographic populations of LBBG and HG. After 2011 the number of gulls strongly declined due to habitat loss and the presence of foxes. In the period 2000-2010, Zeebrugge hosted on average 91% of all large gulls in Belgium. This proportion decreased to 58% in 2014.
 
-In the colony of Ostend (51.233 latitude, 2.931 longitude), breeding started in 1993. Here the number of HG stabilised at about 300 pairs since 2000 and an equal numbers of LBBG since 2010. In Ostend most gulls breed on roof tops. Currently the roofs of the Vismijn and the wood processing company Lemahieu hold most pairs.
+In the colony of Ostend (51.233 latitude, 2.931 longitude), breeding started in 1993. Here the number of LBBG stabilised at about 300-400 pairs since 2010, while the number of HG is still increasing with a maximum of 587 pairs on 2014. In Ostend most gulls breed on roof tops both in industrial areas as in the town itself.
 
 Most birds were trapped on their nest using a walk-in cage. In 2013 and 2014 respectively 22 and 24 ground-nesting LBBG were caught in the port of Zeebrugge and respectively 5 and 8 HG on the roof of the Vismijn in Ostend. Additionally, in 2014 one ground nesting HG was caught in the port of Zeebrugge and 3 HG were caught with a small canon net when feeding on the Visserskaai in Ostend. We took biometrics of all captured gulls (bill length, bill depth, tarsus length, wing length, and body mass) and a feather sample to determine the sex. The UvA-BiTS GPS trackers were attached to the back of the gull using a harness of Teflon tape.
 
@@ -133,13 +133,13 @@ Most birds were trapped on their nest using a walk-in cage. In 2013 and 2014 res
 
 The birds are tracked with the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>). The system is described in Bouten et al. 2013. The lightweight, solar powered GPS trackers periodically record the 3D position and air temperature, and can be configured to collect body movements with the built-in tri-axial accelerometer as well. The system allows us to remotely set or change a measurement interval per tracker: the actual interval between measurements is provided in `samplingEffort` as `secondsSinceLastOccurrence`.
 
-The measured data are stored on the tracker, until these can be transmitted automatically and wireless to a base station using the built-in ZigBee tranceiver with whip antenna. This receiver is also used to receive new measurement settings. The spatial range for this communication is restricted to the location of the base station (or antenna network), which is placed near the colony. Data from birds that do not return to the colony cannot be retrieved.
+The measured data are stored on the tracker, until these can be transmitted automatically and wireless to a base station using the built-in ZigBee transceiver with whip antenna. This receiver is also used to receive new measurement settings. The spatial range for this communication is restricted to the location of the base station (or antenna network), which is placed near the colony. Data from birds that do not return to the colony cannot be retrieved.
 
 Data received by the base stations are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS (<http://www.uva-bits.nl/virtual-lab>), accessible to the involved researchers only. We periodically export the tracking data to CartoDB for visualization purposes (see the External datasets section), removing test records and flagging outliers (see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>).
 
 To create the Darwin Core Archive, we extract the data from CartoDB and standardize these to Darwin Core using an SQL query (<https://github.com/LifeWatchINBO/data-publication/blob/master/datasets/bird-tracking-gull-occurrences/mapping/dwc-occurrence.sql>). The dataset is documented, published via our IPT (<http://dataset.inbo.be/bird-tracking-gull-occurrences>), and registered with the Global Biodiversity Information System (<http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e>). Issues or remarks regarding the data or this procedure can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
 
-To extract data from one individual, one can use `individualID`, which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>.
+To extract data from one individual, one can use `organismID` (previously `individualID`), which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>.
 
 ### Quality control description
 
@@ -170,7 +170,7 @@ Bird tracking network
 
 ### Funding
 
-This bird tracking network is funded for LifeWatch by the Hercules Foundation (<http://www.herculesstichting.be/in_English/>), with additional contributions from the Terrestrial Ecology Unit (TEREC) at the University of Ghent.
+This bird tracking network is funded for LifeWatch by the Hercules Foundation (<http://www.herculesstichting.be/in_English/>), with additional contributions from the Terrestrial Ecology Unit (TEREC) at the University of Ghent and funding of Interreg Natura People (EFRO) through the Province of West-Flanders.
 
 ## Acknowledgements
 
