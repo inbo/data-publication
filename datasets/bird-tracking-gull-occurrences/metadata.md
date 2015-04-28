@@ -115,7 +115,7 @@ The following information is not included in this dataset and available upon req
 
 ### Usage norms
 
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate it however if you read and follow these norms for data use (<http://www.inbo.be/en/norms-data-use>) and provide a link to the original dataset (<http://dataset.inbo.be/bird-tracking-gull-occurrences>) when possible. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata or via <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate it however if you read and follow these norms for data use (<http://www.inbo.be/en/norms-data-use>) and provide a link to the original dataset (<http://dataset.inbo.be/bird-tracking-gull-occurrences>) when possible. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
 
 ## Methodology
 
