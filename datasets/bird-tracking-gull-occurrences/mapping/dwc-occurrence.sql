@@ -9,7 +9,7 @@ with no_outliers as (
 )
 
 select
-  t.cartodb_id::numeric as occurrenceID,
+  occurrenceID as occurrenceID,
   'Event'::text as type,
   to_char(t.updated_at at time zone 'UTC','YYYY-MM-DD"T"HH24:MI:SS"Z"') as modified,
   'en'::text as language,
