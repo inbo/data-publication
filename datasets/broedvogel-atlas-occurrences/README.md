@@ -1,6 +1,6 @@
-# Broedvogel - Atlas of breeding birds in Flanders, Belgium (2000-2002)
+# Broedvogel - Atlas of the breeding birds in Flanders 2000-2002
 
-*Broedvogel - Atlas of breeding birds in Flanders, Belgium (2000-2002)* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO).
+*Broedvogel - Atlas of the breeding birds in Flanders 2000-2002* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO).
 
 **This dataset is not yet published.**
 

@@ -1,4 +1,4 @@
-# Broedvogel - Atlas of breeding birds in Flanders, Belgium (2000-2002)
+# Broedvogel - Atlas of the breeding birds in Flanders 2000-2002
 
 ## Abstract
 
@@ -44,7 +44,7 @@ Flanders, Belgium
 
 ### Dataset description
 
-* **Object name**: Broedvogel - Atlas of breeding birds in Flanders, Belgium (2000-2002)
+* **Object name**: Broedvogel - Atlas of the breeding birds in Flanders 2000-2002
 * **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
