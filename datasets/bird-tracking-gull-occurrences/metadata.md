@@ -22,7 +22,7 @@ Eric Stienen [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 ---
 
-**Resource Citation**: Research Institute for Nature and Forest (INBO) (2004) Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast. +1,1 million records. Online at <http://dataset.inbo.be/bird-tracking-gull-occurrences> and doi:[10.15468/02omly](http://doi.org/10.15468/02omly). GBIF key: [83e20573-f7dd-4852-9159-21566e1e691e](http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e).
+**Resource Citation**: Research Institute for Nature and Forest (INBO) (2004) Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast. +1,1 million records. Online at <http://dataset.inbo.be/bird-tracking-gull-occurrences> and doi:[10.15468/02omly](http://doi.org/10.15468/02omly) GBIF key: [83e20573-f7dd-4852-9159-21566e1e691e](http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e)
 
 ## Abstract
 
@@ -165,7 +165,8 @@ Bird tracking network
 ### Personnel
 
 * **Resource contact, resource creator, principal investigator**: Eric Stienen
-* **Metadata provider, processor**: Peter Desmet
+* **Metadata provider:**: Eric Stienen, Peter Desmet
+* **Processor**: Peter Desmet
 * **Collaborators**: Francisco Hernandez, Willem Bouten, Luc Lens
 
 ### Funding
