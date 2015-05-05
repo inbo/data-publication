@@ -12,7 +12,7 @@ Glenn Vermeersch[^1], Anny Anselin[^1], Koen Devos[^1], Marc Herremans[^2], Jan 
 
 ---
 
-**Resource citation**: Research Institute for Nature and Forest (INBO) (2005) Broedvogel - Atlas of the breeding birds in Flanders 2000-2002. +330,000 records. Online at <http://dataset.inbo.be/broedvogel-atlas-occurrences> and doi:`add`. GBIF key: `add`. Described in: [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf).
+**Resource citation**: Research Institute for Nature and Forest (INBO) (2005) Broedvogel - Atlas of the breeding birds in Flanders 2000-2002. +330,000 records. Online at <http://dataset.inbo.be/broedvogel-atlas-occurrences> and doi:`add` GBIF key: `add` Described in: [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf).
 
 ## Abstract
 
@@ -41,6 +41,8 @@ The dataset covers breeding birds in Flanders, Belgium and includes 193 species.
 **Phylum**: Chordata
 
 **Class**: *Aves* (birds)
+
+**Families**: *Accipitridae* (hawks, eagles, kites, etc.), *Aegithalidae* (bushtits), *Alaudidae* (larks), *Alcedinidae* (river kingfishers), *Anatidae* (ducks, geese & swans), *Apodidae* (swifts), *Ardeidae* (herons), *Caprimulgidae* (nightjars), *Certhiidae* (treecreepers), *Charadriidae* (plovers, dotterels & lapwings), *Ciconiidae* (storks), *Cisticolidae* (warblers), *Columbidae* (pigeons & doves), *Corvidae* (corvids), *Cuculidae* (cuckoos), *Emberizidae* (buntings), *Falconidae* (falcons), *Fringillidae* (true finches), *Haematopodidae* (oystercatchers), *Hirundinidae* (swallows & martins), *Laniidae* (shrikes), *Laridae* (gulls), *Meropidae* (bee-eaters), *Motacillidae* (wagtails, longclaws & pipits), *Muscicapidae* (Old World flycatchers), *Oriolidae* (Old World orioles), *Paridae* (tits, chickadees & titmice), *Passeridae* (sparrows), *Phalacrocoracidae* (cormorants), *Phasianidae* (pheasants, partridges, etc.), *Picidae* (woodpeckers), *Podicipedidae* (grebes), *Prunellidae* (accentors), *Psittacidae* (parrots), *Rallidae* (rails), *Recurvirostridae* (avocets & stilts), *Regulidae* (kinglets), *Remizidae* (penduline tits), *Scolopacidae* (sandpipers), *Sittidae* (nuthatches), *Strigidae* (true owls), *Sturnidae* (starlings), *Sylviidae* (Old World warblers), *Threskiornithidae* (ibises & spoonbills), *Troglodytidae* (wrens), *Turdidae* (thrushes), *Tytonidae* (barn-owls), *Upupidae* (hoopoes)
 
 ## Geographic coverage
 
