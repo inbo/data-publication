@@ -22,7 +22,7 @@ Eric Stienen [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 ---
 
-**Resource Citation**: Research Institute for Nature and Forest (INBO). Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast. Online at <http://dataset.inbo.be/bird-tracking-gull-occurrences>. Published on 2014-06-18. GBIF key: [83e20573-f7dd-4852-9159-21566e1e691e](http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e)
+**Resource Citation**: Research Institute for Nature and Forest (INBO) (2004) Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast. +1,1 million records. Online at <http://dataset.inbo.be/bird-tracking-gull-occurrences> and doi:[10.15468/02omly](http://doi.org/10.15468/02omly). GBIF key: [83e20573-f7dd-4852-9159-21566e1e691e](http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e).
 
 ## Abstract
 
@@ -71,9 +71,9 @@ The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and 
 ## Temporal coverage
 
 * **Date range**: 2013-05-17 to 2014-02-12
-* **Formation periods**: breeding season 2013
-* **Formation periods**: migration/wintering season 2013-2014
-* **Formation periods**: breeding season 2014
+* **Formation period**: breeding season 2013
+* **Formation period**: migration/wintering season 2013-2014
+* **Formation period**: breeding season 2014
 
 ## Datasets
 
