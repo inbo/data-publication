@@ -12,13 +12,11 @@ Glenn Vermeersch[^1], Anny Anselin[^1], Koen Devos[^1], Marc Herremans[^2], Jan 
 
 ---
 
-**Resource citation**: Research Institute for Nature and Forest (INBO) (2005) Broedvogel - Atlas of the breeding birds in Flanders 2000-2002. +330,000 records. Online at <http://dataset.inbo.be/broedvogel-atlas-occurrences> and doi:`add`. GBIF key: `add`. Described in: Bird Census News 2004 1/2: 35-47.
+**Resource citation**: Research Institute for Nature and Forest (INBO) (2005) Broedvogel - Atlas of the breeding birds in Flanders 2000-2002. +330,000 records. Online at <http://dataset.inbo.be/broedvogel-atlas-occurrences> and doi:`add`. GBIF key: `add`. Described in: [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf).
 
 ## Abstract
 
-The first atlas of breeding birds in Flanders was published in 1988 and was based on fieldwork conducted between 1973-1977 (Devillers et al. 1988). For almost three decades, this work provided the only information available on the distribution and abundance of all breeding bird species in Flanders. Although several species-specific projects were subsequently undertaken, it was not until 1994 that a monitoring programme for rare, colonial and exotic bird species was initiated. This was co-ordinated by the INBO, a research institute of the Flemish Government. Although this project provided very useful information that could be used for defining special protection areas (SPAs), it was clear that the rest of the breeding avifauna, including common species, was experiencing major changes. As a direct response, during 1998, a new comprehensive breeding atlas project was launched by the INBO and initial contracts were drawn-up to kick-start the process.
-
-During the 2000-2002 atlas period, a total of 183 species were recorded as breeding birds in Flanders, including 13 exotic species but excluding domesticated forms of Greylag Goose, Mallard and Stock Dove and two subspecies (Yellow Wagtail ssp. flavissima and White Wagtail ssp. yarrellii). 
+*Broedvogel - Atlas of the breeding birds in Flanders 2000-2002* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 330,000 bird observations, collected during three breeding seasons (2000, 2001, 2002) using a standardized field methodology using a 5x5km square grid system covering all of Flanders, Belgium (645 squares) as well as up to eight 1x1km sample squares within each larger square. Test data from 1999 and additional data to increase coverage from 2003 are also included. The dataset includes information on 197 taxa, of which 183 species (13 exotic) and 3 subspecies are considered breeding in Flanders. The data are released in bulk as open data. See the dataset metadata or the paper [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf) for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/broedvogel-atlas-occurrences>
 
 ## Keywords
 
@@ -29,6 +27,8 @@ birds, breeding birds, atlas, monitoring, nature restoration, LifeWatch, open da
 <http://dataset.inbo.be/broedvogel-atlas-occurrences>
 
 ## Rationale
+
+The first atlas of breeding birds in Flanders was published in 1988 and was based on fieldwork conducted between 1973-1977 (Devillers et al. 1988). For almost three decades, this work provided the only information available on the distribution and abundance of all breeding bird species in Flanders. Although several species-specific projects were subsequently undertaken, it was not until 1994 that a monitoring programme for rare, colonial and exotic bird species was initiated. This was coordinated by the then Institute of Nature Conservation (IN), now the Research Institute for Nature and Forest (INBO), a research institute of the Flemish Government. Although this project provided very useful information that could be used for defining special protection areas (SPAs), it was clear that the rest of the breeding avifauna, including common species, was experiencing major changes. As a direct response, during 1998, a new comprehensive breeding atlas project was launched by the INBO in collaboration with several other organizations and financed by the Flemish Government.
 
 ## Taxonomic coverage
 
