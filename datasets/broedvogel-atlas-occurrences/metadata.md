@@ -1,5 +1,19 @@
 # Broedvogel - Atlas of the breeding birds in Flanders 2000-2002
 
+Glenn Vermeersch[^1], Anny Anselin[^1], Koen Devos[^1], Marc Herremans[^2], Jan Stevens[^3], Jan Gabriëls[^3], Bert Van Der Krieken[^2], Dimitri Brosens[^1], Peter Desmet[^1]
+
+[^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
+
+[^2]: Natuurpunt, Coxiestraat 11, 2800 Mechelen, Belgium
+
+[^3]: Limburgse Koepel voor Natuurstudie, Vogelwerkgroep, Provinciaal Natuurcentrum, Craenevenne 86, 3600, Genk, Belgium
+
+**Corresponding author**: Glenn Vermeersch (<glenn.vermeersch@inbo.be>)
+
+---
+
+**Resource citation**: Research Institute for Nature and Forest (INBO) (2005) Broedvogel - Atlas of the breeding birds in Flanders 2000-2002. +330,000 records. Online at <http://dataset.inbo.be/broedvogel-atlas-occurrences> and doi:`add`. GBIF key: `add`. Described in: Bird Census News 2004 1/2: 35-47.
+
 ## Abstract
 
 The first atlas of breeding birds in Flanders was published in 1988 and was based on fieldwork conducted between 1973-1977 (Devillers et al. 1988). For almost three decades, this work provided the only information available on the distribution and abundance of all breeding bird species in Flanders. Although several species-specific projects were subsequently undertaken, it was not until 1994 that a monitoring programme for rare, colonial and exotic bird species was initiated. This was co-ordinated by the INBO, a research institute of the Flemish Government. Although this project provided very useful information that could be used for defining special protection areas (SPAs), it was clear that the rest of the breeding avifauna, including common species, was experiencing major changes. As a direct response, during 1998, a new comprehensive breeding atlas project was launched by the INBO and initial contracts were drawn-up to kick-start the process.
@@ -38,7 +52,12 @@ Flanders, Belgium
 
 ## Temporal coverage
 
-1999 to 2002
+During the 1999 breeding season, an inventory of several atlas squares was produced as a test. In 2003, a few additional squares were surveyed in order to increase coverage.
+
+* **Date range**: 1999-04-04 to 2003-06-27
+* **Formation period**: breeding season 2000
+* **Formation period**: breeding season 2001
+* **Formation period**: breeding season 2002
 
 ## Dataset
 
@@ -79,15 +98,15 @@ Atlas van de Vlaamse broedvogels 2000-2002
 ### Personnel
 
 * **Editors**: Glenn Vermeersch, Anny Anselin, Koen Devos
-* **Authors**: Marc Herremans, Jan Stevens, Jan Gabriëls, Bert Van Der Krieken
+* **Authors**: Glenn Vermeersch, Anny Anselin, Koen Devos, Marc Herremans, Jan Stevens, Jan Gabriëls, Bert Van Der Krieken
 * **Processors**: Dimitri Brosens, Peter Desmet
 
 ### Funding
 
 Flemish Government
 
-## Acknowledgements
-
 ## References
 
-Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J. & Van Der Krieken B., 2004. Atlas van de Vlaamse broedvogels 2000-2002. Mededelingen van het Instituut voor Natuurbehoud 23, Brussel, 496 p.
+Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J., Van Der Krieken B. (2004) Atlas of the breeding birds in Flanders 2000-2002. Bird Census News 2004 1/2: 35-47. <http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf>
+
+Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J. & Van Der Krieken B. (2004) Atlas van de Vlaamse broedvogels 2000-2002. Mededelingen van het Instituut voor Natuurbehoud 23, Brussel, 496p. ISBN 90-403-0215-4
