@@ -1,4 +1,4 @@
-# Broedvogel - Atlas of the breeding birds in Flanders 2000-2002
+# Broedvogels - Atlas of the breeding birds in Flanders 2000-2002
 
 Glenn Vermeersch[^1], Anny Anselin[^1], Koen Devos[^1], Marc Herremans[^2], Jan Stevens[^3], Jan Gabriëls[^3], Bert Van Der Krieken[^2], Dimitri Brosens[^1], Peter Desmet[^1]
 
@@ -12,11 +12,11 @@ Glenn Vermeersch[^1], Anny Anselin[^1], Koen Devos[^1], Marc Herremans[^2], Jan 
 
 ---
 
-**Resource citation**: Research Institute for Nature and Forest (INBO) (2005) Broedvogel - Atlas of the breeding birds in Flanders 2000-2002. +330,000 records. Online at <http://dataset.inbo.be/broedvogel-atlas-occurrences> and doi:`add` GBIF key: `add` Described in: [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf).
+**Resource citation**: Research Institute for Nature and Forest (INBO) (2005) Broedvogels - Atlas of the breeding birds in Flanders 2000-2002. +330,000 records. Online at <http://dataset.inbo.be/broedvogel-atlas-occurrences> and doi:[10.15468/sccg5a](http://doi.org/10.15468/sccg5a) GBIF key: [81c5a091-6e94-40db-a2a4-48f4de42d410](http://www.gbif.org/dataset/81c5a091-6e94-40db-a2a4-48f4de42d410) Described in: [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf).
 
 ## Abstract
 
-*Broedvogel - Atlas of the breeding birds in Flanders 2000-2002* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 330,000 bird observations, collected during three breeding seasons (2000, 2001, 2002) using a standardized field methodology using a 5km x 5km square grid system covering all of Flanders, Belgium (645 squares) as well as up to eight 1km x 1km sample squares within each larger square. Test data from 1999 and additional data to increase coverage from 2003 are also included. The dataset includes information on 197 taxa, of which 183 species (13 exotic) and 3 subspecies are considered breeding in Flanders. The data are released in bulk as open data. See the dataset metadata or the paper [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf) for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/broedvogel-atlas-occurrences>
+*Broedvogels - Atlas of the breeding birds in Flanders 2000-2002* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 330,000 bird observations, collected during three breeding seasons (2000, 2001, 2002) using a standardized field methodology using a 5km x 5km square grid system covering all of Flanders, Belgium (645 squares) as well as up to eight 1km x 1km sample squares within each larger square. Test data from 1999 and additional data to increase coverage from 2003 are also included. The dataset includes information on 197 taxa, of which 183 species (13 exotic) and 3 subspecies are considered breeding in Flanders. The data are released in bulk as open data. See the dataset metadata or the paper [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf) for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/broedvogel-atlas-occurrences>
 
 ## Keywords
 
@@ -65,7 +65,7 @@ During the 1999 breeding season, an inventory of several atlas squares was produ
 
 ### Dataset description
 
-* **Object name**: Broedvogel - Atlas of the breeding birds in Flanders 2000-2002
+* **Object name**: Broedvogels - Atlas of the breeding birds in Flanders 2000-2002
 * **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
