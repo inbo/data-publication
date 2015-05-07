@@ -14,15 +14,7 @@ Eric Stienen [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 ---
 
-*Received {date} | Revised {date} | Accepted {date} | Published {date}*
-
----
-
-**Citation**: *Combination of authors, year of data paper publication (in parentheses), Title, Journal Name, Volume, Issue number (in parentheses), and doi of the data paper.*
-
----
-
-**Resource Citation**: Research Institute for Nature and Forest (INBO) (2004) Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast. +1,1 million records. Online at <http://dataset.inbo.be/bird-tracking-gull-occurrences> and doi:[10.15468/02omly](http://doi.org/10.15468/02omly) GBIF key: [83e20573-f7dd-4852-9159-21566e1e691e](http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e)
+**Resource Citation**: Stienen E, Desmet P, Hernandez F, Bouten W, Lens L (2014): Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/02omly>
 
 ## Abstract
 
@@ -162,20 +154,11 @@ See the section Sampling description for more details: our import procedure (<ht
 
 Bird tracking network
 
-### Personnel
-
-* **Resource contact, resource creator, principal investigator**: Eric Stienen
-* **Metadata provider:**: Eric Stienen, Peter Desmet
-* **Processor**: Peter Desmet
-* **Collaborators**: Francisco Hernandez, Willem Bouten, Luc Lens
-
 ### Funding
 
 This bird tracking network is funded for LifeWatch by the Hercules Foundation (<http://www.herculesstichting.be/in_English/>), with additional contributions from the Terrestrial Ecology Unit (TEREC) at the University of Ghent and funding of Interreg Natura People (EFRO) through the Province of West-Flanders.
 
 ## Acknowledgements
-
-
 
 ## References
 

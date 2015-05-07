@@ -12,7 +12,7 @@ Glenn Vermeersch[^1], Anny Anselin[^1], Koen Devos[^1], Marc Herremans[^2], Jan 
 
 ---
 
-**Resource citation**: Research Institute for Nature and Forest (INBO) (2005) Broedvogels - Atlas of the breeding birds in Flanders 2000-2002. +330,000 records. Online at <http://dataset.inbo.be/broedvogel-atlas-occurrences> and doi:[10.15468/sccg5a](http://doi.org/10.15468/sccg5a) GBIF key: [81c5a091-6e94-40db-a2a4-48f4de42d410](http://www.gbif.org/dataset/81c5a091-6e94-40db-a2a4-48f4de42d410) Described in: [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf).
+**Resource citation**: Vermeersch G, Anselin A, Devos K, Herremans M, Stevens J, Gabriëls J, Van Der Krieken B, Brosens D, Desmet P (2014): Broedvogels - Atlas of the breeding birds in Flanders 2000-2002. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/sccg5a>
 
 ## Abstract
 
@@ -174,12 +174,6 @@ Technology also presented a convenient way of double-checking data. By posting p
 ### Project title
 
 Atlas van de Vlaamse broedvogels 2000-2002
-
-### Personnel
-
-* **Editors**: Glenn Vermeersch, Anny Anselin, Koen Devos
-* **Authors**: Glenn Vermeersch, Anny Anselin, Koen Devos, Marc Herremans, Jan Stevens, Jan Gabriëls, Bert Van Der Krieken
-* **Processors**: Dimitri Brosens, Peter Desmet
 
 ### Funding
 

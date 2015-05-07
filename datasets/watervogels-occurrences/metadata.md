@@ -1,6 +1,6 @@
 # Watervogels - Wintering waterbirds in Flanders, Belgium
 
-Koen Devos [^1], Peter Desmet[^1], Dimitri Brosens[^1]
+Koen Devos[^1], Filiep T'Jollyn[^1], Peter Desmet[^1], Dimitri Brosens[^1]
 
 [^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
@@ -8,15 +8,7 @@ Koen Devos [^1], Peter Desmet[^1], Dimitri Brosens[^1]
 
 ---
 
-Received {date} | Revised {date} | Accepted {date} | Published {date}
-
----
-
-**Citation**: Combination of authors, year of data paper publication (in parentheses), Title, Journal Name, Volume, Issue number (in parentheses), and doi of the data paper.
-
----
-
-**Resource Citation**: Research Institute for Nature and Forest (INBO). Watervogels - Wintering waterbirds in Flanders, Belgium. Online at <http://dataset.inbo.be/watervogels-occurrences>. Published on 2014-11-26. GBIF key: [7f9eb622-c036-44c6-8be9-5793eaa1fa1e](http://www.gbif.org/dataset/7f9eb622-c036-44c6-8be9-5793eaa1fa1e)
+**Resource Citation**: Devos K, T'Jollyn F, Brosens D, Desmet P (2012): Watervogels - Wintering waterbirds in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/lj0udq>
 
 ## Abstract
 
@@ -144,13 +136,6 @@ For publication, the data is further processed:
 ### Project title
 
 Waterbird counts Flanders
-
-### Personnel
-
-* **Resource contact, resource creator, principal investigator**: Koen Devos
-* **Metadata providers**: Koen Devos, Dimitri Brosens, Peter Desmet
-* **Content providers**: Many volunteers supported by Natuurpunt, Filiep T'Jollyn
-* **Processors**: Dimitri Brosens, Peter Desmet
 
 ### Funding
 
