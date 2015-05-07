@@ -6,13 +6,17 @@ One of our missions is to unlock the **biodiversity data** managed by the Resear
 
 This repository is where we document data publication guidelines and track issues for our published and to be published datasets. Note that this is a work in progress. If you have questions or remarks, [leave an issue](https://github.com/LifeWatchINBO/data-publication/issues), contact us at [@LifeWatchINBO](https://twitter.com/LifeWatchINBO) or <opendata@inbo.be>.
 
-## Overview of our datasets
+## Our datasets
 
-* [See this list](datasets/datasets.csv)
+* [List of our datasets (published with the IPT)](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1267456430)
 
 ## Standardization
 
-* [Darwin Core mapping](https://docs.google.com/a/inbo.be/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit?usp=sharing): a spreadsheet with the populated Darwin Core terms for all our datasets. Our working document for comparing datasets.
+We use a Google Spreadsheet as a working document to compare standardization between our datasets:
+
+* [Metadata completeness](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1528139681)
+* [Occurrence Darwin Core mapping](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1895280180)
+* [Checklist Darwin Core mapping](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=19)
 
 ## Draft guidelines
 
