@@ -24,7 +24,7 @@ birds, breeding birds, atlas, monitoring, nature restoration, LifeWatch, open da
 
 ## Data published through
 
-<http://dataset.inbo.be/broedvogel-atlas-occurrences>
+<http://doi.org/10.15468/sccg5a>
 
 ## Rationale
 
@@ -81,7 +81,7 @@ During the 1999 breeding season, an inventory of several atlas squares was produ
 
 ### Usage norms
 
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate it however if you read and follow these norms for data use (<http://www.inbo.be/en/norms-data-use>) and provide a link to the original dataset (<http://dataset.inbo.be/broedvogel-atlas-occurrences>) when possible. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate it however if you read and follow these norms for data use (<http://www.inbo.be/en/norms-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/sccg5a>) when possible. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
 
 ## Methodology
 
