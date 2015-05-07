@@ -9,14 +9,14 @@ with no_outliers as (
 )
 
 select
-  occurrenceID as occurrenceID,
+  t.device_info_serial || ':' || to_char(t.date_time at time zone 'UTC','YYYYMMDDHH24MISS') as occurrenceID,
   'Event'::text as type,
   to_char(t.updated_at at time zone 'UTC','YYYY-MM-DD"T"HH24:MI:SS"Z"') as modified,
   'en'::text as language,
   'http://creativecommons.org/publicdomain/zero/1.0/'::text as license,
   'INBO'::text as rightsholder,
   'http://www.inbo.be/en/norms-for-data-use'::text as accessRights,
-  'http://dataset.inbo.be/bird-tracking-gull-occurrences'::text as datasetID,
+  'http://doi.org/10.15468/02omly'::text as datasetID,
   'INBO'::text as institutionCode,
   'Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast'::text as datasetName,
   'INBO'::text as ownerInstitutionCode,
