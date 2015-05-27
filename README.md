@@ -1,4 +1,4 @@
-# Open data publication of biodiversity data
+# Open data publication of INBO biodiversity data
 
 ## Rationale
 
