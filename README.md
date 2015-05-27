@@ -1,4 +1,4 @@
-# Open biodiversity data publication
+# Open data publication of biodiversity data
 
 ## Rationale
 
