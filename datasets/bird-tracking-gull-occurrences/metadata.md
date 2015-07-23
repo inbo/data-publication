@@ -1,4 +1,4 @@
-# Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast
+# GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast
 
 Eric Stienen [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^3], Luc Lens [^4]
 
@@ -14,11 +14,11 @@ Eric Stienen [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 ---
 
-**Resource Citation**: Stienen E, Desmet P, Hernandez F, Bouten W, Lens L (2014): Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/02omly>
+**Resource Citation**: Stienen E, Desmet P, Hernandez F, Bouten W, Lens L (2014): Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/02omly>
 
 ## Abstract
 
-*Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 1.1 million occurrences, recorded in 2013 and 2014 by 60 GPS trackers mounted on 44 Lesser Black-backed Gulls and 16 Herring Gulls breeding at the Belgian coast (see <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
+*Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 1.1 million occurrences, recorded in 2013 and 2014 by 60 GPS trackers mounted on 44 Lesser Black-backed Gulls and 16 Herring Gulls breeding at the Belgian coast (see <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the data or dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
 
 ## Keywords
 
@@ -71,7 +71,7 @@ The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and 
 
 ### Dataset description
 
-* **Object name**: Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast
+* **Object name**: Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast
 * **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
@@ -107,7 +107,8 @@ The following information is not included in this dataset and available upon req
 
 ### Usage norms
 
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate it however if you read and follow these norms for data use (<http://www.inbo.be/en/norms-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/02omly>) when possible. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/02omly>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship.
+We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
 
 ## Methodology
 

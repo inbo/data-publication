@@ -18,7 +18,7 @@ select
   'http://www.inbo.be/en/norms-for-data-use'::text as accessRights,
   'http://doi.org/10.15468/02omly'::text as datasetID,
   'INBO'::text as institutionCode,
-  'Bird tracking - GPS tracking of Lesser Black-backed Gull and Herring Gull breeding at the Belgian coast'::text as datasetName,
+  'Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast'::text as datasetName,
   'INBO'::text as ownerInstitutionCode,
   'MachineObservation'::text as basisOfRecord,
   'see metadata'::text as informationWithheld,
