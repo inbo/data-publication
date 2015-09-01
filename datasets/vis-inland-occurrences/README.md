@@ -1,11 +1,13 @@
 # VIS - Fishes in inland waters in Flanders, Belgium
 
-[VIS - Fishes in inland waters in Flanders, Belgium](http://dataset.inbo.be/vis-inland-occurrences) is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). This repository is mainly used for tracking issues with the dataset.
+*VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/vis-inland-occurrences.
 
-## Noticed an issue?
+## Data publication process
 
-[You can submit it here](https://github.com/LifeWatchINBO/vis-inland-occurrences/issues).
+* [Metadata](metadata.md) (working document)
+* [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/vis-inland-occurrences)
+* [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
 
-## Metadata
+## Data paper
 
-[Dataset metadata](metadata.md).
+> Brosens D., Breine J., Van Thuyne G., Belpaire C., Desmet P., Verreycken H. (2015) VIS – A database on the distribution of fishes in inland and estuarine waters in Flanders, Belgium. ZooKeys 475: 119-145. [doi:10.3897/zookeys.475.8556](http://doi.org/10.3897/zookeys.475.8556).
