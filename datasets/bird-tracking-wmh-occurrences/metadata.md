@@ -1,4 +1,4 @@
-# Bird tracking - GPS tracking of Western Marsh Harrier breeding near the Belgium-Netherlands border
+# Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border
 
 Anny Anselin [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^3], Luc Lens [^4]
 
@@ -26,7 +26,7 @@ Anny Anselin [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 ## Abstract
 
-*Bird tracking - GPS tracking of Western Marsh Harrier breeding near the Belgium-Netherlands border* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 57,000 occurrences, recorded in 2013 by 3 GPS trackers mounted on 3 Western Marsh Harriers breeding near the Belgium-Netherlands border (see <https://lifewatch-inbo.cartodb.com/viz/612742ac-1303-11e4-b2ae-0edbca4b5057/public_map> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/bird-tracking-wmh-occurrences/>
+*Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 57,000 occurrences, recorded in 2013 by 3 GPS trackers mounted on 3 Western Marsh Harriers breeding near the Belgium-Netherlands border (see <https://lifewatch-inbo.cartodb.com/viz/612742ac-1303-11e4-b2ae-0edbca4b5057/public_map> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/bird-tracking-wmh-occurrences/>
 
 ## Keywords
 
@@ -82,7 +82,7 @@ The dataset contains tracking data from 3 Western Marsh Harriers (*Circus aerugi
 
 ### Dataset description
 
-* **Object name**: Bird tracking - GPS tracking of Western Marsh Harrier breeding near the Belgium-Netherlands border
+* **Object name**: Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border
 * **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
