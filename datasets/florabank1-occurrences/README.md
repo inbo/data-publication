@@ -10,4 +10,3 @@
 ## Datapaper
 
 > Van Landuyt W., Vanhecke L., Brosens D. (2012) Florabank 1: a grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region). PhytoKeys 12: 59–67. doi:[10.3897/phytokeys.12.2849](http://doi.org/10.3897/phytokeys.12.2849).
-
