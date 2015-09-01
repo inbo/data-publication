@@ -6,4 +6,3 @@
 
 * [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/glasaalmigratie-occurrences)
 * [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
-
