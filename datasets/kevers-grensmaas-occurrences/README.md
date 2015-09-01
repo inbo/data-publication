@@ -1,11 +1,9 @@
 # Loopkevers Grensmaas - Ground beetles near the river Meuse in Flanders, Belgium
 
-[Loopkevers Grensmaas - Ground beetles near the river Meuse in Flanders, Belgium](http://dataset.inbo.be/kevers-grensmaas-occurrences) is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). This repository is mainly used for tracking issues with the dataset.
+*Loopkevers Grensmaas - Ground beetles near the river Meuse in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/kevers-grensmaas-occurrences.
 
-## Noticed an issue?
+## Data publication process
 
-[You can submit it here](https://github.com/LifeWatchINBO/kevers-grensmaas-occurrences/issues).
-
-## Metadata
-
-[Dataset metadata](metadata.md).
+* [Metadata](metadata.md) (working document)
+* [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/kevers-grensmaas-occurrences)
+* [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
