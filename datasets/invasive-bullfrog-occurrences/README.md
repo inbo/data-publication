@@ -17,3 +17,4 @@
 * In `recordedBy` and `identifiedBy`, we use the NBN code of the person: `BFN001790000004L`
 * For a number of invasive species, we mention the webpage of the species at the IAS website: `http://ias.biodiversity.be/species/show/88` in `taxonID`.
 * `lifeStage` contains a whole bunch of information, including number of individuals and lifestages based on length. As a result it is not a clean controlled vocabulary.
+* added `dynamicProperties` to add information on the original survey/source of the data/project. {"projectName":INVEXO - American bullfrog}
