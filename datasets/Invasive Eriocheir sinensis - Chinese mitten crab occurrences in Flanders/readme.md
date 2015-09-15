@@ -6,7 +6,7 @@
 
 ## Data publication process
 
-* [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/invasive-bullfrog-occurrences)
+* [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/chinese-mitten-crab-occurrences)
 * [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
 
 ## Notes
