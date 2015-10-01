@@ -70,11 +70,11 @@ During the 1999 breeding season, an inventory of several atlas squares was produ
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
 * **Distribution**: <http://dataset.inbo.be/broedvogel-atlas-occurrences>
-* **Publication date of data**: `2015-04-30`
+* **Publication date of data**: 2015-04-30
 * **Language**: English
 * **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
 * **Metadata language**: English
-* **Date of metadata creation**: `2015-04-30`
+* **Date of metadata creation**: 2015-04-30
 * **Hierarchy level**: Dataset
 
 ### Additional information
