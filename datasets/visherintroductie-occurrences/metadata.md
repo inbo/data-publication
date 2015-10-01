@@ -102,11 +102,6 @@ Electrofishing was used to sample the trajectories.
 
 Wetenschappelijke ondersteuning herstelprogramma’s kopvoorn, serpeling, kwabaal en beekforel
 
-### Personnel
-
-* **Resource contact, resource creator, metadata provider, point of contact**: Tom Van Den Neucker
-* **Processors**: Dimitri Brosens, Peter Desmet
-
 ### Funding
 
 Agency for Nature and Forest (ANB) - <http://www.natuurenbos.be>
