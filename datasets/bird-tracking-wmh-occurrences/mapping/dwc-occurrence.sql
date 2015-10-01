@@ -1,34 +1,36 @@
-with bird_tracking_plus as (
+with no_outliers as (
   select
     *,
     extract(epoch from (date_time - lag(date_time,1) over(order by device_info_serial, date_time))) as intervalinseconds
   from
-    bird_tracking
+    lifewatch.bird_tracking
   where
     userflag is false
 )
 
 select
-  t.cartodb_id::numeric as occurrenceID,
+  t.device_info_serial || ':' || to_char(t.date_time at time zone 'UTC','YYYYMMDDHH24MISS') as occurrenceID,
   'Event'::text as type,
   to_char(t.updated_at at time zone 'UTC','YYYY-MM-DD"T"HH24:MI:SS"Z"') as modified,
   'en'::text as language,
-  'http://creativecommons.org/publicdomain/zero/1.0/'::text as rights,
+  'http://creativecommons.org/publicdomain/zero/1.0/'::text as license,
   'INBO'::text as rightsholder,
+  'http://www.inbo.be/en/norms-for-data-use'::text as accessRights,
   'http://dataset.inbo.be/bird-tracking-wmh-occurrences'::text as datasetID,
   'INBO'::text as institutionCode,
-  'Bird tracking - GPS tracking of Western Marsh Harrier breeding near the Belgium-Netherlands border'::text as datasetName,
+  'Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border'::text as datasetName,
   'INBO'::text as ownerInstitutionCode,
   'MachineObservation'::text as basisOfRecord,
   'see metadata'::text as informationWithheld,
-  ('device_info_serial=' || t.device_info_serial)::text as dynamicProperties,
-  d.ring_code::text as individualID,
+  ('{"device_info_serial":' || t.device_info_serial)::text || '}' as dynamicProperties,
   d.sex::text as sex,
   'adult'::text as lifeStage,
+  d.ring_code::text as organismID,
+  d.bird_name::text as organismName,
   'doi:10.1007/s10336-012-0908-1'::text as samplingProtocol,
   case
-    when intervalinseconds >= 0 then ('secondsSinceLastOccurrence='||intervalinseconds)::text
-    else 'secondsSinceLastOccurrence='::text
+    when intervalinseconds >= 0 then ('{"secondsSinceLastOccurrence":' || intervalinseconds || '}')::text
+    else '{"secondsSinceLastOccurrence":}'::text
   end as samplingEffort,
   to_char(t.date_time at time zone 'UTC','YYYY-MM-DD"T"HH24:MI:SS"Z"') as eventDate,
   0::numeric as minimumElevationInMeters,
@@ -61,11 +63,13 @@ select
   end::text as vernacularName,
   'ICZN'::text as nomenclaturalCode
 from
-bird_tracking_plus as t
-left join bird_tracking_devices as d
+no_outliers as t
+left join lifewatch.bird_tracking_devices as d
 on t.device_info_serial = d.device_info_serial
 where
   d.species_code = 'wmh'
 order by
   t.device_info_serial,
   t.date_time
+limit
+  100
