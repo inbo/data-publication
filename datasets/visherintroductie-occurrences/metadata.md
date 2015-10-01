@@ -28,7 +28,7 @@ reintroduction, species recovery, fish, freshwater, Occurrence, Observation
 
 ## Data published through
 
-<http://dataset.inbo.be/visherintroductie-occurrences>
+<http://doi.org/10.15468/dlglrp>
 
 ## Rationale
 
