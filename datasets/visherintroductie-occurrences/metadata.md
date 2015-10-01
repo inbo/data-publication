@@ -16,7 +16,7 @@ Received {date} | Revised {date} | Accepted {date} | Published {date}
 
 ---
 
-**Resource citation**: Van den Neucker, T. et al. (2010). Wetenschappelijke ondersteuning herstelprogramma’s kopvoorn, serpeling, kwabaal en beekforel in 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek, INBO.R.2010.64. Instituut voor Natuur- en Bosonderzoek (INBO): Brussel. 182 pp.
+**Resource citation**: Van Den Neucker T (2012): Visherintroductie - Reintroduction of the fishes chub, dace, burbot, and brown trout in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/dlglrp>
 
 ## Abstract
 
@@ -107,3 +107,5 @@ Wetenschappelijke ondersteuning herstelprogramma’s kopvoorn, serpeling, kwabaa
 Agency for Nature and Forest (ANB) - <http://www.natuurenbos.be>
 
 ## References
+
+Van den Neucker, T. et al. (2010). Wetenschappelijke ondersteuning herstelprogramma’s kopvoorn, serpeling, kwabaal en beekforel in 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek, INBO.R.2010.64. Instituut voor Natuur- en Bosonderzoek (INBO): Brussel. 182 pp.
