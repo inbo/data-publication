@@ -69,11 +69,11 @@ The Darwin Core terms (<http://rs.tdwg.org/dwc/terms/>) in the dataset are: `occ
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
 * **Distribution**: <http://dataset.inbo.be/watervogels-occurrences>
-* **Publication date of data**: `2014-11-27`
+* **Publication date of data**: 2014-11-27
 * **Language**: English
 * **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
 * **Metadata language**: English
-* **Date of metadata creation**: `2014-11-27`
+* **Date of metadata creation**: 2014-11-27
 * **Hierarchy level**: Dataset
 
 ### Additional information
