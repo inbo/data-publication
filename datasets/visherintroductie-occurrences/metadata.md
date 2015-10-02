@@ -36,7 +36,7 @@ reintroduction, species recovery, fish, freshwater, Occurrence, Observation
 
 ## Taxonomic coverage
 
-All species in this dataset are fishes (Actinopterygii, Cephalaspidomorphi), with a sampling focus on European chub (Leuciscus cephalus), burbot (Lota lota), common dace (Leuciscus leuciscus) and brown trout (Salmo trutta). The top 3 recorded species are Leuciscus leuciscus (34%), Leuciscus cephalus (24%), and Lota lota (18%).
+All species in this dataset are fishes (Actinopterygii, Cephalaspidomorphi), with a sampling focus on European chub (*Leuciscus cephalus*), burbot (*Lota lota*), common dace (*Leuciscus leuciscus*) and brown trout (Salmo trutta). The top 3 recorded species are *Leuciscus leuciscus* (34%), *Leuciscus cephalus* (24%), and *Lota lota* (18%).
 
 ### Taxonomic ranks
 
