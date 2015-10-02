@@ -171,22 +171,6 @@ Observations pertaining to common species which were previously validated to occ
 
 ## Project data
 
-### Project title
-
-
-
-### Personnel
-
-* **Principal investigator**: 
-* **Resource contact, resource creator, point of contact**: Tim Adriaens
-* **Metadata provider**: Dimitri Brosens
-* **Content providers**: Kris Decleer, Hendrik Devriese, Jorg Lambrechts, Koen Lock, Gilles San Martin, Royal Belgian Institute of Natural Sciences (RBINS)
-* **Processors**: Dimitri Brosens, Peter Desmet
-
-### Funding
-
-
-
 ## References
 
 Decleer, K., Devriese, H., Hofmans, K., Lock, K., Barenbrug, B. & Maes D. (2000). Voorlopige atlas en "rode lijst" van de sprinkhanen en krekels van België (Insecta, Orthoptera). Werkgroep Saltabel i.s.m. I.N. en K.B.I.N., Rapport Instituut voor Natuurbehoud 2000/10, Brussel, 76 p. / Atlas et "liste rouge" provisoire des sauterelles, grillons et criquets de Belgique (Insecta, Orthoptera). Groupe de travail Saltabel e.c.a. I.N. et I.R.S.N.B., Rapport Instituut voor Natuurbehoud 2000/10, Bruxelles, 76 p. ISBN 90-403-0119-0
