@@ -86,19 +86,19 @@ To allow anyone to use this dataset, we have released the data to the public dom
 
 ### Study extent description
 
-The riverbanks of the river Meuse on the border of the Netherlands and Belgium was sampled.
+28 locations on the left bank (Belgium) of the river Meuse on the border between Belgium and the Netherlands.
 
 ### Sampling description
 
-80 plots with 3 pitfalls on each plot. Sampling happened each year from May to Oktober
+The beetles were sampled at 80 plots, with 3 pitfall traps per plot. Sampling occurrened in 1998 and 1999, from May to October.
 
 ### Quality control description
 
-yes
+All sampled carabid species were determined by experts. All records are validated.
 
 ### Method step description
 
-Pitfalls were placed on 80 plots and sampled from May to Oktober. All sampled carabid species were determined by experts.
+Pitfalls were placed on 80 plots and sampled from May to Oktober.
 
 ## Project data
 
