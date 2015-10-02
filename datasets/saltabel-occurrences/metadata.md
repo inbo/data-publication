@@ -1,6 +1,6 @@
 # Saltabel - Orthoptera in Belgium
 
-Tim Adriaens[^1], Kris Decleer[^1], Hendrik Devriese[^2], Koen Lock[^2], Jorg Lambrechts[^4], Gilles San Martin[^2] [^3], Frederic Piesschaert[^1], Dimitri Brosens[^1]
+Tim Adriaens[^1], Kris Decleer[^1], Hendrik Devriese[^2], Koen Lock[^2], Jorg Lambrechts[^4], Gilles San Martin[^2] [^3], Frederic Piesschaert[^1], Dimitri Brosens[^1], Peter Desmet[^1]
 
 [^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
@@ -22,7 +22,7 @@ Received {date}; Revised {date}; Accepted {date}; Published {date}
 
 ---
 
-**Resource citation**:
+**Resource citation**: Adriaens T, Brosens D, Desmet P (2013): Saltabel - Orthoptera in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/1rcpsq>
 
 ## Abstract
 
@@ -34,7 +34,7 @@ Orthoptera, grasshoppers, crickets, locusts, distribution, faunistics, Belgium, 
 
 ## Data published through
 
-<http://dataset.inbo.be/saltabel-occurrences>
+<http://doi.org/10.15468/1rcpsq>
 
 ## Rationale
 
