@@ -1,6 +1,6 @@
 # Saltabel - Orthoptera in Belgium
 
-Tim Adriaens[^1], Kris Decleer[^1], Hendrik Devriese[^2], Koen Lock[^2], Jorg Lambrechts[^4], Gilles San Martin[^2] [^3], Frederic Piesschaert[^1], Dimitri Brosens[^1], Peter Desmet[^1]
+Tim Adriaens[^1], Kris Decleer[^1], Hendrik Devriese[^2], Koen Lock[^2], Jorg Lambrechts[^4], Gilles San Martin y Gomez[^2] [^3], Frederic Piesschaert[^1], Dirk Maes[^1], Dimitri Brosens[^1], Peter Desmet[^1]
 
 [^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
@@ -22,7 +22,7 @@ Received {date}; Revised {date}; Accepted {date}; Published {date}
 
 ---
 
-**Resource citation**: Adriaens T, Brosens D, Desmet P (2013): Saltabel - Orthoptera in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/1rcpsq>
+**Resource citation**: Adriaens T, Decleer K, Devriese H, Lock K, Lambrechts J, San Martin y Gomez G, Piesschaert F, Maes D, Brosens D, Desmet P (2013): Saltabel - Orthoptera in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/1rcpsq>
 
 ## Abstract
 
