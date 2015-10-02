@@ -40,9 +40,15 @@ Almost all 107 species in this dataset are ground beetles (Carabidae), identifie
 
 ### Taxonomic ranks
 
-**Order**: *Coleoptera*
+**Kingdom**: *Animalia* (animals)
 
-**Family**: *Carabidae*
+**Phylum**: *Arthropoda*
+
+**Class**: *Insecta* (insects)
+
+**Order**: *Coleoptera* (beetles)
+
+**Family**: *Carabidae* (ground beetles)
 
 ## Geographic coverage
 
