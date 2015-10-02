@@ -36,7 +36,7 @@ Variation in time and space is a key characteristic of the river Meuse. Ground b
 
 ## Taxonomic coverage
 
-Carabid beetles, Carabidae
+Almost all 107 species in this dataset are ground beetles (Carabidae), identified to species. The dataset also includes some non-target species: *Chorthippus*, *Oedipoda*, and *Tetrix* (Orthoptera) and *Lamyctes* (Chilopoda). The top 3 recorded species are *Bembidion tetracolum* (9%), *Bembidion femoratum* (8%), and *Agonum muelleri* (7%).
 
 ### Taxonomic ranks
 
