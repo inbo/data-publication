@@ -16,7 +16,7 @@ Received {date} | Revised {date} | Accepted {date} | Published {date}
 
 ---
 
-**Resource citation**: Van Den Neucker T (2012): Visherintroductie - Reintroduction of the fishes chub, dace, burbot, and brown trout in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/dlglrp>
+**Resource citation**: Van Den Neucker T, Brosens D, Desmet P (2012): Visherintroductie - Reintroduction of the fishes chub, dace, burbot, and brown trout in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/dlglrp>
 
 ## Abstract
 
