@@ -32,11 +32,7 @@ nature restoration, beetles, Carabidae, Occurrence, Observation
 
 ## Rationale
 
-Nature development plan for the river Meuse
-
-* Habitat creation
-* A future for species
-* Policy
+Variation in time and space is a key characteristic of the river Meuse. Ground beetles are a good indicator to assess these dynamics. The goal of this project was to better understand the dynamics of the Grensmaas and help river management, habitat restoration and policy.
 
 ## Taxonomic coverage
 
@@ -98,7 +94,7 @@ All sampled carabid species were determined by experts. All records are validate
 
 ### Method step description
 
-Pitfalls were placed on 80 plots and sampled from May to Oktober.
+Pitfalls were placed on 80 plots and sampled from May to October.
 
 ## Project data
 
