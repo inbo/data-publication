@@ -84,7 +84,7 @@ To allow anyone to use this dataset, we have released the data to the public dom
 
 ### Study extent description
 
-18 watercourses in Flanders, Belgium were sampled to evaluate the success of reintroduction: Abeek, Asbeek, Balengracht, Bosbeek, Grote nete, Hanskenselsloop, Heiloop, Ijsse, Itterbeek, Laan, Maarkebeek, meer van Rotselaar (lake), Molenbeek, Scherpenbergloop, Terkleppebeek, Vleterbeek, Zeeploop, and Zwalm
+18 watercourses in Flanders, Belgium were sampled to evaluate the success of reintroduction: Abeek, Asbeek, Balengracht, Bosbeek, Grote nete, Hanskenselsloop, Heiloop, Ijsse, Itterbeek, Laan, Maarkebeek, meer van Rotselaar (lake), Molenbeek, Scherpenbergloop, Terkleppebeek, Vleterbeek, Zeeploop, and Zwalm.
 
 ### Sampling description
 
