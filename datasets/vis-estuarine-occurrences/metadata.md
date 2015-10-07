@@ -36,11 +36,11 @@ This dataset contains 115 fish species found in the estuaries of the river Yser 
 
 **Kingdom**: *Animalia (animals)*
 
-**Class**: *Actinopterygii (ray-finned fishes), Petromyzontida, Chondrichthyes (cartilaginous fishes) Malacostraca*
+**Class**: *Actinopterygii (ray-finned fishes), Petromyzontida, Malacostraca*
 
-**Order**: *Acipenseriformes, Anguilliformes, Atheriniformes, Beloniformes, Clupeiformes, Cypriniformes, Decapoda, Esociformes,Gadiformes, Gasterosteiformes, Mugiliformes, Osmeriformes, Perciformes, Petromyzontiformes, Pleuronectiformes, Rajiformes, Salmoniformes, Scorpaeniformes, Siluriformes, Squaliformes, Squatiniformes, Syngnathiformes*
+**Order**: *Acipenseriformes, Anguilliformes, Atheriniformes, Clupeiformes, Cypriniformes, Esociformes, Gadiformes, Gasterosteiformes, Mugiliformes, Osmeriformes, Perciformes, Pleuronectiformes, Salmoniformes, Scorpaeniformes, Siluriformes, Syngnathiformes, Petromyzontiformes, Decapoda*
 
-**Family:** *Acipenseridae, Agonidae, Ammodytidae, Anguillidae, Atherinidae, Belonidae, Blenniidae, Bothidae, Callionymidae, Cancridae, Carangidae, Centrarchidae, Clupeidae, Cobitidae, Congridae, Cottidae, Crangonidae, Cyclopteridae, Cyprinidae, Engraulidae, Esocidae, Gadidae, Gasterosteidae, Gobiidae, Ictaluridae, Liparidae, Lotidae, Moronidae, Mugilidae, Mullidae, Nemacheilidae, Smeridae, Paguridae, Palaemonidae, Percidae, Petromyzontidae, Pholidae, Pleuronectidae,	Polybiidae, Portunidae, Rajidae, Salmonidae, Sciaenidae, Scombridae, Scophthalmidae, Siluridae, Soleidae, Squalidae, Squatinidae, Syngnathidae, Trachinidae, Triglidae, Umbridae, Varunidae, Zoarcidae*
+**Family:** *Acipenseridae, Agonidae, Ammodytidae, Anguillidae, Atherinidae, Blenniidae, Callionymidae, Carangidae, Centrachidae, Clupeidae, Cottidae, Cyprinidae, Esocidae, Gadidae, Gasterosteidae, Gobiidae, Liparidae, Lotidae, Moronidae, Mugilidae, Mullidae, Osmeridae, Percidae, Pholidae, Pleuronectidae, Salmonidae, Scophthalmidae, Siluridae, Soleidae, Syngnathidae, Trachinidae, Triglidae, Zoarcidae, Petromyzontidae, Cambaridae, Cancridae, Crangonidae, Paguridae, Palaemonidae, Polybiidae, Portunidae, Varunidae*
 
 ## Geographic coverage
 
@@ -48,7 +48,7 @@ Estuarine areas of the river Yser and the river Scheldt, Flanders, Belgium, as w
 
 ### Bounding box
 
-`to be corrected`
+50.68° to 51.51° latitude, 2.54° to 4.59° longitude
 
 ## Temporal coverage
 
