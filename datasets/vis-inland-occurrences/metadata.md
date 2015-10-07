@@ -74,7 +74,7 @@ The dataset comprises enclosed waters, including cut off river arms, gravel pits
 
 ### Additional information
 
-Length and weight measurement data of the individual fishes, absence information, occurrence data since 2013, as well as abiotic data of the sampling points (pH, temperature, etc.) are not included in the Darwin Core Archives and are available upon request.
+Length and weight measurement data of the individual fishes, absence information, occurrence data since 2013, as well as abiotic data of the sampling points (pH, temperature, etc.) are not included in the Darwin Core Archive and are available upon request.
 
 ### Usage norms
 
