@@ -86,19 +86,25 @@ Length and weight measurement data of the individual fishes, absence information
 
 ### Study extent description
 
-Four locations in the Yser estuary and 43 locations in the Scheldt estuary in Flanders, Belgium have been sampled since 1992. While the Yser estuary only covers a small geographical area, the Scheldt estuary is with 33,000 hectares one of the largest estuaries in Europe. It is also one of the few remaining European estuaries that include the entire gradient from fresh to saltwater tidal areas (`citation needed`). The 43 sampling locations in the Scheldt estuary are located in the river Scheldt, but also in the rivers "Durme", "Rupel", and "Zenne". In 2001, these locations were consolidated in a monitoring network for Flanders ("VISmeetnet") of 900 sampling points. The geographic coordinates in the dataset are those of the sampling locations. Since these do not always represent the actual coordinates of the catch, which may have occurred further up- or downriver, the coordinateUncertaintyInMeters has been set to 250.
+Over 2,000 locations in estuaries, inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled, from March to November, since 1992. In 2001, these locations were consolidated in a monitoring network (“VISmeetnet”) of 900 sampling points. Four locations in the Yser estuary and 43 locations in the Scheldt were sampled since 1995. While the Yser estuary only covers a small geographical area, the Scheldt estuary is with 33,000 hectares one of the largest estuaries in Europe. It is also one of the few remaining European estuaries that includes the entire gradient from fresh to saltwater tidal areas (Van den Bergh et al. 2009). The 43 sampling locations in the Scheldt estuary are mainly located in the River Scheldt, but also in the Rivers Durme, Rupel, Dijle, Zenne and Nete. The geographic coordinates in the dataset are those of the defined sampling locations (`dwc:locationID`). However, as these coordinates are not always exact the actual coordinates of the catch, which may be located further up- or downriver, the coordinate uncertainty (`dwc:coordinateUncertaintyInMeters`) has been set to 250 meter.
 
 ### Sampling description
 
-Sampling methods are standardized and described in Van Thuyne, 2010 and indicated in the data as samplingProtocol. Per waterbody, the same method was used for each sampling campaign. The default method in estuarine waters is paired fyke netting (99%), but additional techniques such as pound netting, electrofishing, and eel fykes netting also have been used. All fish were identified, counted, and measured for length and weight (measurement data available upon request).
+Standardized sampling methods were used as described in Belpaire et al. (2000) and Van Thuyne (2010) and are specified in the dataset as `dwc:samplingProtocol`. Per water body, the same method was used for each sampling event. The default method is paired fyke netting, which has been intercalibrated by the North East Atlantic Calibration Group, but additional techniques such as anchor netting, seine netting, pound netting, electric fishing, and eel fyke netting were used as well (Breine et al. 2011). All fishes were identified to species level, counted and their length and weight was measured.
+
+Fyke nets are relatively unselective fishing gear catching demersal and pelagic species (Hamerlynck and Hostens 1994) and also they are easy to install in a great variety of habitat types. As few studies compare fyke catches with other gear (e.g. Hinz 1989, Thiel and Potter 2001), we compared presence/absence data obtained with fyke nets with presence/absence data of fish impinged at cooling-water filter screens of the nuclear power plant of Doel situated in the study area. The data was collected in the same period between 1995 and 1998. During this period we collected the same species with both survey methods but the species richness per day per fyke net was generally higher than that obtained on the filter screens (Breine et al. 2007). In addition preliminary results from a gear intercalibration exercise in different estuaries in Ireland (Whyte et al. 2007) indicated that for species diversity, the results of fyke net catches are comparable to those obtained with other gear (beach seine, beam trawl, otter trawl).
 
 ### Quality control description
 
-Strict field protocols where used during the generation of this dataset. The Manual for Application of the European Fish Index (EFI) (Fame consortium, 2004) was used as a guideline for electrofishing and used in support of the EU water framework directive.
+Strict field protocols where used. The Manual for Application of the European Fish Index (EFI) (Fame consortium 2004) served as a guideline for electrofishing and was used in support of the EU water framework directive.
 
 ### Method step description
 
-Estuary: fyke fishing, anchor netting, pound netting, electrofishing
+```
+Water type: Estuaries
+Method: fyke fishing, anchor netting, pound netting, electric fishing
+Effort: Fykes: 2 paired nets for two successive days per site. Winged fyke: one per site for two successive days. Anchor netting: per site 4 surveys of one hour (two for each tide). Electric fishing: only in flood control areas (250 m shore transects/ha).
+```
 
 ## Project data
 
