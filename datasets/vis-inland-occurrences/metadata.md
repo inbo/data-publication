@@ -14,7 +14,7 @@ Gerlinde Van Thuyne[^1], Jan Breine[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 ## Abstract
 
-*VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 350,000 fish occurrences sampled between 1992 and 2012 from over 2,000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 75 fish species, as well as a number of non-target species (mainly crustaceans). The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/vis-inland-occurrences>
+*VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 350,000 fish occurrences sampled between 1992 and 2012 from over 2,000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 75 fish species, as well as a number of non-target species (mainly crustaceans). The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-inland-occurrences>
 
 ## Keywords
 
@@ -78,71 +78,51 @@ Length and weight measurements of the individual fish, absence information, as w
 
 ### Study extent description
 
-Over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled since 1992. In 2001, these locations were consolidated in a monitoring network ("VISmeetnet") of 900 sampling points. The geographic coordinates in the dataset are those of the sampling locations. Since these do not always represent the actual coordinates of the catch, which may have occurred further up- or downriver, the coordinateUncertaintyInMeters has been set to 250.
+Over 2,000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled, from March to November, since 1992. In 2001, these locations were consolidated in a monitoring network (“VISmeetnet”) of 900 sampling points. The geographic coordinates in the dataset are those of the defined sampling locations (`dwc:locationID`). However, as these coordinates are not always exact the actual coordinates of the catch, which may be located further up- or downriver, the coordinate uncertainty (`dwc:coordinateUncertaintyInMeters`) has been set to 250 meter.
 
 ### Sampling description
 
-Sampling methods are standardized and described in Van Thuyne, 2010 and indicated in the data as samplingProtocol. Per waterbody, the same method was used for each sampling campaign. The default method is electrofishing, but additional techniques such as gill nets, fykes, and seine netting (variable sizes) are used as well. Electrofishing was carried out using a 5kW generator with an adjustable output voltage of 300-500V and a pulse frequency of 480Hz. The number of electrofishing devices and hand-held anodes used depend on the river width. In riverine environments, electrofishing was carried out on both riverbanks in upstream direction. When gill nets were used, a set of four monofilament nylon nets was placed. All fish were identified, counted, and measured for length and weight (measurement data available upon request).
+Standardized sampling methods were used as described in Belpaire et al. (2000) and Van Thuyne (2010) and are specified in the dataset as `dwc:samplingProtocol`. Per water body, the same method was used for each sampling event. The default method is electric fishing, but additional techniques such as gill nets, fykes, and seine netting (variable sizes) were used as well. Electric fishing was carried out using a 5 kW generator with an adjustable output voltage of 300–500 V and a pulse frequency of 480 Hz. The number of electric fishing devices and hand-held anodes used depends on the river width (Belpaire et al. 2000). In riverine environments, electric fishing was carried out on both riverbanks in upstream direction. All fishes were identified to species level, counted, and their length and weight was measured (measurement data available upon request).
 
 ### Quality control description
 
-Strict field protocols where used during the generation of this dataset. The Manual for Application of the European Fish Index (EFI) (Fame consortium, 2004) was used as a guideline for electrofishing and used in support of the EU water framework directive.
+Strict field protocols where used. The Manual for Application of the European Fish Index (EFI) (Fame consortium 2004) served as a guideline for electrofishing and was used in support of the EU water framework directive. Users of the data can comment on the dataset at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-inland-occurrences>
 
 ### Method step description
 
-Type: Running freshwaters
-Width: 1.5m
-Depth: <1.30m
+Water type: Running freshwaters (width: 1.5 m, depth: < 1.30 m)
 Method: electrofishing with 1 anode by wading
-Effort: 100m upstream
+Effort: 100 m
  
-Type: Running freshwaters
-Width: 6m
-Depth: <1.30m
+Water type: Running freshwaters (width: 6 m, depth: < 1.30 m)
 Method: electrofishing with 2 anodes by wading
-Effort: 100m
+Effort: 100 m
 
-Type: Running freshwaters
-Width: >6m
-Depth: <1.30m
+Water type: Running freshwaters (width: > 6 m, depth: < 1.30 m)
 Method: electrofishing with 2 anodes by wading
-Effort: 250m with 1 anode on each riverbank, 2m from bank
+Effort: 250 m with 1 anode on each riverbank, 2 m from bank
 
-Type: Running freshwaters: streaming rivers
-Width: >6m
-Depth: >1.30m
+Water type: Running freshwaters, streaming rivers (width: > 6m, depth: > 1.30 m)
 Method: electrofishing with 2 anodes by boat
-Effort: 250m with 2 anodes on each riverbank, 2m from bank
+Effort: 250 m with 2 anodes on each riverbank, 2 m from bank
  
-Type: Running freshwaters: enclosed waters, canals, slowly running rivers
-Width: >6m
-Depth: >1.30m
-Method: electrofishing with 2 anodes by boat OR fyke
-Effort: 250m with 2 anodes on each riverbank, 2m from bank OR 1 fyke for 48 hours parallel on both riverbanks
+Water type: Canals, slowly running rivers (width: > 6 m, depth: > 1.30 m)
+Method: electrofishing with 2 anodes by boat AND 2 fykes
+Effort: 250 m with 2 anodes on each riverbank, 2 m from bank AND 1 fyke for 48 hours parallel with and on both riverbanks
 
-Type: Canalized rivers
-Width: >6m
-Depth: >1.30m
-Method: high conductivity seine netting
-Effort: 100m, two times complete seine netting
+Water type: Canalized rivers with too high conductivity for electrofishing (depth: < 1.30 m)
+Method: seine netting
+Effort: 100 m, two times complete seine netting
 
-Type: Enclosed waters: lakes
-Method: electrofishing OR fyke
-Effort: 15% of riverbank (minimum 1000m, maximum 2000m) or 100% if perimeter is less than 1000m OR 1 fyke/hectare (minimum 4, maximum 20 fykes)
+Water type: Lakes
+Method: electric fishing AND fykes
+Effort: 15% of riverbank (minimum 1000 m, maximum 2000 m) or 100% if perimeter is less than 1000 m AND 1 fyke/hectare (minimum 4, maximum 20 fykes)
 
 ## Project data
 
 ### Project title
 
 VIS - Fish Information System
-
-### Personnel
-
-* **Principal investigators**: Jan Breine, Hugo Verreycken
-* **Resource contact, resource creator, metadata provider, point of contact**: Gerlinde Van Thuyne
-* **Content providers**: Daniel Bombaerts, Jan Breine, Jean-Pierre Croonen, Adinda De Bruyn, Franky Dens, Marc De Wit, Linde Galle, Isabel Lambeens, Yves Maes, Gerlinde Van Thuyne
-* **Developer**: Tom De Boeck
-* **Processors**: Dimitri Brosens, Peter Desmet
 
 ### Funding
 
