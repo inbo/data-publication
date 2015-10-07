@@ -10,11 +10,11 @@ Eric Stienen [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 [^4]: Terrestrial Ecology Unit (TEREC), Ghent University, K.L. Ledeganckstraat 35, 9000, Ghent, Belgium
 
-**Corresponding author(s)**: Eric Stienen (<eric.stienen@inbo.be>), Peter Desmet (<peter.desmet@inbo.be>)
+**Corresponding authors**: Eric Stienen (<eric.stienen@inbo.be>), Peter Desmet (<peter.desmet@inbo.be>)
 
 ---
 
-**Resource Citation**: Stienen E, Desmet P, Hernandez F, Bouten W, Lens L (2014): Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/02omly>
+**Resource citation**: Stienen E, Desmet P, Hernandez F, Bouten W, Lens L (2014): Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/02omly>
 
 ## Abstract
 

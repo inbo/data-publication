@@ -6,19 +6,11 @@ Jan Breine[^1], Gerlinde Van Thuyne[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 [^2]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
-**Corresponding author*: Jan Breine (<jan.breine@inbo.be>)
+**Corresponding author**: Jan Breine (<jan.breine@inbo.be>)
 
 ---
 
-Received {date} | Revised {date} | Accepted {date} | Published {date}
-
----
-
-**Citation**: Combination of authors, year of data paper publication (in parentheses), Title, Journal Name, Volume, Issue number (in parentheses), and doi of the data paper.
-
----
-
-**Resource Citation**: 
+**Resource citation**: 
 
 ## Abstract
 

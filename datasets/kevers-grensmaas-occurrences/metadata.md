@@ -8,14 +8,6 @@ Stijn Vanacker[^1], Dimitri Brosens[^1], Peter Desmet [^1]
 
 ---
 
-Received {date} | Revised {date} | Accepted {date} | Published {date}
-
----
-
-**Citation**: Combination of authors, year of data paper publication (in parentheses), Title, Journal Name, Volume, Issue number (in parentheses), and doi of the data paper.
-
----
-
 **Recource citation**: Vanacker S, Brosens D, Desmet P (2013): Loopkevers Grensmaas - Ground beetles near the river Meuse in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/hy3pzl>
 
 ## Abstract

@@ -6,7 +6,9 @@ Geert De Knijf[^1]
 
 **Corresponding author**: Geert De Knijf (<geert.deknijf@inbo.be>)
 
-**Resource Citation**: 
+---
+
+**Resource citation**: 
 
 ## Abstract
 

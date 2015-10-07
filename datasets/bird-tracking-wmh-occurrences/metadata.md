@@ -10,19 +10,11 @@ Anny Anselin [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 [^4]: Terrestrial Ecology Unit (TEREC), Ghent University, K.L. Ledeganckstraat 35, 9000, Ghent, Belgium
 
-**Corresponding author(s)**: Anny Anselin (<anny.anselin@inbo.be>), Peter Desmet (<peter.desmet@inbo.be>)
+**Corresponding authors**: Anny Anselin (<anny.anselin@inbo.be>), Peter Desmet (<peter.desmet@inbo.be>)
 
 ---
 
-*Received {date} | Revised {date} | Accepted {date} | Published {date}*
-
----
-
-**Citation**: *Combination of authors, year of data paper publication (in parentheses), Title, Journal Name, Volume, Issue number (in parentheses), and doi of the data paper.*
-
----
-
-**Resource Citation**: 
+**Resource citation**: 
 
 ## Abstract
 

@@ -14,14 +14,6 @@ Tim Adriaens[^1], Kris Decleer[^1], Hendrik Devriese[^2], Koen Lock[^2], Jorg La
 
 ---
 
-Received {date}; Revised {date}; Accepted {date}; Published {date}
-
----
-
-**Citation**: Combination of authors, year of data paper publication (in parentheses), Title, Journal Name, Volume, Issue number (in parentheses), and doi of the data paper.
-
----
-
 **Resource citation**: Adriaens T, Decleer K, Devriese H, Lock K, Lambrechts J, San Martin y Gomez G, Piesschaert F, Maes D, Brosens D, Desmet P (2013): Saltabel - Orthoptera in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/1rcpsq>
 
 ## Abstract

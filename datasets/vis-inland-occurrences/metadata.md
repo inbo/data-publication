@@ -10,15 +10,7 @@ Gerlinde Van Thuyne[^1], Jan Breine[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 ---
 
-Received {date} | Revised {date} | Accepted {date} | Published {date}
-
----
-
-**Citation**: Combination of authors, year of data paper publication (in parentheses), Title, Journal Name, Volume, Issue number (in parentheses), and doi of the data paper.
-
----
-
-**Resource Citation**: 
+**Resource citation**: 
 
 ## Abstract
 
@@ -47,7 +39,6 @@ This dataset contains more than 75 fish species found in Flemish streams and riv
 **Class**: *Actinopterygii (ray-finned fishes), Petromyzontida, Malacostraca*
 
 **Order**: *Mugiliformes, Osmeriformes, Atheriniformes, Clupeiformes, Decapoda, Gadiformes, Pleuronectiformes, Siluriformes, Salmoniformes, Petromyzontiformes, Scorpaeniformes, Esociformes, Anguilliformes, Gasterosteiformes, Perciformes, Cypriniformes*
-
 
 **Family**: *Cyprinidae, Ictaluridae, Ammodytidae, Anguillidae, Atherinidae, Atyidae, Nemacheilidae, Lotidae, Clariidae, Clupeidae, Cobitidae, Cottidae, Crangonidae, Moronidae, Trachinidae, Grapsidae, Esocidae, Gadidae, Gasterosteidae, Percidae, Petromyzontidae, Centrarchidae, Pleuronectidae, Liparidae, Mugilidae, Gobiidae, Salmonidae, Cambaridae, Osmeridae, Palaemonidae, Scophthalmidae, Siluridae, Soleidae, Syngnathidae, Umbridae, Zoarcidae*
 

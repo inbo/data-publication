@@ -8,7 +8,7 @@ Koen Devos[^1], Filiep T'Jollyn[^1], Peter Desmet[^1], Dimitri Brosens[^1]
 
 ---
 
-**Resource Citation**: Devos K, T'Jollyn F, Brosens D, Desmet P (2012): Watervogels - Wintering waterbirds in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/lj0udq>
+**Resource citation**: Devos K, T'Jollyn F, Brosens D, Desmet P (2012): Watervogels - Wintering waterbirds in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/lj0udq>
 
 ## Abstract
 
