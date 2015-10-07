@@ -10,7 +10,7 @@ Jan Breine[^1], Gerlinde Van Thuyne[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 ---
 
-**Resource citation**: 
+**Resource citation**: Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2013): VIS - Fishes in estuarine waters in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/estwpt> Data paper: <http://doi.org/10.3897/zookeys.475.8556>
 
 ## Abstract
 
@@ -22,7 +22,7 @@ ecosystem functioning, fish-based index of biotic integrity, fish distribution, 
 
 ## Data published through
 
-<http://dataset.inbo.be/vis-estuarine-occurrences>
+<http://doi.org/10.15468/estwpt>
 
 ## Rationale
 
