@@ -18,7 +18,7 @@ Gerlinde Van Thuyne[^1], Jan Breine[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 ## Keywords
 
-ecosystem function, biotic integrity index, fish distribution, fish, freshwater, VIS, LifeWatch, Occurrence, Observation
+ecosystem functioning, fish-based index of biotic integrity, fish distribution, freshwater, LifeWatch, open data, River Scheldt, River Yser, River Meuse, Occurrence, Observation
 
 ## Data published through
 
