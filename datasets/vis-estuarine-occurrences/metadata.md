@@ -30,7 +30,7 @@ The Fish Information System or VIS (<http://vis.milieuinfo.be>) is a database se
 
 ## Taxonomic coverage
 
-This dataset contains 115 fish species found in the estuaries of the river Yser and the river Scheldt, as well as 8 non-target crustacean species. The class of Actinopterygii is best represented (109 species), along with some Petromyzontida (3 species), and Chondrichthyes (3 species). All the crustaceans in this dataset are from the order of the Decapoda.
+The dataset contains 69 fish species found in the estuaries of the River Yser and the River Scheldt, as well as 9 non-target crustacean species. The class of Actinopterygii is most represented (67 species), along with two Petromyzontida. All the crustaceans in this dataset are from the order of the Decapoda.
 
 ### Taxonomic ranks
 
