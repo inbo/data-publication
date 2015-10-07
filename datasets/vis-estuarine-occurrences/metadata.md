@@ -118,66 +118,42 @@ Flemish government
 
 ## References
 
-FAME Consortium (2004). Manual for the application of the European Fish Index - EFI. A fish-based method to assess the ecological status of European rivers in support of the Water Framework Directive. Version 1.1, January 2005.
+Brosens D, Breine J, Van Thuyne G, Belpaire C, Desmet P, Verreycken H (2015) VIS – A database on the distribution of fishes in inland and estuarine waters in Flanders, Belgium. ZooKeys 475: 119-145. doi: [10.3897/zookeys.475.8556](http://doi.org/10.3897/zookeys.475.8556)
 
-Van Thuyne, G., Breine, J. (2011). Visbestandopnames in Vlaamse beken en rivieren in het kader van het 'Meetnet Zoetwatervis' 2010. Rapporten van het Instituut voor Natuur- en Bosonderzoek 2011 (INBO.R.2011.23). Instituut voor Natuur- en Bosonderzoek, Brussel.
+Belpaire C, Smolders R, Vanden Auweele I, Erecken D, Breine J, Van Thuyne G, Ollevier F (2000) An Index of Biotic Integrity characterizing fish populations and the ecological quality of Flandrian water bodies. Hydrobiologia 434: 17–33. doi: [10.1023/A:1004026121254](http://doi.org/10.1023/A:1004026121254)
 
-Belpaire et al. (2000). An Index of Biotic Integrity characterizing fish populations and the ecological quality of Flandrian water bodies, Hydrobiologia 434: 17–33, 2000.
+Breine J, Simoens I, Goethals P, Quataert P, Ercken D, Van Liefferinghe C, Belpaire C (2004) A fish-based index of biotic integrity for upstream brooks in Flanders (Belgium). Hydrobiologia 522: 133–148. doi: [10.1023/B:HYDR.0000029991.42922.a4](http://doi.org/10.1023/B:HYDR.0000029991.42922.a4)
 
-Van Thuyne, G., Breine, J. (2010). Visbestandopnames in Vlaamse beken en rivieren in het kader van het 'Meetnet Zoetwatervis' 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2010(42). INBO: Brussel. 196 pp.
+Breine J, Maes J, Quataert P, Van den Bergh E, Simoens I, Van Thuyne G, Belpaire C (2007) A fish-based assessment tool for the ecological quality of the brackish Schelde estuary in Flanders (Belgium). Hydrobiologia 575: 141–159. doi: [10.1007/s10750-006-0357-z](http://doi.org/10.1007/s10750-006-0357-z)
 
-Van Thuyne, G., Breine, J. (2009). Visbestandopnames in Vlaamse beken en rivieren in het kader van het 'Meetnet Zoetwatervis' 2008. Rapporten van het Instituut voor Natuur- en Bosonderzoek, R.2009.32. Instituut voor Natuur- en Bosonderzoek: Brussel. 197 pp.
+Breine J, Quataert P, Stevens M, Ollevier F, Volckaert FAM, Van den Bergh E, Maes J (2010) A zone-specific fish-based biotic index as a management tool for the Zeeschelde estuary (Belgium). Marine Pollution bulletin 60: 1099–1112.
 
-Van Thuyne, G., Breine, J., Belpaire, C. (2008). Visbestanden op de Dommel in het kader van de sanering van de bodem. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2008(57). Instituut voor Natuur- en Bosonderzoek: Brussel. 48 pp.
+Breine J, Maes J, Ollevier F, Stevens M (2011) Fish assemblages across a salinity gradient in the Zeeschelde estuary (Belgium). Belgian Journal of Zoologie 141(2): 21–44.
 
-Van Thuyne, G., Breine, J. (2008). Visbestandopnames in Vlaamse beken en rivieren afgevist in het kader van het 'Meetnet Zoetwatervis' 2007. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2008(21). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 154 pp.
+European Commission (2007) Council Regulation (EC) No 1100/2007 of 18 September 2007 establishing measures for the recovery of the stock of European eel. Official Journal of the European Union 22.9.2007 L 248: 17–23.
 
-Van Thuyne, G., Breine, J., Vrielynck, S. (2007). Visbestandopnames op de Poperingevaart en enkele waterlopen gelegen in het Ijzerbekken. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(42). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 20 pp.
+EU Water Framework Directive (2000) Directive 2000/60/EC of the European Parliament and of the Council of 23 October 2000 establishing a framework for Community action in the field of water policy. Official Journal 22/12/2000 L 327: 0001–0073.
 
-Van Thuyne, G., Breine, J., Vrielynck, S. (2007). Visbestandopnames op enkele waterlopen gelegen in de Brugse polders. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(29). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 23 pp.
+FAME Consortium (2004) Manual for the application of the European Fish Index - EFI. A fish-based method to assess the ecological status of European rivers in support of the Water Framework Directive. Version 1.1, January 2005.
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op de Demer (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(10). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 22 pp.
+Hamerlynck O, Hostens K (1994) Changes in the fish fauna of the Oosterschelde estuary: a ten-year time series of fyke catches. In: Nienhuis PH et al. (Eds) The Oosterschelde Estuary (The Netherlands): a case-study of a changing ecosystem. Hydrobiologia 97: 497–507. doi: [10.1007/BF00024651](http://doi.org/10.1007/BF00024651)
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op de Gaverbeek (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(19). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 15 pp.
+Hinz V (1989) Monitoring the fish fauna in the Wadden sea with special reference to different fishing methods and effects of wind and light on catches. Helgoländer Meeresunters 43: 447–459. doi: [10.1007/BF02365903](http://doi.org/10.1007/BF02365903)
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op de Grote Nete en de Grote Laak en enkele van zijn zijbeken (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(21). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 23 pp.
+Karr JR (1981) Assessment of biotic integrity using fish communities. Fisheries 6: 21–27. doi: [ 10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2](http://doi.org/10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2)
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op de Lossing en zijbeken (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(15). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 16 pp.
+Thiel R, Potter IC (2001) The ichthyofaunal composition of the Elbe estuary: an analysis in space and time. Marine Biology 138: 603–616. doi: [10.1007/s002270000491](http://doi.org/10.1007/s002270000491)
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op de Molenbeek-Markebeek en enkele zijbeken (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(4). Instituut voor Natuur- en Bosonderzoek: Brussel.
+Van den Bergh E, Garniel G, Morris RKA, Barendregt A (2009) Conservation of tidal freshwater wetlands in Europe. In: Barendregt A, Whigham D, Baldwin A (Eds) Tidal Freshwater Wetlands (2009). Backhuys Publishers, Leiden, 241–252.
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op de Poppelse AA en de Leyloop (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(12). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 17.
+Van Thuyne G, Breine J (2010) Visbestandopnames in Vlaamse beken en rivieren in het kader van het ‘Meetnet Zoetwatervis’ 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2010 (42). INBO, Brussel, 196 pp.
 
-Van Thuyne, G.;,Breine, J. (2007). Visbestandopnames op enkele beken gelegen in het Demerbekken (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(16). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 22 pp.
+Venice system (1959) The final resolution of the symposium on the classification of brackish waters. Archo Oceanography Limnology 11: 243–248. <http://www.aslo.org/lo/toc/vol_3/issue_3/0346.pdf>
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op enkele beken in het bekken van de Benedenschelde (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(11). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 21 pp.
+Verbiest H, Belpaire C, Vandenabeele P, Ollevier F (1996) Het in werking stellen van de visdatabank met de nadruk op de gebruiksvriendelijkheid ervan IBW.Wb.V.R.96.042.
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op enkele zijbeken van de Dender (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(17). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 17 pp.
+Verbiest H, Vandenabeele P, Belpaire C, Ollevier F (1994) Ontwerp van de visdatabank en implementatie van historische en recente gegevens IBW.Wb.V.R.94.029.
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op enkele zijbeken van de Leie (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(20). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 16 pp.
+Verreycken H, Belpaire C, Van Thuyne G, Breine J, Buysse D, Coeck J, Mouton A, Stevens M, Van den Neucker T, De Bruyn L, Maes D (2014) IUCN Red List of freshwater fishes and lampreys in Flanders (north Belgium). Fisheries Management and Ecology 21: 122–132. doi: [10.1111/fme.12052](http://doi.org/10.1111/fme.12052)
 
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op enkele zijlopen van de Dijle (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(18). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 24 pp.
-
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op enkele zijlopen van de Maas (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(26). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 18 pp.
-
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op het Boudewijnkanaal. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(34). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 18 pp.
-
-Van Thuyne, G., Breine, J. (2007). Visbestandopnames op het Dijlekanaal Leuven-Mechelen (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(33). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 22 pp.
-
-Van Thuyne, G., Samsoen, L., Breine, J. (2007). Visbestandopnames op de Bovenschelde. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(25). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 28 pp.
-
-Van Thuyne, G., Samsoen, L., Breine, J. (2007). Visbestandopnames op de Isabellawatering, de Zwarte Sluisbeek en de Nieuwe kale (2006). Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(45). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 18 pp.
-
-Van Thuyne, G., Vrielynck, S., Breine, J. (2007). Visbestandopnames op de Damse vaart. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2007(32). Instituut voor Natuur- en Bosonderzoek: Groenendaal. 18 pp.
-
-Van Thuyne, G. et al. (2006). Visbestandopnames op het Schipdonkkanaal (2005). Rapporten van het instituut voor bosbouw en wildbeheer - sectie visserij, 2006(155). Instituut voor Bosbouw en Wildbeheer: Hoeilaart-Groenendaal. 12 pp.
-
-Van Thuyne, G., Breine, J., Maes, Y. (2006). Visbestandopnames op het Galgenweel (2005). Rapporten van het instituut voor bosbouw en wildbeheer - sectie visserij, 2006(153). Instituut voor Bosbouw en Wildbeheer.
-
-Van Thuyne, G., Maes, Y., Breine, J. (2006). Visbestandopnames op het kanaal van Beverlo (2005). Rapporten van het instituut voor bosbouw en wildbeheer - sectie visserij, 2006(151). Instituut voor Bosbouw en Wildbeheer: Groenendaal : Belgium. 11 pp.
-
-Van Thuyne, G., Samsoen, L., Breine, J. (2006). Visbestandopnames op de Oude Durme (2005). Rapporten van het instituut voor bosbouw en wildbeheer - sectie visserij, 2006(156). Instituut voor Bosbouw en Wildbeheer: Groenendaal-Hoeilaart. 16 pp.
-
-Van Thuyne, G., Samsoen, L., Breine, J. (2006). Visbestandopnames op de oude leiearm te Grammene (2005). Rapporten van het instituut voor bosbouw en wildbeheer - sectie visserij, 2006(154). Instituut voor Bosbouw en Wildbeheer: Groenendaal, Belgium. 16 pp.
-
-Van Thuyne, G., Vrielynck, S., Breine, J. (2006). Visbestandopnames op het kanaal Nieuwpoort-Duinkerke (2005). Rapporten van het instituut voor bosbouw en wildbeheer - sectie visserij, 2006(152). Instituut voor Bosbouw en Wildbeheer: Groenendaal : Belgium. 11 pp.
+Whyte BI, Keirse G, King J (2007) WFD gear intercalibration: an exercise among five NEA GIG teams, October 2006. Report Central Fisheries Board Ireland, 30 pp.
