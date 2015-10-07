@@ -30,8 +30,6 @@ The Fish Information System or VIS (<http://vis.milieuinfo.be>) is a database se
 
 ## Taxonomic coverage
 
-This dataset contains more than 75 fish species found in Flemish streams and rivers, as well as a number of non-target species (mainly crustaceans), some of which are invasive.
-
 The dataset contains 64 fish species reported from Flemish enclosed waters and watercourses, as well as a number of non-target species (mainly crustaceans). This dataset also includes a number of typical brackish water fish species which sometimes can be found in inland water sites in proximity to the sea and/or behind the sluice gates. The class of Actinopterygii is best represented (63 species), along with one Petromyzontida (*Lampetra planeri*) and 7 crustaceans from the order Decapoda.
 
 ### Taxonomic ranks
@@ -40,9 +38,9 @@ The dataset contains 64 fish species reported from Flemish enclosed waters and w
 
 **Class**: *Actinopterygii (ray-finned fishes), Petromyzontida, Malacostraca*
 
-**Order**: *MMugiliformes, Osmeriformes, Atheriniformes, Clupeiformes, Gadiformes, Pleuronectiformes, Siluriformes, Salmoniformes, Scorpaeniformes, Esociformes, Anguilliformes, Gasterosteiformes, Perciformes, Cypriniformes, Petromyzontiformes, Decapoda*
+**Order**: *Mugiliformes, Osmeriformes, Atheriniformes, Clupeiformes, Gadiformes, Pleuronectiformes, Siluriformes, Salmoniformes, Scorpaeniformes, Esociformes, Anguilliformes, Gasterosteiformes, Perciformes, Cypriniformes, Petromyzontiformes, Decapoda*
 
-**Family**: *Anguillidae, Atherinidae, Centrarchidae, Clariidae, Clupeidae, Cobitidae, Cottidae, Cyprinidae, Esocidae, Gadidae, Gasterosteidae, Gobiidae, Ictaluridae, Lotidae, Moronidae, Mugilidae, Nemacheilidae, Osmeridae, Percidae, Petromyzontidae, Pleuronectidae, Salmonidae, Scophthalmidae, Siluridae, Soleidae, Umbridae, Petromyzontidae, Atyidae, Cambaridae, Palaemonidae, Varunidae*
+**Family**: *Anguillidae, Atherinidae, Centrarchidae, Clariidae, Clupeidae, Cobitidae, Cottidae, Cyprinidae, Esocidae, Gadidae, Gasterosteidae, Gobiidae, Ictaluridae, Lotidae, Moronidae, Mugilidae, Nemacheilidae, Osmeridae, Percidae, Pleuronectidae, Salmonidae, Scophthalmidae, Siluridae, Soleidae, Umbridae, Petromyzontidae, Atyidae, Cambaridae, Palaemonidae, Varunidae*
 
 ## Geographic coverage
 
