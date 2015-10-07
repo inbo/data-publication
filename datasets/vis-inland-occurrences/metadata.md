@@ -92,7 +92,7 @@ Standardized sampling methods were used as described in Belpaire et al. (2000) a
 
 ### Quality control description
 
-Strict field protocols where used. The Manual for Application of the European Fish Index (EFI) (Fame consortium 2004) served as a guideline for electrofishing and was used in support of the EU water framework directive. Users of the data can comment on the dataset at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-inland-occurrences>
+Strict field protocols where used. The Manual for Application of the European Fish Index (EFI) (Fame consortium 2004) served as a guideline for electrofishing and was used in support of the EU water framework directive.
 
 ### Method step description
 
