@@ -84,7 +84,7 @@ Length and weight measurement data of the individual fishes, absence information
 
 ### Study extent description
 
-Over 2,000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled, from March to November, since 1992. In 2001, these locations were consolidated in a monitoring network (“VISmeetnet”) of 900 sampling points. The geographic coordinates in the dataset are those of the defined sampling locations (`dwc:locationID`). However, as these coordinates are not always exact the actual coordinates of the catch, which may be located further up- or downriver, the coordinate uncertainty (`dwc:coordinateUncertaintyInMeters`) has been set to 250 meter.
+Over 2,000 locations in estuaries, inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled, from March to November, since 1992. In 2001, these locations were consolidated in a monitoring network (“VISmeetnet”) of 900 sampling points. The geographic coordinates in the dataset are those of the defined sampling locations (`dwc:locationID`). However, as these coordinates are not always exact the actual coordinates of the catch, which may be located further up- or downriver, the coordinate uncertainty (`dwc:coordinateUncertaintyInMeters`) has been set to 250 meter.
 
 ### Sampling description
 
