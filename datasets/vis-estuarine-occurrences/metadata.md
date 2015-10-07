@@ -18,7 +18,7 @@ Jan Breine[^1], Gerlinde Van Thuyne[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 ## Keywords
 
-ecosystem function, biotic integrity index, fish distribution, fish, brackish water, VIS, LifeWatch, Occurrence, Observation
+ecosystem functioning, fish-based index of biotic integrity, fish distribution, brackish water, estuary, LifeWatch, open data, River Scheldt, River Yser, Occurrence, Observation
 
 ## Data published through
 
@@ -52,7 +52,7 @@ Estuarine areas of the river Yser and the river Scheldt, Flanders, Belgium, as w
 
 ## Temporal coverage
 
-1992-12-15 - 2012-11-27
+1995-04-01 - 2012-11-27
 
 ## Dataset
 
@@ -97,14 +97,6 @@ Estuary: fyke fishing, anchor netting, pound netting, electrofishing
 ### Project title
 
 VIS - Fish Information System
-
-### Personnel
-
-* **Principal investigator**: Hugo Verreycken
-* **Resource contact, resource creator, metadata provider, point of contact**: Jan Breine
-* **Content providers**: Daniel Bombaerts, Jan Breine, Jean-Pierre Croonen, Adinda De Bruyn, Franky Dens, Marc De Wit, Linde Galle, Isabel Lambeens, Yves Maes, Gerlinde Van Thuyne
-* **Developer**: Tom De Boeck
-* **Processors**: Dimitri Brosens, Peter Desmet
 
 ### Funding
 
