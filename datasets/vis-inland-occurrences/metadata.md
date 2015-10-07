@@ -90,6 +90,7 @@ Strict field protocols where used. The Manual for Application of the European Fi
 
 ### Method step description
 
+```
 Water type: Running freshwaters (width: 1.5 m, depth: < 1.30 m)
 Method: electrofishing with 1 anode by wading
 Effort: 100 m
@@ -117,6 +118,7 @@ Effort: 100 m, two times complete seine netting
 Water type: Lakes
 Method: electric fishing AND fykes
 Effort: 15% of riverbank (minimum 1000 m, maximum 2000 m) or 100% if perimeter is less than 1000 m AND 1 fyke/hectare (minimum 4, maximum 20 fykes)
+```
 
 ## Project data
 
