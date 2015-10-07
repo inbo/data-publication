@@ -56,7 +56,7 @@ The dataset contains tracking data from 44 Lesser Black-Backed Gulls (*Larus fus
 
 The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and Ostend. During the breeding season, their foraging range includes the west of Belgium, northern France, the North Sea, and the English Channel. The Lesser Black-backed Gulls migrate south in winter, mainly hibernating in the south of Spain, Portugal, and North Africa. See <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the geospatial extent of the data.
 
-### Bounding coordinates
+### Bounding box
 
 10° to 60° latitude, -25° to 10° longitude
 

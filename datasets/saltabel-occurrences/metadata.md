@@ -72,7 +72,7 @@ The North of Belgium is a flat and has often breezy conditions, although more in
 
 Koeppen-Geiger classification: The climate of Belgium can be classified as Cfb Climate; a warm temperate humid climate with the warmest month lower than 22°C over average and four or more months above 10°C over average. (<http://koeppen-geiger.vu-wien.ac.at/>)
 
-### Bounding box for covered area
+### Bounding box
 
 49.49° to 51.51° latitude, 2.54° to 6.42° longitude
 

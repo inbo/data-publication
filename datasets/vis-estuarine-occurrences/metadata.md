@@ -46,7 +46,7 @@ This dataset contains 115 fish species found in the estuaries of the river Yser 
 
 Estuarine areas of the river Yser and the river Scheldt, Flanders, Belgium, as well as two sampling locations in Zeeland, the Netherlands.
 
-### Bounding box for covered area
+### Bounding box
 
 `to be corrected`
 

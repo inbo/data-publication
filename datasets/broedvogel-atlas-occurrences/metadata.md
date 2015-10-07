@@ -48,7 +48,7 @@ The dataset covers breeding birds in Flanders, Belgium and includes 193 species.
 
 Flanders, Belgium
 
-### Bounding coordinates
+### Bounding box
 
 50.68° to 51.51° latitude, 2.54° to 5.92° longitude
 

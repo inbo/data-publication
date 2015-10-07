@@ -38,7 +38,7 @@ All dragonfly species occurring in Flanders, Belgium.
 
 Flanders, Belgium.
 
-### Bounding box for covered area
+### Bounding box
 
 50.68° to 51.51° latitude, 2.54° to 5.92° longitude
 

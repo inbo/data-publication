@@ -46,7 +46,7 @@ This dataset contains more than 75 fish species found in Flemish streams and riv
 
 Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
 
-### Bounding box for covered area
+### Bounding box
 
 50.68° to 51.51° latitude, 2.54° to 5.92° longitude
 

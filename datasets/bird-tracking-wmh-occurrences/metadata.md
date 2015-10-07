@@ -60,7 +60,7 @@ The dataset contains tracking data from 3 Western Marsh Harriers (*Circus aerugi
 
 > The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and Ostend. Their foraging range includes the west of Belgium, northern France, the North Sea, and the English Channel. The Lesser Black-backed Gulls migrate south in winter, hibernating in the south of Spain, Portugal, and North Africa. See <...> for a visualization of the geospatial extent of the data.
 
-### Bounding coordinates
+### Bounding box
 
 > 20° to 60° latitude, -25° to 10° longitude
 

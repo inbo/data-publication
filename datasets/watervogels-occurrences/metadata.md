@@ -50,7 +50,7 @@ The birds were counted at 1,189 predefined locations (`waterVogelTelgebieden`, f
 
 *Figure 1: Map of the `waterVogelTelgebieden` in Flanders in which the waterbirds are counted. This geospatial dataset is available in [this repository](http://git.io/vvDVL).*
 
-### Bounding coordinates
+### Bounding box
 
 50.68° to 51.51° latitude, 2.54° to 5.92° longitude
 

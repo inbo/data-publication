@@ -46,7 +46,7 @@ Almost all 107 species in this dataset are ground beetles (Carabidae), identifie
 
 Grensmaas: the river Meuse on the border between Belgium and the Netherlands.
 
-### Bounding box for covered area
+### Bounding box
 
 50.71° to 51.18° latitude, 5.62° to 5.88° longitude
 

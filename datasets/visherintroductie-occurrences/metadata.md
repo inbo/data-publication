@@ -42,7 +42,7 @@ All species in this dataset are fishes (Actinopterygii, Cephalaspidomorphi), wit
 
 Watercourses in Flanders, Belgium.
 
-### Bounding coordinates
+### Bounding box
 
 50.68° to 51.51° latitude, 2.54° to 5.92° longitude
 
