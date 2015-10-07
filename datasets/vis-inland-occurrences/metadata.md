@@ -32,19 +32,23 @@ The Fish Information System or VIS (<http://vis.milieuinfo.be>) is a database se
 
 This dataset contains more than 75 fish species found in Flemish streams and rivers, as well as a number of non-target species (mainly crustaceans), some of which are invasive.
 
+The dataset contains 64 fish species reported from Flemish enclosed waters and watercourses, as well as a number of non-target species (mainly crustaceans). This dataset also includes a number of typical brackish water fish species which sometimes can be found in inland water sites in proximity to the sea and/or behind the sluice gates. The class of Actinopterygii is best represented (63 species), along with one Petromyzontida (*Lampetra planeri*) and 7 crustaceans from the order Decapoda.
+
 ### Taxonomic ranks
 
 **Kingdom**: *Animalia (animals)*
 
 **Class**: *Actinopterygii (ray-finned fishes), Petromyzontida, Malacostraca*
 
-**Order**: *Mugiliformes, Osmeriformes, Atheriniformes, Clupeiformes, Decapoda, Gadiformes, Pleuronectiformes, Siluriformes, Salmoniformes, Petromyzontiformes, Scorpaeniformes, Esociformes, Anguilliformes, Gasterosteiformes, Perciformes, Cypriniformes*
+**Order**: *MMugiliformes, Osmeriformes, Atheriniformes, Clupeiformes, Gadiformes, Pleuronectiformes, Siluriformes, Salmoniformes, Scorpaeniformes, Esociformes, Anguilliformes, Gasterosteiformes, Perciformes, Cypriniformes, Petromyzontiformes, Decapoda*
 
-**Family**: *Cyprinidae, Ictaluridae, Ammodytidae, Anguillidae, Atherinidae, Atyidae, Nemacheilidae, Lotidae, Clariidae, Clupeidae, Cobitidae, Cottidae, Crangonidae, Moronidae, Trachinidae, Grapsidae, Esocidae, Gadidae, Gasterosteidae, Percidae, Petromyzontidae, Centrarchidae, Pleuronectidae, Liparidae, Mugilidae, Gobiidae, Salmonidae, Cambaridae, Osmeridae, Palaemonidae, Scophthalmidae, Siluridae, Soleidae, Syngnathidae, Umbridae, Zoarcidae*
+**Family**: *Anguillidae, Atherinidae, Centrarchidae, Clariidae, Clupeidae, Cobitidae, Cottidae, Cyprinidae, Esocidae, Gadidae, Gasterosteidae, Gobiidae, Ictaluridae, Lotidae, Moronidae, Mugilidae, Nemacheilidae, Osmeridae, Percidae, Petromyzontidae, Pleuronectidae, Salmonidae, Scophthalmidae, Siluridae, Soleidae, Umbridae, Petromyzontidae, Atyidae, Cambaridae, Palaemonidae, Varunidae*
 
 ## Geographic coverage
 
-Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
+Flanders is one of the three administrative regions in the country of Belgium, located in the centre of Western Europe. The Flemish region is situated in the north of the country and covers an area of 13,522 km² (44,29% of Belgium). Belgium has a temperate maritime climate that is influenced by the North Sea and the Atlantic Ocean with substantial precipitation in all seasons. The summers are moderate and the winters are mild. The two main geographical regions of Flanders are the coastal plain in the North-West and the Central plain, further inland. With 470 inhabitants/km², Flanders is one of the most densely populated areas of Europe. The three major rivers are the River Yser, the River Scheldt, and the River Meuse. All rivers in Flanders flow into the North Sea, but only the River Yser drains directly into the sea within the jurisdiction of Flanders.
+
+The dataset comprises enclosed waters, including cut off river arms, gravel pits, ponds, natural lakes, and artificial lakes; and riverine habitats, including head streams, tributaries, and canals part of the drainage basins of the rivers Yser, Scheldt and Meuse. These three drainage basins are divided into eleven Flemish river catchments, which are divided into 102 subbasins. Overall, there are 48 unique enclosed waters sampled at 792 locations and 419 streams and rivers sampled at 1,452 locations.
 
 ### Bounding box
 
@@ -65,14 +69,18 @@ Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
 * **Distribution**: <http://dataset.inbo.be/vis-inland-occurrences>
 * **Publication date of data**: 2013-12-20
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/> & <http://www.canadensys.net/norms>
+* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
 * **Metadata language**: English
 * **Date of metadata creation**: 2013-12-20
 * **Hierarchy level**: Dataset
 
 ### Additional information
 
-Length and weight measurements of the individual fish, absence information, as well as abiotic data of the sampling points (pH, temperature, etc.) are available upon request. It would be much appreciated if you notify us of your use of this dataset for research purposes.
+Length and weight measurement data of the individual fishes, absence information, occurrence data since 2013, as well as abiotic data of the sampling points (pH, temperature, etc.) are not included in the Darwin Core Archives and are available upon request.
+
+### Usage norms
+
+
 
 ## Methodology
 
