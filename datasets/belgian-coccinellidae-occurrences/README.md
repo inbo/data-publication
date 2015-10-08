@@ -4,6 +4,6 @@
 
 ## Data publication process
 
-* [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/belgian-coccinellidae-inbo-occurrences)
+* [Metadata](metadata.md) (working document)
 * [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/belgian-coccinellidae-occurrences)
 * [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
