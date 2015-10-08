@@ -51,7 +51,7 @@ The Belgian Coccinellidae dataset deals with Ladybirds occurrences in Belgian. T
 
 ### Bounding box
 
-49°29'24''N and 51°30'36''N Latitude; 2°32'24''E and 6°25'12''E Longitude 
+49.49° to 51.51° latitude, 2.54° to 6.42° longitude 
 
 ## Temporal coverage
 
