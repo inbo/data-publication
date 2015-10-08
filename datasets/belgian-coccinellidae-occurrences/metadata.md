@@ -9,7 +9,7 @@ Tim Adriaens[^1], Gilles San Martin[^2], Dirk Maes[^1], Dimitri Brosens[^1]
 
 ---
 
-**Resource citation**: 
+**Resource citation**: Adriaens T, San Martin y Gomez G, Maes D, Brosens D, Desmet P (2012): Belgian Coccinellidae - Ladybird beetles in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/0refva>
 
 
 ## Abstract
@@ -27,7 +27,7 @@ Coccinellidae, ladybird beetles, distribution, ecology, faunistics, Belgium, Wal
 
 ## Data published through
 
-<http://data.inbo.be/ipt/resource?r=belgian-coccinellidae-occurrences>
+<http://doi.org/10.15468/0refva>
 
 ## Rationale
 
@@ -109,8 +109,6 @@ All records are validated.
 ### Method step description
 
 More than 500 volunteers providing distribution data. They actively search for ladybird beetles in a variety of habitats using sweep nets, beating trays, visual search, light trapping, pitfall traps, and other sampling methods.
-
-## Project data
 
 ## Associated parties
 
