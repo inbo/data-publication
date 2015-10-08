@@ -123,14 +123,14 @@ More than 500 volunteers providing distribution data. They actively search for l
 
 ## References
 
-Branquart E. & Maes D. (2003). Update van de verspreiding van de Belgische lieveheersbeestjes. Coccinula, Newsletter of the Belgian Ladybird Working Group 7: 5-23.
+Branquart E., Maes D. (2003). Update van de verspreiding van de Belgische lieveheersbeestjes. Coccinula, Newsletter of the Belgian Ladybird Working Group 7: 5-23.
 
-Adriaens T., San Martin G., & Maes D. (2008). Invasion history, habitat preferences and phenology of the invasive ladybird Harmonia axyridis in Belgium. BioControl 53(1): 69-88.
+Adriaens T., San Martin G., Maes D. (2008). Invasion history, habitat preferences and phenology of the invasive ladybird Harmonia axyridis in Belgium. BioControl 53(1): 69-88.
 
-Adriaens T., Branquart E., & Maes D. (2003). The Multicoloured Asian Ladybird Harmonia axyridis Pallas (Coleoptera : Coccinellidae), a threat for native aphid predators in Belgium? Belgian Journal of Zoology 133(2): 195-196.
+Adriaens T., Branquart E., Maes D. (2003). The Multicoloured Asian Ladybird Harmonia axyridis Pallas (Coleoptera : Coccinellidae), a threat for native aphid predators in Belgium? Belgian Journal of Zoology 133(2): 195-196.
 
-Helen E. Roy, Tim Adriaens, Nick J. B. Isaac, Marc Kenis, Thierry Onkelinx, Gilles San Martin, Peter M. J. Brown, Louis Hautier, Remy Poland, David B. Roy, Richard Comont, René Eschen, Robert Frost, Renate Zindel, Johan Van Vlaenderen, Oldřich Nedvěd, Hans Peter Ravn, Jean-Claude Grégoire, Jean-Christophe de Biseau, Dirk Maes (2012). Invasive alien predator causes rapid declines of native European ladybirds. Diversity and Distributions (2012) 1–9. DOI: 10.1111/j.1472-4642.2012.00883.x http://dx.doi.org/10.1111/j.1472-4642.2012.00883.x
+Helen E. Roy, Tim Adriaens, Nick J. B. Isaac, Marc Kenis, Thierry Onkelinx, Gilles San Martin, Peter M. J. Brown, Louis Hautier, Remy Poland, David B. Roy, Richard Comont, René Eschen, Robert Frost, Renate Zindel, Johan Van Vlaenderen, Oldřich Nedvěd, Hans Peter Ravn, Jean-Claude Grégoire, Jean-Christophe de Biseau, Dirk Maes (2012). Invasive alien predator causes rapid declines of native European ladybirds. Diversity and Distributions (2012) 1–9. doi: [10.1111/j.1472-4642.2012.00883.x](http://doi.org/10.1111/j.1472-4642.2012.00883.x)
 
-Kenis M., Adriaens T., Brown P., Katsanis A., Van Vlaenderen J., Eschen R., Golaz L., Zindel R., San Martin G., Babendreier D., & Ware R. (2010). Impact of Harmonia axyridis on European ladybirds: which species are most at risk? IOBS/wprs Bulletin 58: 1-3.
+Kenis M., Adriaens T., Brown P., Katsanis A., Van Vlaenderen J., Eschen R., Golaz L., Zindel R., San Martin G., Babendreier D., Ware R. (2010). Impact of Harmonia axyridis on European ladybirds: which species are most at risk? IOBS/wprs Bulletin 58: 1-3.
 
-Adriaens T. & Maes D. (2004). Voorlopige verspreidingsatlas van lieveheersbeestjes in Vlaanderen, resultaten van het lieveheersbeestjesproject van de jeugdbonden. Bertram 2 (1bis): 1-69. http://www.inbo.be/docupload/1436.pdf
+Adriaens T. & Maes D. (2004). Voorlopige verspreidingsatlas van lieveheersbeestjes in Vlaanderen, resultaten van het lieveheersbeestjesproject van de jeugdbonden. Bertram 2 (1bis): 1-69. <http://www.inbo.be/docupload/1436.pdf>
