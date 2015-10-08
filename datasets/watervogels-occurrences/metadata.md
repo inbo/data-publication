@@ -141,7 +141,11 @@ Waterbird counts Flanders
 
 This monitoring project receives funding from the Flemish Government.
 
-## Acknowledgements
+## Associated parties
+
+### Content providers
+
+* [Many volunteers from Natuurpunt](http://www.natuurpunt.be)
 
 ## References
 
