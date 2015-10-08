@@ -23,7 +23,7 @@ For the time being, only the original INBO database is published
 
 ## Keywords
 
-Coccinellidae, ladybird beetles, distribution, ecology, faunistics, Walloon Region, Flanders, Brussels Capital Region, Occurrence
+Coccinellidae, ladybird beetles, distribution, ecology, faunistics, Belgium, Walloon Region, Flanders, Brussels Capital Region, Occurrence
 
 ## Data published through
 
@@ -111,6 +111,17 @@ All records are validated.
 More than 500 volunteers providing distribution data. They actively search for ladybird beetles in a variety of habitats using sweep nets, beating trays, visual search, light trapping, pitfall traps, and other sampling methods.
 
 ## Project data
+
+## Associated parties
+
+### Content providers
+
+* Belgian ladybirds working group
+* [Natagora](http://www.natagora.be)
+* [Royal Belgian Institute of Natural Sciences (RBINS)](http://www.naturalsciences.be)
+* [Ghent University (UGent)](http://www.museumvoordierkunde.ugent.be/)
+* [Département de l’Etude du milieu naturel et agricole (DEMNA)](http://www.environnement.wallonie.be/cgi/dgrne/)
+* [Royal Entomological Society of Antwerp](http://www.kavevzw.be/)
 
 ## References
 
