@@ -26,7 +26,7 @@ juvenile fish, riparian habitat, water management, Occurrence, Observation
 
 ## Taxonomic coverage
 
-All species in this dataset are fishes (Actinopterygii). The top 3 recorded species are Abramis brama (29%), Rutilus rutilus (29%), and Gasterosteus aculeatus (14%).
+All 22 species in this dataset are fishes (Actinopterygii). The top 3 recorded species are *Abramis brama* (29%), *Rutilus rutilus* (29%), and *Gasterosteus aculeatus* (14%).
 
 ### Taxonomic ranks
 
@@ -34,7 +34,7 @@ All species in this dataset are fishes (Actinopterygii). The top 3 recorded spec
 
 **Class**: *Actinopterygii (ray-finned fishes)*
 
-**Species**: *Alburnus alburnus (bleak),  Perca fluviatilis (European perch),  Barbatula barbatula (stone loach),  Rhodeus amarus (European bitterling),  Rutilus rutilus (common roach),  Pseudorasbora parva (stone moroko),  Abramis brama (common bream),  Platichthys flesus (European flounder),  Carassius gibelio (Prussian carp),  Gobio gobio (gudgeon),  Cobitis taenia (spined loach),  Cyprinus carpio (common carp),  Blicca bjoerkna (silver bream),  Anguilla anguilla (European eel),  Gymnocephalus cernuus (Eurasian ruffe),  Scardinius erythrophthalmus (common rudd),  Esox lucius (northern pike),  Gasterosteus aculeatus (three-spined stickleback),  Leuciscus idus (ide),  Tinca tinca (tench),  Pungitius pungitius (ninespine stickleback),  Sander lucioperca (zander)*
+**Species**: *Abramis brama (common bream), Alburnus alburnus (bleak), Anguilla anguilla (European eel), Barbatula barbatula (stone loach), Blicca bjoerkna (silver bream), Carassius gibelio (Prussian carp), Cobitis taenia (spined loach), Cyprinus carpio (common carp), Esox lucius (northern pike), Gasterosteus aculeatus (three-spined stickleback), Gobio gobio (gudgeon), Gymnocephalus cernuus (Eurasian ruffe), Leuciscus idus (ide), Perca fluviatilis (European perch), Platichthys flesus (European flounder), Pseudorasbora parva (stone moroko), Pungitius pungitius (ninespine stickleback), Rhodeus amarus (European bitterling), Rutilus rutilus (common roach), Sander lucioperca (zander), Scardinius erythrophthalmus (common rudd), Tinca tinca (tench)*
 
 ## Geographic coverage
 
