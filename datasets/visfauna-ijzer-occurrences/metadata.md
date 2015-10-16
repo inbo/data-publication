@@ -16,11 +16,13 @@ This dataset contains occurrences of juvenile and adult fish in riparian habitat
 
 ## Keywords
 
-juvenile fish, riparian habitat, water management, fyke fishing, electro fishing, juveniele vis, oeverhabitat, waterbeheer, Occurrence, Observation
+juvenile fish, riparian habitat, water management, Occurrence, Observation
 
 ## Data published through
 
 <http://doi.org/10.15468/keplkx>
+
+## Rationale
 
 ## Taxonomic coverage
 
@@ -44,7 +46,7 @@ The river Yser, Flanders, Belgium. The Yser (Dutch: IJzer, French: Yser) is a ri
 
 ## Temporal coverage
 
-2008-02-19 - 2011-02-08
+2008-06-01 - 2008-10-16
 
 ## Dataset
 
