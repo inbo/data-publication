@@ -12,17 +12,19 @@ Ans Mouton[^1], Dimitri Brosens[^1], Peter Desmet[^1]
 
 ## Abstract
 
-This dataset contains occurrences of juvenile and adult fish in riparian habitats along the river Yser. For many years, navigable lowland rivers have been embanked artificially or suffered from substantial shipping wave action, leading to habitat degradation. Recently, riparian habitats were restored by creating foreshores and spawning grounds in the river Yser, a lowland river in Flanders, Belgium. The aim of the research was to evaluate the role of these restored habitats for spawning and nursery of juvenile fish. To cover a wide range of anthropogenic disruption, four riparian mesohabitat types were selected and compared, ranging from semi ‐ natural over artificial spawning grounds and foreshores to artificial embankments. Juvenile fish were subjected to sampling by using electrofishing between June and September 2009 at different microhabitats located in five sites of each riparian mesohabitat type. Juvenile fish strongly preferred natural riparian habitats, whereas artificial embankments showed the lowest species richness, abundance and functional organization of juvenile fish species. Restored riparian habitats appeared to be an appropriate alternative for artificial embankments in navigable lowland rivers but still score significantly less than natural habitats. Juvenile fish avoided bare microhabitats but did not prefer any other microhabitat type (reed, woody or grassy vegetation), emphasizing the importance of microhabitat diversity. This paper provides valuable insights into riparian habitat restoration to river managers and stakeholders.
+*Visfauna - Juvenile and adult fishes in riparian habitats along the river Yser in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 5,800 fish occurrences sampled in 2008 in riparian habitats along the river Yser. The dataset includes 22 fish species. The data are collected to evaluate the role of restored riparian habitats for the spawning and nursery of juvenile fish and are discussed in Mouton et al. 2011. The dataset also includes the length of the caught fishes. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/visfauna-ijzer-occurrences>
 
 ## Keywords
 
-juvenile fish, riparian habitat, water management, Occurrence, Observation
+juvenile fish, riparian habitat, river bank, spawning ground, foreshore, water management, Occurrence, Observation
 
 ## Data published through
 
 <http://doi.org/10.15468/keplkx>
 
 ## Rationale
+
+For many years, navigable lowland rivers have been embanked artificially or suffered from substantial shipping wave action, leading to habitat degradation. Recently, riparian habitats were restored by creating foreshores and spawning grounds in the river Yser, a lowland river in Flanders, Belgium. The aim of the research was to evaluate the role of these restored habitats for spawning and nursery of juvenile fish. To cover a wide range of anthropogenic disruption, four riparian mesohabitat types were selected and compared, ranging from semi‐natural, over artificial spawning grounds and foreshores, to artificial embankments. Juvenile fish were subjected to sampling by using electrofishing between June and September 2009 at different microhabitats located in five sites of each riparian mesohabitat type. The study found that juvenile fish strongly preferred natural riparian habitats, whereas artificial embankments showed the lowest species richness, abundance and functional organization of juvenile fish species. Restored riparian habitats appeared to be an appropriate alternative for artificial embankments in navigable lowland rivers, but still score significantly less than natural habitats. Juvenile fish avoided bare microhabitats, but did not prefer any other microhabitat type (reed, woody or grassy vegetation), emphasizing the importance of microhabitat diversity.
 
 ## Taxonomic coverage
 
@@ -38,7 +40,7 @@ All 22 species in this dataset are fishes (Actinopterygii). The top 3 recorded s
 
 ## Geographic coverage
 
-The river Yser, Flanders, Belgium. The Yser (Dutch: IJzer, French: Yser) is a river that originates in French Flanders (the north of France), enters the Belgian province of West Flanders and flows into the North Sea at the town of Nieuwpoort. (<http://en.wikipedia.org/wiki/Yser>)
+Riparian habitats along the river Yser in Flanders, Belgium. The river enters Belgium in the province of West Flanders and drains into the sea near the town of Nieuwpoort.
 
 ### Bounding box
 
