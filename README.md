@@ -14,9 +14,8 @@ This repository is where we document data publication guidelines and track issue
 
 We use a Google Spreadsheet as a working document to compare standardization between our datasets:
 
-* [Metadata completeness](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1528139681)
-* [Occurrence Darwin Core mapping](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1895280180)
-* [Checklist Darwin Core mapping](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=19)
+* [Occurrence datasets](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1895280180)
+* [Checklist datasets](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=19)
 
 ## Draft guidelines
 
