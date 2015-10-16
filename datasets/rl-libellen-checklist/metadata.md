@@ -8,11 +8,11 @@ Geert De Knijf[^1]
 
 ---
 
-**Resource citation**: 
+**Resource citation**: De Knijf G, Brosens D, Desmet P (2014): Red list of dragonflies in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Checklist. <http://doi.org/10.15468/wgegyc>
 
 ## Abstract
 
-Red list of dragonflies in Flanders, Belgium is a regional checklist dataset published by the Research Institute for Nature and Forest (INBO). It is the official red list of dragonflies (Odonata) in Flanders, Belgium as published in De Knijf G. 2006. The dataset includes 66 species, with their Dutch vernacular name and IUCN status in Flanders. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/rl-libellen-checklist>
+*Red list of dragonflies in Flanders, Belgium* is a regional checklist dataset published by the Research Institute for Nature and Forest (INBO). It is the official red list of dragonflies (Odonata) in Flanders, as published in De Knijf 2006. The dataset includes 66 species, with their Dutch vernacular name and IUCN status in Flanders. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/rl-libellen-checklist>
 
 ## Keywords
 
