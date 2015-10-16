@@ -20,7 +20,7 @@ Odonata, red list, Flanders, Checklist, Inventoryregional
     
 ## Data published through
 
-<http://dataset.inbo.be/rl-libellen-checklist>
+<http://doi.org/10.15468/wgegyc>
 
 ## Taxonomic coverage
 
@@ -29,6 +29,8 @@ All dragonfly species occurring in Flanders, Belgium.
 ### Taxonomic ranks
 
 **Kingdom**: *Animalia (animals)*
+
+**Phylum**: *Arthropoda*
 
 **Class**: *Insecta (insects)*
 
@@ -57,23 +59,17 @@ Flanders, Belgium.
 * **Distribution**: <http://dataset.inbo.be/rl-libellen-checklist>
 * **Publication date of data**: 2014-05-06
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/> & <http://www.canadensys.net/norms>
+* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
 * **Metadata language**: English
 * **Date of metadata creation**: 2014-05-06
 * **Hierarchy level**: Dataset
 
-## Project data
+### Usage norms
 
-### Personnel
-
-* **Principal investigators**: Geert De Knijf
-* **Resource contact, resource creator, point of contact, metadata provider**: Geert De Knijf
-* **Processors**: Dimitri Brosens, Peter Desmet
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/wgegyc>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
 
 ## References
 
 De Knijf G. 2006. De Rode Lijst van de libellen in Vlaanderen. In: De Knijf G., Anselin A., Goffart P. & Tailly M. (eds.) De libellen van België: verspreiding - evolutie - habitats. Libellenwerkgroep Gomphus i.s.m. Instituut voor Natuur- en Bosonderzoek, Brussel. pp. 241-257. ISBN: 90-403-0249-9
-
----
 
 De Knijf G. 2006. The Red List of the dragonflies of Flanders. In: De Knijf G., Anselin A., Goffart P. & Tailly M. (eds.) The Dragonflies of Belgium: distribution - evolution - habitats. Publisher: Dragonfly Society of Belgium Gomphus & Research Institute for Nature and Forest, pp.241-257. ISBN: 90-403-0249-9
