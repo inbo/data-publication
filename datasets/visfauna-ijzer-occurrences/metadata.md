@@ -96,15 +96,7 @@ Raamovereenkomst ecologische advisering en onderzoek tussen W&Z en het INBO
 
 ### Funding
 
-W&Z
-
-### Study area descriptions/descriptor
-
-The river Yser.
-
-### Design description
-
-For many years, navigable lowland rivers have been embanked artificially or suffered from substantial shipping wave action, leading to habitat degradation. Recently, riparian habitats were restored by creating foreshores and spawning grounds in the river Yser, a lowland river in Flanders, Belgium. The aim of the research was to evaluate the role of these restored habitats for spawning and nursery of juvenile fish. To cover a wide range of anthropogenic disruption, four riparian mesohabitat types were selected and compared, ranging from semi ‐ natural over artificial spawning grounds and foreshores to artificial embankments. Juvenile fish were subjected to sampling by using electrofishing between June and September 2009 at different microhabitats located in five sites of each riparian mesohabitat type. Juvenile fish strongly preferred natural riparian habitats, whereas artificial embankments showed the lowest species richness, abundance and functional organization of juvenile fish species. Restored riparian habitats appeared to be an appropriate alternative for artificial embankments in navigable lowland rivers but still score significantly less than natural habitats. Juvenile fish avoided bare microhabitats but did not prefer any other microhabitat type (reed, woody or grassy vegetation), emphasizing the importance of microhabitat diversity. This paper provides valuable insights into riparian habitat restoration to river managers and stakeholders.
+Waterwegen en Zeekanaal NV
 
 ## References
 
