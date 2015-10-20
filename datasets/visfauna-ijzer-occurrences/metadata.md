@@ -72,22 +72,6 @@ To allow anyone to use this dataset, we have released the data to the public dom
 
 ## Methodology
 
-### Study extent description
-
-
-
-### Sampling description
-
-
-
-### Quality control description
-
-
-
-### Method step description
-
-
-
 ## Project data
 
 ### Project title
