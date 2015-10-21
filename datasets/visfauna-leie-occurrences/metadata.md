@@ -12,7 +12,7 @@ Ans Mouton[^1], Dimitri Brosens[^1], Peter Desmet[^1]
 
 ## Abstract
 
-The dataset contains occurrences of juvenile and adult fish in the river Leie in riparian habitats and was created to investigate the feasibility of a comprehensive study on the impact of the present NTMB-banks on fish populations in the Leie. The data was collected with regard to timing, sampling techniques and constraints. Specifically, the different bank types sampled within the study area, the Leie between Deinze and the dam of Saint Bavo-Vijve (Zulte). Several examples of each type of shoreline were sampled with two sampling techniques: fyke fishing and electrical fishing.
+*Visfauna - Juvenile and adult fishes in riparian habitats along the river Leie in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 470 fish occurrences sampled in 2009 in riparian habitats along the river Leie. The dataset includes 8 fish species. The data are collected to investigate the feasibility of a comprehensive study on the impact of the present ecological engineered river banks ("NTMB-oevers") on fish populations in the Leie. The dataset also includes the length and weight of the caught fishes. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/visfauna-leie-occurrences>
 
 ## Keywords
 
