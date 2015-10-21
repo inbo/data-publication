@@ -72,6 +72,22 @@ To allow anyone to use this dataset, we have released the data to the public dom
 
 ## Methodology
 
+### Study extent description
+
+Five microhabitat sites for each of the four riparian mesohabitat types along the river Yser in Flanders, Belgium.
+
+### Sampling description
+
+The juvenile fish were sampled using electrofishing, between June and September 2009. The number of individuals was recorded, as well as fork length (tip of snout to fork of tail in millimeter).
+
+### Quality control description
+
+All records are validated.
+
+### Method step description
+
+Electrofishing was used to sample the riparian habitats.
+
 ## Project data
 
 ### Project title
