@@ -98,4 +98,4 @@ Waterwegen en Zeekanaal NV
 
 ## References
 
-> Mouton A, Buysse D, Stevens M, Van den Neucker T, Coeck J (2011) Evaluation of riparian habitat restoration in a lowland river. River Research and Applicatioins 28(7): 845-857. doi: [10.1002/rra.1500](http://doi.org/10.1002/rra.1500)
+Mouton A, Martens S, Gelaude E, Buysse D, Stevens M, Van den Neucker T, Baeyens R, Jacobs Y, Coeck J (2010) Studie ter voorbereiding van een evaluatie-onderzoek van NTMB-projecten langs de Leie uitgevoerd door W&Z - luik visfauna. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2010(11). Instituut voor Natuur- en Bosonderzoek (INBO): Brussel. 33 pp.
