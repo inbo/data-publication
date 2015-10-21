@@ -16,7 +16,7 @@ Tom Van Den Neucker[^1], Dimitri Brosens[^1], Peter Desmet[^1]
 
 ## Keywords
 
-reintroduction, species recovery, fish, freshwater, Occurrence, Observation
+fish reintroduction, species recovery, freshwater, Occurrence, Observation
 
 ## Data published through
 
