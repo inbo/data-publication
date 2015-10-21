@@ -24,8 +24,6 @@ juvenile fish, riparian habitat, river bank, spawning ground, foreshore, water m
 
 ## Rationale
 
-> For many years, navigable lowland rivers have been embanked artificially or suffered from substantial shipping wave action, leading to habitat degradation. Recently, riparian habitats were restored by creating foreshores and spawning grounds in the river Yser, a lowland river in Flanders, Belgium. The aim of the research was to evaluate the role of these restored habitats for spawning and nursery of juvenile fish. To cover a wide range of anthropogenic disruption, four riparian mesohabitat types were selected and compared, ranging from semi‐natural, over artificial spawning grounds and foreshores, to artificial embankments. Juvenile fish were subjected to sampling by using electrofishing between June and September 2009 at different microhabitats located in five sites of each riparian mesohabitat type. The study (Mouton et al. 2011) found that juvenile fish strongly preferred natural riparian habitats, whereas artificial embankments showed the lowest species richness, abundance and functional organization of juvenile fish species. Restored riparian habitats appeared to be an appropriate alternative for artificial embankments in navigable lowland rivers, but still score significantly less than natural habitats. Juvenile fish avoided bare microhabitats, but did not prefer any other microhabitat type (reed, woody or grassy vegetation), emphasizing the importance of microhabitat diversity.
-
 ## Taxonomic coverage
 
 All eight species in this dataset are fishes (Actinopterygii). 83% of the recorded species are *Rutilus rutilus*.
@@ -71,6 +69,22 @@ Riparian habitats along the river Leie in Flanders, Belgium. This 202 km river o
 To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate it however if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/2wrvbz>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
 
 ## Methodology
+
+### Study extent description
+
+Nine sites of riparian habitats along the river Leie in Flanders, Belgium, between the dam of Sint-Baafs-Vijve (Zulte) and Deinze, covering different bank types.
+
+### Sampling description
+
+The fishes were sampled using fykes and electrofishing, on August 18 and 19, 2009. The number of individuals was recorded, as well as fork length (tip of snout to fork of tail in millimeter) and weight (gram).
+
+### Quality control description
+
+All records are validated.
+
+### Method step description
+
+Fykes and electrofishing were used to sample the riparian habitats.
 
 ## Project data
 
