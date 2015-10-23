@@ -8,7 +8,7 @@ Johan Coeck[^1], Dimitri Brosens[^1], Peter Desmet [^1]
 
 ---
 
-**Resource citation**: 
+**Resource citation**: Coeck J, Brosens D, Desmet P (2013): Depletion fishing in the rivers Grote Nete and Kleine Nete in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/zan6uj>
 
 ## Abstract
 
@@ -16,11 +16,11 @@ The dataset contains the total catch number and total weight of the catch of fis
 
 ## Keywords
 
-Electric fishing, Red list, distribution mapping, Occurrence, Observation
+depletion fishing, fish distribution, red list, Occurrence, Observation
 
 ## Data published through
 
-<http://data.inbo.be/ipt/resource?r=depletion-fishing-nete-occurrences>
+<http://doi.org/10.15468/zan6uj>
 
 ## Rationale
 
@@ -68,7 +68,7 @@ The rivers Grote Nete and Kleine Nete in Flanders, Belgium. The Grote Nete (Big 
 
 ### Usage norms
 
-
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/zan6uj>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
 
 ## Methodology
 
@@ -87,9 +87,5 @@ Checked
 ### Method step description
 
 The recorder wades through the river holding one of the two electrodes. The recorder follows a traject against the current. All catched fish was measured and weighted.
-
-## Project data
-
-
 
 ## References
