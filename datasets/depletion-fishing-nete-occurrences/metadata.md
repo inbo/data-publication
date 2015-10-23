@@ -1,4 +1,4 @@
-# Depletion Fishing in the river "Grote Nete" and "Kleine Nete" (1989-1996)
+# Depletion fishing in the rivers Grote Nete and Kleine Nete in Flanders, Belgium
 
 Johan Coeck[^1], Dimitri Brosens[^1]
 
@@ -50,7 +50,7 @@ May 23, 1989 - November 27, 1996
 
 ### Dataset description
 
-* **Object name**: Darwin Core Archive Depletion Fishing in the river "Grote Nete" and "Kleine Nete" (1989-1996)
+* **Object name**: Depletion fishing in the rivers Grote Nete and Kleine Nete in Flanders, Belgium
 * **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
