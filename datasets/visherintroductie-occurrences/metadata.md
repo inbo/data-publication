@@ -36,7 +36,7 @@ All species in this dataset are fishes (Actinopterygii, Cephalaspidomorphi), wit
 
 **Class**: *Actinopterygii (ray-finned fishes), Petromyzontida*
 
-**Species**: *Squalius cephalus (European chub), Ameiurus nebulosus (brown bullhead), Anguilla anguilla (European eel), Cobitis taenia (spined loach), Esox lucius (northern pike), Gasterosteus aculeatus (three-spined stickleback), Gobio gobio (gudeon), Lampetra planeri (European brook lamprey), Lepomis gibbosus (pumpkinseed), Leuciscus cephalus (European chub), Leuciscus idus (ide), Leuciscus leuciscus (common dace), Lota lota (burbot), Oncorhynchus mykiss (rainbow trout), Perca fluviatilis (European perch), Pseudorasbora parva (stone moroko), Pungitius pungitius (ninespine stickleback), Rutilus rutilus (common roach), Salmo trutta (brown trout,), Stizostedion lucioperca (zander), Umbra pygmaea (eastern mudminnow)*
+**Species**: *Ameiurus nebulosus (brown bullhead), Anguilla anguilla (European eel), Cobitis taenia (spined loach), Esox lucius (northern pike), Gasterosteus aculeatus (three-spined stickleback), Gobio gobio (gudeon), Lampetra planeri (European brook lamprey), Lepomis gibbosus (pumpkinseed), Leuciscus cephalus (European chub), Leuciscus idus (ide), Leuciscus leuciscus (common dace), Lota lota (burbot), Oncorhynchus mykiss (rainbow trout), Perca fluviatilis (European perch), Pseudorasbora parva (stone moroko), Pungitius pungitius (ninespine stickleback), Rutilus rutilus (common roach), Salmo trutta (brown trout,), Squalius cephalus (European chub), Stizostedion lucioperca (zander), Umbra pygmaea (eastern mudminnow)*
 
 ## Geographic coverage
 
