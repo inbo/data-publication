@@ -1,6 +1,6 @@
 # Visdoorgangen - Fish passage places in Flanders, Belgium
 
-*Visdoorgangen - Fish passage places in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/visdoorgangen-occurrences.
+*Visdoorgangen - Fish passage places in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/visdoorgangen-occurrences>.
 
 ## Data publication process
 

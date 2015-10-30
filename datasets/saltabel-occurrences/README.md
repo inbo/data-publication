@@ -1,6 +1,6 @@
 # Saltabel - Orthoptera in Belgium
 
-*Saltabel - Orthoptera in Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/saltabel-occurrences.
+*Saltabel - Orthoptera in Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/saltabel-occurrences>.
 
 ## Data publication process
 

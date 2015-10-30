@@ -1,6 +1,6 @@
 # Belgian Coccinellidae - Ladybird beetles in Belgium
 
-*Belgian Coccinellidae - Ladybird beetles in Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/belgian-coccinellidae-occurrences.
+*Belgian Coccinellidae - Ladybird beetles in Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/belgian-coccinellidae-occurrences>.
 
 ## Data publication process
 

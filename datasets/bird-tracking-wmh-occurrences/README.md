@@ -1,8 +1,8 @@
 # Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border
 
-*Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/bird-tracking-wmh-occurrences.
+*Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/bird-tracking-wmh-occurrences>.
 
-**This dataset is not yet published.**
+**This dataset has not yet been published.**
 
 ## Data publication process
 

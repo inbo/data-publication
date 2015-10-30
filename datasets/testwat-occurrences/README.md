@@ -1,6 +1,6 @@
 # TestWat - Macroinvertebrates and macrophytes of freshwater bodies in Flanders, Belgium
 
-*TestWat - Macroinvertebrates and macrophytes of freshwater bodies in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/testwat-occurrences.
+*TestWat - Macroinvertebrates and macrophytes of freshwater bodies in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/testwat-occurrences>.
 
 ## Data publication process
 
