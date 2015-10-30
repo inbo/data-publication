@@ -6,6 +6,7 @@
 
 ## Data publication process
 
+* [Metadata](https://docs.google.com/a/inbo.be/document/d/1BkEDwmk3yiF0MWCxSnQva4oNAoYy9-E75VwPuuHzFRU/edit?usp=sharing) (working document)
 * [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/invasive-bullfrog-occurrences)
 * [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
 
