@@ -1,6 +1,6 @@
 # Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium
 
-*Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/invasive-crab-occurrences.
+*Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/invasive-crab-occurrences>.
 
 ## Data publication process
 
