@@ -18,7 +18,7 @@ Eric Stienen [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 ## Abstract
 
-*Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 1.1 million occurrences, recorded in 2013 and 2014 by 60 GPS trackers mounted on 44 Lesser Black-backed Gulls and 16 Herring Gulls breeding at the Belgian coast (see <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
+*Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains close to 2.5 million occurrences, recorded by 101 GPS trackers mounted on 75 Lesser Black-backed Gulls and 26 Herring Gulls breeding at the Belgian coast (see <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is operational since 2013. It is funded for LifeWatch by the Hercules Foundation and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ). The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
 
 ## Keywords
 
@@ -30,11 +30,11 @@ animal movement, bird tracking, GPS tracking, habitat use, migration, Lesser Bla
 
 ## Rationale
 
-As part of our terrestrial observatory for LifeWatch (<http://lifewatch.inbo.be>), the Research Institute for Nature and Forest (INBO) is tracking large birds with lightweight, solar powered GPS trackers. The project builds upon the extensive knowledge the INBO has acquired over the last 12 years in studying postnuptial migration, and mate and site fidelity of large gulls, using sightings of colour-marked individuals ringed in Belgium. The data this bird tracking network collects allow us to study the migration patterns and habitat use of the gulls in more detail, and are no longer biased towards locations where observers can see the birds. To allow greater use of the data beyond our research questions, all data are published as open data.
+As part of our terrestrial observatory for LifeWatch (<http://lifewatch.inbo.be>), the Research Institute for Nature and Forest (INBO) is tracking large birds with lightweight, solar powered GPS trackers. The project builds upon the extensive knowledge the INBO has acquired over the last decade in studying postnuptial migration, and mate and site fidelity of large gulls, using sightings of colour-marked individuals ringed in Belgium. The data this bird tracking network collects allow us to study the migration patterns and habitat use of the gulls in more detail, and are no longer biased towards locations where observers can see the birds. To allow greater use of the data beyond our research questions, all data are published as open data.
 
 ## Taxonomic coverage
 
-The dataset contains tracking data from 44 Lesser Black-Backed Gulls (*Larus fuscus*) and 16 Herring Gulls (*Larus argentatus*) breeding at the Belgian coast.
+The dataset contains tracking data from 75 Lesser Black-Backed Gulls (*Larus fuscus*) and 26 Herring Gulls (*Larus argentatus*) breeding at the Belgian coast.
 
 ### Taxonomic ranks
 
@@ -62,10 +62,12 @@ The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and 
 
 ## Temporal coverage
 
-* **Date range**: 2013-05-17 to 2014-08-13
+* **Date range**: 2013-05-17 to 2015-09-02
 * **Formation period**: breeding season 2013
 * **Formation period**: migration/wintering season 2013-2014
 * **Formation period**: breeding season 2014
+* **Formation period**: migration/wintering season 2014-2015
+* **Formation period**: breeding season 2015
 
 ## Datasets
 
@@ -119,7 +121,15 @@ The colony of Zeebrugge is situated in the western part of the port (51.341 lati
 
 In the colony of Ostend (51.233 latitude, 2.931 longitude), breeding started in 1993. Here the number of LBBG stabilised at about 300-400 pairs since 2010, while the number of HG is still increasing with a maximum of 587 pairs on 2014. In Ostend most gulls breed on roof tops both in industrial areas as in the town itself.
 
-Most birds were trapped on their nest using a walk-in cage. In 2013 and 2014 respectively 22 and 24 ground-nesting LBBG were caught in the port of Zeebrugge and respectively 5 and 8 HG on the roof of the Vismijn in Ostend. Additionally, in 2014 one ground nesting HG was caught in the port of Zeebrugge and 3 HG were caught with a small canon net when feeding on the Visserskaai in Ostend. We took biometrics of all captured gulls (bill length, bill depth, tarsus length, wing length, and body mass) and a feather sample to determine the sex. The UvA-BiTS GPS trackers were attached to the back of the gull using a harness of Teflon tape.
+The colony of Vlissingen-Oost ("Sloegebied" 51.450 latitude, 3.689 longitude) is located in the industrial port area of Vlissingen. Here the gulls nest on the grassy grounds that are not yet in use for port activities.
+
+Most birds were trapped on their nest using a walk-in cage. We took biometrics of all captured gulls (bill length, bill depth, tarsus length, wing length, and body mass) and a feather sample to determine the sex. The UvA-BiTS GPS trackers were attached to the back of the gull using a harness of Teflon tape.
+
+The number of tagged birds and their trap location per year are:
+
+* 2013: 5 HG nesting on the roof of the Vismijn in Ostend and 22 LBBG nesting in the port of Zeebrugge.
+* 2014: 8 HB nesting on the roof of the Vismijn in Ostend, 1 HG and 24 LBBG nesting in the port of Zeebrugge, and 3 HG feeding on the Visserskaai in Ostend (using a small canon net).
+* 2015: 9 HG nesting on the roof of the Vismijn in Ostend, 13 LBBG nesting in the port of Zeebrugge, and 16 LBBG nesting in Vlissingen-Oost.
 
 ### Sampling description
 
