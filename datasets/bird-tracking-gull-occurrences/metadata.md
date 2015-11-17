@@ -128,7 +128,7 @@ Most birds were trapped on their nest using a walk-in cage. We took biometrics o
 The number of tagged birds and their trap location per year are:
 
 * 2013: 5 HG nesting on the roof of the Vismijn in Ostend and 22 LBBG nesting in the port of Zeebrugge.
-* 2014: 8 HB nesting on the roof of the Vismijn in Ostend, 1 HG and 24 LBBG nesting in the port of Zeebrugge, and 3 HG feeding on the Visserskaai in Ostend (using a small canon net).
+* 2014: 8 HB nesting on the roof of the Vismijn in Ostend, 1 HG and 24 LBBG nesting in the port of Zeebrugge, and 3 HG feeding on the Visserskaai in Ostend (using a small cannon net).
 * 2015: 9 HG nesting on the roof of the Vismijn in Ostend, 13 LBBG nesting in the port of Zeebrugge, and 16 LBBG nesting in Vlissingen-Oost.
 
 ### Sampling description
