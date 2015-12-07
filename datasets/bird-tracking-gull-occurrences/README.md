@@ -1,6 +1,6 @@
-# Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast
+# Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast
 
-*Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the Belgian coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/bird-tracking-gull-occurrences>.
+*Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/bird-tracking-gull-occurrences>.
 
 ## Data publication process
 
