@@ -187,4 +187,4 @@ Strucker RCW, Hoekstein MSJ, Wolf PA (2013) Kustbroedvogels in het Deltagebied i
 
 Strucker RCW., Arts FA, Hoekstein MSJ (2015) Kustbroedvogels in het Deltagebied in 2014. RWS Centrale Informatievoorziening BM 15.07 (in Dutch)
 
-Wetlands International (2015) "Waterbird Population Estimates". Retrieved from <http://wpe.wetlands.org> on 2015-12-01
+Wetlands International (2015) “Waterbird Population Estimates”. Retrieved from <http://wpe.wetlands.org> on 2015-12-01
