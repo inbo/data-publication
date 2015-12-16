@@ -70,6 +70,45 @@ The dataset contains tracking data from 3 Western Marsh Harriers (*Circus aerugi
 
 **Formation periods**: `breeding season 2013`
 
+## Methodology
+
+### Study extent description
+
+> The birds were trapped and tagged at or near their breeding colony at the Belgian coast.
+
+> The colony of Zeebrugge is situated in the western part of the port (51.341 latitude, 3.182 longitude) at sites that are not yet used for port activities and on roof tops. The first Herring Gulls (HG) nested here in 1987, followed by the first breeding record of Lesser Black-backed Gull (LBBG) in 1991. In the 1990s the number of breeding pairs strongly increased, with 2,336 pairs of HG and 4,760 pairs of LBBG in 2011. After 2011 the number of gulls strongly declined due to habitat loss and the presence of foxes.
+
+> In the colony of Ostend (51.233 latitude, 2.931 longitude), breeding started in 1993. Here the number of HG stabilised at about 300 pairs since 2000 and an equal numbers of LBBG since 2010. In Ostend most gulls breed on roof tops. Currently the roofs of the Vismijn and the wood processing company Lemahieu hold most pairs.
+
+> Most birds were trapped on their nest using a walk-in cage. In 2013 and 2014 respectively 22 and 24 ground-nesting LBBG were caught in the port of Zeebrugge and respectively 5 and 8 HG on the roof of the Vismijn in Ostend. Additionally, in 2014 one ground nesting HG was caught in the port of Zeebrugge and 3 HG were caught with a small canon net when feeding on the Visserskaai in Ostend. We took biometrics of all captured gulls (bill length, bill depth, tarsus length, wing length, and body mass) and a feather sample to determine the sex. The UvA-BiTS GPS trackers were attached to the back of the gull using a harness of Teflon tape.
+
+### Sampling description
+
+> The birds are tracked with the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>). The system is described in Bouten et al. 2013. The lightweight, solar powered GPS trackers periodically record the 3D position and air temperature, and can be configured to collect body movements with the built-in tri-axial accelerometer as well. The system allows us to remotely set or change a measurement interval per tracker: the actual interval between measurements is provided in `samplingEffort` as `secondsSinceLastOccurrence`.
+
+> The measured data are stored on the tracker, until these can be transmitted automatically and wireless to a base station using the built-in ZigBee tranceiver with whip antenna. This receiver is also used to receive new measurement settings. The spatial range for this communication is restricted to the location of the base station (or antenna network), which is placed near the colony. Data from birds that do not return to the colony cannot be retrieved.
+
+> Data received by the base stations are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS (<http://www.uva-bits.nl/virtual-lab>), accessible to the involved researchers only. We periodically export the tracking data to CartoDB for visualization purposes (see the External datasets section), removing test records and flagging outliers (see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>).
+
+> To create the Darwin Core Archive, we extract the data from CartoDB and standardize these to Darwin Core using an SQL query (<https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql>). The dataset is documented, published via our IPT (<http://dataset.inbo.be/bird-tracking-gull-occurrences>), and registered with the Global Biodiversity Information System (<http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e>). Issues or remarks regarding the data or this procedure can be reported at <https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/>
+
+> To extract data from one individual, one can use `individualID`, which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>.
+
+### Quality control description
+
+> See the section Sampling description for more details: our import procedure (<https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>) and standardization to Darwin Core (<https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql>) are publicly documented.
+
+### Method step description
+
+> 1. Researcher captures bird, takes biometrics, attaches GPS tracker, and releases bird.
+> 2. Researcher sets a measurement scheme, which can be updated anytime.
+> 3. GPS tracker records data.
+> 4. GPS tracker automatically receives new measurement settings and transmits recorded data when a connection can be established with the base station at the colony.
+> 5. Recorded data are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS.
+> 6. LifeWatch INBO team periodically exports tracking data to CartoDB and makes these publicly accessible.
+> 7. LifeWatch INBO team periodically (re)publishes data as a Darwin Core Archive, registered with GBIF.
+> 8. Data stream stops when bird no longer returns to colony or if GPS tracker no longer functions (typical tracker lifespan: 2-3 years).
+
 ## Datasets
 
 ### Dataset description
@@ -110,45 +149,6 @@ All our public bird tracking data are also available through CartoDB (<http://in
 ### Additional information
 
 > The following information is not included in this dataset and available upon request: outliers, temperature, speed, accelerometer data, GPS metadata (fix time, number of satellites used, vertical accuracy), bird biometrics data measured during tagging (bill length, bill depth, tarsus length, wing length, body mass), life history data (day of ringing, age, resightings by volunteers), as well as growth data of chicks.
-
-## Methodology
-
-### Study extent description
-
-> The birds were trapped and tagged at or near their breeding colony at the Belgian coast.
-
-> The colony of Zeebrugge is situated in the western part of the port (51.341 latitude, 3.182 longitude) at sites that are not yet used for port activities and on roof tops. The first Herring Gulls (HG) nested here in 1987, followed by the first breeding record of Lesser Black-backed Gull (LBBG) in 1991. In the 1990s the number of breeding pairs strongly increased, with 2,336 pairs of HG and 4,760 pairs of LBBG in 2011. After 2011 the number of gulls strongly declined due to habitat loss and the presence of foxes.
-
-> In the colony of Ostend (51.233 latitude, 2.931 longitude), breeding started in 1993. Here the number of HG stabilised at about 300 pairs since 2000 and an equal numbers of LBBG since 2010. In Ostend most gulls breed on roof tops. Currently the roofs of the Vismijn and the wood processing company Lemahieu hold most pairs.
-
-> Most birds were trapped on their nest using a walk-in cage. In 2013 and 2014 respectively 22 and 24 ground-nesting LBBG were caught in the port of Zeebrugge and respectively 5 and 8 HG on the roof of the Vismijn in Ostend. Additionally, in 2014 one ground nesting HG was caught in the port of Zeebrugge and 3 HG were caught with a small canon net when feeding on the Visserskaai in Ostend. We took biometrics of all captured gulls (bill length, bill depth, tarsus length, wing length, and body mass) and a feather sample to determine the sex. The UvA-BiTS GPS trackers were attached to the back of the gull using a harness of Teflon tape.
-
-### Sampling description
-
-> The birds are tracked with the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>). The system is described in Bouten et al. 2013. The lightweight, solar powered GPS trackers periodically record the 3D position and air temperature, and can be configured to collect body movements with the built-in tri-axial accelerometer as well. The system allows us to remotely set or change a measurement interval per tracker: the actual interval between measurements is provided in `samplingEffort` as `secondsSinceLastOccurrence`.
-
-> The measured data are stored on the tracker, until these can be transmitted automatically and wireless to a base station using the built-in ZigBee tranceiver with whip antenna. This receiver is also used to receive new measurement settings. The spatial range for this communication is restricted to the location of the base station (or antenna network), which is placed near the colony. Data from birds that do not return to the colony cannot be retrieved.
-
-> Data received by the base stations are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS (<http://www.uva-bits.nl/virtual-lab>), accessible to the involved researchers only. We periodically export the tracking data to CartoDB for visualization purposes (see the External datasets section), removing test records and flagging outliers (see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>).
-
-> To create the Darwin Core Archive, we extract the data from CartoDB and standardize these to Darwin Core using an SQL query (<https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql>). The dataset is documented, published via our IPT (<http://dataset.inbo.be/bird-tracking-gull-occurrences>), and registered with the Global Biodiversity Information System (<http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e>). Issues or remarks regarding the data or this procedure can be reported at <https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/>
-
-> To extract data from one individual, one can use `individualID`, which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>.
-
-### Quality control description
-
-> See the section Sampling description for more details: our import procedure (<https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>) and standardization to Darwin Core (<https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql>) are publicly documented.
-
-### Method step description
-
-> 1. Researcher captures bird, takes biometrics, attaches GPS tracker, and releases bird.
-> 2. Researcher sets a measurement scheme, which can be updated anytime.
-> 3. GPS tracker records data.
-> 4. GPS tracker automatically receives new measurement settings and transmits recorded data when a connection can be established with the base station at the colony.
-> 5. Recorded data are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS.
-> 6. LifeWatch INBO team periodically exports tracking data to CartoDB and makes these publicly accessible.
-> 7. LifeWatch INBO team periodically (re)publishes data as a Darwin Core Archive, registered with GBIF.
-> 8. Data stream stops when bird no longer returns to colony or if GPS tracker no longer functions (typical tracker lifespan: 2-3 years).
 
 ## Project data
 

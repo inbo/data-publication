@@ -54,6 +54,24 @@ Grensmaas: the river Meuse on the border between Belgium and the Netherlands.
 
 1998-05-28 - 1999-10-04
 
+## Methodology
+
+### Study extent description
+
+28 locations on the left bank (Belgium) of the river Meuse on the border between Belgium and the Netherlands.
+
+### Sampling description
+
+The beetles were sampled at 80 plots, with 3 pitfall traps per plot. Sampling occurrened in 1998 and 1999, from May to October.
+
+### Quality control description
+
+All sampled carabid species were determined by experts. All records are validated.
+
+### Method step description
+
+Pitfalls were placed on 80 plots and sampled from May to October.
+
 ## Dataset
 
 ### Dataset description
@@ -72,24 +90,6 @@ Grensmaas: the river Meuse on the border between Belgium and the Netherlands.
 ### Usage norms
 
 To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/hy3pzl>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
-
-## Methodology
-
-### Study extent description
-
-28 locations on the left bank (Belgium) of the river Meuse on the border between Belgium and the Netherlands.
-
-### Sampling description
-
-The beetles were sampled at 80 plots, with 3 pitfall traps per plot. Sampling occurrened in 1998 and 1999, from May to October.
-
-### Quality control description
-
-All sampled carabid species were determined by experts. All records are validated.
-
-### Method step description
-
-Pitfalls were placed on 80 plots and sampled from May to October.
 
 ## Project data
 

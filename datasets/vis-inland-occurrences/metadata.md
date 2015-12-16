@@ -56,29 +56,6 @@ The dataset comprises enclosed waters, including cut off river arms, gravel pits
 
 1992-12-15 - 2012-11-27
 
-## Dataset
-
-### Dataset description
-
-* **Object name**: VIS - Fishes in inland waters in Flanders, Belgium
-* **Format name**: Darwin Core Archive format
-* **Format version**: 1.0
-* **Character encoding**: UTF-8
-* **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
-* **Publication date**: 2013-12-20
-* **Distribution**: <http://dataset.inbo.be/vis-inland-occurrences>
-* **DOI**: <http://doi.org/10.15468/gzyxyd>
-
-### Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/gzyxyd>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
-
-### Additional information
-
-Length and weight measurement data of the individual fishes, absence information, occurrence data since 2013, as well as abiotic data of the sampling points (pH, temperature, etc.) are not included in the Darwin Core Archive and are available upon request.
-
 ## Methodology
 
 ### Study extent description
@@ -124,6 +101,29 @@ Water type: Lakes
 Method: electric fishing AND fykes
 Effort: 15% of riverbank (minimum 1000 m, maximum 2000 m) or 100% if perimeter is less than 1000 m AND 1 fyke/hectare (minimum 4, maximum 20 fykes)
 ```
+
+## Dataset
+
+### Dataset description
+
+* **Object name**: VIS - Fishes in inland waters in Flanders, Belgium
+* **Format name**: Darwin Core Archive format
+* **Format version**: 1.0
+* **Character encoding**: UTF-8
+* **Language**: English
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2013-12-20
+* **Distribution**: <http://dataset.inbo.be/vis-inland-occurrences>
+* **DOI**: <http://doi.org/10.15468/gzyxyd>
+
+### Usage norms
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/gzyxyd>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+
+### Additional information
+
+Length and weight measurement data of the individual fishes, absence information, occurrence data since 2013, as well as abiotic data of the sampling points (pH, temperature, etc.) are not included in the Darwin Core Archive and are available upon request.
 
 ## Project data
 

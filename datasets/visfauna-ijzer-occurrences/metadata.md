@@ -50,6 +50,24 @@ Riparian habitats along the river Yser in Flanders, Belgium. The river enters Be
 
 2008-06-01 - 2008-10-16
 
+## Methodology
+
+### Study extent description
+
+Five microhabitat sites for each of the four riparian mesohabitat types along the river Yser in Flanders, Belgium.
+
+### Sampling description
+
+The juvenile fish were sampled using electrofishing, between June and September 2009. The number of individuals was recorded, as well as fork length (tip of snout to fork of tail in millimeter).
+
+### Quality control description
+
+All records are validated.
+
+### Method step description
+
+Electrofishing was used to sample the riparian habitats.
+
 ## Dataset
 
 ### Dataset description
@@ -68,24 +86,6 @@ Riparian habitats along the river Yser in Flanders, Belgium. The river enters Be
 ### Usage norms
 
 To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate it however if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/keplkx>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
-
-## Methodology
-
-### Study extent description
-
-Five microhabitat sites for each of the four riparian mesohabitat types along the river Yser in Flanders, Belgium.
-
-### Sampling description
-
-The juvenile fish were sampled using electrofishing, between June and September 2009. The number of individuals was recorded, as well as fork length (tip of snout to fork of tail in millimeter).
-
-### Quality control description
-
-All records are validated.
-
-### Method step description
-
-Electrofishing was used to sample the riparian habitats.
 
 ## Project data
 

@@ -63,6 +63,26 @@ The Belgian Coccinellidae dataset deals with Ladybirds occurrences in Belgian. T
 
 1800 - 2011
 
+## Methodology
+
+### Study extent description
+
+In 1999, the Belgian Ladybird Working Group Coccinula launched a large scale field survey on 40 native ladybird species (Coccinellinae, Chilocorinae and Epilachninae) and to date has more than 500 volunteers providing distribution data. They actively search for ladybird beetles in a variety of habitats using sweep nets, beating trays, visual search, light trapping, pitfall traps and other sampling methods. Distribution, habitat and substrate plant information is also noted on a standard recording form. The working group maintains a database of observations, literature and collection data of Coccinellidae from 1800 onwards. Preliminary atlases have been published for the whole Belgian territory (Branquart et al., 1999; Adriaens and Maes, 2004) and updated distribution maps are available online, on demand and through the working group's newsletter.
+
+### Sampling description
+
+Collection events minimally consist of species, number of individuals, stage (adults, larvae and pupae), observation date, observer and location. Locations are attributed to 1x1 km or 5x5 km grid cells of the UTM grid (Universal Transverse Mercator). At present, the database contains about 60.000 records, of which 15% come from museum collections and literature data. A large part of the Belgian territory has now been surveyed for ladybird beetles: the database contains records for 85% of all 5x5km UTM grid cells (N = 1376) in Belgium. Additionally, information on substratum plants, height in the vegetation, sampling method, habitat type, surrounding landscape, slope orientation, soil type, humidity, vegetation cover and behaviour was noted on the recording form.
+
+In certain cases Individualcount is an estimate of the actual number of specimen present.
+
+### Quality control description
+
+All records are validated.
+
+### Method step description
+
+More than 500 volunteers providing distribution data. They actively search for ladybird beetles in a variety of habitats using sweep nets, beating trays, visual search, light trapping, pitfall traps, and other sampling methods.
+
 ## Dataset
 
 ### Dataset description
@@ -88,26 +108,6 @@ To allow anyone to use this dataset, we have released the data to the public dom
 We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 For any further use of the dataset, first contact Tim Adriaens (Tim.adriaens@inbo.be)
-
-## Methodology
-
-### Study extent description
-
-In 1999, the Belgian Ladybird Working Group Coccinula launched a large scale field survey on 40 native ladybird species (Coccinellinae, Chilocorinae and Epilachninae) and to date has more than 500 volunteers providing distribution data. They actively search for ladybird beetles in a variety of habitats using sweep nets, beating trays, visual search, light trapping, pitfall traps and other sampling methods. Distribution, habitat and substrate plant information is also noted on a standard recording form. The working group maintains a database of observations, literature and collection data of Coccinellidae from 1800 onwards. Preliminary atlases have been published for the whole Belgian territory (Branquart et al., 1999; Adriaens and Maes, 2004) and updated distribution maps are available online, on demand and through the working group's newsletter.
-
-### Sampling description
-
-Collection events minimally consist of species, number of individuals, stage (adults, larvae and pupae), observation date, observer and location. Locations are attributed to 1x1 km or 5x5 km grid cells of the UTM grid (Universal Transverse Mercator). At present, the database contains about 60.000 records, of which 15% come from museum collections and literature data. A large part of the Belgian territory has now been surveyed for ladybird beetles: the database contains records for 85% of all 5x5km UTM grid cells (N = 1376) in Belgium. Additionally, information on substratum plants, height in the vegetation, sampling method, habitat type, surrounding landscape, slope orientation, soil type, humidity, vegetation cover and behaviour was noted on the recording form.
-
-In certain cases Individualcount is an estimate of the actual number of specimen present.
-
-### Quality control description
-
-All records are validated.
-
-### Method step description
-
-More than 500 volunteers providing distribution data. They actively search for ladybird beetles in a variety of habitats using sweep nets, beating trays, visual search, light trapping, pitfall traps, and other sampling methods.
 
 ## Associated parties
 

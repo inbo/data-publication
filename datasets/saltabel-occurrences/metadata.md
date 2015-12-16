@@ -86,32 +86,6 @@ The oldest occurrences in Saltabel originate from the year 1800, the first compl
 
 *Figure 3: Occurrences over species over time, since 1945*
 
-## Natural collections description
-
-* **Parent collection identifier**: RBINS Insect Collection
-* **Collection name**: RBINS Insect Collection
-* **Collection identifier**: `rbins:mm`
-* **Specimen preservation method**: Pinned
-
-## Dataset
-
-### Dataset description
-
-* **Object name**: Saltabel - Orthoptera in Belgium
-* **Format name**: Darwin Core Archive format
-* **Format version**: 1.0
-* **Character encoding**: UTF-8
-* **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
-* **Publication date**: 2013-09-13
-* **Distribution**: <http://dataset.inbo.be/saltabel-occurrences>
-* **DOI**: <http://doi.org/10.15468/1rcpsq>
-
-### Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/1rcpsq>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
-
 ## Methodology
 
 The data are largely gathered by volunteer naturalists, who also reviewed and digitized data from existing museum and university collections in Belgium. Input in a database, feedback to observers, validation and database maintenance were cared for by a professional employee at the Institute for Nature Conservation (IN), now INBO (The Institute for Forest and Nature research).
@@ -147,6 +121,32 @@ Observations pertaining to common species which were previously validated to occ
 ![Figure 7](images/figure_7.PNG)
 
 *Figure 7: Literature Observational data*
+
+## Natural collections description
+
+* **Parent collection identifier**: RBINS Insect Collection
+* **Collection name**: RBINS Insect Collection
+* **Collection identifier**: `rbins:mm`
+* **Specimen preservation method**: Pinned
+
+## Dataset
+
+### Dataset description
+
+* **Object name**: Saltabel - Orthoptera in Belgium
+* **Format name**: Darwin Core Archive format
+* **Format version**: 1.0
+* **Character encoding**: UTF-8
+* **Language**: English
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2013-09-13
+* **Distribution**: <http://dataset.inbo.be/saltabel-occurrences>
+* **DOI**: <http://doi.org/10.15468/1rcpsq>
+
+### Usage norms
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/1rcpsq>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
 
 ## Project data
 

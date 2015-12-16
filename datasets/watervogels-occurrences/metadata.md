@@ -58,31 +58,6 @@ The birds were counted at 1,189 predefined locations (`waterVogelTelgebieden`, f
 
 1991-10-13 to 2013-03-31
 
-## Dataset
-
-### Dataset description
-
-The Darwin Core terms (<http://rs.tdwg.org/dwc/terms/>) in the dataset are: `occurrenceID`, `type`, `language`, `license`, `rightsHolder`, `accessRights`, `datasetID`, `institutionCode`, `datasetName`, `ownerInstitutionCode`, `basisOfRecord`, `recordedBy`, `individualCount`, `eventID`, `samplingProtocol`, `samplingEffort`, `eventDate`, `eventRemarks`, `locationID`, `continent`, `countryCode`, `stateProvince`, `municipality`, `verbatimLocality`, `decimalLatitude`, `decimalLongitude`, `geodeticDatum`, `georeferencedBy`, `georeferencedDate`, `georeferenceProtocol`, `georeferenceSources`, `georeferenceVerificationStatus`, `georeferenceRemarks`, `identifiedBy`, `taxonID`, `scientificName`, `kingdom`, `phylum`, `class`, `taxonRank`, `scientificNameAuthorship`, `vernacularName`, and `nomenclaturalCode`.
-
-* **Object name**: Watervogels - Wintering waterbirds in Flanders, Belgium
-* **Format name**: Darwin Core Archive format
-* **Format version**: 1.0
-* **Character encoding**: UTF-8
-* **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
-* **Publication date**: 2014-11-27
-* **Distribution**: <http://dataset.inbo.be/watervogels-occurrences>
-* **DOI**: <http://doi.org/10.15468/lj0udq>
-
-## Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (<http://doi.org/10.15468/lj0udq>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
-
-### Additional information
-
-The following information is not included in this dataset and available upon request: roost site counts, counts from historical (inactive) locations.
-
 ## Methodology
 
 ### Study extent description
@@ -129,6 +104,31 @@ For publication, the data is further processed:
 4. Taxonomy information is added based on the scientific name and expressed in `kingdom`, `phylum`, `class`, `taxonRank`, `nomenclaturalCode`, and `scientificNameAuthorship`, as well as an Euring code code (`taxonID`) and Dutch vernacular name `vernacularName`.
 5. Identification information is added based on the event information: `identifiedBy` = the observer, `dateIdentified` = `eventDate` without time information.
 5. Dataset metadata information is added (`type`, `basisOfRecord`, `language`, `datasetID`, `datasetName`, `institutionCode`, `ownerInstitutionCode`) as well the rights holder (`rightsHolder`), the license (`rights`) and data use norms (`accessRights`).
+
+## Dataset
+
+### Dataset description
+
+The Darwin Core terms (<http://rs.tdwg.org/dwc/terms/>) in the dataset are: `occurrenceID`, `type`, `language`, `license`, `rightsHolder`, `accessRights`, `datasetID`, `institutionCode`, `datasetName`, `ownerInstitutionCode`, `basisOfRecord`, `recordedBy`, `individualCount`, `eventID`, `samplingProtocol`, `samplingEffort`, `eventDate`, `eventRemarks`, `locationID`, `continent`, `countryCode`, `stateProvince`, `municipality`, `verbatimLocality`, `decimalLatitude`, `decimalLongitude`, `geodeticDatum`, `georeferencedBy`, `georeferencedDate`, `georeferenceProtocol`, `georeferenceSources`, `georeferenceVerificationStatus`, `georeferenceRemarks`, `identifiedBy`, `taxonID`, `scientificName`, `kingdom`, `phylum`, `class`, `taxonRank`, `scientificNameAuthorship`, `vernacularName`, and `nomenclaturalCode`.
+
+* **Object name**: Watervogels - Wintering waterbirds in Flanders, Belgium
+* **Format name**: Darwin Core Archive format
+* **Format version**: 1.0
+* **Character encoding**: UTF-8
+* **Language**: English
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2014-11-27
+* **Distribution**: <http://dataset.inbo.be/watervogels-occurrences>
+* **DOI**: <http://doi.org/10.15468/lj0udq>
+
+## Usage norms
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (<http://doi.org/10.15468/lj0udq>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+
+### Additional information
+
+The following information is not included in this dataset and available upon request: roost site counts, counts from historical (inactive) locations.
 
 ## Project data
 

@@ -50,6 +50,24 @@ The rivers Grote Nete and Kleine Nete in Flanders, Belgium. The Grote Nete (Big 
 
 1989-05-23 - 1996-11-27
 
+## Methodology
+
+### Study extent description
+
+This dataset is a subset of an historical dataset used to make an atlas of fish in Flanders.
+
+### Sampling description
+
+Wading hand held DC electric fishing. Dipnets and electrodes were used.
+
+### Quality control description
+
+Checked
+
+### Method step description
+
+The recorder wades through the river holding one of the two electrodes. The recorder follows a traject against the current. All catched fish was measured and weighted.
+
 ## Dataset
 
 ### Dataset description
@@ -68,23 +86,5 @@ The rivers Grote Nete and Kleine Nete in Flanders, Belgium. The Grote Nete (Big 
 ### Usage norms
 
 To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/zan6uj>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
-
-## Methodology
-
-### Study extent description
-
-This dataset is a subset of an historical dataset used to make an atlas of fish in Flanders.
-
-### Sampling description
-
-Wading hand held DC electric fishing. Dipnets and electrodes were used.
-
-### Quality control description
-
-Checked
-
-### Method step description
-
-The recorder wades through the river holding one of the two electrodes. The recorder follows a traject against the current. All catched fish was measured and weighted.
 
 ## References

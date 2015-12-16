@@ -73,47 +73,6 @@ The tracked birds breed at the southern North Sea coast in three colonies, locat
 * **Formation period**: migration/wintering season 2014-2015
 * **Formation period**: breeding season 2015
 
-## Datasets
-
-### Dataset description
-
-* **Object name**: Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast
-* **Format name**: Darwin Core Archive format
-* **Format version**: 1.0
-* **Character encoding**: UTF-8
-* **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
-* **Publication date**: 2014-06-18
-* **Distribution**: <http://dataset.inbo.be/bird-tracking-gull-occurrences>
-* **DOI**: <http://doi.org/10.15468/02omly>
-
-### Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/02omly>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
-
-### External datasets
-
-All our public bird tracking data are also available through CartoDB (<https://inbo.cartodb.com/u/lifewatch>), where users can query the data using SQL via the CartoDB API or download these in various formats (`csv`, `shp`, `kml`, `svg`, and `geosjon`). Two tables are of use: `bird_tracking`, containing all occurrence data and `bird_tracking_devices`, containing information on the GPS trackers and individual birds. Note that these tables are not standardized to Darwin Core, contain flagged outliers (omitted from the standardized dataset) and include data from other bird species. For more info, see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/README.md>
-
-#### bird_tracking
-
-* **Object name**: bird_tracking
-* **Format name**: CartoDB table
-* **Character encoding**: UTF-8
-* **Distribution**: <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking/public>
-
-#### bird_tracking_devices
-
-* **Object name**: bird_tracking_devices
-* **Format name**: CartoDB table
-* **Character encoding**: UTF-8
-* **Distribution**: <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>
-
-### Additional information
-
-The following information is not included in this dataset and available upon request: outliers, temperature, speed, accelerometer data, GPS metadata (fix time, number of satellites used, vertical accuracy), bird biometrics data measured during tagging (bill length, bill depth, tarsus length, wing length, body mass), life history data (day of ringing, age, resightings by volunteers), as well as growth data of chicks.
-
 ## Methodology
 
 ### Study extent description
@@ -158,6 +117,47 @@ See the section Sampling description for more details: our import procedure (<ht
 6. LifeWatch INBO team periodically exports tracking data to CartoDB and makes these publicly accessible.
 7. LifeWatch INBO team periodically (re)publishes data as a Darwin Core Archive, registered with GBIF.
 8. Data stream stops when bird no longer returns to colony or if GPS tracker no longer functions (typical tracker lifespan: 2-3 years).
+
+## Datasets
+
+### Dataset description
+
+* **Object name**: Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast
+* **Format name**: Darwin Core Archive format
+* **Format version**: 1.0
+* **Character encoding**: UTF-8
+* **Language**: English
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2014-06-18
+* **Distribution**: <http://dataset.inbo.be/bird-tracking-gull-occurrences>
+* **DOI**: <http://doi.org/10.15468/02omly>
+
+### Usage norms
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/02omly>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+
+### External datasets
+
+All our public bird tracking data are also available through CartoDB (<https://inbo.cartodb.com/u/lifewatch>), where users can query the data using SQL via the CartoDB API or download these in various formats (`csv`, `shp`, `kml`, `svg`, and `geosjon`). Two tables are of use: `bird_tracking`, containing all occurrence data and `bird_tracking_devices`, containing information on the GPS trackers and individual birds. Note that these tables are not standardized to Darwin Core, contain flagged outliers (omitted from the standardized dataset) and include data from other bird species. For more info, see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/README.md>
+
+#### bird_tracking
+
+* **Object name**: bird_tracking
+* **Format name**: CartoDB table
+* **Character encoding**: UTF-8
+* **Distribution**: <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking/public>
+
+#### bird_tracking_devices
+
+* **Object name**: bird_tracking_devices
+* **Format name**: CartoDB table
+* **Character encoding**: UTF-8
+* **Distribution**: <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>
+
+### Additional information
+
+The following information is not included in this dataset and available upon request: outliers, temperature, speed, accelerometer data, GPS metadata (fix time, number of satellites used, vertical accuracy), bird biometrics data measured during tagging (bill length, bill depth, tarsus length, wing length, body mass), life history data (day of ringing, age, resightings by volunteers), as well as growth data of chicks.
 
 ## Project data
 
