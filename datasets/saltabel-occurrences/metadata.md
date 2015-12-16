@@ -98,16 +98,15 @@ The oldest occurrences in Saltabel originate from the year 1800, the first compl
 ### Dataset description
 
 * **Object name**: Saltabel - Orthoptera in Belgium
-* **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: <http://dataset.inbo.be/saltabel-occurrences>
-* **Publication date of data**: 2013-09-13
+* **Character encoding**: UTF-8
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Metadata language**: English
-* **Date of metadata creation**: 2013-09-13
-* **Hierarchy level**: Dataset
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2013-09-13
+* **Distribution**: <http://dataset.inbo.be/saltabel-occurrences>
+* **DOI**: <http://doi.org/10.15468/1rcpsq>
 
 ### Usage norms
 

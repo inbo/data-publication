@@ -53,16 +53,15 @@ Flanders, Belgium.
 ### Dataset description
 
 * **Object name**: Red list of dragonflies in Flanders, Belgium
-* **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: <http://dataset.inbo.be/rl-libellen-checklist>
-* **Publication date of data**: 2014-05-06
+* **Character encoding**: UTF-8
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Metadata language**: English
-* **Date of metadata creation**: 2014-05-06
-* **Hierarchy level**: Dataset
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2014-05-06
+* **Distribution**: <http://dataset.inbo.be/rl-libellen-checklist>
+* **DOI**: <http://doi.org/10.15468/wgegyc>
 
 ### Usage norms
 

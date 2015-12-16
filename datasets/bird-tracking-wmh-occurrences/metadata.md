@@ -75,16 +75,15 @@ The dataset contains tracking data from 3 Western Marsh Harriers (*Circus aerugi
 ### Dataset description
 
 * **Object name**: Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border
-* **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: <http://dataset.inbo.be/bird-tracking-wmh-occurrences>
-* **Publication date of data**: ...
+* **Character encoding**: UTF-8
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Metadata language**: English
-* **Date of metadata creation**: ...
-* **Hierarchy level**: Dataset
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: ...
+* **Distribution**: <http://dataset.inbo.be/bird-tracking-wmh-occurrences>
+* **DOI**: ...
 
 ### Usage norms
 

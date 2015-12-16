@@ -65,16 +65,15 @@ The birds were counted at 1,189 predefined locations (`waterVogelTelgebieden`, f
 The Darwin Core terms (<http://rs.tdwg.org/dwc/terms/>) in the dataset are: `occurrenceID`, `type`, `language`, `license`, `rightsHolder`, `accessRights`, `datasetID`, `institutionCode`, `datasetName`, `ownerInstitutionCode`, `basisOfRecord`, `recordedBy`, `individualCount`, `eventID`, `samplingProtocol`, `samplingEffort`, `eventDate`, `eventRemarks`, `locationID`, `continent`, `countryCode`, `stateProvince`, `municipality`, `verbatimLocality`, `decimalLatitude`, `decimalLongitude`, `geodeticDatum`, `georeferencedBy`, `georeferencedDate`, `georeferenceProtocol`, `georeferenceSources`, `georeferenceVerificationStatus`, `georeferenceRemarks`, `identifiedBy`, `taxonID`, `scientificName`, `kingdom`, `phylum`, `class`, `taxonRank`, `scientificNameAuthorship`, `vernacularName`, and `nomenclaturalCode`.
 
 * **Object name**: Watervogels - Wintering waterbirds in Flanders, Belgium
-* **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: <http://dataset.inbo.be/watervogels-occurrences>
-* **Publication date of data**: 2014-11-27
+* **Character encoding**: UTF-8
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Metadata language**: English
-* **Date of metadata creation**: 2014-11-27
-* **Hierarchy level**: Dataset
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2014-11-27
+* **Distribution**: <http://dataset.inbo.be/watervogels-occurrences>
+* **DOI**: <http://doi.org/10.15468/lj0udq>
 
 ## Usage norms
 

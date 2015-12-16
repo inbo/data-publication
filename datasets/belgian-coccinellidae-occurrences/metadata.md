@@ -68,16 +68,15 @@ The Belgian Coccinellidae dataset deals with Ladybirds occurrences in Belgian. T
 ### Dataset description
 
 * **Object name**: Belgian Coccinellidae - Ladybird beetles in Belgium
-* **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: <http://dataset.inbo.be/belgian-coccinellidae-occurrences>
-* **Publication date of data**: 
+* **Character encoding**: UTF-8
 * **Language**: English
-* **Licenses of use**: <https://creativecommons.org/publicdomain/zero/1.0/>
-* **Metadata language**: English
-* **Date of metadata creation**: 
-* **Hierarchy level**: Dataset
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2012-06-05
+* **Distribution**: <http://dataset.inbo.be/belgian-coccinellidae-occurrences>
+* **DOI**: <http://doi.org/10.15468/0refva>
 
 ### Usage norms
 

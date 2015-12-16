@@ -55,16 +55,15 @@ Watercourses in Flanders, Belgium.
 ### Dataset description
 
 * **Object name**: Visherintroductie - Reintroduction of the fishes chub, dace, burbot, and brown trout in Flanders, Belgium
-* **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: <http://dataset.inbo.be/visherintroductie-occurrences>
-* **Publication date of data**: 2012-09-27
+* **Character encoding**: UTF-8
 * **Language**: English
-* **Licenses of use**: <https://creativecommons.org/publicdomain/zero/1.0/>
-* **Metadata language**: English
-* **Date of metadata creation**: 2012-09-27
-* **Hierarchy level**: Dataset
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2012-09-27
+* **Distribution**: <http://dataset.inbo.be/visherintroductie-occurrences>
+* **DOI**: <http://doi.org/10.15468/dlglrp>
 
 ### Usage norms
 

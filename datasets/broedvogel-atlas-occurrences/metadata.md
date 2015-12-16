@@ -66,16 +66,15 @@ During the 1999 breeding season, an inventory of several atlas squares was produ
 ### Dataset description
 
 * **Object name**: Broedvogels - Atlas of the breeding birds in Flanders 2000-2002
-* **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: <http://dataset.inbo.be/broedvogel-atlas-occurrences>
-* **Publication date of data**: 2015-04-30
+* **Character encoding**: UTF-8
 * **Language**: English
-* **Licenses of use**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Metadata language**: English
-* **Date of metadata creation**: 2015-04-30
-* **Hierarchy level**: Dataset
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2015-04-30
+* **Distribution**: <http://dataset.inbo.be/broedvogel-atlas-occurrences>
+* **DOI**: <http://doi.org/10.15468/sccg5a>
 
 ### Usage norms
 

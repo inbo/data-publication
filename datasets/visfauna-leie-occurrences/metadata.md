@@ -53,16 +53,15 @@ Riparian habitats along the river Leie in Flanders, Belgium. This 202 km river o
 ### Dataset description
 
 * **Object name**: Visfauna - Juvenile and adult fishes in riparian habitats along the river Leie in Flanders, Belgium
-* **Character encoding**: UTF-8
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
-* **Distribution**: <http://dataset.inbo.be/visfauna-leie-occurrences>
-* **Publication date of data**: 2013-01-10
+* **Character encoding**: UTF-8
 * **Language**: English
-* **Licenses of use**: <https://creativecommons.org/publicdomain/zero/1.0/>
-* **Metadata language**: English
-* **Date of metadata creation**: 2013-01-10
-* **Hierarchy level**: Dataset
+* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
+* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **Publication date**: 2013-01-10
+* **Distribution**: <http://dataset.inbo.be/visfauna-leie-occurrences>
+* **DOI**: <http://doi.org/10.15468/2wrvbz>
 
 ### Usage norms
 
