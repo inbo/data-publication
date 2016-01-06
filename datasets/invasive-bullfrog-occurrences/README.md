@@ -1,6 +1,6 @@
-# Invasive species - American bullfrog (Lithobates catesbeiana) in Flanders, Belgium
+# Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium
 
-*Invasive species - American bullfrog (Lithobates catesbeiana) in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/invasive-bullfrog-occurrences>.
+*Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/invasive-bullfrog-occurrences>.
 
 ## Data publication process
 
@@ -10,10 +10,9 @@
 
 ## Notes
 
-* Verbatim coordinates information is provided in one field, so instead of splitting the information on comma and populating `verbatimLatitude` and `verbatimLongitude`, we publish in `verbatimCoordinates`.
 * In `establishmentMeans`, we use `alien` instead of `introduced` and `invasive alien` instead of `alien` as that is the terminology used in Belgium.
 * If known, we add the Belgium IAS code in `establishmentMeans`: `invasive alien A3`
 * In `recordedBy` and `identifiedBy`, we use the NBN code of the person: `BFN001790000004L`
 * For a number of invasive species, we mention the webpage of the species at the IAS website: `http://ias.biodiversity.be/species/show/88` in `taxonID`.
 * `lifeStage` contains a whole bunch of information, including number of individuals and lifestages based on length. As a result it is not a clean controlled vocabulary.
-* added `dynamicProperties` to add information on the original survey/source of the data/project. {"projectName":INVEXO - American bullfrog}
+* added `dynamicProperties` to add information on the original survey/source of the data/project. `{"projectName":"INVEXO - American bullfrog"}`
