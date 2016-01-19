@@ -74,11 +74,6 @@ See above.
 
 ### Dataset description
 
-The dataset contains data from 2010 to now and consists of 2 sources:
-
-* INVEXO - Amerikaanse brulkikker (2010, 2011, 2012)
-* Post-INVEXO - Stierkikker (2013)
-
 * **Object name**: Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
@@ -89,6 +84,11 @@ The dataset contains data from 2010 to now and consists of 2 sources:
 * **Publication date**: 2015-09-04
 * **Distribution**: http://dataset.inbo.be/invasive-bullfrog-occurrences
 * **DOI**: http://doi.org/10.15468/2hqkqn
+
+The dataset contains data from 2010 to now and consists of 2 sources:
+
+* INVEXO - Amerikaanse brulkikker (2010, 2011, 2012)
+* Post-INVEXO - Stierkikker (2013)
 
 ### Usage norms
 
