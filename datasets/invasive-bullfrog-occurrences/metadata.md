@@ -16,7 +16,7 @@ Sander Devisscher[^1], Tim Adriaens[^1], Gerald Louette[^1], Dimitri Brosens[^1]
 
 ## Keywords
 
-American bullfrog, Lithobates catesbeianus, Rana catesbeiana, amphibians, invasive alien species, non-native species, management, captures, eradication, Flanders
+American bullfrog, Lithobates catesbeianus, Rana catesbeiana, amphibians, invasive alien species, non-native species, management, captures, eradication, Flanders, Occurrence, Observation
 
 ## Data published through
 
@@ -34,7 +34,7 @@ The sampling focus for this dataset is American bullfrog (Lithobates catesbeianu
 
 ### Taxonomic ranks
 
-* **Kingdom**: Animalia (animals)
+* **Kingdom**: *Animalia (animals)*
 * **Class**: *Actinopterygii (ray-finned fishes), Amphibia (amphibians), Crustacea (Crustaceans), Insecta (insects)*
 * **Species**: *Lithobates catesbeianus (American bullfrog)*
 
