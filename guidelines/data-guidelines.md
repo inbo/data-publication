@@ -1,13 +1,14 @@
 # Data guidelines
 
-## General guidelines
+## List guidelines
 
-Use `; ` (semicolon + space) as a delimiter.
+To delimite items in a list, use ` | ` (space + pipe + space):
 
-Use `key=value` pairs where appropriate.
+    male | female
 
-    sex: maleIndividualCount=41; femaleIndividualCount=37
-    lifeStage: adultIndividualCount=2
+Or JSON:
+    
+    {"male":41, "female":37}
 
 ## Geospatial information
 
@@ -15,5 +16,5 @@ Use `key=value` pairs where appropriate.
 
     verbatimLatitude: 233695
     verbatimLongitude: 205578
-    verbatimCoordinateSystem: Belgian Lambert 1972
+    verbatimCoordinateSystem: Belgian Lambert 72
     verbatimSRS: Belgian Datum 1972
