@@ -4,7 +4,7 @@
 
 ## Data publication process
 
-* [Metadata](https://docs.google.com/a/inbo.be/document/d/13N7SibIEOHM1WJQlUZ6unrP8Llj8ov6rZQbpaauItyU/edit?usp=sharing) (working document)
+* [Metadata](metadata.md) (working document)
 * [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/invasive-chinese-mitten-crab-occurrences)
 * [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
 
