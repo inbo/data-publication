@@ -10,7 +10,7 @@ Anny Anselin [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 [^4]: Terrestrial Ecology Unit (TEREC), Ghent University, K.L. Ledeganckstraat 35, 9000, Ghent, Belgium
 
-**Corresponding authors**: Anny Anselin (<anny.anselin@inbo.be>), Peter Desmet (<peter.desmet@inbo.be>)
+**Corresponding authors**: Anny Anselin (anny.anselin@inbo.be), Peter Desmet (peter.desmet@inbo.be)
 
 ---
 
@@ -18,7 +18,7 @@ Anny Anselin [^1], Peter Desmet [^1], Francisco Hernandez [^2], Willem Bouten [^
 
 ## Abstract
 
-*Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 57,000 occurrences, recorded in 2013 by 3 GPS trackers mounted on 3 Western Marsh Harriers breeding near the Belgium-Netherlands border (see <...> for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-wmh-occurrences/>
+*Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset currently contains over 57,000 occurrences, recorded in 2013 by 3 GPS trackers mounted on 3 Western Marsh Harriers breeding near the Belgium-Netherlands border (see ... for a visualization of the data). The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, http://www.uva-bits.nl) and automatically record and transmit the movements of the birds, which allows us and others to study their habitat use and migration behaviour in more detail. Our bird tracking network is set up and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ), and funded for LifeWatch by the Hercules Foundation. The data are released in bulk as open data and are also accessible through CartoDB. See the dataset metadata for contact information, scope and methodology. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-wmh-occurrences/
 
 ## Keywords
 
@@ -26,11 +26,11 @@ animal movement, bird tracking, GPS tracking, habitat use, migration, Western Ma
 
 ## Data published through
 
-<http://dataset.inbo.be/bird-tracking-wmh-occurrences>
+http://dataset.inbo.be/bird-tracking-wmh-occurrences
 
 ## Rationale
 
-As part of our terrestrial observatory for LifeWatch (<http://lifewatch.inbo.be>), the Research Institute for Nature and Forest (INBO) is tracking large birds with lightweight, solar powered GPS trackers.
+As part of our terrestrial observatory for LifeWatch (http://lifewatch.inbo.be), the Research Institute for Nature and Forest (INBO) is tracking large birds with lightweight, solar powered GPS trackers.
 
 > The project builds upon the extensive knowledge the INBO has acquired over the last 12 years in studying postnuptial migration, and mate and site fidelity of large gulls, using sightings of colour-marked individuals ringed in Belgium. The data this bird tracking network collects allow us to study the migration patterns and habitat use of the gulls in more detail, and are no longer biased towards locations where observers can see the birds.
 
@@ -58,7 +58,7 @@ The dataset contains tracking data from 3 Western Marsh Harriers (*Circus aerugi
 
 ## Geographic coverage
 
-> The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and Ostend. Their foraging range includes the west of Belgium, northern France, the North Sea, and the English Channel. The Lesser Black-backed Gulls migrate south in winter, hibernating in the south of Spain, Portugal, and North Africa. See <...> for a visualization of the geospatial extent of the data.
+> The birds breed at the Belgian coast in two colonies: the port of Zeebrugge and Ostend. Their foraging range includes the west of Belgium, northern France, the North Sea, and the English Channel. The Lesser Black-backed Gulls migrate south in winter, hibernating in the south of Spain, Portugal, and North Africa. See ... for a visualization of the geospatial extent of the data.
 
 ### Bounding box
 
@@ -84,19 +84,19 @@ The dataset contains tracking data from 3 Western Marsh Harriers (*Circus aerugi
 
 ### Sampling description
 
-> The birds are tracked with the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>). The system is described in Bouten et al. 2013. The lightweight, solar powered GPS trackers periodically record the 3D position and air temperature, and can be configured to collect body movements with the built-in tri-axial accelerometer as well. The system allows us to remotely set or change a measurement interval per tracker: the actual interval between measurements is provided in `samplingEffort` as `secondsSinceLastOccurrence`.
+> The birds are tracked with the University of Amsterdam Bird Tracking System (UvA-BiTS, http://www.uva-bits.nl). The system is described in Bouten et al. 2013. The lightweight, solar powered GPS trackers periodically record the 3D position and air temperature, and can be configured to collect body movements with the built-in tri-axial accelerometer as well. The system allows us to remotely set or change a measurement interval per tracker: the actual interval between measurements is provided in `samplingEffort` as `secondsSinceLastOccurrence`.
 
 > The measured data are stored on the tracker, until these can be transmitted automatically and wireless to a base station using the built-in ZigBee tranceiver with whip antenna. This receiver is also used to receive new measurement settings. The spatial range for this communication is restricted to the location of the base station (or antenna network), which is placed near the colony. Data from birds that do not return to the colony cannot be retrieved.
 
-> Data received by the base stations are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS (<http://www.uva-bits.nl/virtual-lab>), accessible to the involved researchers only. We periodically export the tracking data to CartoDB for visualization purposes (see the External datasets section), removing test records and flagging outliers (see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>).
+> Data received by the base stations are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS (http://www.uva-bits.nl/virtual-lab), accessible to the involved researchers only. We periodically export the tracking data to CartoDB for visualization purposes (see the External datasets section), removing test records and flagging outliers (see https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md).
 
-> To create the Darwin Core Archive, we extract the data from CartoDB and standardize these to Darwin Core using an SQL query (<https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql>). The dataset is documented, published via our IPT (<http://dataset.inbo.be/bird-tracking-gull-occurrences>), and registered with the Global Biodiversity Information System (<http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e>). Issues or remarks regarding the data or this procedure can be reported at <https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/>
+> To create the Darwin Core Archive, we extract the data from CartoDB and standardize these to Darwin Core using an SQL query (https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql). The dataset is documented, published via our IPT (http://dataset.inbo.be/bird-tracking-gull-occurrences), and registered with the Global Biodiversity Information System (http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e). Issues or remarks regarding the data or this procedure can be reported at https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/
 
-> To extract data from one individual, one can use `individualID`, which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>.
+> To extract data from one individual, one can use `individualID`, which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public.
 
 ### Quality control description
 
-> See the section Sampling description for more details: our import procedure (<https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>) and standardization to Darwin Core (<https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql>) are publicly documented.
+> See the section Sampling description for more details: our import procedure (https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md) and standardization to Darwin Core (https://github.com/LifeWatchINBO/bird-tracking-gull-occurrences/blob/master/mapping/dwc-occurrence.sql) are publicly documented.
 
 ### Method step description
 
@@ -118,33 +118,33 @@ The dataset contains tracking data from 3 Western Marsh Harriers (*Circus aerugi
 * **Format version**: 1.0
 * **Character encoding**: UTF-8
 * **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **License**: http://creativecommons.org/publicdomain/zero/1.0/
+* **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: ...
-* **Distribution**: <http://dataset.inbo.be/bird-tracking-wmh-occurrences>
+* **Distribution**: http://dataset.inbo.be/bird-tracking-wmh-occurrences
 * **DOI**: ...
 
 ### Usage norms
 
-To allow anyone to use these tracking data, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We do appreciate it however if you follow these norms for data use (<https://github.com/LifeWatchINBO/norms-for-data-use>) and provide a link to the original dataset (<http://dataset.inbo.be/bird-tracking-wmh-occurrences>) when possible. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata or via <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use these tracking data, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We do appreciate it however if you follow these norms for data use (https://github.com/LifeWatchINBO/norms-for-data-use) and provide a link to the original dataset (http://dataset.inbo.be/bird-tracking-wmh-occurrences) when possible. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata or via https://twitter.com/LifeWatchINBO.
 
 ### External datasets
 
-All our public bird tracking data are also available through CartoDB (<http://inbo.cartodb.com/u/lifewatch>), where users can query the data using SQL via the CartoDB API or download these in various formats (`csv`, `shp`, `kml`, `svg`, and `geosjon`). Two tables are of use: `bird_tracking`, containing all occurrence data and `bird_tracking_devices`, containing information on the GPS trackers and individual birds. Note that these tables are not standardized to Darwin Core, contain flagged outliers (omitted from the standardized dataset), and include data from other bird species. For more info, see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/README.md>
+All our public bird tracking data are also available through CartoDB (http://inbo.cartodb.com/u/lifewatch), where users can query the data using SQL via the CartoDB API or download these in various formats (`csv`, `shp`, `kml`, `svg`, and `geosjon`). Two tables are of use: `bird_tracking`, containing all occurrence data and `bird_tracking_devices`, containing information on the GPS trackers and individual birds. Note that these tables are not standardized to Darwin Core, contain flagged outliers (omitted from the standardized dataset), and include data from other bird species. For more info, see https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/README.md
 
 #### bird_tracking
 
 * **Object name**: bird_tracking
 * **Character encoding**: UTF-8
 * **Format name**: CartoDB table
-* **Distribution**: <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking/public>
+* **Distribution**: https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking/public
 
 #### bird_tracking_devices
 
 * **Object name**: bird_tracking_devices
 * **Character encoding**: UTF-8
 * **Format name**: CartoDB table
-* **Distribution**: <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>
+* **Distribution**: https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public
 
 ### Additional information
 
@@ -164,7 +164,7 @@ Bird tracking network
 
 ### Funding
 
-> This bird tracking network is funded for LifeWatch by the Hercules Foundation (<http://www.herculesstichting.be/in_English/>), with additional contributions from the Terrestrial Ecology Unit (TEREC) at the University of Ghent.
+> This bird tracking network is funded for LifeWatch by the Hercules Foundation (http://www.herculesstichting.be/in_English/), with additional contributions from the Terrestrial Ecology Unit (TEREC) at the University of Ghent.
 
 ## Acknowledgements
 

@@ -1,6 +1,6 @@
 # Alien macro-invertebrates in Flanders, Belgium
 
-*Alien macro-invertebrates in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/alien-macroinvertebrate-occurrences>.
+*Alien macro-invertebrates in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/alien-macroinvertebrate-occurrences.
 
 **This dataset has not yet been published.**
 

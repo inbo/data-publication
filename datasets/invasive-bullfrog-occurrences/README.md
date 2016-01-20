@@ -1,6 +1,6 @@
 # Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium
 
-*Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/invasive-bullfrog-occurrences>.
+*Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/invasive-bullfrog-occurrences.
 
 ## Data publication process
 

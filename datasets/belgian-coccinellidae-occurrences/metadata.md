@@ -5,11 +5,11 @@ Tim Adriaens[^1], Gilles San Martin[^2], Dirk Maes[^1], Dimitri Brosens[^1]
 [^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 [^2]: Université Catholique de Louvain (UCL), Place de l'Université 1, bte L0.01.09, 1348, Louvain-la-Neuve, Belgium
 
-**Corresponding author**: Tim Adriaens (<tim.adriaens@inbo.be>)
+**Corresponding author**: Tim Adriaens (tim.adriaens@inbo.be)
 
 ---
 
-**Resource citation**: Adriaens T, San Martin y Gomez G, Maes D, Brosens D, Desmet P (2012): Belgian Coccinellidae - Ladybird beetles in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/0refva>
+**Resource citation**: Adriaens T, San Martin y Gomez G, Maes D, Brosens D, Desmet P (2012): Belgian Coccinellidae - Ladybird beetles in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/0refva
 
 
 ## Abstract
@@ -27,7 +27,7 @@ Coccinellidae, ladybird beetles, distribution, ecology, faunistics, Belgium, Wal
 
 ## Data published through
 
-<http://doi.org/10.15468/0refva>
+http://doi.org/10.15468/0refva
 
 ## Rationale
 
@@ -92,11 +92,11 @@ More than 500 volunteers providing distribution data. They actively search for l
 * **Format version**: 1.0
 * **Character encoding**: UTF-8
 * **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **License**: http://creativecommons.org/publicdomain/zero/1.0/
+* **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2012-06-05
-* **Distribution**: <http://dataset.inbo.be/belgian-coccinellidae-occurrences>
-* **DOI**: <http://doi.org/10.15468/0refva>
+* **Distribution**: http://dataset.inbo.be/belgian-coccinellidae-occurrences
+* **DOI**: http://doi.org/10.15468/0refva
 
 ### Usage norms
 
@@ -132,4 +132,4 @@ Helen E. Roy, Tim Adriaens, Nick J. B. Isaac, Marc Kenis, Thierry Onkelinx, Gill
 
 Kenis M., Adriaens T., Brown P., Katsanis A., Van Vlaenderen J., Eschen R., Golaz L., Zindel R., San Martin G., Babendreier D., Ware R. (2010). Impact of Harmonia axyridis on European ladybirds: which species are most at risk? IOBS/wprs Bulletin 58: 1-3.
 
-Adriaens T. & Maes D. (2004). Voorlopige verspreidingsatlas van lieveheersbeestjes in Vlaanderen, resultaten van het lieveheersbeestjesproject van de jeugdbonden. Bertram 2 (1bis): 1-69. <http://www.inbo.be/docupload/1436.pdf>
+Adriaens T. & Maes D. (2004). Voorlopige verspreidingsatlas van lieveheersbeestjes in Vlaanderen, resultaten van het lieveheersbeestjesproject van de jeugdbonden. Bertram 2 (1bis): 1-69. http://www.inbo.be/docupload/1436.pdf

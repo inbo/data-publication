@@ -1,6 +1,6 @@
 # Watervogels - Wintering waterbirds in Flanders, Belgium
 
-*Watervogels - Wintering waterbirds in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest at <http://dataset.inbo.be/watervogels-occurrences>.
+*Watervogels - Wintering waterbirds in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest at http://dataset.inbo.be/watervogels-occurrences.
 
 ## Data publication process
 

@@ -14,15 +14,15 @@ Eric W.M. Stienen [^1], Peter Desmet [^1], Bart Aelterman [^1], Wouter Courtens 
 
 [^6]: Terrestrial Ecology Unit (TEREC), Ghent University, K.L. Ledeganckstraat 35, 9000, Ghent, Belgium
 
-**Corresponding authors**: Eric W.M. Stienen (<eric.stienen@inbo.be>), Peter Desmet (<peter.desmet@inbo.be>)
+**Corresponding authors**: Eric W.M. Stienen (eric.stienen@inbo.be), Peter Desmet (peter.desmet@inbo.be)
 
 ---
 
-**Resource citation**: Stienen EWM, Desmet P, Aelterman B, Courtens W, Feys S, Vanermen N, Verstraete H, Van de walle M, Deneudt K, Hernandez F, Houthoofdt R, Vanhoorne B, Bouten W, Buijs RJ, Kavelaars MM, Müller W, Herman D, Matheve H, Sotillo A, Lens L (2014): Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/02omly> Data paper: <http://doi.org/10.3897/zookeys.555.6173>
+**Resource citation**: Stienen EWM, Desmet P, Aelterman B, Courtens W, Feys S, Vanermen N, Verstraete H, Van de walle M, Deneudt K, Hernandez F, Houthoofdt R, Vanhoorne B, Bouten W, Buijs RJ, Kavelaars MM, Müller W, Herman D, Matheve H, Sotillo A, Lens L (2014): Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/02omly Data paper: http://doi.org/10.3897/zookeys.555.6173
 
 ## Abstract
 
-*Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described in Stienen et al. 2016 (<http://doi.org/10.3897/zookeys.555.6173>) The dataset contains close to 2.5 million occurrences, recorded by 101 GPS trackers mounted on 75 Lesser Black-backed Gulls and 26 Herring Gulls breeding at the Belgian and Dutch coast (see <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the data). The trackers were developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>). These automatically record and transmit bird movements, which allows us and others to study their habitat use and migration behaviour in great detail. Our bird tracking network is operational since 2013. It is funded for LifeWatch by the Hercules Foundation and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ). The recorded data are periodically released in bulk as open data (<http://dataset.inbo.be/bird-tracking-gull-occurrences>), and are also accessible through CartoDB and the Global Biodiversity Information Facility (GBIF, <http://doi.org/10.15468/02omly>). See the dataset metadata for contact information, scope and methodology. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
+*Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described in Stienen et al. 2016 (http://doi.org/10.3897/zookeys.555.6173) The dataset contains close to 2.5 million occurrences, recorded by 101 GPS trackers mounted on 75 Lesser Black-backed Gulls and 26 Herring Gulls breeding at the Belgian and Dutch coast (see https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map for a visualization of the data). The trackers were developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, http://www.uva-bits.nl). These automatically record and transmit bird movements, which allows us and others to study their habitat use and migration behaviour in great detail. Our bird tracking network is operational since 2013. It is funded for LifeWatch by the Hercules Foundation and maintained in collaboration with UvA-BiTS and the Flanders Marine Institute (VLIZ). The recorded data are periodically released in bulk as open data (http://dataset.inbo.be/bird-tracking-gull-occurrences), and are also accessible through CartoDB and the Global Biodiversity Information Facility (GBIF, http://doi.org/10.15468/02omly). See the dataset metadata for contact information, scope and methodology. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences
 
 ## Keywords
 
@@ -30,11 +30,11 @@ animal movement, bird tracking, GPS tracking, habitat use, migration, Lesser Bla
 
 ## Data published through
 
-<http://doi.org/10.15468/02omly>
+http://doi.org/10.15468/02omly
 
 ## Rationale
 
-As part of our terrestrial and marine observatory for LifeWatch (<http://lifewatch.inbo.be>), the Research Institute for Nature and Forest (INBO), the Flanders Marine Institute (VLIZ), Ghent University (UGent), and University of Antwerp (UA) are tracking large gull species with lightweight, solar powered GPS trackers. The project builds upon the extensive knowledge the INBO has acquired over the last 15 years when studying in particular postnuptial migration, as well as mate and site fidelity of large gulls, by means of sightings of colour-marked individuals ringed in Belgium and via individual-based life-history studies by UGent and UA. The data collected through this bird tracking network allows to study the migration patterns and habitat use of the gulls in more detail. Furthermore, they are no longer biased towards locations where observers can see colour-ringed birds. To allow greater use of the data beyond our research questions, all data are published as open data.
+As part of our terrestrial and marine observatory for LifeWatch (http://lifewatch.inbo.be), the Research Institute for Nature and Forest (INBO), the Flanders Marine Institute (VLIZ), Ghent University (UGent), and University of Antwerp (UA) are tracking large gull species with lightweight, solar powered GPS trackers. The project builds upon the extensive knowledge the INBO has acquired over the last 15 years when studying in particular postnuptial migration, as well as mate and site fidelity of large gulls, by means of sightings of colour-marked individuals ringed in Belgium and via individual-based life-history studies by UGent and UA. The data collected through this bird tracking network allows to study the migration patterns and habitat use of the gulls in more detail. Furthermore, they are no longer biased towards locations where observers can see colour-ringed birds. To allow greater use of the data beyond our research questions, all data are published as open data.
 
 ## Taxonomic coverage
 
@@ -58,7 +58,7 @@ The dataset contains tracking data from 75 Lesser Black-Backed Gulls (*Larus fus
 
 ## Geographic coverage
 
-The tracked birds breed at the southern North Sea coast in three colonies, located in the ports of Zeebrugge (Belgium), Ostend (Belgium) and Vlissingen-Oost (the Netherlands). During the breeding season, their foraging range includes the west of Belgium and the Netherlands, northern France, the North Sea, and the English Channel. The Lesser Black-backed Gulls migrate south in winter, mainly hibernating in the south of Spain, Portugal, and North Africa. See <https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map> for a visualization of the geospatial extent of the data.
+The tracked birds breed at the southern North Sea coast in three colonies, located in the ports of Zeebrugge (Belgium), Ostend (Belgium) and Vlissingen-Oost (the Netherlands). During the breeding season, their foraging range includes the west of Belgium and the Netherlands, northern France, the North Sea, and the English Channel. The Lesser Black-backed Gulls migrate south in winter, mainly hibernating in the south of Spain, Portugal, and North Africa. See https://inbo.cartodb.com/u/lifewatch/viz/da04f120-ea70-11e4-a3f2-0e853d047bba/public_map for a visualization of the geospatial extent of the data.
 
 ### Bounding box
 
@@ -93,19 +93,19 @@ The number of tagged birds and their trap location per year are:
 
 ### Sampling description
 
-The birds are tracked with the University of Amsterdam Bird Tracking System (UvA-BiTS, <http://www.uva-bits.nl>). The system has been described in detail in Bouten et al. 2013. The lightweight, solar powered GPS trackers periodically record the 3D position and air temperature, and can be configured to collect body movements with the built-in tri-axial accelerometer as well. The system allows us to remotely set or change a measurement interval per tracker: the actual interval between measurements is provided in `samplingEffort` as `secondsSinceLastOccurrence`.
+The birds are tracked with the University of Amsterdam Bird Tracking System (UvA-BiTS, http://www.uva-bits.nl). The system has been described in detail in Bouten et al. 2013. The lightweight, solar powered GPS trackers periodically record the 3D position and air temperature, and can be configured to collect body movements with the built-in tri-axial accelerometer as well. The system allows us to remotely set or change a measurement interval per tracker: the actual interval between measurements is provided in `samplingEffort` as `secondsSinceLastOccurrence`.
 
 The data are stored on the tracker, until these can be transmitted automatically and wireless to a base station using the built-in ZigBee transceiver with whip antenna. This receiver is also used to receive new measurement settings. The spatial range for this communication is restricted to the location of the base station (or antenna network), which is placed near the colony. Data cannot be retrieved from birds that do not return to the colony with the base station. For 3 of the 101 birds fitted with trackers no data were obtained and their `organismID`s (`L909374`, `5331094 ARNHEM`, `L909202`) will thus not be found in the dataset. At the time of publication most individuals (88%) were tracked for more than 10 days and 41% for more than 100 days. The longest tracking period is 838 days (a HG with `organismID` `H903185`).
 
-Data received by the base stations are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS (<http://www.uva-bits.nl/virtual-lab>), which is accessible to the involved researchers only. We periodically export the tracking data to CartoDB for visualization purposes (see the External datasets section), removing test records and flagging outliers.
+Data received by the base stations are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS (http://www.uva-bits.nl/virtual-lab), which is accessible to the involved researchers only. We periodically export the tracking data to CartoDB for visualization purposes (see the External datasets section), removing test records and flagging outliers.
 
-To create the Darwin Core Archive, we extract the data from the database and standardize these to Darwin Core using an SQL query (<https://github.com/LifeWatchINBO/data-publication/blob/master/datasets/bird-tracking-gull-occurrences/mapping/dwc-occurrence.sql>). The dataset is documented, published via our IPT (<http://dataset.inbo.be/bird-tracking-gull-occurrences>), and registered with the Global Biodiversity Information System (<http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e>). Issues or remarks regarding the data or this procedure can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences>
+To create the Darwin Core Archive, we extract the data from the database and standardize these to Darwin Core using an SQL query (https://github.com/LifeWatchINBO/data-publication/blob/master/datasets/bird-tracking-gull-occurrences/mapping/dwc-occurrence.sql). The dataset is documented, published via our IPT (http://dataset.inbo.be/bird-tracking-gull-occurrences), and registered with the Global Biodiversity Information System (http://www.gbif.org/dataset/83e20573-f7dd-4852-9159-21566e1e691e). Issues or remarks regarding the data or this procedure can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/bird-tracking-gull-occurrences
 
-To extract data from one individual, one can use `organismID`, which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>.
+To extract data from one individual, one can use `organismID`, which contains the unique metal leg ring code of each bird. Tracker IDs are provided in `dynamicProperties` as `device_info_serial`. For an overview of all GPS trackers and the individual birds these are mounted on, see https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public.
 
 ### Quality control description
 
-See the section Sampling description for more details: our import procedure (<https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md>) and standardization to Darwin Core (<https://github.com/LifeWatchINBO/data-publication/blob/master/datasets/bird-tracking-gull-occurrences/mapping/dwc-occurrence.sql>) are publicly documented.
+See the section Sampling description for more details: our import procedure (https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/import-procedure.md) and standardization to Darwin Core (https://github.com/LifeWatchINBO/data-publication/blob/master/datasets/bird-tracking-gull-occurrences/mapping/dwc-occurrence.sql) are publicly documented.
 
 ### Method step description
 
@@ -127,33 +127,33 @@ See the section Sampling description for more details: our import procedure (<ht
 * **Format version**: 1.0
 * **Character encoding**: UTF-8
 * **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **License**: http://creativecommons.org/publicdomain/zero/1.0/
+* **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2014-06-18
-* **Distribution**: <http://dataset.inbo.be/bird-tracking-gull-occurrences>
-* **DOI**: <http://doi.org/10.15468/02omly>
+* **Distribution**: http://dataset.inbo.be/bird-tracking-gull-occurrences
+* **DOI**: http://doi.org/10.15468/02omly
 
 ### Usage norms
 
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/02omly>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/02omly) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ### External datasets
 
-All our public bird tracking data are also available through CartoDB (<https://inbo.cartodb.com/u/lifewatch>), where users can query the data using SQL via the CartoDB API or download these in various formats (`csv`, `shp`, `kml`, `svg`, and `geosjon`). Two tables are of use: `bird_tracking`, containing all occurrence data and `bird_tracking_devices`, containing information on the GPS trackers and individual birds. Note that these tables are not standardized to Darwin Core, contain flagged outliers (omitted from the standardized dataset) and include data from other bird species. For more info, see <https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/README.md>
+All our public bird tracking data are also available through CartoDB (https://inbo.cartodb.com/u/lifewatch), where users can query the data using SQL via the CartoDB API or download these in various formats (`csv`, `shp`, `kml`, `svg`, and `geosjon`). Two tables are of use: `bird_tracking`, containing all occurrence data and `bird_tracking_devices`, containing information on the GPS trackers and individual birds. Note that these tables are not standardized to Darwin Core, contain flagged outliers (omitted from the standardized dataset) and include data from other bird species. For more info, see https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/README.md
 
 #### bird_tracking
 
 * **Object name**: bird_tracking
 * **Format name**: CartoDB table
 * **Character encoding**: UTF-8
-* **Distribution**: <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking/public>
+* **Distribution**: https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking/public
 
 #### bird_tracking_devices
 
 * **Object name**: bird_tracking_devices
 * **Format name**: CartoDB table
 * **Character encoding**: UTF-8
-* **Distribution**: <https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public>
+* **Distribution**: https://inbo.cartodb.com/u/lifewatch/tables/bird_tracking_devices/public
 
 ### Additional information
 
@@ -167,11 +167,11 @@ Bird tracking network
 
 ### Funding
 
-This bird tracking network is funded for LifeWatch by the Hercules Foundation (<http://www.herculesstichting.be/in_English/>), with additional funding from the Research Foundation Flanders (FWO) to Wendt Müller and Luc Lens and Interreg Natura People (EFRO) through the Province of West Flanders.
+This bird tracking network is funded for LifeWatch by the Hercules Foundation (http://www.herculesstichting.be/in_English/), with additional funding from the Research Foundation Flanders (FWO) to Wendt Müller and Luc Lens and Interreg Natura People (EFRO) through the Province of West Flanders.
 
 ## Project website
 
-<http://www.lifewatch.be/en/gps-tracking-network-large-birds>
+http://www.lifewatch.be/en/gps-tracking-network-large-birds
 
 ## Acknowledgements
 
@@ -183,10 +183,10 @@ Stienen EWM, Desmet P, Aelterman B, Courtens W, Feys S, Vanermen N, Verstraete H
 
 Bouten W, Baaij EW, Shamoun-Baranes J, Camphuysen KCJ (2013) A flexible GPS tracking system for studying bird behaviour at multiple scales. Journal of Ornithology 154(2): 571-580. doi: [10.1007/s10336-012-0908-1](http://doi.org/10.1007/s10336-012-0908-1)
 
-Stienen EWM, Courtens W, Van de walle M, Vanermen N, Verstraete H (2015) Monitoring van kustbroedvogels in de SBZ-V ‘Kustbroedvogels te Zeebrugge-Heist’ en de westelijke voorhaven van Zeebrugge tijdens het broedseizoen 2014. INBO.R.2015.7299133 Instituut voor Natuur- en Bosonderzoek, Brussels (in Dutch) <https://www.inbo.be/nl/publicatie/monitoring-van-kustbroedvogels-de-sbz-v-kustbroedvogels-te-zeebrugge-heist>
+Stienen EWM, Courtens W, Van de walle M, Vanermen N, Verstraete H (2015) Monitoring van kustbroedvogels in de SBZ-V ‘Kustbroedvogels te Zeebrugge-Heist’ en de westelijke voorhaven van Zeebrugge tijdens het broedseizoen 2014. INBO.R.2015.7299133 Instituut voor Natuur- en Bosonderzoek, Brussels (in Dutch) https://www.inbo.be/nl/publicatie/monitoring-van-kustbroedvogels-de-sbz-v-kustbroedvogels-te-zeebrugge-heist
 
 Strucker RCW, Hoekstein MSJ, Wolf PA (2013) Kustbroedvogels in het Deltagebied in 2012. RWS Centrale Informatievoorziening BM 13.18 (in Dutch)
 
 Strucker RCW., Arts FA, Hoekstein MSJ (2015) Kustbroedvogels in het Deltagebied in 2014. RWS Centrale Informatievoorziening BM 15.07 (in Dutch)
 
-Wetlands International (2015) “Waterbird Population Estimates”. Retrieved from <http://wpe.wetlands.org> on 2015-12-01
+Wetlands International (2015) “Waterbird Population Estimates”. Retrieved from http://wpe.wetlands.org on 2015-12-01

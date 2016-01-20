@@ -4,15 +4,16 @@ Koen Devos[^1], Filiep T'Jollyn[^1], Peter Desmet[^1], Dimitri Brosens[^1]
 
 [^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
-**Corresponding author**: Koen Devos (<koen.devos@inbo.be>)
+**Corresponding author**: Koen Devos (koen.devos@inbo.be)
 
 ---
 
-**Resource citation**: Devos K, T'Jollyn F, Brosens D, Desmet P (2012): Watervogels - Wintering waterbirds in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/lj0udq>
+**Resource citation**: Devos K, T'Jollyn F, Brosens D, Desmet P (2012): Watervogels - Wintering waterbirds in Flanders, Belgium. Research
+ Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/lj0udq
 
 ## Abstract
 
-*Watervogels - Wintering waterbirds in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 75,000 bird counts, covering over 600,000 observations and 35 million individuals for the period 1991-2013. It includes information on 170 species in nearly 1,200 wetland sites. The aim of these bird counts is to gather information on the size, distribution and long term trends of wintering waterbird populations in Flanders. These data are also used to assess the importance of individual sites for waterbirds, using quantitative criteria. Furthermore, the waterbird counts contribute to international monitoring programs, such as the International Waterbird Census (coordinated by Wetlands International) and fulfil some of the objectives of the European Bird Directive, the Ramsar Convention, and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA). The data are released in bulk as open data. See the dataset metadata or the publication for contact information, scope and methodology. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/watervogels-occurrences>
+*Watervogels - Wintering waterbirds in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 75,000 bird counts, covering over 600,000 observations and 35 million individuals for the period 1991-2013. It includes information on 170 species in nearly 1,200 wetland sites. The aim of these bird counts is to gather information on the size, distribution and long term trends of wintering waterbird populations in Flanders. These data are also used to assess the importance of individual sites for waterbirds, using quantitative criteria. Furthermore, the waterbird counts contribute to international monitoring programs, such as the International Waterbird Census (coordinated by Wetlands International) and fulfil some of the objectives of the European Bird Directive, the Ramsar Convention, and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA). The data are released in bulk as open data. See the dataset metadata or the publication for contact information, scope and methodology. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/watervogels-occurrences
 
 ## Keywords
 
@@ -20,7 +21,7 @@ waterbirds, birds, monitoring, wetlands, population trends, distribution, Lifewa
 
 ## Data published through
 
-<http://doi.org/10.15468/lj0udq>
+http://doi.org/10.15468/lj0udq
 
 ## Rationale
 
@@ -44,7 +45,7 @@ For all 182 taxa, the Dutch vernacular name is indicated in `vernacularName`. To
 
 ## Geographic coverage
 
-The birds were counted at 1,189 predefined locations (`waterVogelTelgebieden`, figure 1), covering the wetlands and coast of Flanders, Belgium. No birds were counted at sea. These locations are visited regularly during the wintering and migration season (mid-monthly, from October to March). For each occurrence, the code for the `waterVogelTelgebied` is indicated in `localityID`. The polygon shape for most of these localities can be found at <http://git.io/vvDVL>. The geographic coordinates for the occurrences represent the centroid of the locality (see <http://git.io/vvDVR> for the procedure).
+The birds were counted at 1,189 predefined locations (`waterVogelTelgebieden`, figure 1), covering the wetlands and coast of Flanders, Belgium. No birds were counted at sea. These locations are visited regularly during the wintering and migration season (mid-monthly, from October to March). For each occurrence, the code for the `waterVogelTelgebied` is indicated in `localityID`. The polygon shape for most of these localities can be found at http://git.io/vvDVL. The geographic coordinates for the occurrences represent the centroid of the locality (see http://git.io/vvDVR for the procedure).
 
 ![Figure 1](images/localities.png)
 
@@ -62,17 +63,17 @@ The birds were counted at 1,189 predefined locations (`waterVogelTelgebieden`, f
 
 ### Study extent description
 
-The bird counts are organized as a regional network "Waterbird counts Flanders" coordinated by the Research Institute for Nature and Forest (INBO). The network divides Flanders, Belgium into 24 regions, each of them with a local coordinator. The fieldwork is mainly done by skilled volunteer birdwatchers, often working together within local bird clubs. The NGO Natuurpunt (<http://natuurpunt.be>) supports the majority of these bird clubs and volunteers, and thereby delivers an important contribution to the waterbird project. A number of large and important wetland areas are counted by INBO staff (especially in the Scheldt estuary and along the Yser river).
+The bird counts are organized as a regional network "Waterbird counts Flanders" coordinated by the Research Institute for Nature and Forest (INBO). The network divides Flanders, Belgium into 24 regions, each of them with a local coordinator. The fieldwork is mainly done by skilled volunteer birdwatchers, often working together within local bird clubs. The NGO Natuurpunt (http://natuurpunt.be) supports the majority of these bird clubs and volunteers, and thereby delivers an important contribution to the waterbird project. A number of large and important wetland areas are counted by INBO staff (especially in the Scheldt estuary and along the Yser river).
 
 To allow reliable comparisons between years and areas, the counts are aimed for maximum standardization. Every winter, birds are counted in six monthly censuses from October to March, on the weekend the closest to the 15th of the month. Counts use the same methodology and are made at 1,000+ predefined locations (see *Geographic coverage*), covering all kind of wetland habitats in Flanders, such as lakes, ponds, reservoirs, and rivers. Also agricultural areas, often holding large numbers of waterbirds (such as wintering geese), are included. Although the project aims for a (nearly) complete coverage of all areas hosting substantial numbers of waterbirds, this is hard to achieve and the number of counted sites varies between months and years.
  
 During counts, numbers of all waterbird species are recorded. This includes divers, grebes, cormorants, herons and allies, swans, geese, ducks, coots and rails. Waders and gulls (optional) have been added on the species list in 1999. Counts of coastal waders are however available since 1992.
 
-Through the site <http://www.watervogels.inbo.be>, volunteers can enter their count and additional data directly into a central database. This database is managed by the INBO and is the source for this dataset.
+Through the site http://www.watervogels.inbo.be, volunteers can enter their count and additional data directly into a central database. This database is managed by the INBO and is the source for this dataset.
 
 ### Sampling description
 
-The counts are done at predefined locations, called `waterVogelTelgebied`. The name of each `waterVogelTelgebied` is indicated in `verbatimLocality`, while its ID is indicated in `localityID`. The polygon shape for most of these localities can be found at <http://git.io/vvDVL>. The geographic coordinates for the occurrences represent the centroid of the locality (see <http://git.io/vvDVR> for the procedure).
+The counts are done at predefined locations, called `waterVogelTelgebied`. The name of each `waterVogelTelgebied` is indicated in `verbatimLocality`, while its ID is indicated in `localityID`. The polygon shape for most of these localities can be found at http://git.io/vvDVL. The geographic coordinates for the occurrences represent the centroid of the locality (see http://git.io/vvDVR for the procedure).
 
 Within the borders of these areas, present waterbird species are counted as completely as possible. Clearly visible areas are often counted from one point with a telescope. Large and less visible areas are usually traversed on foot, by bicycle or by car. A special case are the monthly counts on the Zeeschelde which are performed from boats by INBO staff. The count method (e.g. `survey on land`) is indicated in `samplingProtocol`, while the achieved effort (e.g. `all waterbirds except geese counted`) is indicated in `samplingEffort`.
 
@@ -98,8 +99,8 @@ These are the steps for entering data into the centralized database:
 For publication, the data is further processed:
 
 1. Each record gets a GUID, based on the ID assigned by the database (`occurrenceID`).
-2. The `locationID` is cross referenced with the geospatial information for the localities (<http://git.io/vvDVL>).
-3. Geographic coordinates are calculated based on the centroid of the locality using this methodology: <http://git.io/vvDVR>. The resulting information is expressed in `decimalLatitude`, `decimalLongitude`, `geodeticDatum`, `georeferencedBy`, `georeferencedDate`, `georeferenceProtocol`, `georeferenceSources`, `georeferenceVerificationStatus`, and 
+2. The `locationID` is cross referenced with the geospatial information for the localities (http://git.io/vvDVL).
+3. Geographic coordinates are calculated based on the centroid of the locality using this methodology: http://git.io/vvDVR. The resulting information is expressed in `decimalLatitude`, `decimalLongitude`, `geodeticDatum`, `georeferencedBy`, `georeferencedDate`, `georeferenceProtocol`, `georeferenceSources`, `georeferenceVerificationStatus`, and 
 `georeferenceRemarks`.
 4. Taxonomy information is added based on the scientific name and expressed in `kingdom`, `phylum`, `class`, `taxonRank`, `nomenclaturalCode`, and `scientificNameAuthorship`, as well as an Euring code code (`taxonID`) and Dutch vernacular name `vernacularName`.
 5. Identification information is added based on the event information: `identifiedBy` = the observer, `dateIdentified` = `eventDate` without time information.
@@ -109,22 +110,22 @@ For publication, the data is further processed:
 
 ### Dataset description
 
-The Darwin Core terms (<http://rs.tdwg.org/dwc/terms/>) in the dataset are: `occurrenceID`, `type`, `language`, `license`, `rightsHolder`, `accessRights`, `datasetID`, `institutionCode`, `datasetName`, `ownerInstitutionCode`, `basisOfRecord`, `recordedBy`, `individualCount`, `eventID`, `samplingProtocol`, `samplingEffort`, `eventDate`, `eventRemarks`, `locationID`, `continent`, `countryCode`, `stateProvince`, `municipality`, `verbatimLocality`, `decimalLatitude`, `decimalLongitude`, `geodeticDatum`, `georeferencedBy`, `georeferencedDate`, `georeferenceProtocol`, `georeferenceSources`, `georeferenceVerificationStatus`, `georeferenceRemarks`, `identifiedBy`, `taxonID`, `scientificName`, `kingdom`, `phylum`, `class`, `taxonRank`, `scientificNameAuthorship`, `vernacularName`, and `nomenclaturalCode`.
+The Darwin Core terms (http://rs.tdwg.org/dwc/terms/) in the dataset are: `occurrenceID`, `type`, `language`, `license`, `rightsHolder`, `accessRights`, `datasetID`, `institutionCode`, `datasetName`, `ownerInstitutionCode`, `basisOfRecord`, `recordedBy`, `individualCount`, `eventID`, `samplingProtocol`, `samplingEffort`, `eventDate`, `eventRemarks`, `locationID`, `continent`, `countryCode`, `stateProvince`, `municipality`, `verbatimLocality`, `decimalLatitude`, `decimalLongitude`, `geodeticDatum`, `georeferencedBy`, `georeferencedDate`, `georeferenceProtocol`, `georeferenceSources`, `georeferenceVerificationStatus`, `georeferenceRemarks`, `identifiedBy`, `taxonID`, `scientificName`, `kingdom`, `phylum`, `class`, `taxonRank`, `scientificNameAuthorship`, `vernacularName`, and `nomenclaturalCode`.
 
 * **Object name**: Watervogels - Wintering waterbirds in Flanders, Belgium
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
 * **Character encoding**: UTF-8
 * **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **License**: http://creativecommons.org/publicdomain/zero/1.0/
+* **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2014-11-27
-* **Distribution**: <http://dataset.inbo.be/watervogels-occurrences>
-* **DOI**: <http://doi.org/10.15468/lj0udq>
+* **Distribution**: http://dataset.inbo.be/watervogels-occurrences
+* **DOI**: http://doi.org/10.15468/lj0udq
 
 ## Usage norms
 
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (<http://doi.org/10.15468/lj0udq>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/lj0udq) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ### Additional information
 
@@ -148,12 +149,12 @@ This monitoring project receives funding from the Flemish Government.
 
 ## References
 
-Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA) <http://www.unep-aewa.org/>
+Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA) http://www.unep-aewa.org/
 
-Birds Directive <http://ec.europa.eu/environment/nature/legislation/birdsdirective/index_en.htm>
+Birds Directive http://ec.europa.eu/environment/nature/legislation/birdsdirective/index_en.htm
 
-Euring exchange-code 2000, species <http://blx1.bto.org/euringcodes/species.jsp>
+Euring exchange-code 2000, species http://blx1.bto.org/euringcodes/species.jsp
 
-Habitats Directive <http://ec.europa.eu/environment/nature/legislation/habitatsdirective/index_en.htm>
+Habitats Directive http://ec.europa.eu/environment/nature/legislation/habitatsdirective/index_en.htm
 
-Ramsar Convention on Wetlands <http://www.ramsar.org/>
+Ramsar Convention on Wetlands http://www.ramsar.org/

@@ -1,6 +1,6 @@
 # Invasive species - Invasive aquatic plants in Flanders, Belgium
 
-*Invasive species - Invasive aquatic plants in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/invasive-aquatic-plant-occurrences>.
+*Invasive species - Invasive aquatic plants in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/invasive-aquatic-plant-occurrences.
 
 **This dataset has not yet been published.**
 

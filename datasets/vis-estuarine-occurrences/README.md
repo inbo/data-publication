@@ -1,6 +1,6 @@
 # VIS - Fishes in estuarine waters in Flanders, Belgium
 
-*VIS - Fishes in estuarine waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/vis-estuarine-occurrences>.
+*VIS - Fishes in estuarine waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/vis-estuarine-occurrences.
 
 ## Data publication process
 

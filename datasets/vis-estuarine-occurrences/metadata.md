@@ -6,15 +6,15 @@ Jan Breine[^1], Gerlinde Van Thuyne[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 [^2]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
-**Corresponding author**: Jan Breine (<jan.breine@inbo.be>)
+**Corresponding author**: Jan Breine (jan.breine@inbo.be)
 
 ---
 
-**Resource citation**: Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2013): VIS - Fishes in estuarine waters in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/estwpt> Data paper: <http://doi.org/10.3897/zookeys.475.8556>
+**Resource citation**: Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2013): VIS - Fishes in estuarine waters in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/estwpt Data paper: http://doi.org/10.3897/zookeys.475.8556
 
 ## Abstract
 
-*VIS - Fishes in estuarine waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described in Brosens et al. 2015 (<http://doi.org/10.3897/zookeys.475.8556>). The dataset contains over 70,000 fish occurrences sampled between 1992 and 2012 from almost 50 locations in the estuaries of the river Yser and the river Scheldt, in Flanders, Belgium. The dataset includes 69 fish species, as well as a number of non-target crustacean species. The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-estuarine-occurrences>
+*VIS - Fishes in estuarine waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described in Brosens et al. 2015 (http://doi.org/10.3897/zookeys.475.8556). The dataset contains over 70,000 fish occurrences sampled between 1992 and 2012 from almost 50 locations in the estuaries of the river Yser and the river Scheldt, in Flanders, Belgium. The dataset includes 69 fish species, as well as a number of non-target crustacean species. The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-estuarine-occurrences
 
 ## Keywords
 
@@ -22,11 +22,11 @@ ecosystem functioning, fish-based index of biotic integrity, fish distribution, 
 
 ## Data published through
 
-<http://doi.org/10.15468/estwpt>
+http://doi.org/10.15468/estwpt
 
 ## Rationale
 
-The Fish Information System or VIS (<http://vis.milieuinfo.be>) is a database created by the Research Institute for Nature and Forest (INBO) which is used to monitor the status of fishes and their habitats in Flanders, Belgium and to calculate the biotic integrity (Karr 1981, Belpaire et al. 2000, Breine et al. 2004, 2007, 2010) of fish assemblages. It contains data regarding occurrences, individual morphometrics, stocks, pollutants, indices, and non-native fish species. Sampling has been going on since 1992, the database model was designed in 1994 (Verbiest et al. 1994), the first database developed in 1996 (Verbiest et al. 1996), and the consolidated database set up in 2001. VIS is used for supporting NATURA 2000, an ecological network of protected areas in Europe and to calculate the EQR (Ecological Quality Ratio) in the framework of the EU Water Directive (Directive 2000/60/EC). Further, the database provides updated information for Flemish Red Lists of fishes and lampreys (Verreycken et al. 2014) and on the distribution status of non-native and invasive fish species. The data are also crucial in fish stock management and for reporting on the status of the European eel stock as required by the Eel Regulation (Council Regulation (EC) N° 1100/2007). This dataset is a standardized extraction of all estuarine species occurrences from VIS.
+The Fish Information System or VIS (http://vis.milieuinfo.be) is a database created by the Research Institute for Nature and Forest (INBO) which is used to monitor the status of fishes and their habitats in Flanders, Belgium and to calculate the biotic integrity (Karr 1981, Belpaire et al. 2000, Breine et al. 2004, 2007, 2010) of fish assemblages. It contains data regarding occurrences, individual morphometrics, stocks, pollutants, indices, and non-native fish species. Sampling has been going on since 1992, the database model was designed in 1994 (Verbiest et al. 1994), the first database developed in 1996 (Verbiest et al. 1996), and the consolidated database set up in 2001. VIS is used for supporting NATURA 2000, an ecological network of protected areas in Europe and to calculate the EQR (Ecological Quality Ratio) in the framework of the EU Water Directive (Directive 2000/60/EC). Further, the database provides updated information for Flemish Red Lists of fishes and lampreys (Verreycken et al. 2014) and on the distribution status of non-native and invasive fish species. The data are also crucial in fish stock management and for reporting on the status of the European eel stock as required by the Eel Regulation (Council Regulation (EC) N° 1100/2007). This dataset is a standardized extraction of all estuarine species occurrences from VIS.
 
 ## Taxonomic coverage
 
@@ -91,15 +91,15 @@ Effort: Fykes: 2 paired nets for two successive days per site. Winged fyke: one 
 * **Format version**: 1.0
 * **Character encoding**: UTF-8
 * **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **License**: http://creativecommons.org/publicdomain/zero/1.0/
+* **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2014-04-02
-* **Distribution**: <http://dataset.inbo.be/vis-estuarine-occurrences>
-* **DOI**: <http://doi.org/10.15468/estwpt>
+* **Distribution**: http://dataset.inbo.be/vis-estuarine-occurrences
+* **DOI**: http://doi.org/10.15468/estwpt
 
 ### Usage norms
 
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/estwpt>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/estwpt) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ### Additional information
 
@@ -139,7 +139,7 @@ Hamerlynck O, Hostens K (1994) Changes in the fish fauna of the Oosterschelde es
 
 Hinz V (1989) Monitoring the fish fauna in the Wadden sea with special reference to different fishing methods and effects of wind and light on catches. Helgoländer Meeresunters 43: 447–459. doi: [10.1007/BF02365903](http://doi.org/10.1007/BF02365903)
 
-Karr JR (1981) Assessment of biotic integrity using fish communities. Fisheries 6: 21–27. doi: [ 10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2](http://doi.org/10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2)
+Karr JR (1981) Assessment of biotic integrity using fish communities. Fisheries 6: 21–27. doi: [ 10.1577/1548-8446(1981)0060021:AOBIUF2.0.CO;2](http://doi.org/10.1577/1548-8446(1981)0060021:AOBIUF2.0.CO;2)
 
 Thiel R, Potter IC (2001) The ichthyofaunal composition of the Elbe estuary: an analysis in space and time. Marine Biology 138: 603–616. doi: [10.1007/s002270000491](http://doi.org/10.1007/s002270000491)
 
@@ -147,7 +147,7 @@ Van den Bergh E, Garniel G, Morris RKA, Barendregt A (2009) Conservation of tida
 
 Van Thuyne G, Breine J (2010) Visbestandopnames in Vlaamse beken en rivieren in het kader van het ‘Meetnet Zoetwatervis’ 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2010 (42). INBO, Brussel, 196 pp.
 
-Venice system (1959) The final resolution of the symposium on the classification of brackish waters. Archo Oceanography Limnology 11: 243–248. <http://www.aslo.org/lo/toc/vol_3/issue_3/0346.pdf>
+Venice system (1959) The final resolution of the symposium on the classification of brackish waters. Archo Oceanography Limnology 11: 243–248. http://www.aslo.org/lo/toc/vol_3/issue_3/0346.pdf
 
 Verbiest H, Belpaire C, Vandenabeele P, Ollevier F (1996) Het in werking stellen van de visdatabank met de nadruk op de gebruiksvriendelijkheid ervan IBW.Wb.V.R.96.042.
 

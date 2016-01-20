@@ -1,6 +1,6 @@
 # Glasaalmigratie - Glass eels migration in the river Yser
 
-*Glasaalmigratie - Glass eels migration in the river Yser* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at <http://dataset.inbo.be/glasaalmigratie-occurrences>.
+*Glasaalmigratie - Glass eels migration in the river Yser* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/glasaalmigratie-occurrences.
 
 ## Data publication process
 

@@ -8,15 +8,15 @@ Glenn Vermeersch[^1], Anny Anselin[^1], Koen Devos[^1], Marc Herremans[^2], Jan 
 
 [^3]: Limburgse Koepel voor Natuurstudie, Vogelwerkgroep, Provinciaal Natuurcentrum, Craenevenne 86, 3600, Genk, Belgium
 
-**Corresponding author**: Glenn Vermeersch (<glenn.vermeersch@inbo.be>)
+**Corresponding author**: Glenn Vermeersch (glenn.vermeersch@inbo.be)
 
 ---
 
-**Resource citation**: Vermeersch G, Anselin A, Devos K, Herremans M, Stevens J, Gabriëls J, Van Der Krieken B, Brosens D, Desmet P (2014): Broedvogels - Atlas of the breeding birds in Flanders 2000-2002. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/sccg5a>
+**Resource citation**: Vermeersch G, Anselin A, Devos K, Herremans M, Stevens J, Gabriëls J, Van Der Krieken B, Brosens D, Desmet P (2014): Broedvogels - Atlas of the breeding birds in Flanders 2000-2002. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/sccg5a
 
 ## Abstract
 
-*Broedvogels - Atlas of the breeding birds in Flanders 2000-2002* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 330,000 bird observations, collected during three breeding seasons (2000, 2001, 2002) using a standardized field methodology using a 5km x 5km square grid system covering all of Flanders, Belgium (645 squares) as well as up to eight 1km x 1km sample squares within each larger square. Test data from 1999 and additional data to increase coverage from 2003 are also included. The dataset includes information on 197 taxa, of which 183 species (13 exotic) and 3 subspecies are considered breeding in Flanders. The data are released in bulk as open data. See the dataset metadata or the paper [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf) for contact information, scope and methodology. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/broedvogel-atlas-occurrences>
+*Broedvogels - Atlas of the breeding birds in Flanders 2000-2002* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 330,000 bird observations, collected during three breeding seasons (2000, 2001, 2002) using a standardized field methodology using a 5km x 5km square grid system covering all of Flanders, Belgium (645 squares) as well as up to eight 1km x 1km sample squares within each larger square. Test data from 1999 and additional data to increase coverage from 2003 are also included. The dataset includes information on 197 taxa, of which 183 species (13 exotic) and 3 subspecies are considered breeding in Flanders. The data are released in bulk as open data. See the dataset metadata or the paper [Bird Census News 2004 1/2: 35-47](http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf) for contact information, scope and methodology. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/broedvogel-atlas-occurrences
 
 ## Keywords
 
@@ -24,7 +24,7 @@ birds, breeding birds, atlas, monitoring, nature restoration, LifeWatch, open da
 
 ## Data published through
 
-<http://doi.org/10.15468/sccg5a>
+http://doi.org/10.15468/sccg5a
 
 ## Rationale
 
@@ -86,7 +86,7 @@ The sampling method is described in more detail in [Bird Census News 2004 1/2: 3
 
 All data obtained from atlas fieldwork were collected on standard recording forms. These were sent to the regional coordinator who checked them thoroughly and contacted volunteers in case of any obvious anomalies. Following this first step, data were sent to the INBO where they were checked once more before being entered in an SQL-database. Forms were printed from the database which were returned to the individual volunteers. They were asked to check the lists one final time in order to ensure accuracy. After the final breeding season, the completed lists for each region were sent to the relevant coordinators asking them to provide extra information on the annual numbers of some colonial or rare breeding bird species per square. For some pioneer species like Sand Martin and Avocet or obvious species like Rook, we wanted to be able to estimate the numbers in each of the three atlas years.
 
-Technology also presented a convenient way of double-checking data. By posting preliminary versions of species maps (distribution, numbers and relative abundance) on a frequently updated website (<http://broedvogels.inbo.be>), volunteers were able to easily provide many useful comments. The site also provided the opportunity to submit records from outside the census procedures, resulting in over 60.000 extra observations. These observations were also submitted to regional coordinators for them to assess credibility and accuracy. Afterwards, if the observations enhanced the information per square, they were incorporated, although they could be traced at all times.
+Technology also presented a convenient way of double-checking data. By posting preliminary versions of species maps (distribution, numbers and relative abundance) on a frequently updated website (http://broedvogels.inbo.be), volunteers were able to easily provide many useful comments. The site also provided the opportunity to submit records from outside the census procedures, resulting in over 60.000 extra observations. These observations were also submitted to regional coordinators for them to assess credibility and accuracy. Afterwards, if the observations enhanced the information per square, they were incorporated, although they could be traced at all times.
 
 ### Method step description
 
@@ -156,15 +156,15 @@ Technology also presented a convenient way of double-checking data. By posting p
 * **Format version**: 1.0
 * **Character encoding**: UTF-8
 * **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **License**: http://creativecommons.org/publicdomain/zero/1.0/
+* **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2015-04-30
-* **Distribution**: <http://dataset.inbo.be/broedvogel-atlas-occurrences>
-* **DOI**: <http://doi.org/10.15468/sccg5a>
+* **Distribution**: http://dataset.inbo.be/broedvogel-atlas-occurrences
+* **DOI**: http://doi.org/10.15468/sccg5a
 
 ### Usage norms
 
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate it however if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/sccg5a>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it however if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/sccg5a) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Project data
 
@@ -178,6 +178,6 @@ Flemish Government
 
 ## References
 
-Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J., Van Der Krieken B. (2004a) Atlas of the breeding birds in Flanders 2000-2002. Bird Census News 2004 1/2: 35-47. <http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf>
+Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J., Van Der Krieken B. (2004a) Atlas of the breeding birds in Flanders 2000-2002. Bird Census News 2004 1/2: 35-47. http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf
 
 Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J. & Van Der Krieken B. (2004b) Atlas van de Vlaamse broedvogels 2000-2002. Mededelingen van het Instituut voor Natuurbehoud 23, Brussel, 496p. ISBN 90-403-0215-4

@@ -6,15 +6,15 @@ Gerlinde Van Thuyne[^1], Jan Breine[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 [^2]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
-**Corresponding author**: Gerlinde Van Thuyne (<gerlinde.vanthuyne@inbo.be>)
+**Corresponding author**: Gerlinde Van Thuyne (gerlinde.vanthuyne@inbo.be)
 
 ---
 
-**Resource citation**: Van Thuyne G, Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2013): VIS - Fishes in inland waters in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. <http://doi.org/10.15468/gzyxyd> Data paper: <http://doi.org/10.3897/zookeys.475.8556>
+**Resource citation**: Van Thuyne G, Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2013): VIS - Fishes in inland waters in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/gzyxyd Data paper: http://doi.org/10.3897/zookeys.475.8556
 
 ## Abstract
 
-*VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described in Brosens et al. 2015 (<http://doi.org/10.3897/zookeys.475.8556>). The dataset contains over 350,000 fish occurrences sampled between 1992 and 2012 from over 2,000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 64 fish species, as well as a number of non-target species (mainly crustaceans). The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at <https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-inland-occurrences>
+*VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described in Brosens et al. 2015 (http://doi.org/10.3897/zookeys.475.8556). The dataset contains over 350,000 fish occurrences sampled between 1992 and 2012 from over 2,000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 64 fish species, as well as a number of non-target species (mainly crustaceans). The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-inland-occurrences
 
 ## Keywords
 
@@ -22,11 +22,11 @@ ecosystem functioning, fish-based index of biotic integrity, fish distribution, 
 
 ## Data published through
 
-<http://doi.org/10.15468/gzyxyd>
+http://doi.org/10.15468/gzyxyd
 
 ## Rationale
 
-The Fish Information System or VIS (<http://vis.milieuinfo.be>) is a database created by the Research Institute for Nature and Forest (INBO) which is used to monitor the status of fishes and their habitats in Flanders, Belgium and to calculate the biotic integrity (Karr 1981, Belpaire et al. 2000, Breine et al. 2004, 2007, 2010) of fish assemblages. It contains data regarding occurrences, individual morphometrics, stocks, pollutants, indices, and non-native fish species. Sampling has been going on since 1992, the database model was designed in 1994 (Verbiest et al. 1994), the first database developed in 1996 (Verbiest et al. 1996), and the consolidated database set up in 2001. VIS is used for supporting NATURA 2000, an ecological network of protected areas in Europe and to calculate the EQR (Ecological Quality Ratio) in the framework of the EU Water Directive (Directive 2000/60/EC). Further, the database provides updated information for Flemish Red Lists of fishes and lampreys (Verreycken et al. 2014) and on the distribution status of non-native and invasive fish species. The data are also crucial in fish stock management and for reporting on the status of the European eel stock as required by the Eel Regulation (Council Regulation (EC) N° 1100/2007). This dataset is a standardized extraction of all inland water species occurrences from VIS.
+The Fish Information System or VIS (http://vis.milieuinfo.be) is a database created by the Research Institute for Nature and Forest (INBO) which is used to monitor the status of fishes and their habitats in Flanders, Belgium and to calculate the biotic integrity (Karr 1981, Belpaire et al. 2000, Breine et al. 2004, 2007, 2010) of fish assemblages. It contains data regarding occurrences, individual morphometrics, stocks, pollutants, indices, and non-native fish species. Sampling has been going on since 1992, the database model was designed in 1994 (Verbiest et al. 1994), the first database developed in 1996 (Verbiest et al. 1996), and the consolidated database set up in 2001. VIS is used for supporting NATURA 2000, an ecological network of protected areas in Europe and to calculate the EQR (Ecological Quality Ratio) in the framework of the EU Water Directive (Directive 2000/60/EC). Further, the database provides updated information for Flemish Red Lists of fishes and lampreys (Verreycken et al. 2014) and on the distribution status of non-native and invasive fish species. The data are also crucial in fish stock management and for reporting on the status of the European eel stock as required by the Eel Regulation (Council Regulation (EC) N° 1100/2007). This dataset is a standardized extraction of all inland water species occurrences from VIS.
 
 ## Taxonomic coverage
 
@@ -111,15 +111,15 @@ Effort: 15% of riverbank (minimum 1000 m, maximum 2000 m) or 100% if perimeter i
 * **Format version**: 1.0
 * **Character encoding**: UTF-8
 * **Language**: English
-* **License**: <http://creativecommons.org/publicdomain/zero/1.0/>
-* **Usage norms**: <http://www.inbo.be/en/norms-for-data-use>
+* **License**: http://creativecommons.org/publicdomain/zero/1.0/
+* **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2013-12-20
-* **Distribution**: <http://dataset.inbo.be/vis-inland-occurrences>
-* **DOI**: <http://doi.org/10.15468/gzyxyd>
+* **Distribution**: http://dataset.inbo.be/vis-inland-occurrences
+* **DOI**: http://doi.org/10.15468/gzyxyd
 
 ### Usage norms
 
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (<http://creativecommons.org/publicdomain/zero/1.0/>). We would appreciate however, if you read and follow these norms for data use (<http://www.inbo.be/en/norms-for-data-use>) and provide a link to the original dataset (<http://doi.org/10.15468/gzyxyd>) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, <opendata@inbo.be> or <https://twitter.com/LifeWatchINBO>.
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/gzyxyd) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ### Additional information
 
