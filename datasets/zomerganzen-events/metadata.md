@@ -1,9 +1,10 @@
 # Zomerganzen - Summering geese management and population counts in Flanders, Belgium
 
-Sander Devisscher[^1], Tim Adriaens[^1], Dimitri Brosens[^1], Peter Desmet[^1], Gerald Driessens[^2]
+Sander Devisscher[^1], Tim Adriaens[^1], Dimitri Brosens[^1], Frank Huysentruyt[^2], Gerald Driessens[^3], Peter Desmet[^1]
 
 [^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
-[^2]: Natuurpunt, Coxiestraat 11, 2800, Mechelen, Belgium
+[^2]: Research Institute for Nature and Forest (INBO), Gaverstraat 4, 9500, Geraardsbergen, Belgium
+[^3]: Natuurpunt, Coxiestraat 11, 2800, Mechelen, Belgium
 
 **Corresponding author**: Sander Devisscher (sander.devisscher@inbo.be)
 
@@ -29,7 +30,7 @@ Impact scoring for established non-native birds in Europe has shown Canada goose
 
 ## Taxonomic coverage
 
-All 14 species (and some subspecies and hybrids) in this dataset belong to the waterfowl family Anatidae. 84% of the occurrences are swans and true geese (subfamily Anserinae). The taxon "Invasieve zomergans" is applied to individuals that may have been subject of a management action (e.g. "egg pricking"), but where the specific species was unknown.
+All 20 species (and some subspecies and hybrids) in this dataset belong to the waterfowl family Anatidae. 84% of the occurrences are swans and true geese (subfamily Anserinae). Some individuals were not identified to species (e.g. unknown hybrids, eggs).
 
 ### Taxonomic ranks
 
@@ -43,7 +44,7 @@ All 14 species (and some subspecies and hybrids) in this dataset belong to the w
 
 ## Geographic coverage
 
-Flanders is one of the three administrative regions in Belgium, located in the centre of Western Europe. The Flemish region is situated in the north of the country and covers an area of 13,522km² (44,29% of Belgium). Belgium has a temperate maritime climate that is influenced by the North Sea and the Atlantic Ocean with substantial precipitation in all seasons. The summer is moderate and the winters are mild. The two main geographical regions of Flanders are the coastal plain in the North-West and the Central plain, further inland. With 470 inhabitants/km², Flanders is one of the most densely populated areas in Europe. The three major rivers are the River Yser, the River Scheldt, and the River Meuse.
+In the initial stages, data from the simultaneous counts of summering geese were gathered at the level of the two westernmost provinces in Flanders (West Flanders, East Flanders), as these were considered in the Invexo and RINSE project's area. These are provincies with high numbers of summering geese, with several species under management (greater Canada goose, Egyptian goose, greylag goose). Here, a set of counting areas with confirmed presence of geese was selected and maintained as the sample study area over the years. Since 2014, management has been upscaled to other provinces. Therefore, counts are organised at the level of the whole Flanders region since.
 
 ### Bounding box
 
@@ -51,7 +52,7 @@ Flanders is one of the three administrative regions in Belgium, located in the c
 
 ## Temporal coverage
 
-2009-04-27 - 2015-07-21
+2009-04-27 - now
 
 ## Methodology
 
@@ -119,14 +120,6 @@ The data were compiled from different summering geese related projects:
 2012-2014 RINSE (www.rinse-europe.eu, Reducing the Impact of Non-native Species in Europe), Interreg IVA 2 Seas project co-funded by the European Regional Development fund (EFRO)
 
 Since 2015, data collection is funded by INBO (INBOPRJ-10201).
-
-## Study area description
-
-In the initial stages, data from the simultaneous counts of summering geese were gathered at the level of the two westernmost provinces in Flanders (West Flanders, East Flanders), as these were considered in the Invexo and RINSE project's area. These are provincies with high numbers of summering geese, with several species under management (greater Canada goose, Egyptian goose, greylag goose). Here, a set of counting areas with confirmed presence of geese was selected and maintained as the sample study area over the years. Since 2014, management has been upscaled to other provinces. Therefore, counts are organised at the level of the whole Flanders region since.
-
-## Design description
-
-The dataset includes over 6,000 presence occurrences, as well as over 24,000 absence occurrences. The sampling protocol for the majority of the occurrences are simultaneous counts. Here, the number of individuals of different geese species in a fixed set of areas is determined. Counts are performed within the same weekend to avoid double counting. Simultaneous counts were organised yearly since 2008 and take place the first weekend after July 15th, the best period for monitoring the summering population of geese. These counts are performed by professional INBO employees as well as experienced birdwatchers from Natuurpunt using a standardized field protocol. Data are recorded in a citizen science portal (http://waarnemingen.be/waarnemingen_projecten.php?project=231). However, the dataset also comprises opportunistic field observations from the same portal outside this period. Furthermore, data are derived from management actions, such as fertility reduction (egg shaking and pricking), the use of Larsen traps (for Egyptian goose), and the execution of moult captures. Here, the individuals in the dataset were actually removed from the environment. The aim of the data collection is management follow-up and evaluation. Consequently, caution is advised when using these data for trend analysis, distribution range calculation, niche modeling or other. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/zomerganzen-events
 
 ## References
 
