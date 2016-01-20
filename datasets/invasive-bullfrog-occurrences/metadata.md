@@ -92,13 +92,7 @@ The dataset contains data from 2010 to now and consists of 2 sources:
 
 ### Usage norms
 
-We strongly believe an open attitude is essential for tackling the IAS problem (for more information, read Groom et. al 2015 http://doi.org/10.3391/mbi.2015.6.2.02).
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it however if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/2hqkqn) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
-
-### Maintenance description
-
-Data on bullfrog management performed by various parties are generally provided to the INBO. The institute will update the dataset whenever appropriate.
+We strongly believe an open attitude is essential for tackling the IAS problem (Groom et. al 2015). To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it however if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/2hqkqn) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Project
 
@@ -131,3 +125,5 @@ Louette G, Devisscher S, Adriaens T (2013) Control of invasive American bullfrog
 Louette G, Devisscher S, Adriaens T (2014) Combating adult invasive American bullfrog Lithobates catesbeianus. European journal of wildlife research, 60(4), 703-706. http://doi.org/10.1007/s10344-014-0829-9
 
 Lowe SJ, Browne M, Boudjelas S (2000) 100 of the world's worst invasive alien species: A selection from the Global Biodiversity Species Database. Auckland, New Zealand: Invasive Species Specialist Group (ISSG) http://www.issg.org/pdf/publications/worst_100/english_100_worst.pdf
+
+Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions (2015) Volume 6, Issue 2: 119–125 doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
