@@ -21,4 +21,4 @@ We use a Google Spreadsheet as a working document to compare standardization bet
 
 * [Data guidelines](guidelines/data-guidelines.md)
 * [Metadata guidelines](guidelines/metadata-guidelines.md)
-* [Data paper template](guidelines/data-paper-template.md)
+* [Data paper template](https://docs.google.com/document/d/1mlxAQzfcJR4edRkRntQczaiGgqIiqxZolGzbiqhJ-z0/edit?usp=sharing)
