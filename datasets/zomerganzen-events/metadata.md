@@ -30,7 +30,7 @@ Impact scoring for established non-native birds in Europe has shown Canada goose
 
 ## Taxonomic coverage
 
-All 20 species (and some subspecies and hybrids) in this dataset belong to the waterfowl family Anatidae. 84% of the occurrences are swans and true geese (subfamily Anserinae). Some individuals were not identified to species (e.g. unknown hybrids, eggs).
+All 20 species (and some subspecies and hybrids) in this dataset belong to the waterfowl family Anatidae. More than 80% of the occurrences are swans and true geese (subfamily Anserinae). Some individuals were not identified to species (e.g. unknown hybrids, eggs).
 
 ### Taxonomic ranks
 
@@ -52,7 +52,7 @@ In the initial stages, data from the simultaneous counts of summering geese were
 
 ## Temporal coverage
 
-2009-04-27 - now
+2010-06-22 - now
 
 ## Methodology
 
