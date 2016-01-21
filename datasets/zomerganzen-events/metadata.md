@@ -10,7 +10,7 @@ Sander Devisscher[^1], Tim Adriaens[^1], Dimitri Brosens[^1], Frank Huysentruyt[
 
 ---
 
-**Resource citation**: Devisscher S, Adriaens T, Brosens D, Huysentruyt F, Driessens G, Desmet P (2016): Zomerganzen - Summering geese management and population counts in Flanders, Belgium. v1. Research Institute for Nature and Forest (INBO). Dataset/Samplingevent. http://data.inbo.be/ipt/resource?r=zomerganzen-events
+**Resource citation**: Devisscher S, Adriaens T, Brosens D, Huysentruyt F, Driessens G, Desmet P (2016): Zomerganzen - Summering geese management and population counts in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Samplingevent. http://data.inbo.be/ipt/resource?r=zomerganzen-events
 
 ## Abstract
 
