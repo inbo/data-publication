@@ -1,6 +1,6 @@
-# Chinese mitten crab (Eriocheir sinensis) occurrences in Flanders
+# Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium
 
-Sander Devisscher[^1], Peter Desmet[^1], Dimitri Brosens[^1]
+Sander Devisscher[^1], Tim Adriaens [^1], Dimitri Brosens[^1], Peter Desmet[^1]
 
 [^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
@@ -8,7 +8,7 @@ Sander Devisscher[^1], Peter Desmet[^1], Dimitri Brosens[^1]
 
 ---
 
-**Resource citation**: Devisscher S, Desmet P, Brosens D (2015): Chinese mitten crab (Eriocheir sinensis) occurrences in Flanders. v1.6. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://data.inbo.be/ipt/resource?r=invasive-chinese-mitten-crab-occurrences&v=1.6
+**Resource citation**: Devisscher S, Adriaens T, Brosens D, Desmet P (2015): Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/eakzzv
 
 ## Abstract
 
@@ -16,7 +16,7 @@ The Research Institute for Nature and Forest has a long tradition in the monitor
 
 ## Keywords
 
-alien species, non-native species, invasive, GBIF, occurrence, Crustacea, Grapsoidea, Occurrence, Observation
+Chinese mitten crab, Eriocheir sinensis, crustaceans, invasive alien species, non-native species, Occurrence, Observation
 
 ## Data published through
 
@@ -32,25 +32,25 @@ The dataset contains records of Chinese mitten crab Eriocheir sinensis H. Milne 
 
 ### Taxonomic ranks
 
-* **Kingdom**: *Animalia*
+* **Kingdom**: *Animalia (animals)*
 * **Phylum**: *Arthropoda*
-* **Subphylum**: *Crustacea*
 * **Class**: *Malacostraca*
 * **Order**: *Decapoda*
-* **Genus**: *Varunidae*
-* **Species**: *Eriocheir sinensis*
+* **Family**: *Varunidae*
+* **Genus**: *Eriocheir*
+* **Species**: *Eriocheir sinensis (Chinese mitten crab)*
 
 ## Geographic coverage
 
-Flanders is one of the three administrative regions in the country of Belgium, located in the centre of Western Europe. The Flemish region is situated in the north of the country and covers an area of 13,522km² (44,29% of Belgium). Belgium has a temperate maritime climate that is influenced by the North Sea and the Atlantic Ocean with substantial precipitation in all seasons. The summer is moderate and the winters are mild. The two main geographical regions of Flanders are the coastal plain in the North-West and the Central plain, further inland. With 470 inhabitants/km², Flanders is one of the most densely populated areas of Europe. The three major rivers are the River Yser, the River Scheldt, and the River Meuse. All rivers in Flanders flow into the North Sea, but only the River Yser drains directly into the sea within the jurisdiction of Flanders.
+Flanders, Belgium.
 
 ### Bounding box
 
-50.66° to 51.57° latitude, 2.48° to 5.87° longitude
+50.68° to 51.51° latitude, 2.54° to 5.92° longitude
 
 ## Temporal coverage
 
-2000-09-01 - 2015-04-01
+2000-09-01 - now
 
 ## Methodology
 
@@ -74,7 +74,7 @@ step by step
 
 ### Dataset description
 
-* **Object name**: Chinese mitten crab (Eriocheir sinensis) occurrences in Flanders
+* **Object name**: Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium
 * **Format name**: Darwin Core Archive format
 * **Format version**: 1.0
 * **Character encoding**: UTF-8
@@ -85,13 +85,9 @@ step by step
 * **Distribution**: http://dataset.inbo.be/invasive-chinese-mitten-crab-occurrences
 * **DOI**: http://doi.org/10.15468/eakzzv
 
-### Maintenance description
-
-will be updated regulary
-
 ### Usage norms
 
-We strongly believe an open data attitude is essential for tackling the IAS problem (for more information read the paper on this doi: http://dx.doi.org/10.3391/mbi.2015.6.2.02). To allow anyone to use this dataset, we therfore released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). However, we strongly recommend you read and follow our norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link (through the citation or doi) to the original dataset whenever possible. If you use these data for a scientific paper, please cite the dataset following applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information with regards to their responsible use. Therefore, prior to using these data, please contact us (faunabeheer@inbo.be) through the contact information provided in the metadata, opendata@inbo.be or on our twitter account https://twitter.com/LifeWatchINBO. Please download the verbatim version of the dataset for the most extensive dataset.
+We strongly believe an open attitude is essential for tackling the IAS problem (Groom et. al 2015). To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it however if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/eakzzv) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Project
 
@@ -117,3 +113,4 @@ Flanders (northern Belgium)
 
 ## References
 
+Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions (2015) Volume 6, Issue 2: 119–125 doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
