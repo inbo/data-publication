@@ -24,13 +24,13 @@ http://doi.org/10.15468/eakzzv
 
 ## Rationale
 
-Native to the Pacific coasts of China and Korea, Chinese mitten crabs arrived in European waters in the early 1900s and are believed to have been introduced via ship's ballast water and, possibly, intentionally released to establish fisheries (Marquard 1926, Peters et al. 1933, Gollasch 2006). Since its arrival in Germany, the species has rapidly invaded coastal and inland waters throughout Europe. It was first recorded in Belgium in 1933 in the Zeeschelde near Antwerp (Wouters 2002, Boets 2013). Based on recent observations, it is now common in Flanders (Messiaen 2010), in flowing as well as still waters, where it is benefitting from improved water quality (Kerckhof et al. 2007, Stevens 2010). In the last few years, the species has increased in distribution area and numbers, and is now colonizing inland waters. The Scheldt estuary is the most important invasion route, where its numbers seem to have stabilized in recent years (unpublished data, INBO). The seasonal upstream migration of mitten crabs has become a well known phenomenon in Flanders (e.g. www.youtube.com/watch?v=CSBqwufl3pA), but its impact in the region is not well known.
+Native to the Pacific coasts of China and Korea, Chinese mitten crabs arrived in European waters in the early 1900s and are believed to have been introduced via ship's ballast water and, possibly, intentionally released to establish fisheries (Marquard 1926, Peters et al. 1933, Gollasch 2006). Since its arrival in Germany, the species has rapidly invaded coastal and inland waters throughout Europe. It was first recorded in Belgium in 1933 in the Zeeschelde near Antwerp (Wouters 2002, Boets 2013). Based on recent observations, it is now common in Flanders (Messiaen 2010), in flowing as well as still waters, where it is benefitting from improved water quality (Kerckhof et al. 2007, Stevens 2010). In the last few years, the species has increased in distribution area and numbers, and is now colonizing inland waters. The Scheldt estuary is the most important invasion route, where its numbers seem to have stabilized in recent years (unpublished data, INBO). The seasonal upstream migration of mitten crabs has become a well known phenomenon in Flanders (e.g. http://www.youtube.com/watch?v=CSBqwufl3pA), but its impact in the region is not well known.
 
 The Chinese mitten crab is listed as a species of EU concern sensu the EU regulation 1143/2014 on the prevention and management of the introduction of invasive alien species (IAS). This regulation requires member states to set up surveillance and early warning, as well as rapidly eradicate new introductions of a selection of IAS. Additionally, it requires member states to set up management programmes for widely established species and to evaluate and report on the progress of these programmes. To do this, baseline data on the distribution of selected IAS are needed, which is one of the reasons we are publishing these data.
 
 ## Taxonomic coverage
 
-The dataset contains records of Chinese mitten crab Eriocheir sinensis H. Milne Edwards, 1853.
+This is a monospecies dataset: all records are Chinese mitten crabs (*Eriocheir sinensis H. Milne Edwards, 1853*).
 
 ### Taxonomic ranks
 
@@ -58,19 +58,19 @@ Flanders, Belgium.
 
 ### Study extent description
 
-The Chinese mitten crab occurrences represent a dataset compiled dataset from various data sources (research projects, monitoring programmes, unpublished dataset) available at the Research Institute for Nature and Forest (INBO). Because many of these studies/projects are small, we chose to extract mitten crab occurrences from the original (mostly formerly unpublished) datasets and compile them in this dataset.
+This dataset is compiled from various data sources (research projects, monitoring programmes, unpublished dataset) available at the Research Institute for Nature and Forest (INBO). Because many of these studies/projects are small, we chose to extract Chinese mitten crab occurrences from the original (mostly formerly unpublished) datasets and compile them into this dataset.
 
 ### Sampling description
 
-Most of the chinese mitten crabs were caught using double fyke nets in rivers and surface waters. These nets only sample the lower 50 cm of the water column. The capture devices are placed parallel to the river's bank, as opposed to normal fyke nets that are placed at a 90° angle to the bank. In these projects, mitten crab was mostly recorded as bycatch of fish monitoring or riverine/estuarine research projects. Mostly, the number of crabs per fyke was recorded, yet sometimes in case of high density locations, recorded density was expressed as the net weight of crabs caught. However, in this dataset, occurrences only comprise the geographic location of crabs caught. In case density data are needed, we advise to get in touch through the administrative contact.
+Most of the Chinese mitten crabs were caught using double fyke nets in rivers and surface waters. These nets sample the lower 50 cm of the water column. The nets are placed parallel to the river's bank, as opposed to normal fyke nets that are placed at a 90° angle to the bank. Mitten crabs were mostly recorded as bycatch of fish monitoring or riverine/estuarine research projects. In most cases, the number of crabs per fyke was recorded, but for high density locations, the density was recorded as the net weight of crabs caught. Counts and weights are not included in this dataset and are available upon request.
 
 ### Quality control description
 
-Fieldwork was mostly performed by professionals (trained experts or scientists) of the Research Institute for Nature and Forest (INBO). However, 1797 records represent volunteer data from a validated citizen science project on the occurrence of fish in the Scheldt estuary. In this case, captures were performed by trained volunteers and data were subject to validation by the researcher involved.
+Fieldwork was mostly performed by professionals (trained experts or researchers) of the Research Institute for Nature and Forest (INBO). However, 1797 records represent volunteer data from a validated citizen science project on the occurrence of fish in the Scheldt estuary. In this case, captures were performed by trained volunteers and data were subject to validation by the researcher involved.
 
 ### Method step description
 
-step by step
+Not provided.
 
 ## Dataset
 
@@ -108,10 +108,6 @@ The EU regulation on the prevention and management of the introduction and sprea
 ### Funding
 
 Research Institute for Nature and Forest (INBO)
-
-### Study area description
-
-Flanders (northern Belgium)
 
 ## References
 
