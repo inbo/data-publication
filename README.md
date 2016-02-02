@@ -17,8 +17,10 @@ We use a Google Spreadsheet as a working document to compare standardization bet
 * [Occurrence datasets](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1895280180)
 * [Checklist datasets](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=250319423)
 
-## Draft guidelines
+## Guidelines
 
-* [Data guidelines](guidelines/data-guidelines.md)
-* [Metadata guidelines](guidelines/metadata-guidelines.md)
+We are trying to document the guidelines we've set ourselves:
+
+* [Guide for Darwin Core occurrence data](guidelines/data/occurrence-guide.md)
+* [Guide for IPT metadata](guidelines/metadata/metadata-guide.md)
 * [Data paper template](https://docs.google.com/document/d/1mlxAQzfcJR4edRkRntQczaiGgqIiqxZolGzbiqhJ-z0/edit?usp=sharing)

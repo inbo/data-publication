@@ -1,4 +1,4 @@
-# Metadata guidelines
+# Metadata guide
 
 ## Basic metadata
 
