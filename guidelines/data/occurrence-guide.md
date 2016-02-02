@@ -19,8 +19,6 @@ Terms with **M** (mandatory) should always be included in the mapping.
 * [ ] **M** `datasetName` is the latest dataset title
 * [ ] **M** `ownerInstitutionCode` is `INBO`
 * [ ] **M** `basisOfRecord` uses [this UpperCamelCase vocabulary](http://rs.gbif.org/vocabulary/dwc/basis_of_record.xml) 
-* [ ] `informationWithheld` could be `see metata`, where it is described in additional information
-* [ ] `dataGeneralizations` could be `coordinates are generalized to a 5x5km UTM grid`
 * [ ] `dynamicProperties` is understandable to an outside user
 * [ ] `dynamicProperties` is valid JSON
 * [ ] `recordedBy` is of the form `First name Last name`, `F. Last name` or an anonymous unique code
@@ -76,6 +74,8 @@ Terms with **M** (mandatory) should always be included in the mapping.
 ## Terms we seldom use
 
 * [ ] `references` would contain a public URL with more information about an occurrence, and we don't have those
+* [ ] `informationWithheld` could be `see metata`, where it is described in additional information
+* [ ] `dataGeneralizations` could be `coordinates are generalized to a 5x5km UTM grid`, but only use this if we reduce the precision of the original coordinates
 * [ ] `behavior` is seldom noted in an easy to retrieve way
 * [ ] `behavior` uses a lowercase vocabulary
 * [ ] `establishmentMeans` like `invasive` is more a property for a checklist
