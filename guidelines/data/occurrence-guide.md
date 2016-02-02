@@ -22,7 +22,7 @@ Terms with **M** (mandatory) should always be included in the mapping.
 * [ ] `dynamicProperties` is understandable to an outside user
 * [ ] `dynamicProperties` is valid JSON
 * [ ] `recordedBy` is of the form `First name Last name`, `F. Last name` or an anonymous unique code
-* [ ] `recordedBy` delimits multiple values with ` | `
+* [ ] **M** `recordedBy` delimits multiple values with ` | `
 * [ ] `individualCount` are all integers
 * [ ] `individualCount` has limited outliers
 * [ ] `individualCount` has no 0 (would indicate absense data) 
@@ -119,19 +119,33 @@ This is not a full list, just terms we might have populated before.
 
 ## Specialized datasets
 
-For specimen records, populate the following terms:
+### Specimen records
+
+Populate the following terms:
 
 * [ ] `type` is `PhysicalObject`
 * [ ] `basisOfRecord` is `PreservedSpecimen`
 * [ ] `collectionCode` refers to the collection acronym
 * [ ] `catalogNumber` refers to the ID on the specimen
 
-For tracking data, try to populate these terms:
+### Tracking data
+
+Try to populate these terms:
 
 * [ ] `organismID` the code for the indivual
 * [ ] `organismName` the name of the individual
+* [ ] `minimumElevationInMeters` is `0`
+* [ ] `minimumDistanceAboveSurfaceInMeters` is the recorded flight altitude
 
-For an event core, try to populate these terms:
+The following mandatory terms cannot be populated:
+
+* [ ] `recordedBy`
+* [ ] `continent`
+* [ ] `countryCode`
+
+## Event core
+
+Try to populate these terms:
 
 * [ ] `organismQuantity`
 * [ ] `organismQuantityType`
