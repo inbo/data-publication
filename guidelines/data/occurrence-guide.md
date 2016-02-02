@@ -2,21 +2,23 @@
 
 ## Terms to verify
 
+Terms with **M** (mandatory) should always be included in the mapping.
+
 * [ ] Term names are in lowerCamelCase
-* [ ] `occurrenceID` does not contain duplicates
-* [ ] `occurrenceID` is globally unique (eby concatenating IDs)
+* [ ] **M** `occurrenceID` does not contain duplicates
+* [ ] `occurrenceID` is globally unique (e.g. by concatenating IDs)
 * [ ] `occurrenceID` is stable (by referring to internal IDs)
-* [ ] `type` uses an UpperCamelCase vocabulary
-* [ ] `language` is `en`
-* [ ] `license` is `http://creativecommons.org/publicdomain/zero/1.0/`
-* [ ] `rightsHolder` is `INBO`
-* [ ] `accessRights` is `http://www.inbo.be/en/norms-for-data-use`
-* [ ] `datasetID` is of the form `http://dataset.inbo.be/shortname`
+* [ ] **M** `type` uses an UpperCamelCase vocabulary
+* [ ] **M** `language` is `en`
+* [ ] **M** `license` is `http://creativecommons.org/publicdomain/zero/1.0/`
+* [ ] **M** `rightsHolder` is `INBO`
+* [ ] **M** `accessRights` is `http://www.inbo.be/en/norms-for-data-use`
+* [ ] **M** `datasetID` is of the form `http://dataset.inbo.be/shortname`
 * [ ] `datasetID` is the dataset DOI (after registration)
-* [ ] `institutionCode` is `INBO`
-* [ ] `datasetName` is the latest dataset title
-* [ ] `ownerInstitutionCode` is `INBO`
-* [ ] `basisOfRecord` uses [this UpperCamelCase vocabulary](http://rs.gbif.org/vocabulary/dwc/basis_of_record.xml) 
+* [ ] **M** `institutionCode` is `INBO`
+* [ ] **M** `datasetName` is the latest dataset title
+* [ ] **M** `ownerInstitutionCode` is `INBO`
+* [ ] **M** `basisOfRecord` uses [this UpperCamelCase vocabulary](http://rs.gbif.org/vocabulary/dwc/basis_of_record.xml) 
 * [ ] `informationWithheld` could be `see metata`, where it is described in additional information
 * [ ] `dataGeneralizations` could be `coordinates are generalized to a 5x5km UTM grid`
 * [ ] `dynamicProperties` is understandable to an outside user
@@ -31,15 +33,14 @@
 * [ ] `lifeStage` uses [this lowercase vocabulary](http://rs.gbif.org/vocabulary/gbif/life_stage.xml) (alternative terms allowed)
 * [ ] `lifeStage` delimits multiple values with ` | `
 * [ ] `eventID` refers to an internal ID
-* [ ] `samplingProtocol` is a lowercase controlled vocabulary (or refers to a DOI)
+* [ ] **M** `samplingProtocol` is a lowercase controlled vocabulary (or refers to a DOI)
 * [ ] `samplingEffort` indicates the effort as a number
 * [ ] `samplingEffort` is valid JSON
-* [ ] `eventDate` is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+* [ ] **M** `eventDate` is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 * [ ] `eventDate` does not contain date ranges (use `verbatimEventDate`)
 * [ ] `locationID` refers to an internal ID
-* [ ] `continent` is `Europe`
-* [ ] `country` is not used
-* [ ] `countryCode` is `BE`
+* [ ] **M** `continent` is `Europe`
+* [ ] **M** `countryCode` is `BE`
 * [ ] `stateProvince` is a vocabulary of English names
 * [ ] `municipality` is ideally a vocabulary of local names
 * [ ] `verbatimLocality` contains the fullest location name/description
@@ -50,27 +51,27 @@
 * [ ] `verbatimCoordinateSystem` is only populated when there are verbatim coordinates/lat/long
 * [ ] `verbatimSRS` is `Belgian Datum 1972`, `ED50` or `WGS84`
 * [ ] `verbatimSRS` is only populated when there are verbatim coordinates/lat/long
-* [ ] `decimalLatitude` has a precision of 5 decimals
-* [ ] `decimalLongitude` has a precision of 5 decimals
+* [ ] **M** `decimalLatitude` has a precision of 5 decimals
+* [ ] **M** `decimalLongitude` has a precision of 5 decimals
 * [ ] The coordinates are verified on a map
-* [ ] `geodeticDatum` is `WGS84`
+* [ ] **M** `geodeticDatum` is `WGS84`
 * [ ] `geodeticDatum` is only populated when there are decimal coordinates
-* [ ] `coordinateUncertaintyInMeters` is the radius of a circle containing the complete area where the occurrence might have been seen, e.g. `3536` for a 5x5km grid square
+* [ ] **M** `coordinateUncertaintyInMeters` is the radius of a circle containing the complete area where the occurrence might have been seen, e.g. `3536` for a 5x5km grid square
 * [ ] `coordinateUncertaintyInMeters` is only populated when there are decimal coordinates
 * [ ] `georeferenceRemarks` shortly describes the coordinates calculation, e.g. `coordinates are centroid of used grid square`
 * [ ] `georeferenceRemarks` is only populated when there are decimal coordinates
 * [ ] `identifiedBy` is of the form `First name Last name`, `F. Last name` or an anonymous unique code
 * [ ] `identifiedBy` delimits multiple values with ` | `, but is generally a single person 
-* [ ] `scientificName` is the accepted taxon name, without author
-* [ ] `kingdom` is always populated, e.g. `Animalia`
+* [ ] **M** `scientificName` is the accepted taxon name, without author
+* [ ] **M** `kingdom` is always populated, e.g. `Animalia`
 * [ ] `phylum` is generally populated
 * [ ] `class` can be populated
 * [ ] `order` can be populated
 * [ ] `taxonRank` uses [this lowercase vocabulary](http://rs.gbif.org/vocabulary/gbif/rank.xml)
-* [ ] `taxonRank` matches the rank of the `scientificName`
-* [ ] `scientificNameAuthorship` is the author of the `scientificName` (not populated for forms, hybrids)
+* [ ] **M** `taxonRank` matches the rank of the `scientificName`
+* [ ] **M** `scientificNameAuthorship` is the author of the `scientificName` (not populated for forms, hybrids)
 * [ ] `vernacularName` is the English or Dutch vernacular name of the `scientificName`
-* [ ] `nomenclaturalCode` is `ICZN` or `ICBN`
+* [ ] **M** `nomenclaturalCode` is `ICZN` or `ICBN`
 
 ## Terms we seldom use
 
@@ -108,6 +109,7 @@ This is not a full list, just terms we might have populated before.
 
 * [ ] `modified` seldom reflects all modifications, such as altered mapping
 * [ ] `bibliographicCitation` is the citation of a dataset, which is in the metadata and too bulky to repeat for every occurrence
+* [ ] `country` is not used, we use `countryCode`
 * [ ] `locality` is not used, as our vocabularies only apply to `municipality` and higher, or `waterBody`
 * [ ] `dateIdentified` is assumed to be the `eventDate` and is thus not populated
 * [ ] `identificationReferences` is almost never known

@@ -1,4 +1,4 @@
-# Metadata guide
+# Guide for IPT metadata
 
 ## Basic metadata
 
