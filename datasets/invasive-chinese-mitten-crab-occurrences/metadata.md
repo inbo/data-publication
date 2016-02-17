@@ -111,22 +111,22 @@ Research Institute for Nature and Forest (INBO)
 
 ## References
 
-Boets P, Brosens D, Lock K, Adriaens T, Aelterman B, Mertens J, Goethals PLM (2016) Alien macroinvertebrates in Flanders (Belgium). Aquatic Invasions 11: in press
+Boets P, Brosens D, Lock K, Adriaens T, Aelterman B, Mertens J, Goethals PLM (2016) Alien macroinvertebrates in Flanders (Belgium). Aquatic Invasions 11: in press.
 
-EU (2014) Regulation (EU) no 1143/2014 of the European parliament and of the Council of 22 October 2014 on the prevention and management of the introduction and spread of invasive alien species. Official Journal of the European Union 4.11.2014, L317:35-55
+EU (2014) Regulation (EU) no 1143/2014 of the European parliament and of the Council of 22 October 2014 on the prevention and management of the introduction and spread of invasive alien species. Official Journal of the European Union 4.11.2014, L317: 35-55.
 
-Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions 6, 2: 119–125 doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
+Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions 6, 2: 119–125. doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
 
-Kerckhof F, Haelters J, Gollasch S (2007) Alien species in the marine and brackish ecosystem: the situation in Belgian waters. Aquatic Invasions 2: 243–257 doi: [10.3391/ai.2007.2.3.9](http://dx.doi.org/10.3391/ai.2007.2.3.9)
+Kerckhof F, Haelters J, Gollasch S (2007) Alien species in the marine and brackish ecosystem: the situation in Belgian waters. Aquatic Invasions 2: 243–257. doi: [10.3391/ai.2007.2.3.9](http://doi.org/10.3391/ai.2007.2.3.9)
 
 Maes J, Taillieu A, Van Damme P, Ollevier F (1996) Impact van watercaptatie via het waterpompstation van de kerncentrale van Doel 3/4 op de biota van de BenedenZeeschelde. Studierapport in opdracht van Electrabel. Katholieke Universiteit Leuven, Leuven, Belgium. 111 pp. + bijlagen
 
-Messiaen M, Lock K, Gabriels W, Vercauteren T, Wouters K, Boets P, Goethals PLM (2010) Alien macrocrustaceans in freshwater ecosystems in the eastern part of Flanders (Belgium). Belgian Journal of Zoology 140: 30–39
+Messiaen M, Lock K, Gabriels W, Vercauteren T, Wouters K, Boets P, Goethals PLM (2010) Alien macrocrustaceans in freshwater ecosystems in the eastern part of Flanders (Belgium). Belgian Journal of Zoology 140: 30–39.
 
-Pas J, Peeters B, Maes J, Vlietinck K, Pauwels F, Ollevier F, (1998) Opvolging van het visbestand van de Zeeschelde en de bijhorende overstromingsgebieden. Studierapport in opdracht van AMINAL. 82 pp. + bijlagen
+Pas J, Peeters B, Maes J, Vlietinck K, Pauwels F, Ollevier F (1998) Opvolging van het visbestand van de Zeeschelde en de bijhorende overstromingsgebieden. Studierapport in opdracht van AMINAL: 82 pp. + bijlagen
 
-Stevens M (2010) Advies betreffende de Chinese Wolhandkrab langsheen de Schelde. INBO.A.2010.59. Available online [https://www.inbo.be/nl/advies/advies-betreffende-de-chinese-wolhandkrab-langsheen-de-schelde](https://www.inbo.be/nl/advies/advies-betreffende-de-chinese-wolhandkrab-langsheen-de-schelde)
+Stevens M (2010) Advies betreffende de Chinese Wolhandkrab langsheen de Schelde. Rapporten van het Instituut voor Natuur- en Bosonderzoek (INBO.A.2010.59). INBO, Brussel. https://www.inbo.be/nl/advies/advies-betreffende-de-chinese-wolhandkrab-langsheen-de-schelde
 
-Stevens M, Van den Neucker T, Mouton A, Buysse D, Martens S, Baeyens R, Jacobs Y, Gelaude E, Coeck J (2009) Onderzoek naar de trekvissoorten in het stroomgebied van de Schelde. Rapport INBO, R.2009.9. Instituut voor Natuur- en Bosonderzoek: Brussel, Belgium. 188 pp.
+Stevens M, Van den Neucker T, Mouton A, Buysse D, Martens S, Baeyens R, Jacobs Y, Gelaude E, Coeck J (2009) Onderzoek naar de trekvissoorten in het stroomgebied van de Schelde. Rapporten van het Instituut voor Natuur- en Bosonderzoek (INBO.R.2009.9). INBO, Brussel: 188 pp.
 
-Wouters K (2002) On the distribution of alien non-marine and estuarine macro-crustaceans in Belgium. Bulletin van het Koninklijk Belgisch Instituut voor Natuurwetenschappen. Biologie 72: 119–129
+Wouters K (2002) On the distribution of alien non-marine and estuarine macro-crustaceans in Belgium. Bulletin van het Koninklijk Belgisch Instituut voor Natuurwetenschappen. Biologie 72: 119–129.
