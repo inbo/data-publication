@@ -69,6 +69,6 @@ To allow anyone to use this dataset, we have released the data to the public dom
 
 ## References
 
-De Knijf G. 2006. De Rode Lijst van de libellen in Vlaanderen. In: De Knijf G., Anselin A., Goffart P. & Tailly M. (eds.) De libellen van België: verspreiding - evolutie - habitats. Libellenwerkgroep Gomphus i.s.m. Instituut voor Natuur- en Bosonderzoek, Brussel. pp. 241-257. ISBN: 90-403-0249-9
+De Knijf G. 2006. De Rode Lijst van de libellen in Vlaanderen. In: De Knijf G., Anselin A., Goffart P. & Tailly M. (eds.) De libellen van België: verspreiding - evolutie - habitats. Libellenwerkgroep Gomphus i.s.m. Instituut voor Natuur- en Bosonderzoek, Brussels: pp. 241-257. ISBN: 90-403-0249-9
 
-De Knijf G. 2006. The Red List of the dragonflies of Flanders. In: De Knijf G., Anselin A., Goffart P. & Tailly M. (eds.) The Dragonflies of Belgium: distribution - evolution - habitats. Publisher: Dragonfly Society of Belgium Gomphus & Research Institute for Nature and Forest, pp.241-257. ISBN: 90-403-0249-9
+De Knijf G. 2006. The Red List of the dragonflies of Flanders. In: De Knijf G., Anselin A., Goffart P. & Tailly M. (eds.) The Dragonflies of Belgium: distribution - evolution - habitats. Publisher: Dragonfly Society of Belgium Gomphus & Research Institute for Nature and Forest: pp.241-257. ISBN: 90-403-0249-9

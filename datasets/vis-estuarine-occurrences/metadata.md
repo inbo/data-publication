@@ -143,9 +143,9 @@ Karr JR (1981) Assessment of biotic integrity using fish communities. Fisheries 
 
 Thiel R, Potter IC (2001) The ichthyofaunal composition of the Elbe estuary: an analysis in space and time. Marine Biology 138: 603–616. doi: [10.1007/s002270000491](http://doi.org/10.1007/s002270000491)
 
-Van den Bergh E, Garniel G, Morris RKA, Barendregt A (2009) Conservation of tidal freshwater wetlands in Europe. In: Barendregt A, Whigham D, Baldwin A (Eds) Tidal Freshwater Wetlands (2009). Backhuys Publishers, Leiden, 241–252.
+Van den Bergh E, Garniel G, Morris RKA, Barendregt A (2009) Conservation of tidal freshwater wetlands in Europe. In: Barendregt A, Whigham D, Baldwin A (Eds) Tidal Freshwater Wetlands (2009). Backhuys Publishers, Leiden: 241–252.
 
-Van Thuyne G, Breine J (2010) Visbestandopnames in Vlaamse beken en rivieren in het kader van het ‘Meetnet Zoetwatervis’ 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2010 (42). INBO, Brussel, 196 pp.
+Van Thuyne G, Breine J (2010) Visbestandopnames in Vlaamse beken en rivieren in het kader van het ‘Meetnet Zoetwatervis’ 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek (2010 42). INBO, Brussels: 196 pp.
 
 Venice system (1959) The final resolution of the symposium on the classification of brackish waters. Archo Oceanography Limnology 11: 243–248. http://www.aslo.org/lo/toc/vol_3/issue_3/0346.pdf
 

@@ -155,7 +155,7 @@ FAME Consortium (2004) Manual for the application of the European Fish Index - E
 
 Karr JR (1981) Assessment of biotic integrity using fish communities. Fisheries 6: 21–27. doi: [ 10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2](http://doi.org/10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2)
 
-Van Thuyne G, Breine J (2010) Visbestandopnames in Vlaamse beken en rivieren in het kader van het ‘Meetnet Zoetwatervis’ 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2010 (42). INBO, Brussel, 196 pp.
+Van Thuyne G, Breine J (2010) Visbestandopnames in Vlaamse beken en rivieren in het kader van het ‘Meetnet Zoetwatervis’ 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek (2010 42). INBO, Brussel: 196 pp.
 
 Verbiest H, Belpaire C, Vandenabeele P, Ollevier F (1996) Het in werking stellen van de visdatabank met de nadruk op de gebruiksvriendelijkheid ervan IBW.Wb.V.R.96.042.
 

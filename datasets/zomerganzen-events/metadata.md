@@ -125,28 +125,28 @@ Since 2015, data collection is funded by INBO (INBOPRJ-10201).
 
 Adriaens T, Huysentruyt F, Devisscher S, Devos K, Casear J (2010) Simultaantelling overzomerende ganzen in Oost- en West- Vlaanderen. Vogelnieuws 15: 4-11.
 
-Adriaens T, Huysentruyt F, Onkelinx T, Devisscher S, Devos K & Casaer J (2011) Simultaantelling overzomerende ganzen in Oost- en West- Vlaanderen. Vogelnieuws 17, 24-30
+Adriaens T, Huysentruyt F, Onkelinx T, Devisscher S, Devos K & Casaer J (2011) Simultaantelling overzomerende ganzen in Oost- en West- Vlaanderen. Vogelnieuws 17: 24-30
 
-Van Daele P, Adriaens T, Devisscher S, Huysentruyt F, Voslamber B, De Boer V, Devos K, Casaer J (2012) Beheer van zomerganzen in Vlaanderen en Zeeuws-Vlaanderen: rapport opgesteld in het kader van het INVEXO - INTERREG project. Rapporten van het Instituut voor Natuur- en Bosonderzoek INBO.R.2012.58, Brussel, Brussel, 162 blz.
+Van Daele P, Adriaens T, Devisscher S, Huysentruyt F, Voslamber B, De Boer V, Devos K, Casaer J (2012) Beheer van zomerganzen in Vlaanderen en Zeeuws-Vlaanderen: rapport opgesteld in het kader van het INVEXO - INTERREG project. Rapporten van het Instituut voor Natuur- en Bosonderzoek (INBO.R.2012.58). INBO, Brussels: 162 pp.
 
-Adriaens T, Van Daele P, Huysentruyt F, Devisscher S, Casaer J, Devos K (2012) Junitelling van West-Vlaamse zomerganzen. Vogelnieuws 18, 16-22
+Adriaens T, Van Daele P, Huysentruyt F, Devisscher S, Casaer J, Devos K (2012) Junitelling van West-Vlaamse zomerganzen. Vogelnieuws 18: 16-22
 
 Adriaens T, Huysentruyt F, Devisscher S, Devos K, Casaer J (2014) Integrated management of invasive geese populations in an international context: a case study in Belgium & The Netherlands. In : Science for the New Regulation, One day Benelux Conference on Invasive Alien Species. 2/04/14 → 2/04/14 - Ghent, België. https://data.inbo.be/pureadmin/files/6391140/Adriaens_etal_2014_IntegratedManagementInvasiveGeesePopulationsInternationalContext.pdf
 
-Chapter "Canada geese in Flanders urban areas" In: van Ham C, Genovesi P, Scalera R (2013) Invasive alien species: the urban dimension, Case studies on strengthening local action in Europe. Brussels, Belgium: IUCN European Union Representative Office. 103pp. https://portals.iucn.org/library/efiles/documents/2013-027.pdf
+Chapter "Canada geese in Flanders urban areas" In: van Ham C, Genovesi P, Scalera R (2013) Invasive alien species: the urban dimension, Case studies on strengthening local action in Europe. Brussels, Belgium: IUCN European Union Representative Office: 103pp. https://portals.iucn.org/library/efiles/documents/2013-027.pdf
 
 Adriaens T, Huysentruyt F, Standaert S (2014) Controlling invasive geese in the RINSE region: A collaborative endeavor. Bridging the Gap: Working together to tackle invasive non-native species in Europe. RINSE closing conference. 23/09/14 → 23/09/14 - Norwich, Verenigd Koninkrijk. https://www.inbo.be/nl/publicatie/controlling-invasive-geese-rinse-region
 
-Adriaens T, Van Daele P, Devisscher S, Huysentruyt F, Voslamber B, De Boer V, Devos K, Casaer J (2013) Integrated management of invasive geese populations in an international context: a case study. IUGB (International Union Of Game Biologists) Congress 2013. 27/08/13 → 29/08/13 - Brussels, België. https://data.inbo.be/purews/files/1156729/O.TL.16_Adriaens.pdf
+Adriaens T, Van Daele P, Devisscher S, Huysentruyt F, Voslamber B, De Boer V, Devos K, Casaer J (2013) Integrated management of invasive geese populations in an international context: a case study. IUGB (International Union Of Game Biologists) Congress 2013. 27/08/13 → 29/08/13 - Brussels, Belgium. https://data.inbo.be/purews/files/1156729/O.TL.16_Adriaens.pdf
 
 Adriaens T, Huysentruyt F, Devisscher S, Casaer J (2013) Integrated Management of Invasive Geese Populations in an International Context: A Case Study in Belgium & The Netherlands. 2nd International Congress on Biological Invasions - Biological Invasions, Ecological Safety and Food Security. 23/10/13 → 27/11/13 - Qingdao, China. https://www.inbo.be/nl/publicatie/integrated-management-invasive-geese-populations-international-context-1
 
 Huysentruyt F, Adriaens T, Devisscher S, Casaer J (2013) Evaluation Of A Large Scale Management Strategy For Summering Geese In Flanders And Zealand (Belgium/the Netherlands). The Wildlife Society 20th Annual Conference. 5/10/13 → 10/10/13 - Milwaukee, WI, Verenigde Staten van Amerika. https://www.inbo.be/nl/publicatie/evaluation-large-scale-management-strategy-summering-geese-flanders
 
-Huysentruyt F, Adriaens T, Van Moer K, De Bus K, Casaer J (2014) Catching invasive Egyptian geese (Alopochen aegyptiacus): Evaluation of the optimal deployment season for a floating Larsen trap. Science for the new regulation Abstractbook: BENELUX Conference on invasive species. Boets, P. (ed.). blz. 33 1 blz. https://www.inbo.be/nl/publicatie/catching-invasive-egyptian-geese-alopochen-aegyptiacus
+Huysentruyt F, Adriaens T, Van Moer K, De Bus K, Casaer J (2014) Catching invasive Egyptian geese (Alopochen aegyptiacus): Evaluation of the optimal deployment season for a floating Larsen trap. Science for the new regulation Boets, P. (ed.). Abstractbook, BENELUX Conference on invasive species: 33. https://www.inbo.be/nl/publicatie/catching-invasive-egyptian-geese-alopochen-aegyptiacus
 
 Invexo-Project brochure: 'Minder invasieve planten en dieren, meer biodiversiteit. Invexo-projectbrochure 2009-2012', september 2012. http://www.invexo.be/~/media/Files/Invexo/Invexo20092012ProjectbrochureSept2012.pdf
 
-Adriaens T, Huysentruyt F, Van Daele P, Devos K, Casaer J (2014) Evaluatie bescherming en beheer van ganzenpopulaties. Inhoudsevaluatie van natuurbeleid in landbouwgebied: case vogelbeheer en erosiebestrijding. van Gossum, P. (ed.). INBO.R.2012.50 ed. Brussel: Instituut voor Natuur- en Bosonderzoek, blz. 29-41 13 blz. https://www.inbo.be/nl/publicatie/evaluatie-bescherming-en-beheer-van-ganzenpopulaties
+Adriaens T, Huysentruyt F, Van Daele P, Devos K, Casaer J (2014) Evaluatie bescherming en beheer van ganzenpopulaties. Inhoudsevaluatie van natuurbeleid in landbouwgebied: case vogelbeheer en erosiebestrijding. van Gossum, P. (ed.). Rapporten van het Instituut voor Natuur- en Bosonderzoek (INBO.R.2012.50). INBO, Brussels: 29-41. https://www.inbo.be/nl/publicatie/evaluatie-bescherming-en-beheer-van-ganzenpopulaties
 
-Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions (2015) Volume 6, Issue 2: 119–125 doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
+Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions 6 (2): 119–125. doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)

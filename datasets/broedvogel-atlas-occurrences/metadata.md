@@ -180,4 +180,4 @@ Flemish Government
 
 Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J., Van Der Krieken B. (2004a) Atlas of the breeding birds in Flanders 2000-2002. Bird Census News 2004 1/2: 35-47. http://www.ebcc.info/wpimages/video/BCN_17_1&2.pdf
 
-Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J. & Van Der Krieken B. (2004b) Atlas van de Vlaamse broedvogels 2000-2002. Mededelingen van het Instituut voor Natuurbehoud 23, Brussel, 496p. ISBN 90-403-0215-4
+Vermeersch G., Anselin A., Devos K., Herremans M., Stevens J., Gabriëls J. & Van Der Krieken B. (2004b) Atlas van de Vlaamse broedvogels 2000-2002. Mededelingen van het Instituut voor Natuurbehoud (23). INBO, Brussels: 496p. ISBN 90-403-0215-4

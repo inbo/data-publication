@@ -99,4 +99,4 @@ Waterwegen en Zeekanaal NV
 
 ## References
 
-Mouton A, Buysse D, Stevens M, Van den Neucker T, Coeck J (2011) Evaluation of riparian habitat restoration in a lowland river. River Research and Applicatioins 28(7): 845-857. doi: [10.1002/rra.1500](http://doi.org/10.1002/rra.1500)
+Mouton A, Buysse D, Stevens M, Van den Neucker T, Coeck J (2011) Evaluation of riparian habitat restoration in a lowland river. River Research and Applications 28(7): 845-857. doi: [10.1002/rra.1500](http://doi.org/10.1002/rra.1500)

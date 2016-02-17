@@ -183,10 +183,10 @@ Stienen EWM, Desmet P, Aelterman B, Courtens W, Feys S, Vanermen N, Verstraete H
 
 Bouten W, Baaij EW, Shamoun-Baranes J, Camphuysen KCJ (2013) A flexible GPS tracking system for studying bird behaviour at multiple scales. Journal of Ornithology 154(2): 571-580. doi: [10.1007/s10336-012-0908-1](http://doi.org/10.1007/s10336-012-0908-1)
 
-Stienen EWM, Courtens W, Van de walle M, Vanermen N, Verstraete H (2015) Monitoring van kustbroedvogels in de SBZ-V ‘Kustbroedvogels te Zeebrugge-Heist’ en de westelijke voorhaven van Zeebrugge tijdens het broedseizoen 2014. INBO.R.2015.7299133 Instituut voor Natuur- en Bosonderzoek, Brussels (in Dutch) https://www.inbo.be/nl/publicatie/monitoring-van-kustbroedvogels-de-sbz-v-kustbroedvogels-te-zeebrugge-heist
+Stienen EWM, Courtens W, Van de walle M, Vanermen N, Verstraete H (2015) Monitoring van kustbroedvogels in de SBZ-V ‘Kustbroedvogels te Zeebrugge-Heist’ en de westelijke voorhaven van Zeebrugge tijdens het broedseizoen 2014. Rapporten van het Instituut voor Natuur- en Bosonderzoek (INBO.R.2015.7299133). INBO, Brussels. https://www.inbo.be/nl/publicatie/monitoring-van-kustbroedvogels-de-sbz-v-kustbroedvogels-te-zeebrugge-heist
 
-Strucker RCW, Hoekstein MSJ, Wolf PA (2013) Kustbroedvogels in het Deltagebied in 2012. RWS Centrale Informatievoorziening BM 13.18 (in Dutch)
+Strucker RCW, Hoekstein MSJ, Wolf PA (2013) Kustbroedvogels in het Deltagebied in 2012. RWS Centrale Informatievoorziening BM 13.18.
 
-Strucker RCW., Arts FA, Hoekstein MSJ (2015) Kustbroedvogels in het Deltagebied in 2014. RWS Centrale Informatievoorziening BM 15.07 (in Dutch)
+Strucker RCW., Arts FA, Hoekstein MSJ (2015) Kustbroedvogels in het Deltagebied in 2014. RWS Centrale Informatievoorziening BM 15.07.
 
 Wetlands International (2015) “Waterbird Population Estimates”. Retrieved from http://wpe.wetlands.org on 2015-12-01

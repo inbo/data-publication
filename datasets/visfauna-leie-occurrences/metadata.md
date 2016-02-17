@@ -97,4 +97,4 @@ Waterwegen en Zeekanaal NV
 
 ## References
 
-Mouton A, Martens S, Gelaude E, Buysse D, Stevens M, Van den Neucker T, Baeyens R, Jacobs Y, Coeck J (2010) Studie ter voorbereiding van een evaluatie-onderzoek van NTMB-projecten langs de Leie uitgevoerd door W&Z - luik visfauna. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2010(11). Instituut voor Natuur- en Bosonderzoek (INBO): Brussel. 33 pp.
+Mouton A, Martens S, Gelaude E, Buysse D, Stevens M, Van den Neucker T, Baeyens R, Jacobs Y, Coeck J (2010) Studie ter voorbereiding van een evaluatie-onderzoek van NTMB-projecten langs de Leie uitgevoerd door W&Z - luik visfauna. Rapporten van het Instituut voor Natuur- en Bosonderzoek (2010 11). INBO, Brussels: 33 pp.

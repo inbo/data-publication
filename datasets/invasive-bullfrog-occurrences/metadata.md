@@ -106,24 +106,24 @@ EU
 
 ## References
 
-Adriaens T (2013) Managing invasive aliens through habitat restoration and biomanipulation: The case of American Bullfrog Lithobates catesbeianus in Belgium. 2nd International Congress on Biological Invasions - Biological Invasions, Ecological Safety and Food Security. Abstract book p. 133 http://www.icbi2013.org/admin/down/201401171009122826.pdf
+Adriaens T (2013) Managing invasive aliens through habitat restoration and biomanipulation: The case of American Bullfrog Lithobates catesbeianus in Belgium. 2nd International Congress on Biological Invasions - Biological Invasions, Ecological Safety and Food Security. Abstract book: 133. http://www.icbi2013.org/admin/down/201401171009122826.pdf
 
-Adriaens T, Devisscher S, Louette G (2013) Risk analysis of American bullfrog Lithobates catesbeianus (Shaw). Risk analysis report of non-native organisms in Belgium. Rapporten van het Instituut voor Natuur- en Bosonderzoek 2013 (INBO.R.2013.41). Instituut voor Natuur- en Bosonderzoek, Brussel. http://ias.biodiversity.be/species/risk
+Adriaens T, Devisscher S, Louette G (2013) Risk analysis of American bullfrog Lithobates catesbeianus (Shaw). Risk analysis report of non-native organisms in Belgium. Rapporten van het Instituut voor Natuur- en Bosonderzoek (INBO.R.2013.41). INBO, Brussels. http://ias.biodiversity.be/species/risk
 
-Devisscher S, Adriaens T, De Vocht A, Descamps S, Hoogewijs M, Jooris R, van Delft J, Louette G (2012). Beheer van de stierkikker in Vlaanderen en Nederland. Rapporten van het Instituut voor Natuur- en Bosonderzoek 2012 (52). Instituut voor Natuur- en Bosonderzoek, Brussel. https://www.inbo.be/nl/publicatie/beheer-van-de-stierkikker-vlaanderen-en-nederland
+Devisscher S, Adriaens T, De Vocht A, Descamps S, Hoogewijs M, Jooris R, van Delft J, Louette G (2012). Beheer van de stierkikker in Vlaanderen en Nederland. Rapporten van het Instituut voor Natuur- en Bosonderzoek (2012 52). INBO, Brussels. https://www.inbo.be/nl/publicatie/beheer-van-de-stierkikker-vlaanderen-en-nederland
 
-Devisscher S, Adriaens T, Jooris R, Louette G, Casaer J (2013) Opvolging van Amerikaanse stierkikker Lithobates catesbeianus in de provincie Antwerpen - Onderzoeksopdracht in het kader van post-Invexo Actieplan stierkikker. Rapporten van het Instituut voor Natuur- en Bosonderzoek 2013 (711500). Instituut voor Natuur- en Bosonderzoek, Brussel. https://www.inbo.be/nl/publicatie/opvolging-van-amerikaanse-stierkikker-lithobates-catesbeianus-de-provincie
+Devisscher S, Adriaens T, Jooris R, Louette G, Casaer J (2013) Opvolging van Amerikaanse stierkikker Lithobates catesbeianus in de provincie Antwerpen - Onderzoeksopdracht in het kader van post-Invexo Actieplan stierkikker. Rapporten van het Instituut voor Natuur- en Bosonderzoek (711500). INBO, Brussels. https://www.inbo.be/nl/publicatie/opvolging-van-amerikaanse-stierkikker-lithobates-catesbeianus-de-provincie
 
-Devisscher S, Louette G, Adriaens T (2014) Current status and management of American bullfrog Lithobates catesbeianus in Flanders. Science for the new regulation Abstractbook: BENELUX Conference on invasive species. p. 47 https://data.inbo.be/purews/files/6449340/Devisscher_etal_2014_In_Boets.pdf
+Devisscher S, Louette G, Adriaens T (2014) Current status and management of American bullfrog Lithobates catesbeianus in Flanders. Science for the new regulation. Abstractbook, BENELUX Conference on invasive species: 47. https://data.inbo.be/purews/files/6449340/Devisscher_etal_2014_In_Boets.pdf
 
-Louette G (2012) Use of a native predator for the control of an invasive amphibian. Wildlife Research, 39(3), 271-278. http://doi.org/10.1071/WR11125
+Louette G (2012) Use of a native predator for the control of an invasive amphibian. Wildlife Research, 39(3): 271-278. http://doi.org/10.1071/WR11125
 
-Louette G, Devisscher S, De Vocht A, Hoogewijs M, Jooris R, Adriaens T (2012) De Stierkikker in Vlaanderen: naar een gericht beheer van een invasieve exoot. Natuur.focus. 11(4), 144-149. http://www.natuurpunt.be/sites/default/files/documents/publication/natuur.focus_2012-4_de_stierkikker_in_vlaanderen._naar_een_gericht_beheer.pdf
+Louette G, Devisscher S, De Vocht A, Hoogewijs M, Jooris R, Adriaens T (2012) De Stierkikker in Vlaanderen: naar een gericht beheer van een invasieve exoot. Natuur.focus 11(4): 144-149. http://www.natuurpunt.be/sites/default/files/documents/publication/natuur.focus_2012-4_de_stierkikker_in_vlaanderen._naar_een_gericht_beheer.pdf
 
-Louette G, Devisscher S, Adriaens T (2013) Control of invasive American bullfrog Lithobates catesbeianus in small shallow water bodies. European journal of wildlife research 59(1), 105-114. http://doi.org/10.1007/s10344-012-0655-x
+Louette G, Devisscher S, Adriaens T (2013) Control of invasive American bullfrog Lithobates catesbeianus in small shallow water bodies. European journal of wildlife research 59(1): 105-114. http://doi.org/10.1007/s10344-012-0655-x
 
-Louette G, Devisscher S, Adriaens T (2014) Combating adult invasive American bullfrog Lithobates catesbeianus. European journal of wildlife research, 60(4), 703-706. http://doi.org/10.1007/s10344-014-0829-9
+Louette G, Devisscher S, Adriaens T (2014) Combating adult invasive American bullfrog Lithobates catesbeianus. European journal of wildlife research, 60(4): 703-706. http://doi.org/10.1007/s10344-014-0829-9
 
-Lowe SJ, Browne M, Boudjelas S (2000) 100 of the world's worst invasive alien species: A selection from the Global Biodiversity Species Database. Auckland, New Zealand: Invasive Species Specialist Group (ISSG) http://www.issg.org/pdf/publications/worst_100/english_100_worst.pdf
+Lowe SJ, Browne M, Boudjelas S (2000) 100 of the world's worst invasive alien species: A selection from the Global Biodiversity Species Database. Auckland, New Zealand: Invasive Species Specialist Group (ISSG). http://www.issg.org/pdf/publications/worst_100/english_100_worst.pdf
 
-Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions (2015) Volume 6, Issue 2: 119–125 doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
+Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions 6(2): 119–125. doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
