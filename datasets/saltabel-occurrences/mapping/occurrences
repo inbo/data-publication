@@ -1,0 +1,287 @@
+USE [NBNData_IPT]
+GO
+
+/****** Object:  View [ipt].[vwGBIF_Saltabel_utm_20160219]    Script Date: 02/24/2016 10:37:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER VIEW [ipt].[vwGBIF_Saltabel_utm_20160219] 
+AS
+SELECT --S.ITEM_NAME as SurveyName
+
+	/* Category: Record */
+	  [occurrenceID] = 'INBO:NBN:' + TAO.TAXON_OCCURRENCE_KEY
+	, [type] =
+		CASE
+			WHEN RT.SHORT_NAME IN ('auditory record', 'reference/auditory record' ) THEN 'Sound'
+			WHEN RT.SHORT_NAME IN ('field record/photographed', '') THEN 'StillImage'
+			WHEN RT.SHORT_NAME IN ('Collection/auditory record', 'Collection', 'Collection/field record', 'Collection/reference') THEN 'PhysicalObject'
+			WHEN RT.SHORT_NAME IN ('Reference') THEN 'Text'
+			WHEN RT.SHORT_NAME IN ('field record', 'None', 'reported to recorder', 'trapped in Malaise trap' ) THEN 'Event'
+			ELSE ''
+		END
+	, [language] = 'en'
+    , [license] = 'http://creativecommons.org/publicdomain/zero/1.0/'
+    , [rightsHolder] = 'INBO'
+    , [accessRights] = 'http://www.inbo.be/en/norms-for-data-use'
+	, [datasetID] = 'http://doi.org/10.15468/1rcpsq'
+	, [institutionCode] = 'INBO'
+	, [collectionCode] =
+		CASE
+			WHEN RT.SHORT_NAME IN ('Collection/auditory record', 'Collection', 'Collection/field record', 'Collection/reference') THEN COALESCE(LTRIM(RTRIM(TAOC.[Collection])),'')
+			ELSE ''
+		END
+	, [datasetName] = 'Saltabel - Orthoptera in Belgium'
+	, [ownerInstitutionCode] = 'INBO'
+	, [basisOfRecord] =
+		CASE
+			WHEN RT.SHORT_NAME IN ('Collection/auditory record', 'Collection', 'Collection/field record', 'Collection/reference') THEN 'PreservedSpecimen'
+			ELSE 'HumanObservation'
+		END
+		
+	/* Category: Occurence */
+	, [recordedBy] =
+		CASE
+			WHEN inbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY], ' | ') = 'Unknown' THEN '' 
+			ELSE inbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY], ' | ')
+		END
+	, [individualCount] = Coalesce(Meas.[individualCount], 1 ) -- if value is not present, 1 by default - confirmed by Tim Adriaens	
+	, [organismQuantity] = Coalesce([organismQuantity], '')
+	, [organismQuantityType] = 'abundance'
+	, [sex] = Coalesce(Meas.[sex], '') -- TO CHECK: always same order
+	, [lifeStage] = Coalesce(Meas.[lifeStage], '')
+	, [behavior] = Coalesce(Meas.[behavior], '')
+	, [occurrenceRemarks] = Coalesce(Meas.[occurrenceRemarks], '')
+	
+	/* Category: Event */
+	, [eventID] = SE.SURVEY_EVENT_KEY
+	, [eventDate] = [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 1)
+	-- TODO - JO?: [verbatimEventDate] = [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 0) -- Should only be present when it contains a range (start and end date are both available)
+	, [continent] = 'Europe'
+	, [countryCode] = 'BE'
+	, stateProvince =  -- only when the exact coordinates are there with minor uncertainty, when grid codes, than not used
+		CASE
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN coalesce(shpProv.Province, N'')
+            ELSE ''
+		END	
+	, [municipality] = CONVERT(Nvarchar(500), LN.ITEM_NAME)
+	/*, [verbatimCoordinates] = -- TODO - JO?: UTM code als hok, lege string als XYcoord
+		CASE
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN ''
+            ELSE 'INTEVULLEN'
+		END */
+	, [verbatimLatitude] = 
+		CASE
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN CONVERT(Nvarchar(20), CONVERT( DECIMAL( 12, 0), LEFT( SA.SPATIAL_REF, Charindex(  ',', SA.SPATIAL_REF, 1) - 1)))
+            ELSE ''
+		END	
+	, [verbatimLongitude] =
+		CASE
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN CONVERT(Nvarchar(20),CONVERT( DECIMAL( 12, 0), Substring( SA.SPATIAL_REF, Charindex(  ',', SA.SPATIAL_REF, 1) + 1, Len( SA.SPATIAL_REF))))
+            ELSE ''
+		END		
+	, [verbatimCoordinateSystem] = 
+		CASE
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN 'UTM 5km'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd deelgemnte' THEN 'UTM 5km'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 5 km' THEN 'UTM 5km'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Imported' THEN 'UTM 5km' -- These are also UTM5
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN 'UTM 1km'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN 'Belgium Lambert 72'
+            ELSE ''
+		END	
+	, [verbatimSRS] =   -- all are BD72 listed, has been checked
+		CASE
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN 'ED50'  -- TODO - JO?: ED50 of toch ook Lambert72? hoe hokken bepaald?
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd deelgemnte' THEN 'ED50'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 5 km' THEN 'ED50'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Imported' THEN 'ED50' -- These are also UTM5
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN 'ED50'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN 'Belgian Datum 1972'
+            ELSE ''
+		END	
+	, [decimalLatitude] = CONVERT(Nvarchar(20),CONVERT(decimal(12,5),ROUND(COALESCE(SA.Lat,0),5)))
+	, [decimalLongitude] = CONVERT(Nvarchar(20),CONVERT(decimal(12,5),ROUND(COALESCE(SA.Long,0),5)))
+	, [geodeticDatum] = 'WGS84'
+	, [coordinateUncertaintyInMeters] =
+		CASE
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN '3536'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd deelgemnte' THEN '3536'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 5 km' THEN '3536'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Imported' THEN '3536' -- These are also UTM5
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN '707'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN '30'
+            ELSE ''
+		END
+	, [identifiedBy] =
+		CASE
+			WHEN LTRIM(RTRIM(COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])), '') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), ''))) = 'Unknown' THEN NULL
+			ELSE LTRIM(RTRIM(COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])) ,'') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), ''))) 
+		END 
+	, [scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
+	, [kingdom]	= 'Animalia'
+	, [phylum] = 'Arthropoda'
+	, [class] = 'Insecta'
+	, [order] = 'Orthoptera'
+	, [taxonRank] = lower(NS.RECOMMENDED_NAME_RANK_LONG)
+	, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL (' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
+	-- TODO - JO?: [vernacularName] = '' -- where to find? I can'n directly find it in the nameserver12...
+	, [nomenclaturalCode] = 'ICZN'	   
+	    
+	    
+	--, shp.TAG
+	--, SA.SPATIAL_REF	
+	--, SA.SPATIAL_REF_QUALIFIER
+	--, LN.LOCATION_KEY
+	--, LN.ITEM_NAME as LocationName
+	--, coalesce(shpProv.Province, N'!!Outside Belgium!!') as stateProvince
+	--, TAO.TAXON_OCCURRENCE_KEY	
+
+FROM dbo.Survey S
+	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
+	LEFT JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
+	LEFT JOIN [dbo].[Location_Name] LN ON LN.[Location_Key] = L.[Location_Key] 
+	
+	INNER JOIN [dbo].[SAMPLE] SA ON SA.[SURVEY_EVENT_KEY] = SE.[SURVEY_EVENT_KEY]
+	LEFT JOIN [dbo].[SAMPLE_TYPE] ST ON  ST.[SAMPLE_TYPE_KEY] = SA.[SAMPLE_TYPE_KEY] 
+
+	INNER JOIN [dbo].[TAXON_OCCURRENCE] TAO ON TAO.[SAMPLE_KEY] = SA.[SAMPLE_KEY]
+	INNER JOIN [dbo].[TAXON_DETERMINATION] TD ON TD.TAXON_OCCURRENCE_KEY = TAO.TAXON_OCCURRENCE_KEY
+	LEFT JOIN [dbo].[INDIVIDUAL] I ON I.[NAME_KEY] = TD.[DETERMINER]
+
+	INNER JOIN dbo.TAXON_LIST_ITEM tlitd ON tlitd.TAXON_LIST_ITEM_KEY = TD.TAXON_LIST_ITEM_KEY
+	INNER JOIN inbo.NAMESERVER_12 NS ON NS.INBO_TAXON_VERSION_KEY = tlitd.TAXON_VERSION_KEY
+	INNER JOIN [dbo].[TAXON_RANK] TR ON TR.TAXON_RANK_KEY = tlitd.TAXON_RANK_KEY
+	--INNER JOIN dbo.NAMESERVER NS ON NS.INPUT_TAXON_VERSION_KEY = tlitd.TAXON_VERSION_KEY
+
+	LEFT JOIN [dbo].[DETERMINATION_TYPE] DT ON DT.[DETERMINATION_TYPE_KEY] = TD.[DETERMINATION_TYPE_KEY]
+	LEFT JOIN [dbo].[RECORD_TYPE] RT ON RT.[RECORD_TYPE_KEY] = TAO.[RECORD_TYPE_KEY]
+	--INNER JOIN [dbo].[TAXON_RANK] TR ON TR.TAXON_RANK_KEY = TLI.TAXON_RANK_KEY
+
+	-- Getting the Provinces
+	LEFT OUTER JOIN shp.provinciebel shpProv ON
+		shpProv.geom.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
+		LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
+		CONVERT( DECIMAL (12,3) ,
+		SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
+		),0) )= 1
+
+	-- TODO - JO?: Getting the grid codes ?
+	/*LEFT OUTER JOIN [shp].[utm5_bel]  shp ON
+		shp.geom.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
+		LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
+		CONVERT( DECIMAL (12,3) ,
+		SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
+		),0) )= 1		
+		*/
+		
+	LEFT OUTER JOIN ( SELECT tmp.TAXON_OCCURRENCE_KEY
+						, dbo.Concatenate(1, Qualifier, ';' ) as ConQualifier
+						, [sex] =
+							dbo.Concatenate(1,
+								CASE 
+									WHEN unit = 'Count' THEN
+										CASE 
+											WHEN Qualifier IN ('Adult Man', 'Man') THEN 'male'  
+											WHEN Qualifier IN ('Adult Vrouw', 'Vrouw') THEN 'female' 
+											--ELSE ''
+										END
+									ELSE NULL 
+								END, ' | ')
+						, [lifeStage] =
+							dbo.Concatenate(1,
+								CASE
+									WHEN unit = 'Count' THEN
+										CASE 
+											WHEN Qualifier IN ('Nimf', 'juviniel', 'juveniel') THEN 'juvenile'
+											--WHEN Qualifier IN ('Vrouw', 'Man', 'Adult Vrouw', 'Adult Man') THEN 'Adult' 
+											ELSE NULL
+										END
+									ELSE NULL 
+								END, ' | ')
+						, [behavior] = dbo.Concatenate(1,
+								CASE 
+									WHEN Qualifier IN ('Zangpost') THEN N'stridulation post'
+									ELSE NULL
+								END , ' | ')
+						, [occurrenceRemarks] = CASE WHEN MAX(Qualifier) IN  ('None', 'w.be;None', 'w.be', 'None;w.be' ) THEN '' 
+													ELSE N'{' + dbo.Concatenate(1,
+																		CASE 
+																			WHEN Qualifier IN (N'Nimf', N'juviniel', N'juveniel') THEN N'"juvenile"'
+																			WHEN Qualifier IN ('Vrouw', 'Adult Vrouw') THEN '"female"' 
+																			WHEN Qualifier IN ('Man', 'Adult Man') THEN '"male"' 
+																			WHEN Qualifier IN (N'Zangpost') THEN N'"stridulation post"'
+																			WHEN Qualifier IN (N'Vleugel') THEN N'"wing dimorphism"' 
+																		END + N': ' + CASE 
+																						WHEN Qualifier IN (N'Vleugel') AND tmp.DATA = N'brachypteer' THEN N'"brachypterous"'
+																						WHEN Qualifier IN (N'Vleugel') AND tmp.DATA = N'macropteer'  THEN N'"macropterous"'
+																						ELSE tmp.DATA 
+																						END
+																					, ', ') + N'}'
+											END 
+							, [individualCount] =
+							SUM(
+								CASE
+									WHEN ISNUMERIC(tmp.DATA) = 1 AND unit = 'Count' THEN CONVERT(int, tmp.DATA)
+									ELSE NULL
+								END
+							)
+							, [organismQuantity] =  dbo.Concatenate(1,
+															CASE 
+																WHEN tmp.MeasurementType = 'Abundance' AND  tmp.unit = 'Personal Code' THEN 
+																	CASE tmp.DATA 
+																		WHEN 'schaars' THEN 'scarce'
+																		WHEN 'talrijk' THEN 'numerous'
+																		WHEN 'zeer talrijk' THEN 'abundant'
+																		else ''
+																	END
+																ELSE NULL 
+															END , ', ')
+					FROM ( 
+						SELECT taoMeas.TAXON_OCCURRENCE_KEY
+							, MTMeas.SHORT_NAME as MeasurementType
+							, MUMeas.SHORT_NAME as unit
+							, taoMeas.DATA
+							, taoMeas.ACCURACY
+							, MQMeas.SHORT_NAME as Qualifier
+						FROM dbo.TAXON_OCCURRENCE_DATA  taoMeas
+							LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY 
+							LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
+							LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY 
+					) tmp
+					GROUP BY tmp.TAXON_OCCURRENCE_KEY
+					) Meas ON Meas.TAXON_OCCURRENCE_KEY = TAO.TAXON_OCCURRENCE_KEY
+	
+	LEFT OUTER JOIN (SELECT TAOC.TAXON_OCCURRENCE_KEY
+							, RTRIM(LTRIM(spl.Value)) as [TrimmedComment]
+							, Substring(RTRIM(LTRIM(spl.Value)), CHARINDEX(':', spl.Value, 1) + 1, LEN(spl.Value)) as [Collection]
+					 FROM dbo.TAXON_OCCURRENCE TAOC
+							OUTER APPLY [inbo].[udf_SplitString] (COALESCE(Case WHEN ( Left(Convert(Varchar(max), [TAOC].COMMENT),7) = '{\rtf1\') THEN dbo.ufn_RtfToPlaintext(Convert(Varchar(max), [TAOC].COMMENT))  
+																									ELSE Convert(Varchar(max), [TAOC].COMMENT) 
+																									END,'') , '||', 2000)  as spl
+					 WHERE 1=1
+							AND RTRIM(LTRIM(spl.Value)) <> ''
+							AND LEFT(spl.Value, LEN('Collection')) = 'Collection'
+					 ) TAOC ON TAOC.[TAXON_OCCURRENCE_KEY] = TAO.[TAXON_OCCURRENCE_KEY]
+
+									
+WHERE S.[ITEM_NAME] =  'Saltabel'
+AND ISNUMERIC (Substring(LN.[ITEM_NAME],2,1)) = 0
+-- Prefered Determination 
+AND TD.[PREFERRED] = 1
+
+AND NS.[RECOMMENDED_NAME_RANK] NOT IN ( 'FunGp','Agg','SppGrp' )
+AND DT.[SHORT_NAME] NOT In ('Incorrect','Invalid','Considered Incorrect','Requires Confirmation')
+AND TR.[SEQUENCE] >= 230 
+	AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))=1
+		AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
+	AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
+--AND dbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY]) <> 'Jo Packet'
+AND LN.PREFERRED = 1
+AND TAO.CONFIDENTIAL = 0
+
+
+GO
