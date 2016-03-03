@@ -148,19 +148,6 @@ SELECT --S.ITEM_NAME as SurveyName
 	, [vernacularName] = NormNaam.ITEM_NAME
 	, [nomenclaturalCode] = 'ICZN'	 
 	    
-	/*, [comment] =
-		CASE
-			WHEN ( Left(Convert(Varchar(max), [TAO].COMMENT),7) = '{\rtf1\') THEN dbo.ufn_RtfToPlaintext(Convert(Varchar(max), [TAO].COMMENT))  
-			ELSE Convert(Varchar(max), [TAO].COMMENT) 
-		END*/
-	--, shp.TAG
-	--, SA.SPATIAL_REF	
-	--, SA.SPATIAL_REF_QUALIFIER
-	--, LN.LOCATION_KEY
-	--, LN.ITEM_NAME as LocationName
-	--, coalesce(shpProv.Province, N'!!Outside Belgium!!') as stateProvince
-	--, TAO.TAXON_OCCURRENCE_KEY	
-
 FROM dbo.Survey S
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
 	LEFT JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
@@ -230,30 +217,6 @@ FROM dbo.Survey S
 			AND SA.SPATIAL_REF IS NOT NULL 
 			AND SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km'	
 			AND SA.LambertX <> 0 AND SA.LambertY <> 0
-						
-	------ Getting the provinces for cases when XY-data (others are grid-dependent, leading to errors; manual entries not in NBNdata)
-	--LEFT OUTER JOIN shp.provinciebel shpProv ON
-	--	shpProv.geom.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
-	--	LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
-	--	CONVERT( DECIMAL (12,3) ,
-	--	SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
-	--	),0) )= 1 AND SA.SPATIAL_REF_QUALIFIER = 'XY from original rec'
-		
-	------ Getting the grid codes UTM5
-	--LEFT OUTER JOIN [shp].[utm5_bel] shp5 ON
-	--	shp5.geom.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
-	--	LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
-	--										  CONVERT( DECIMAL (12,3) ,
-	--	SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
-	--	),0) )= 1 AND SA.SPATIAL_REF IS NOT NULL AND SA.SPATIAL_REF_QUALIFIER NOT IN ('Centroïd UTM 1 km', 'XY from original rec')
-
-	-------- Getting the grid codes UTM1
-	--LEFT OUTER JOIN [shp].Locatie_utm1_vl shp1 ON 
-	--	shp1.UTM1_vl.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
-	--	LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
-	--										  CONVERT( DECIMAL (12,3) ,
-	--	SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
-	--	),0) )= 1 AND SA.SPATIAL_REF IS NOT NULL AND SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km'
 		
 	LEFT OUTER JOIN ( SELECT tmp.TAXON_OCCURRENCE_KEY
 						, dbo.Concatenate(1, Qualifier, ';' ) as ConQualifier
@@ -274,7 +237,6 @@ FROM dbo.Survey S
 									WHEN unit = 'Count' THEN
 										CASE 
 											WHEN Qualifier IN ('Nimf', 'juviniel', 'juveniel') THEN 'juvenile'
-											--WHEN Qualifier IN ('Vrouw', 'Man', 'Adult Vrouw', 'Adult Man') THEN 'Adult' 
 											ELSE NULL
 										END
 									ELSE NULL 
@@ -347,25 +309,12 @@ FROM dbo.Survey S
 									
 WHERE S.[ITEM_NAME] =  'Saltabel'
 AND ISNUMERIC (SUBSTRING(LN.[ITEM_NAME],2,1)) = 0
----- Prefered Determination 
+-- Get the prefered Determination 
 AND TD.[PREFERRED] = 1
 AND NS.[RECOMMENDED_NAME_RANK] NOT IN ( 'FunGp','Agg','SppGrp' )
 AND DT.[SHORT_NAME] NOT In ('Incorrect','Invalid','Considered Incorrect','Requires Confirmation')
 AND TR.[SEQUENCE] >= 230 
-
-/* Problem with SA1.[SAMPLE_KEY] <> 'BFN0017900002ELC' -> actually solving this here is too late, 
-so a length element was added to a select on the SA
-*/
---AND SA.SPATIAL_REF IS NOT NULL
---AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))=1
---AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
---AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )))=1
-
 AND LN.PREFERRED = 1
 AND TAO.CONFIDENTIAL = 0
---AND dbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY]) <> 'Jo Packet'
-
 
 GO
-
-
