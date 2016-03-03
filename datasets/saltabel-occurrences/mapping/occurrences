@@ -1,12 +1,14 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_Saltabel_utm_20160219]    Script Date: 02/24/2016 10:37:08 ******/
+/****** Object:  View [ipt].[vwGBIF_Saltabel_utm_20160219]    Script Date: 03/02/2016 10:38:33 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 
 ALTER VIEW [ipt].[vwGBIF_Saltabel_utm_20160219] 
 AS
@@ -50,29 +52,43 @@ SELECT --S.ITEM_NAME as SurveyName
 		END
 	, [individualCount] = Coalesce(Meas.[individualCount], 1 ) -- if value is not present, 1 by default - confirmed by Tim Adriaens	
 	, [organismQuantity] = Coalesce([organismQuantity], '')
-	, [organismQuantityType] = 'abundance'
-	, [sex] = Coalesce(Meas.[sex], '') -- TO CHECK: always same order
+	, [organismQuantityType] = CASE
+								 WHEN [organismQuantity] <> '' THEN 'abundance'
+								 ELSE ''
+							   END	 
+	, [sex] = Coalesce(Meas.[sex], '') -- TO CHECK by JO: always same sequence
 	, [lifeStage] = Coalesce(Meas.[lifeStage], '')
 	, [behavior] = Coalesce(Meas.[behavior], '')
 	, [occurrenceRemarks] = Coalesce(Meas.[occurrenceRemarks], '')
 	
 	/* Category: Event */
 	, [eventID] = SE.SURVEY_EVENT_KEY
-	, [eventDate] = [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 1)
-	-- TODO - JO?: [verbatimEventDate] = [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 0) -- Should only be present when it contains a range (start and end date are both available)
+	, [eventDate] = 
+		CASE 
+			WHEN [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 1) = 'Unknown' THEN ''
+			ELSE [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 1)
+		END			
+	, [verbatimEventDate] = -- Only contains ranges
+		CASE -- not really efficient, twice running function and than compare... should be in function itself: OF MSS OP LENGTE VAN HET TYPE!
+			WHEN [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 1) = 
+				[inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 0) 
+			THEN ''
+			ELSE [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 0)
+		END
 	, [continent] = 'Europe'
 	, [countryCode] = 'BE'
-	, stateProvince =  -- only when the exact coordinates are there with minor uncertainty, when grid codes, than not used
+	, stateProvince =  -- Provinces currently only for XY-coordinates; by municipality-info could be improved
 		CASE
-			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN coalesce(shpProv.Province, N'')
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN COALESCE(shpProv.Province, N'')
             ELSE ''
 		END	
 	, [municipality] = CONVERT(Nvarchar(500), LN.ITEM_NAME)
-	/*, [verbatimCoordinates] = -- TODO - JO?: UTM code als hok, lege string als XYcoord
+	, [verbatimCoordinates] =  -- UTM code als hok, lege string als XYcoord (!remark: for UTM only flanders codes available)
 		CASE
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN ''
-            ELSE 'INTEVULLEN'
-		END */
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN COALESCE('31U' + shp1.TAG, '')
+            ELSE COALESCE('31U' + shp5.TAG, '')
+		END
 	, [verbatimLatitude] = 
 		CASE
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN CONVERT(Nvarchar(20), CONVERT( DECIMAL( 12, 0), LEFT( SA.SPATIAL_REF, Charindex(  ',', SA.SPATIAL_REF, 1) - 1)))
@@ -80,7 +96,7 @@ SELECT --S.ITEM_NAME as SurveyName
 		END	
 	, [verbatimLongitude] =
 		CASE
-			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN CONVERT(Nvarchar(20),CONVERT( DECIMAL( 12, 0), Substring( SA.SPATIAL_REF, Charindex(  ',', SA.SPATIAL_REF, 1) + 1, Len( SA.SPATIAL_REF))))
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN CONVERT(Nvarchar(20),CONVERT( DECIMAL( 12, 0), Substring( SA.SPATIAL_REF, Charindex(  ',', SA.SPATIAL_REF, 1) + 1, LEN( SA.SPATIAL_REF))))
             ELSE ''
 		END		
 	, [verbatimCoordinateSystem] = 
@@ -93,9 +109,9 @@ SELECT --S.ITEM_NAME as SurveyName
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN 'Belgium Lambert 72'
             ELSE ''
 		END	
-	, [verbatimSRS] =   -- all are BD72 listed, has been checked
+	, [verbatimSRS] =   -- all are BD72 listed, this has been checked
 		CASE
-			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN 'ED50'  -- TODO - JO?: ED50 of toch ook Lambert72? hoe hokken bepaald?
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN 'ED50'  -- ED50 of toch ook Lambert? VRAGEN JO!
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd deelgemnte' THEN 'ED50'
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 5 km' THEN 'ED50'
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Imported' THEN 'ED50' -- These are also UTM5
@@ -116,22 +132,27 @@ SELECT --S.ITEM_NAME as SurveyName
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN '30'
             ELSE ''
 		END
-	, [identifiedBy] =
-		CASE
-			WHEN LTRIM(RTRIM(COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])), '') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), ''))) = 'Unknown' THEN NULL
-			ELSE LTRIM(RTRIM(COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])) ,'') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), ''))) 
-		END 
+	, [identifiedBy] = COALESCE(
+								CASE
+									WHEN LTRIM(RTRIM(COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])), '') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), ''))) = 'Unknown' THEN NULL
+									ELSE LTRIM(RTRIM(COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])) ,'') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), ''))) 
+								END
+								, '')
 	, [scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
 	, [kingdom]	= 'Animalia'
 	, [phylum] = 'Arthropoda'
 	, [class] = 'Insecta'
 	, [order] = 'Orthoptera'
-	, [taxonRank] = lower(NS.RECOMMENDED_NAME_RANK_LONG)
+	, [taxonRank] = LOWER(NS.RECOMMENDED_NAME_RANK_LONG)
 	, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL (' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
-	-- TODO - JO?: [vernacularName] = '' -- where to find? I can'n directly find it in the nameserver12...
-	, [nomenclaturalCode] = 'ICZN'	   
+	, [vernacularName] = NormNaam.ITEM_NAME
+	, [nomenclaturalCode] = 'ICZN'	 
 	    
-	    
+	/*, [comment] =
+		CASE
+			WHEN ( Left(Convert(Varchar(max), [TAO].COMMENT),7) = '{\rtf1\') THEN dbo.ufn_RtfToPlaintext(Convert(Varchar(max), [TAO].COMMENT))  
+			ELSE Convert(Varchar(max), [TAO].COMMENT) 
+		END*/
 	--, shp.TAG
 	--, SA.SPATIAL_REF	
 	--, SA.SPATIAL_REF_QUALIFIER
@@ -145,7 +166,25 @@ FROM dbo.Survey S
 	LEFT JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
 	LEFT JOIN [dbo].[Location_Name] LN ON LN.[Location_Key] = L.[Location_Key] 
 	
-	INNER JOIN [dbo].[SAMPLE] SA ON SA.[SURVEY_EVENT_KEY] = SE.[SURVEY_EVENT_KEY]
+	INNER JOIN (SELECT * --covering for problems in WHERE is not useful due to optimization plans of SQL; so conditions are covered here
+					, CASE 
+						WHEN SA1.[SPATIAL_REF_SYSTEM] = 'BD72' 
+						THEN CONVERT(DECIMAL (12,3), LEFT (SA1.SPATIAL_REF , CHARINDEX (',', SA1.SPATIAL_REF, 1)-1)) 
+						ELSE 0 -- WARNING! using zero here, because spatial join with belgian-coordinates and spatial layers ONLY; otherwise not valid
+					  END as LambertX
+					, CASE 
+						WHEN SA1.[SPATIAL_REF_SYSTEM] = 'BD72' 
+						THEN CONVERT(DECIMAL (12,3), SUBSTRING (SA1.SPATIAL_REF , CHARINDEX (',', SA1.SPATIAL_REF, 1 )+1 , LEN(SA1.SPATIAL_REF))) 
+						ELSE 0 -- WARNING! using zero here, because spatial join with belgian-coordinates and spatial layers ONLY; otherwise not valid
+					  END as LambertY	
+				FROM [dbo].[SAMPLE] SA1  
+				WHERE 1=1
+					AND LEN(SA1.[SPATIAL_REF]) > 1
+					AND SA1.[SPATIAL_REF] IS NOT NULL
+					AND SUBSTRING(SA1.SPATIAL_REF, CHARINDEX(',', SA1.SPATIAL_REF, 1)+1 , LEN(SA1.SPATIAL_REF)) IS NOT NULL
+					--AND SA1.[SAMPLE_KEY] <> 'BFN0017900002ELC'  --(this was the problemmaker-itself; trying to make it more general)
+				) SA ON  SE.[Survey_EVENT_Key] = SA.[Survey_EVENT_Key]
+				
 	LEFT JOIN [dbo].[SAMPLE_TYPE] ST ON  ST.[SAMPLE_TYPE_KEY] = SA.[SAMPLE_TYPE_KEY] 
 
 	INNER JOIN [dbo].[TAXON_OCCURRENCE] TAO ON TAO.[SAMPLE_KEY] = SA.[SAMPLE_KEY]
@@ -155,28 +194,66 @@ FROM dbo.Survey S
 	INNER JOIN dbo.TAXON_LIST_ITEM tlitd ON tlitd.TAXON_LIST_ITEM_KEY = TD.TAXON_LIST_ITEM_KEY
 	INNER JOIN inbo.NAMESERVER_12 NS ON NS.INBO_TAXON_VERSION_KEY = tlitd.TAXON_VERSION_KEY
 	INNER JOIN [dbo].[TAXON_RANK] TR ON TR.TAXON_RANK_KEY = tlitd.TAXON_RANK_KEY
-	--INNER JOIN dbo.NAMESERVER NS ON NS.INPUT_TAXON_VERSION_KEY = tlitd.TAXON_VERSION_KEY
+	INNER JOIN dbo.NAMESERVER NSR ON NSR.INPUT_TAXON_VERSION_KEY = tlitd.TAXON_VERSION_KEY
+
+	--Normalizing to Vernacular names
+	LEFT OUTER JOIN (	SELECT TVen.*
+							, ROW_NUMBER() OVER (PARTITION by NS.INPUT_TAXON_VERSION_KEY ORDER BY Tven.ITEM_NAME) as Nbr
+							, NS.INPUT_TAXON_VERSION_KEY AS [INBO_TAXON_VERSION_KEY]
+						FROM [dbo].[NameServer] NS
+							 INNER JOIN dbo.TAXON_LIST_ITEM TLIVen ON TLIVen.PREFERRED_NAME = NS.RECOMMENDED_TAXON_LIST_ITEM_KEY
+							 INNER JOIN dbo.TAXON_VERSION TVVen ON TVVen.TAXON_VERSION_KEY = TLIVen.TAXON_VERSION_KEY
+							 INNER JOIN dbo.TAXON TVen ON TVVen.TAXON_KEY = TVen.TAXON_KEY
+						WHERE TVen.[LANGUAGE] = 'nl'
+					) NormNaam on NormNaam.[INBO_TAXON_VERSION_KEY] = tlitd.[TAXON_VERSION_KEY] AND NormNaam.Nbr = 1
 
 	LEFT JOIN [dbo].[DETERMINATION_TYPE] DT ON DT.[DETERMINATION_TYPE_KEY] = TD.[DETERMINATION_TYPE_KEY]
 	LEFT JOIN [dbo].[RECORD_TYPE] RT ON RT.[RECORD_TYPE_KEY] = TAO.[RECORD_TYPE_KEY]
-	--INNER JOIN [dbo].[TAXON_RANK] TR ON TR.TAXON_RANK_KEY = TLI.TAXON_RANK_KEY
 
-	-- Getting the Provinces
+	------ Getting the provinces for cases when XY-data (others are grid-dependent, leading to errors; manual entries not in NBNdata)
 	LEFT OUTER JOIN shp.provinciebel shpProv ON
-		shpProv.geom.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
-		LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
-		CONVERT( DECIMAL (12,3) ,
-		SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
-		),0) )= 1
+		shpProv.geom.STContains(geometry::Point(SA.LambertX, SA.LambertY, 0)) = 1 
+			AND SA.SPATIAL_REF IS NOT NULL 		
+			AND SA.SPATIAL_REF_QUALIFIER = 'XY from original rec'
+			AND SA.LambertX <> 0 AND SA.LambertY <> 0
+	
+	------ Getting the grid codes UTM5
+	LEFT OUTER JOIN [shp].[utm5_bel] shp5 ON
+		shp5.geom.STContains(geometry::Point(SA.LambertX, SA.LambertY, 0)) = 1 
+			AND SA.SPATIAL_REF IS NOT NULL 
+			AND SA.SPATIAL_REF_QUALIFIER NOT IN ('Centroïd UTM 1 km', 'XY from original rec')
+			AND SA.LambertX <> 0 AND SA.LambertY <> 0
 
-	-- TODO - JO?: Getting the grid codes ?
-	/*LEFT OUTER JOIN [shp].[utm5_bel]  shp ON
-		shp.geom.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
-		LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
-		CONVERT( DECIMAL (12,3) ,
-		SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
-		),0) )= 1		
-		*/
+	-------- Getting the grid codes UTM1
+	LEFT OUTER JOIN [shp].Locatie_utm1_vl shp1 ON 
+		shp1.UTM1_vl.STContains(geometry::Point(SA.LambertX, SA.LambertY, 0) )= 1 
+			AND SA.SPATIAL_REF IS NOT NULL 
+			AND SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km'	
+			AND SA.LambertX <> 0 AND SA.LambertY <> 0
+						
+	------ Getting the provinces for cases when XY-data (others are grid-dependent, leading to errors; manual entries not in NBNdata)
+	--LEFT OUTER JOIN shp.provinciebel shpProv ON
+	--	shpProv.geom.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
+	--	LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
+	--	CONVERT( DECIMAL (12,3) ,
+	--	SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
+	--	),0) )= 1 AND SA.SPATIAL_REF_QUALIFIER = 'XY from original rec'
+		
+	------ Getting the grid codes UTM5
+	--LEFT OUTER JOIN [shp].[utm5_bel] shp5 ON
+	--	shp5.geom.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
+	--	LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
+	--										  CONVERT( DECIMAL (12,3) ,
+	--	SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
+	--	),0) )= 1 AND SA.SPATIAL_REF IS NOT NULL AND SA.SPATIAL_REF_QUALIFIER NOT IN ('Centroïd UTM 1 km', 'XY from original rec')
+
+	-------- Getting the grid codes UTM1
+	--LEFT OUTER JOIN [shp].Locatie_utm1_vl shp1 ON 
+	--	shp1.UTM1_vl.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
+	--	LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
+	--										  CONVERT( DECIMAL (12,3) ,
+	--	SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
+	--	),0) )= 1 AND SA.SPATIAL_REF IS NOT NULL AND SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km'
 		
 	LEFT OUTER JOIN ( SELECT tmp.TAXON_OCCURRENCE_KEY
 						, dbo.Concatenate(1, Qualifier, ';' ) as ConQualifier
@@ -259,7 +336,7 @@ FROM dbo.Survey S
 							, RTRIM(LTRIM(spl.Value)) as [TrimmedComment]
 							, Substring(RTRIM(LTRIM(spl.Value)), CHARINDEX(':', spl.Value, 1) + 1, LEN(spl.Value)) as [Collection]
 					 FROM dbo.TAXON_OCCURRENCE TAOC
-							OUTER APPLY [inbo].[udf_SplitString] (COALESCE(Case WHEN ( Left(Convert(Varchar(max), [TAOC].COMMENT),7) = '{\rtf1\') THEN dbo.ufn_RtfToPlaintext(Convert(Varchar(max), [TAOC].COMMENT))  
+							OUTER APPLY [inbo].[udf_SplitString] (COALESCE(Case WHEN ( Left(Convert(Varchar(max), [TAOC].COMMENT),7) = '{\rtf1\') THEN dbo.ufn_RtfToPlaintext(CONVERT(Varchar(max), [TAOC].COMMENT))  
 																									ELSE Convert(Varchar(max), [TAOC].COMMENT) 
 																									END,'') , '||', 2000)  as spl
 					 WHERE 1=1
@@ -269,19 +346,26 @@ FROM dbo.Survey S
 
 									
 WHERE S.[ITEM_NAME] =  'Saltabel'
-AND ISNUMERIC (Substring(LN.[ITEM_NAME],2,1)) = 0
--- Prefered Determination 
+AND ISNUMERIC (SUBSTRING(LN.[ITEM_NAME],2,1)) = 0
+---- Prefered Determination 
 AND TD.[PREFERRED] = 1
-
 AND NS.[RECOMMENDED_NAME_RANK] NOT IN ( 'FunGp','Agg','SppGrp' )
 AND DT.[SHORT_NAME] NOT In ('Incorrect','Invalid','Considered Incorrect','Requires Confirmation')
 AND TR.[SEQUENCE] >= 230 
-	AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))=1
-		AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
-	AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
---AND dbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY]) <> 'Jo Packet'
+
+/* Problem with SA1.[SAMPLE_KEY] <> 'BFN0017900002ELC' -> actually solving this here is too late, 
+so a length element was added to a select on the SA
+*/
+--AND SA.SPATIAL_REF IS NOT NULL
+--AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))=1
+--AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
+--AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )))=1
+
 AND LN.PREFERRED = 1
 AND TAO.CONFIDENTIAL = 0
+--AND dbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY]) <> 'Jo Packet'
 
 
 GO
+
+
