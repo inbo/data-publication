@@ -1,12 +1,13 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_Saltabel]    Script Date: 03/08/2016 16:29:38 ******/
+/****** Object:  View [ipt].[vwGBIF_Saltabel]    Script Date: 03/08/2016 16:58:58 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -105,7 +106,11 @@ SELECT --S.ITEM_NAME as SurveyName
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd deelgemnte' THEN 'UTM 5km'
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 5 km' THEN 'UTM 5km'
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Imported' THEN 'UTM 5km' -- These are also UTM5
-			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN 'UTM 1km'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN 
+																	CASE
+																		WHEN shp1.TAG IS NOT NULL THEN 'UTM 1km'
+																		ELSE ''
+																	END
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN 'Belgium Lambert 72'
             ELSE ''
 		END	
@@ -115,7 +120,11 @@ SELECT --S.ITEM_NAME as SurveyName
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd deelgemnte' THEN 'ED50'
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 5 km' THEN 'ED50'
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'Imported' THEN 'ED50' -- These are also UTM5
-			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN 'ED50'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN 
+																	CASE
+																		WHEN shp1.TAG IS NOT NULL THEN 'ED50'
+																		ELSE ''
+																	END
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN 'Belgian Datum 1972'
             ELSE ''
 		END	
@@ -317,6 +326,7 @@ AND DT.[SHORT_NAME] NOT In ('Incorrect','Invalid','Considered Incorrect','Requir
 AND TR.[SEQUENCE] >= 230 
 AND LN.PREFERRED = 1
 AND TAO.CONFIDENTIAL = 0
+
 
 
 
