@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_Saltabel_utm_20160219]    Script Date: 03/02/2016 10:38:33 ******/
+/****** Object:  View [ipt].[vwGBIF_Saltabel]    Script Date: 03/08/2016 16:29:38 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,7 +10,7 @@ GO
 
 
 
-ALTER VIEW [ipt].[vwGBIF_Saltabel_utm_20160219] 
+ALTER VIEW [ipt].[vwGBIF_Saltabel] 
 AS
 SELECT --S.ITEM_NAME as SurveyName
 
@@ -237,6 +237,7 @@ FROM dbo.Survey S
 									WHEN unit = 'Count' THEN
 										CASE 
 											WHEN Qualifier IN ('Nimf', 'juviniel', 'juveniel') THEN 'juvenile'
+											WHEN Qualifier IN ('Adult Man', 'Man', 'Adult Vrouw', 'Vrouw') THEN 'adult'
 											ELSE NULL
 										END
 									ELSE NULL 
@@ -317,4 +318,8 @@ AND TR.[SEQUENCE] >= 230
 AND LN.PREFERRED = 1
 AND TAO.CONFIDENTIAL = 0
 
+
+
 GO
+
+
