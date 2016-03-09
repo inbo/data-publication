@@ -5,18 +5,6 @@
 # Author: Peter Desmet
 # Syntax version: 0.1.2
 
-# TO DO
-#
-# * [ ] Are all Text considered HumanObservation?
-# * [ ] Is INBO considered rightsHolder for all records?
-# * [ ] Should we use collectionCode?
-# * [ ] 3 records without date?
-# * [x] Add adult if sex is populated
-# * [ ] Are the UTM squares indeed ED50?
-# * [x] Remove verbatimSRS / verbatimCoordinateSystem if no coordinates
-# * [ ] What should be the coordinateUncertaintyInMeters when we have no verbatim coordinates/lat/long, set empty if we don't know
-# * [ ] Add georeferenceRemarks
-
 occurrenceID:
     empty: false
     unique: true # Tested by the IPT
