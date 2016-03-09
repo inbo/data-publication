@@ -141,6 +141,20 @@ SELECT --S.ITEM_NAME as SurveyName
 			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN '30'
             ELSE ''
 		END
+	, [georeferenceRemarks] = 
+		CASE
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN 'coordinates are centroid of used grid square'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd deelgemnte' THEN 'coordinates are centroid of used grid square'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 5 km' THEN 'coordinates are centroid of used grid square'
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Imported' THEN 'coordinates are centroid of used grid square' -- These are also UTM5
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'Centroïd UTM 1 km' THEN 
+																	CASE
+																		WHEN shp1.TAG IS NOT NULL THEN 'coordinates are centroid of used grid square'
+																		ELSE ''
+																	END
+			WHEN SA.SPATIAL_REF_QUALIFIER = 'XY from original rec' THEN ''
+            ELSE ''
+		END	
 	, [identifiedBy] = COALESCE(
 								CASE
 									WHEN LTRIM(RTRIM(COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])), '') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), ''))) = 'Unknown' THEN NULL
@@ -155,7 +169,7 @@ SELECT --S.ITEM_NAME as SurveyName
 	, [taxonRank] = LOWER(NS.RECOMMENDED_NAME_RANK_LONG)
 	, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL (' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
 	, [vernacularName] = NormNaam.ITEM_NAME
-	, [nomenclaturalCode] = 'ICZN'	 
+	, [nomenclaturalCode] = 'ICZN'
 	    
 FROM dbo.Survey S
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
