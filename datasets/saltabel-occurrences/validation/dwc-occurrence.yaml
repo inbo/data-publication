@@ -65,7 +65,7 @@ collectionCode:
 
 datasetName:
     empty: false
-    allowed: "Saltabel - Orthoptera in Belgium"
+    allowed: Saltabel - Orthoptera in Belgium
 
 ownerInstitutionCode:
     empty: false
@@ -120,7 +120,7 @@ lifeStage:
     if:
         sex: # If sex is populated => lifeStage presumed to be adult (with additional juvenile)
             empty: false
-        allowed: [adult, "adult | juvenile"]
+        allowed: [adult, adult | juvenile]
         
 behavior:
     allowed: stridulation post
@@ -137,11 +137,11 @@ eventID:
 
 eventDate:
     empty: false # Will fail for 3 records
-    dataformat: [YYYY-MM-DD, YYYY-MM, YYYY]
+    dateformat: ["%Y-%m-%d", "%Y-%m", "%Y"]
     daterange: [1800, 2013-06-18]
 
 verbatimEventDate:
-    dateformat: [YYYY-MM-DD/YYYY-MM-DD, YYYY-MM/YYYY-MM, YYYY/YYYY] # Only ranges
+    dateformat: ["%Y-%m-%d/%Y-%m-%d", "%Y-%m/%Y-%m", "%Y/%Y"] # Only ranges
 
 # locationID: not populated
 
