@@ -1,0 +1,341 @@
+# Dataset: http://dataset.inbo.be/saltabel-occurrences
+# DOI: http://doi.org/10.15468/1rcpsq
+# 
+# Scope: dwc-occurrence
+# Author: Peter Desmet
+# Syntax version: 0.1.1
+
+# TO DO
+#
+# * [ ] Are all Text considered HumanObservation?
+# * [ ] Is INBO considered rightsHolder for all records?
+# * [ ] Should we use collectionCode?
+# * [ ] 3 records without date?
+# * [x] Add adult if sex is populated
+# * [ ] Are the UTM squares indeed ED50?
+# * [x] Remove verbatimSRS / verbatimCoordinateSystem if no coordinates
+# * [ ] What should be the coordinateUncertaintyInMeters when we have no verbatim coordinates/lat/long, set empty if we don't know
+# * [ ] Add georeferenceRemarks
+
+occurrenceID:
+    required: true
+    unique: true # Tested by the IPT
+
+type:
+    required: true
+    allowed: [Event, PhysicalObject, Sound, StillImage, Text]
+    listvalues: true
+    if:
+        basisOfRecord:
+            required: true
+            allowed: HumanObservation
+        allowed: [Event, Sound, StillImage, Text]
+    if:
+        basisOfRecord:
+            required: true
+            allowed: PreservedSpecimen
+        allowed: PhysicalObject
+
+language:
+    required: true
+    allowed: en
+
+license:
+    required: true
+    allowed: http://creativecommons.org/publicdomain/zero/1.0/
+
+rightsHolder:
+    required: true
+    allowed: INBO
+
+accessRights:
+    required: true
+    allowed: http://www.inbo.be/en/norms-for-data-use
+
+datasetID:
+    required: true
+    allowed: http://doi.org/10.15468/1rcpsq
+
+institutionCode:
+    required: true
+    allowed: INBO
+
+collectionCode:
+    listvalues: true
+
+datasetName:
+    required: true
+    allowed: "Saltabel - Orthoptera in Belgium"
+
+ownerInstitutionCode:
+    required: true
+    allowed: INBO
+
+basisOfRecord:
+    required: true
+    allowed: [HumanObservation, PreservedSpecimen]
+    listvalues: true
+    if:
+        collectionCode:
+            required: true # If collectionCode is populated => basisOfRecord = "PreservedSpecimen"
+        allowed: PreservedSpecimen # required already assumed
+
+recordedBy:
+    # Not required
+    delimitedvalues:
+        delimiter: " | "
+        required: true
+
+individualCount:
+    required: true
+    type: integer
+    min: 1
+    max: 15000 # Verified by Tim Adriaens
+
+organismQuantity:
+    allowed: [abundant, numerous, scarce]
+    if:
+        organismQuantityType: # If organismQuantityType is populated => organismQuantityType is populated
+            required: true
+        required: true
+
+organismQuantityType:
+    allowed: abundance
+    if:
+        organismQuantity: # If organismQuantity is populated => organismQuantityType is populated
+            required: true
+        required: true
+
+sex:
+    delimitedvalues:
+        delimiter: " | "
+        required: true
+        allowed: [male, female] # Order can be "female | male", "male | female"
+
+lifeStage:
+    delimitedvalues:
+        delimiter: " | "
+        required: true
+        allowed: [adult, juvenile]
+    if:
+        sex: # If sex is populated => lifeStage presumed to be adult (with additional juvenile)
+            required: true
+        allowed: [adult, "adult | juvenile"]
+        
+behavior:
+    allowed: stridulation post
+
+occurrenceRemarks:
+    type: json
+
+eventID:
+    required: true
+
+# samplingProtocol: not much more known than type
+
+# samplingEffort: not known
+
+eventDate:
+    required: true # Will fail for 3 records
+    dataformat: [YYYY-MM-DD, YYYY-MM, YYYY]
+    daterange: [1800, 2013-06-18]
+
+verbatimEventDate:
+    dateFormat: [YYYY-MM-DD/YYYY-MM-DD, YYYY-MM/YYYY-MM, YYYY/YYYY] # Only ranges
+
+# locationID: not populated
+
+continent:
+    required: true
+    allowed: Europe
+
+countryCode:
+    required: true
+    allowed: BE
+
+stateProvince:
+    # Not required: we have this for few records only, when recorded with observation
+    allowed: [Antwerp, East Flanders, Flemish Brabant, Limburg, West Flanders]
+
+municipality:
+    required: true
+    listvalues: true
+
+# For the verbatimCoordinates/lat/long we start from the verbatimCoordinateSystem,
+# which is recorded with the observation:
+# * If UTM1 -> Use lambert xy and look up UTM1 code
+# * If UTM5 -> Use lambert xy and look up UTM5 code
+# * If Belgian Lambert 72 -> Use lambert xy
+
+verbatimCoordinates:
+    regex: 31U*
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: UTM 1km
+        required: true
+        length: 9 # 31UDS6960
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: UTM 5km
+        required: true
+        length: 8 # 31UDS76C
+    if:
+        verbatimCoordinateSystem:
+            allowed: [Belgian Lambert 72, ""]
+        allowed: ""
+
+verbatimLatitude:
+    type: integer
+    min: 37000 # Lambert Y coordinates
+    max: 255000
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: Belgian Lambert 72
+        required: true
+    if:
+        verbatimCoordinateSystem:
+            allowed: [UTM 1km, UTM 5km, ""]
+        allowed: ""
+
+verbatimLongitude:
+    type: integer
+    min: 158000 # Lambert X coordinates
+    max: 230000
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: Belgian Lambert 72
+        required: true
+    if:
+        verbatimCoordinateSystem:
+            allowed: [UTM 1km, UTM 5km, ""]
+        allowed: ""
+
+verbatimCoordinateSystem:
+    allowed: [UTM 1km, UTM 5km, Belgian Lambert 72]
+
+verbatimSRS:
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: [UTM 1km, UTM 5km]
+        required: true
+        allowed: ED50
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: Belgium Lambert 72
+        required: true
+        allowed: Belgian Datum 1972
+    if:
+        verbatimCoordinateSystem:
+            allowed: ""
+        allowed: ""
+
+decimalLatitude:
+    required: true
+    type: float
+    numberformat: .5f
+    min: 49.49
+    max: 51.51
+
+decimalLongitude:
+    required: true
+    type: float
+    numberformat: .5f
+    min: 2.54 # Will fail for 8 records
+    max: 6.41
+
+geodeticDatum:
+    if:
+        decimalLongitude:
+            required: true
+        required: true
+        allowed: WGS84
+    if:
+        decimalLatitude: # No such records in this dataset
+            allowed: ""
+        required: ""
+
+coordinateUncertaintyInMeters:
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: UTM 1km
+        required: true
+        type: integer
+        allowed: 707
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: UTM 5km
+        required: true
+        type: integer
+        allowed: 3536
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: Belgium Lambert 72
+        required: true
+        type: integer
+        allowed: 30
+    if:
+        verbatimCoordinateSystem:
+            allowed: ""
+        allowed: ""
+
+georeferenceRemarks:
+    if:
+        verbatimCoordinateSystem:
+            required: true
+            allowed: [UTM 1km, UTM 5km]
+        required: true
+        allowed: coordinates are centroid of used grid square
+    if:
+        verbatimCoordinateSystem:
+            allowed: [Belgian Lambert 72, ""]
+        allowed: ""
+
+identifiedBy:
+    # Not required
+    delimitedvalues: # There are actually no delimited values in this dataset
+        delimiter: " | "
+        required: true
+
+scientificName:
+    required: true
+    listvalues: true
+
+kingdom:
+    required: true
+    allowed: Animalia
+
+phylum:
+    required: true
+    allowed: Arthropoda
+
+class:
+    required: true
+    allowed: Insecta
+
+order:
+    required: true
+    allowed: Orthoptera
+
+taxonRank:
+    required: true
+    allowed: species # Only species in this dataset
+
+scientificNameAuthorship:
+    required: true
+
+vernacularName:
+    required: true
+    listvalues: true
+
+nomenclaturalCode:
+    required: true
+    allowed: ICZN
