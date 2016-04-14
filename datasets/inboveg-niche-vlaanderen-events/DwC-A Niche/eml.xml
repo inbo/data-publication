@@ -1,0 +1,206 @@
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1"
+         xmlns:dc="http://purl.org/dc/terms/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml.xsd"
+         packageId="http://oefendata.inbo.be/ipt/resource?id=inboveg_niche_vlaanderen/v1.2" system="http://gbif.org" scope="system"
+         xml:lang="eng">
+
+<dataset>
+  <title xml:lang="eng">InboVeg Niche in Flanders, vegetation relevé</title>
+      <creator>
+    <individualName>
+        <givenName>Els</givenName>
+      <surName>De Bie</surName>
+    </individualName>
+    <organizationName>INBO</organizationName>
+    <positionName>Researcher</positionName>
+    <address>
+        <deliveryPoint>Kliniekstraat</deliveryPoint>
+        <city>Brussels</city>
+        <administrativeArea>Brussels Capital Region</administrativeArea>
+        <postalCode>1070</postalCode>
+        <country>BE</country>
+    </address>
+    <electronicMailAddress>els.debie@inbo.be</electronicMailAddress>
+    <onlineUrl>http://data.inbo.be/en/inboveg</onlineUrl>
+      </creator>
+      <metadataProvider>
+    <individualName>
+        <givenName>Dimitri</givenName>
+      <surName>Brosens</surName>
+    </individualName>
+    <electronicMailAddress>dimitri.brosens@inbo.be</electronicMailAddress>
+      </metadataProvider>
+      <associatedParty>
+    <individualName>
+        <givenName>Els</givenName>
+      <surName>De Bie</surName>
+    </individualName>
+    <organizationName>INBO</organizationName>
+    <positionName>Researcher</positionName>
+    <address>
+        <deliveryPoint>Kliniekstraat</deliveryPoint>
+        <city>Brussels</city>
+        <administrativeArea>Brussels Capital Region</administrativeArea>
+        <postalCode>1070</postalCode>
+        <country>BE</country>
+    </address>
+    <electronicMailAddress>els.debie@inbo.be</electronicMailAddress>
+    <onlineUrl>http://data.inbo.be/en/inboveg</onlineUrl>
+    <role>user</role>
+      </associatedParty>
+  <pubDate>
+      2016-03-17
+  </pubDate>
+  <language>eng</language>
+  <abstract>
+    <para>Ground water dependent vegetation relevées in relation to the WATINA ground water network in Flanders, Belgium</para>
+  </abstract>
+      <keywordSet>
+            <keyword>Samplingevent</keyword>
+        <keywordThesaurus>GBIF Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type.xml</keywordThesaurus>
+      </keywordSet>
+      <keywordSet>
+            <keyword>relevées; groundwater dependent vegetation</keyword>
+            <keyword></keyword>
+        <keywordThesaurus>n/a</keywordThesaurus>
+      </keywordSet>
+  <intellectualRights>
+    <para>To the extent possible under law, the publisher has waived all rights to these data and has dedicated them to the <ulink url="http://creativecommons.org/publicdomain/zero/1.0/legalcode"><citetitle>Public Domain (CC0 1.0)</citetitle></ulink>. Users may copy, modify, distribute and use the work, including for commercial purposes, without restriction.</para>
+  </intellectualRights>
+  <distribution scope="document">
+    <online>
+      <url function="information">http://www.data.inbo.be/inboveg</url>
+    </online>
+  </distribution>
+  <coverage>
+      <geographicCoverage>
+          <geographicDescription>Flanders, Watina Network</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>2.54</westBoundingCoordinate>
+          <eastBoundingCoordinate>5.92</eastBoundingCoordinate>
+          <northBoundingCoordinate>51.51</northBoundingCoordinate>
+          <southBoundingCoordinate>50.68</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+          <temporalCoverage>
+              <rangeOfDates>
+                  <beginDate>
+                    <calendarDate>2002-03-01</calendarDate>
+                  </beginDate>
+                <endDate>
+                  <calendarDate>2005-12-30</calendarDate>
+                </endDate>
+              </rangeOfDates>
+          </temporalCoverage>
+          <taxonomicCoverage>
+              <generalTaxonomicCoverage>Plantae</generalTaxonomicCoverage>
+              <taxonomicClassification>
+                  <taxonRankName>domain</taxonRankName>
+                <taxonRankValue>Plantae</taxonRankValue>
+              </taxonomicClassification>
+          </taxonomicCoverage>
+  </coverage>
+  <maintenance>
+    <description>
+      <para></para>
+    </description>
+    <maintenanceUpdateFrequency>unkown</maintenanceUpdateFrequency>
+  </maintenance>
+
+      <contact>
+    <individualName>
+        <givenName>Els</givenName>
+      <surName>De Bie</surName>
+    </individualName>
+    <organizationName>INBO</organizationName>
+    <positionName>Researcher</positionName>
+    <address>
+        <deliveryPoint>Kliniekstraat</deliveryPoint>
+        <city>Brussels</city>
+        <administrativeArea>Brussels Capital Region</administrativeArea>
+        <postalCode>1070</postalCode>
+        <country>BE</country>
+    </address>
+    <electronicMailAddress>els.debie@inbo.be</electronicMailAddress>
+    <onlineUrl>http://data.inbo.be/en/inboveg</onlineUrl>
+      </contact>
+  <methods>
+        <methodStep>
+          <description>
+            <para>Londo scale
+Low coverage		High coverage	 
+Code	coverage	Code	coverage
+*.1	1%	1-	5-10%
+*.2	2-3%	1+	10-15%
+*.4	4-5%	2	15-25%
+combination with:		3	25-35%
+r.	some occurrences (1 or 2)	4	35-45%
+p.	little occurrences (about 10)	5	45-55%
+a.	many occurrences (about 100)	6	55-65%
+m.	a lot occurrences (about 1000)	7	65-75%
+8	75-85%
+9	85-95%
+10	95-100%</para>
+          </description>
+        </methodStep>
+      <sampling>
+        <studyExtent>
+          <description>
+            <para>InboVeg Niche Vlaanderen
+Vegetation plot surveys were performed between May and July 2002 near selected Piezometers (INBO-watina project). Coördinates were registered with a GPS. 
+</para>
+          </description>
+        </studyExtent>
+        <samplingDescription>
+          <para>
+Sampling Methods
+Vegetation surveys
+
+Vegetation, neighbouring each WATINA Piezometer is described using a nearby vegetation plot. In forests the plot measures 10X10m² in open vegetations this plot measures 3X3 m². The Piezometer usually is one of the corners of the plot.
+A orientated location sketch was created for every survey, to make repeatability possible.
+For every plot, all occurring species were determined and for every vertical layer (Trees, Shrubs, Herbs and Mosses) the coverage was measured (Londo scale).
+Londo scale
+Low coverage		High coverage	 
+Code	coverage	Code	coverage
+*.1	1%	1-	5-10%
+*.2	2-3%	1+	10-15%
+*.4	4-5%	2	15-25%
+combination with:		3	25-35%
+r.	some occurrences (1 or 2)	4	35-45%
+p.	little occurrences (about 10)	5	45-55%
+a.	many occurrences (about 100)	6	55-65%
+m.	a lot occurrences (about 1000)	7	65-75%
+8	75-85%
+9	85-95%
+10	95-100%</para>
+        </samplingDescription>
+      </sampling>
+      <qualityControl>
+        <description>
+          <para>Records are validated</para>
+        </description>
+      </qualityControl>
+  </methods>
+  <project >
+    <title>Niche Vlaanderen</title>
+      <personnel>
+        <individualName>
+            <givenName>Els</givenName>
+          <surName>De Bie</surName>
+        </individualName>
+        <role>author</role>
+      </personnel>
+  </project>
+</dataset>
+  <additionalMetadata>
+    <metadata>
+      <gbif>
+          <dateStamp>2016-02-17T09:43:23.175+01:00</dateStamp>
+          <hierarchyLevel>dataset</hierarchyLevel>
+            <citation>De Bie E (2016): InboVeg Niche in Flanders, vegetation relevé. v1.2. Test Organisation #1. Dataset/Samplingevent. http://oefendata.inbo.be/ipt/resource?r=inboveg_niche_vlaanderen&amp;v=1.2</citation>
+          <dc:replaces>http://oefendata.inbo.be/ipt/resource?id=inboveg_niche_vlaanderen/v1.2.xml</dc:replaces>
+      </gbif>
+    </metadata>
+  </additionalMetadata>
+</eml:eml>

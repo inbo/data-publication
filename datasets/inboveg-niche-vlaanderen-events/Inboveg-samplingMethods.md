@@ -2,7 +2,6 @@
 
 ##Sampling Methods
 ###Vegetation surveys
-Vegetation surveys are performed between May and July 2002 near selected Piezometers (INBO-watina project). Coördinates were registered with a GPS. 
 
 Vegetation, neighbouring each WATINA Piezometer is described using a nearby vegetation plot. In forests the plot measures 10X10m² in open vegetations this plot measures 3X3 m². The Piezometer usually is one of the corners of the plot.
 
