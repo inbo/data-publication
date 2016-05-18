@@ -6,61 +6,49 @@
 # Syntax version: 0.1
 
 occurrenceID:
-  empty: false
   unique: true # Tested by the IPT
 
 type:
-  empty: false
   allowed: [Event, PhysicalObject, Sound, StillImage, Text]
   listvalues: true
   if:
     basisOfRecord:
-      empty: false
       allowed: HumanObservation
     allowed: [Event, Sound, StillImage, Text]
   if:
     basisOfRecord:
-      empty: false
       allowed: PreservedSpecimen
     allowed: PhysicalObject
 
 language:
-  empty: false
   allowed: en
 
 license:
-  empty: false
   allowed: http://creativecommons.org/publicdomain/zero/1.0/
 
 rightsHolder:
-  empty: false
   allowed: INBO
 
 accessRights:
-  empty: false
   allowed: http://www.inbo.be/en/norms-for-data-use
 
 datasetID:
-  empty: false
   allowed: http://doi.org/10.15468/1rcpsq
 
 institutionCode:
-  empty: false
   allowed: INBO
 
 collectionCode:
   listvalues: true
+  empty: true
 
 datasetName:
-  empty: false
   allowed: Saltabel - Orthoptera in Belgium
 
 ownerInstitutionCode:
-  empty: false
   allowed: INBO
 
 basisOfRecord:
-  empty: false
   allowed: [HumanObservation, PreservedSpecimen]
   listvalues: true
   if:
@@ -69,52 +57,54 @@ basisOfRecord:
     allowed: PreservedSpecimen # Not empty already covered in test above
 
 recordedBy:
-  # Can be empty
+  empty: true
   delimitedvalues:
     delimiter: " | "
-    empty: false
 
 individualCount:
-  empty: false
+  empty: true
   type: integer
   min: 1
   max: 15000 # Verified by Tim Adriaens
 
 organismQuantity:
+  empty: true
   allowed: [abundant, numerous, scarce]
   if:
     organismQuantityType: # If organismQuantityType is populated => organismQuantityType is populated
+        empty: false
       empty: false
-    empty: false
 
 organismQuantityType:
+  empty: true
   allowed: abundance
   if:
     organismQuantity: # If organismQuantity is populated => organismQuantityType is populated
+        empty: false
       empty: false
-    empty: false
 
 sex:
+  empty: true
   delimitedvalues:
     delimiter: " | "
-    empty: false
     allowed: [male, female] # Order can be "female | male", "male | female"
 
 lifeStage:
+  empty: true
   delimitedvalues:
     delimiter: " | "
-    empty: false
     allowed: [adult, juvenile]
   if:
     sex: # If sex is populated => lifeStage presumed to be adult (with additional juvenile)
-      empty: false
     allowed: [adult, adult | juvenile]
       
 behavior:
+  empty: true
   allowed: stridulation post
 
 occurrenceRemarks:
   type: json
+  empty: true
 
 eventID:
   empty: false
@@ -124,7 +114,6 @@ eventID:
 # samplingEffort: not known
 
 eventDate:
-  empty: false # Will fail for 3 records
   dateformat: ["%Y-%m-%d", "%Y-%m", "%Y"]
   daterange: [1800, 2013-06-18]
 
@@ -134,15 +123,13 @@ verbatimEventDate:
 # locationID: not populated
 
 continent:
-  empty: false
   allowed: Europe
 
 countryCode:
-  empty: false
   allowed: BE
 
 stateProvince:
-  # Can be empty: we only have this for few records, when it was recorded with observation
+  empty: true # We only have this information for a few records, when it was recorded with observation
   allowed: [Antwerp, East Flanders, Flemish Brabant, Limburg, West Flanders]
 
 municipality:
@@ -157,17 +144,14 @@ municipality:
 
 verbatimCoordinates:
   regex: 31U*
+  empty: true
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: UTM 1km
-    empty: false
     length: 9 # 31UDS6960
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: UTM 5km
-    empty: false
     length: 8 # 31UDS76C
   if:
     verbatimCoordinateSystem:
@@ -180,9 +164,8 @@ verbatimLatitude:
   max: 255000
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: Belgian Lambert 72
-    empty: false
+  empty: true
   if:
     verbatimCoordinateSystem:
       allowed: [UTM 1km, UTM 5km, ""]
@@ -194,29 +177,26 @@ verbatimLongitude:
   max: 230000
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: Belgian Lambert 72
-    empty: false
+  empty: true
   if:
     verbatimCoordinateSystem:
       allowed: [UTM 1km, UTM 5km, ""]
     allowed: ""
 
 verbatimCoordinateSystem:
+  empty: true
   allowed: [UTM 1km, UTM 5km, Belgian Lambert 72]
 
 verbatimSRS:
+  empty: true
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: [UTM 1km, UTM 5km]
-    empty: false
     allowed: ED50
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: Belgium Lambert 72
-    empty: false
     allowed: Belgian Datum 1972
   if:
     verbatimCoordinateSystem:
@@ -224,14 +204,12 @@ verbatimSRS:
     allowed: ""
 
 decimalLatitude:
-  empty: false
   type: float
   numberformat: .5f
   min: 49.49
   max: 51.51
 
 decimalLongitude:
-  empty: false
   type: float
   numberformat: .5f
   min: 2.54 # Will fail for 8 records
@@ -240,8 +218,6 @@ decimalLongitude:
 geodeticDatum:
   if:
     decimalLongitude:
-      empty: false
-    empty: false
     allowed: WGS84
   if:
     decimalLatitude: # No such records in this dataset
@@ -249,25 +225,20 @@ geodeticDatum:
     allowed: ""
 
 coordinateUncertaintyInMeters:
+  empty: true
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: UTM 1km
-    empty: false
     type: integer
     allowed: 707
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: UTM 5km
-    empty: false
     type: integer
     allowed: 3536
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: Belgium Lambert 72
-    empty: false
     type: integer
     allowed: 30
   if:
@@ -276,11 +247,10 @@ coordinateUncertaintyInMeters:
     allowed: ""
 
 georeferenceRemarks:
+  empty: true
   if:
     verbatimCoordinateSystem:
-      empty: false
       allowed: [UTM 1km, UTM 5km]
-    empty: false
     allowed: coordinates are centroid of used grid square
   if:
     verbatimCoordinateSystem:
@@ -288,33 +258,27 @@ georeferenceRemarks:
     allowed: ""
 
 identifiedBy:
-  # Can be empty
+  empty: true
   delimitedvalues: # There are actually no delimited values in this dataset
     delimiter: " | "
-    empty: false
 
 scientificName:
   empty: false
   listvalues: true
 
 kingdom:
-  empty: false
   allowed: Animalia
 
 phylum:
-  empty: false
   allowed: Arthropoda
 
 class:
-  empty: false
   allowed: Insecta
 
 order:
-  empty: false
   allowed: Orthoptera
 
 taxonRank:
-  empty: false
   allowed: species # Only species in this dataset
 
 scientificNameAuthorship:
@@ -325,5 +289,4 @@ vernacularName:
   listvalues: true
 
 nomenclaturalCode:
-  empty: false
   allowed: ICZN
