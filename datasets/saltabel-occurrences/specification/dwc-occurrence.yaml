@@ -39,6 +39,7 @@ institutionCode:
 
 collectionCode:
   empty: true
+  allowed: [Boosten, Carpentier, COL. SLABBAERT HOGE VENEN, collectie Stijn Vanacker, Decleer Kris, Devriese Rik, FSAG, Haghebaert, Hofmans Kurt, Inst. V. Beneden, KBIN, Keppens, Lebrun M., Mal, Université de Liège, Université de Mons, Universiteit Gent, V.V.E., W]
 
 datasetName:
   allowed: Saltabel - Orthoptera in Belgium
