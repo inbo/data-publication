@@ -6,6 +6,7 @@
 # Syntax version: 0.1
 
 occurrenceID:
+  regex: 'INBO:NBN:[A-Z0-9]+'
   # Has to be unique as well
 
 type:
@@ -140,13 +141,14 @@ municipality:
 # * If Belgian Lambert 72 -> Use lambert xy
 
 verbatimCoordinates:
-  regex: 31U*
   empty: true
   if:
     - verbatimCoordinateSystem:
         allowed: UTM 1km
+      regex: '31U[D-G][S-T]\d\d\d\d' # UTM 1km for Flanders, e.g. 31UDS8748
     - verbatimCoordinateSystem:
         allowed: UTM 5km
+      regex: '31U[D-G][S-T]\d\d[A-D]' # UTM 5km for Flanders, e.g. 31UDS76C
     - verbatimCoordinateSystem:
         allowed: [Belgian Lambert 72, '']
       allowed: ''
