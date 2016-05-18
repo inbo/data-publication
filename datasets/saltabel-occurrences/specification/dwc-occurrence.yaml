@@ -12,13 +12,12 @@ type:
   allowed: [Event, PhysicalObject, Sound, StillImage, Text]
   listvalues: true
   if:
-    basisOfRecord:
-      allowed: HumanObservation
-    allowed: [Event, Sound, StillImage, Text]
-  if:
-    basisOfRecord:
-      allowed: PreservedSpecimen
-    allowed: PhysicalObject
+    - basisOfRecord:
+        allowed: HumanObservation
+      allowed: [Event, Sound, StillImage, Text]
+    - basisOfRecord:
+        allowed: PreservedSpecimen
+      allowed: PhysicalObject
 
 language:
   allowed: en
@@ -52,9 +51,9 @@ basisOfRecord:
   allowed: [HumanObservation, PreservedSpecimen]
   listvalues: true
   if:
-    collectionCode:
-      empty: false # If collectionCode is populated => basisOfRecord = "PreservedSpecimen"
-    allowed: PreservedSpecimen # Not empty already covered in test above
+    - collectionCode:
+        empty: false # If collectionCode is populated => basisOfRecord = "PreservedSpecimen"
+      allowed: PreservedSpecimen
 
 recordedBy:
   empty: true
@@ -71,7 +70,7 @@ organismQuantity:
   empty: true
   allowed: [abundant, numerous, scarce]
   if:
-    organismQuantityType: # If organismQuantityType is populated => organismQuantityType is populated
+    - organismQuantityType: # If organismQuantityType is populated => organismQuantityType is populated
         empty: false
       empty: false
 
@@ -79,7 +78,7 @@ organismQuantityType:
   empty: true
   allowed: abundance
   if:
-    organismQuantity: # If organismQuantity is populated => organismQuantityType is populated
+    - organismQuantity: # If organismQuantity is populated => organismQuantityType is populated
         empty: false
       empty: false
 
@@ -95,8 +94,9 @@ lifeStage:
     delimiter: " | "
     allowed: [adult, juvenile]
   if:
-    sex: # If sex is populated => lifeStage presumed to be adult (with additional juvenile)
-    allowed: [adult, adult | juvenile]
+    - sex: # If sex is populated => lifeStage presumed to be adult (with additional juvenile)
+        empty: false
+      allowed: [adult, adult | juvenile]
       
 behavior:
   empty: true
@@ -146,43 +146,37 @@ verbatimCoordinates:
   regex: 31U*
   empty: true
   if:
-    verbatimCoordinateSystem:
-      allowed: UTM 1km
-    length: 9 # 31UDS6960
-  if:
-    verbatimCoordinateSystem:
-      allowed: UTM 5km
-    length: 8 # 31UDS76C
-  if:
-    verbatimCoordinateSystem:
-      allowed: [Belgian Lambert 72, ""]
-    allowed: ""
+    - verbatimCoordinateSystem:
+        allowed: UTM 1km
+    - verbatimCoordinateSystem:
+        allowed: UTM 5km
+    - verbatimCoordinateSystem:
+        allowed: [Belgian Lambert 72, '']
+      allowed: ''
 
 verbatimLatitude:
-  type: integer
-  min: 37000 # Lambert Y coordinates
-  max: 255000
-  if:
-    verbatimCoordinateSystem:
-      allowed: Belgian Lambert 72
   empty: true
   if:
-    verbatimCoordinateSystem:
-      allowed: [UTM 1km, UTM 5km, ""]
-    allowed: ""
+    - verbatimCoordinateSystem:
+        allowed: Belgian Lambert 72
+      type: integer
+      min: 37000
+      max: 255000
+    - verbatimCoordinateSystem:
+        allowed: [UTM 1km, UTM 5km, '']
+      allowed: ''
 
 verbatimLongitude:
-  type: integer
-  min: 158000 # Lambert X coordinates
-  max: 230000
-  if:
-    verbatimCoordinateSystem:
-      allowed: Belgian Lambert 72
   empty: true
   if:
-    verbatimCoordinateSystem:
-      allowed: [UTM 1km, UTM 5km, ""]
-    allowed: ""
+    - verbatimCoordinateSystem:
+        allowed: Belgian Lambert 72
+      type: integer
+      min: 158000
+      max: 230000
+    - verbatimCoordinateSystem:
+        allowed: [UTM 1km, UTM 5km, '']
+      allowed: ''
 
 verbatimCoordinateSystem:
   empty: true
@@ -191,17 +185,15 @@ verbatimCoordinateSystem:
 verbatimSRS:
   empty: true
   if:
-    verbatimCoordinateSystem:
-      allowed: [UTM 1km, UTM 5km]
-    allowed: ED50
-  if:
-    verbatimCoordinateSystem:
-      allowed: Belgium Lambert 72
-    allowed: Belgian Datum 1972
-  if:
-    verbatimCoordinateSystem:
-      allowed: ""
-    allowed: ""
+    - verbatimCoordinateSystem:
+        allowed: [UTM 1km, UTM 5km]
+      allowed: ED50
+    - verbatimCoordinateSystem:
+        allowed: Belgium Lambert 72
+      allowed: Belgian Datum 1972
+    - verbatimCoordinateSystem:
+        allowed: ''
+      allowed: ''
 
 decimalLatitude:
   type: float
@@ -216,46 +208,36 @@ decimalLongitude:
   max: 6.41
 
 geodeticDatum:
-  if:
-    decimalLongitude:
-    allowed: WGS84
-  if:
-    decimalLatitude: # No such records in this dataset
-      allowed: ""
-    allowed: ""
+  allowed: WGS84
 
 coordinateUncertaintyInMeters:
   empty: true
   if:
-    verbatimCoordinateSystem:
-      allowed: UTM 1km
-    type: integer
-    allowed: 707
-  if:
-    verbatimCoordinateSystem:
-      allowed: UTM 5km
-    type: integer
-    allowed: 3536
-  if:
-    verbatimCoordinateSystem:
-      allowed: Belgium Lambert 72
-    type: integer
-    allowed: 30
-  if:
-    verbatimCoordinateSystem:
-      allowed: ""
-    allowed: ""
+    - verbatimCoordinateSystem:
+        allowed: UTM 1km
+      type: integer
+      allowed: 707
+    - verbatimCoordinateSystem:
+        allowed: UTM 5km
+      type: integer
+      allowed: 3536
+    - verbatimCoordinateSystem:
+        allowed: Belgium Lambert 72
+      type: integer
+      allowed: 30
+    - verbatimCoordinateSystem: # VERIFY
+        allowed: ''
+      allowed: ''
 
 georeferenceRemarks:
   empty: true
   if:
-    verbatimCoordinateSystem:
-      allowed: [UTM 1km, UTM 5km]
-    allowed: coordinates are centroid of used grid square
-  if:
-    verbatimCoordinateSystem:
-      allowed: [Belgian Lambert 72, ""]
-    allowed: ""
+    - verbatimCoordinateSystem:
+        allowed: [UTM 1km, UTM 5km]
+      allowed: coordinates are centroid of used grid square
+    - verbatimCoordinateSystem:
+        allowed: [Belgian Lambert 72, '']
+      allowed: ''
 
 identifiedBy:
   empty: true
