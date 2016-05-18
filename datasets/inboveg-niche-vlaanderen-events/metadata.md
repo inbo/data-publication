@@ -37,12 +37,12 @@ The goal of "NICHE-Vlaanderen" is to adapt the Dutch hydro-ecological prediction
 **Project title**:  NICHE – VlaanderenPersonnel: Els De Bie
 **Funding**: Funded by the Flemish government, SVW, and Pidpa
 
-Study area descriptions/descriptor: 
+**Study area descriptions/descriptor**: 
 Based on the WATINA database (Water in Nature Reserves) a selection of locations in Flemisch nature reserves was made for NICHE-Vlaanderen. The selection criteria were: hydrologic data must be available for minimum 1 year (more is better) and no significant disturbance occurred between the hydrological data collection and the vegetation survey. ‘Disturbances' are indications for a possible unbalance between vegetation occurrence and the abiotic environment, due to for example drainage, ground works, water supply, etc. 
 
-Design description: The goal of "Niche Vlaanderen" is to adapt the Dutch "hydro-ecological model NICHE (Nature Impact Assessment of Changes in Hydro‐Ecological Systems)" for Flanders. The "Niche Vlaanderen" tool will be used to evaluate the effects of interventions in water management such as river restoration, ground water collection,  etc.
+**Design description**: The goal of "Niche Vlaanderen" is to adapt the Dutch "hydro-ecological model NICHE (Nature Impact Assessment of Changes in Hydro‐Ecological Systems)" for Flanders. The "Niche Vlaanderen" tool will be used to evaluate the effects of interventions in water management such as river restoration, ground water collection,  etc.
 
-Taxonomic coverage
+**Taxonomic coverage**
 
 General taxonomic coverage description: For every vegetation plot the tracheophytes and bryophytes were determined.
 Taxonomic ranks
@@ -50,7 +50,7 @@ Kingdom: Plantae
 Phylum: Tracheophyta, Bryophyta
 
 
-Spatial coverage
+**Spatial coverage**
 
 General spatial coverage: Flanders, Watina (Water in Nature Reserves) Network
 Flanders, Belgium
@@ -60,9 +60,9 @@ Flanders has a temperate maritime climate influenced by the North Sea and the At
 All the vegetation survey data originates from plots close to the measuring points of the WATINA hydrologic monitoring network in Flanders.
 Coordinates: 50°40'48''N and 51°30'36''N Latitude; 2°32'24''E and 5°55'12''E Longitude 
 
-Temporal coverage: March 1, 2002 - December 30, 2005
+**Temporal coverage**: March 1, 2002 - December 30, 2005
 
-Methods
+**Methods**
 
 Method step description: 
 Londo scale
@@ -89,7 +89,19 @@ code	percentage
 9	85-95%
 10	100%
 
-
+Low coverage code | Low coverage | Low coverage code| Low coverage
+--- | --- | --- | ---
+*.1 | 1% | 1- | 5-10%
+*.2 | 2-3% | 1+ | 10-15%
+*.4 | 4-5% | 2 | 15-25%
+combination with: ||	3	|25-35%
+r. | some occurrences (1 or 2) | 4 | 35-45%
+p. | little occurrences (about 10) | 5 | 45-55%
+a. | many occurrences (about 100) | 6 | 55-65%
+m. | a lot occurrences (about 1000) | 7 | 65-75%
+ | | 8 | 75-85%
+ | | 9 | 85-95%
+ | | 10 | 95-100%
 
 Study extent description: INBOVEG - Niche Vlaanderen
 Vegetation plot surveys were performed between May and August of 2002, 2004 and 2005 near selected piezometers (INBO-WATINA project). Coordinates were taken of the WATINA database. 
