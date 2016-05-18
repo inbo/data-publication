@@ -102,14 +102,13 @@ behavior:
   allowed: stridulation post
 
 occurrenceRemarks:
-  type: json
   empty: true
+  type: json # Indicates number of individuals per group: {"female": 4, "male": 1}
 
 eventID:
   empty: false
 
-# samplingProtocol: not much more known than type
-
+# samplingProtocol: there is no more information than what is provided in "type"
 # samplingEffort: not known
 
 eventDate:
@@ -120,7 +119,7 @@ eventDate:
 verbatimEventDate:
   dateformat: ['%Y-%m-%d/%Y-%m-%d', '%Y-%m/%Y-%m', '%Y/%Y'] # Only accept ranges
 
-# locationID: not populated
+# locationID: not provided
 
 continent:
   allowed: Europe
@@ -140,6 +139,7 @@ municipality:
 # * If UTM1 -> Use lambert xy and look up UTM1 code
 # * If UTM5 -> Use lambert xy and look up UTM5 code
 # * If Belgian Lambert 72 -> Use lambert xy
+# * If empty -> Everything should be empty
 
 verbatimCoordinates:
   empty: true
