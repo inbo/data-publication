@@ -68,7 +68,7 @@ Method step description:
 Londo scale
 
 ||**species with coverage below 5%**||
-|---|---|
+|---|---|---|
 |**code**|**individuals**|**in combination with:**|
 |r.	|1 or 2	|**code** |	percentages
 |p.	|few (tens)	|.1	|< 1%
