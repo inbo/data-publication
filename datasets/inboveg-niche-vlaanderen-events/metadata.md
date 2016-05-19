@@ -109,51 +109,55 @@ m. | a lot occurrences (about 1000) | 7 | 65-75%
  | | 9 | 85-95%
  | | 10 | 95-100%
 
-Study extent description: INBOVEG - Niche Vlaanderen
+**Study extent description**: INBOVEG - Niche Vlaanderen
+
 Vegetation plot surveys were performed between May and August of 2002, 2004 and 2005 near selected piezometers (INBO-WATINA project). Coordinates were taken of the WATINA database. 
-Sampling description: Sampling Methods
+
+**Sampling description**: Sampling Methods
+
 Vegetation surveys: Vegetation, neighbouring the selected WATINA piezometer is described using a nearby vegetation plot (forests: 10x10m², open vegetations:  3x3 m²). The piezometer usually is one of the corners of the plot if not too much disturbed.
 An orientated location sketch was created for every plot, to make repeatability possible. For every plot, all occurring species were determined and for every vertical layer (Trees, Shrubs, Herbs and Mosses) the coverage (horizontal projection) was estimated in percentages. For every species the coverage was estimated using the scale of Londo. This scale is very detailled, especially for species with a low coverage (below 5%).
 
 Londo scale
-species with coverage below 5%
-code	individuals	in combination with:
-r.	1 or 2	code 	percentages
-p.	few (tens)	.1	< 1%
-a.	many (hundreds)	.2	1-3%
-m.	much (thousands)	.4	3-5 %
-species with coverage of 5% or more: 
-code	percentage
-1-	5-10%
-1	5-10%
-1+	10-15%
-2	15-25%
-3	25-35%
-4	35-45%
-5-	45 -50%
-5	45-55%
-5+	50-55%
-6	55-65%
-7	65-75%
-8	75-85%
-9	85-95%
-10	100%
 
-Quality control description: Records are validated
+||**species with coverage below 5%**||
+|---|---|---|
+|**code**|**individuals**|**in combination with:**|
+|r.	|1 or 2	|**code** |	percentages
+|p.	|few (tens)	|.1	|< 1%
+|a.	|many (hundreds)	|.2	|1-3%
+|m.	|much (thousands)	|.4	|3-5 %
+||**species with coverage of 5% or more:**| 
+||**code **|**percentage**||
+||1-	|5-10%
+||1	|5-10%
+||1+	|10-15%
+||2	|15-25%
+||3	|25-35%
+||4	|35-45%
+||5-	|45 -50%
+||5	|45-55%
+||5+	|50-55%
+||6	|55-65%
+||7	|65-75%
+||8	|75-85%
+||9	|85-95%
+||10	&|100%
+
+**Quality control description**: Records are validated
 
 **Datasets**
 
 **Dataset description**
-Object name: Darwin Core Archive InboVeg Niche in Flanders, vegetation relevé
-Character encoding: UTF-8
-Format name: Darwin Core Archive format
-Format version: 1.0
-Distribution: http://oefendata.inbo.be/ipt/archive.do?r=inboveg_niche_vlaanderen
-Publication date of data: 2016-05-10
-Language: English
-Licences of use: To the extent possible under law, the publisher has waived all rights to these data and has dedicated them to the <a href="http://creativecommons.org/publicdomain/zero/1.0/legalcode">Public Domain (CC0 1.0)</a>. Users may copy, modify, distribute and use the work, including for commercial purposes, without restriction.
-
-Metadata language: English
-Date of metadata creation: 2016-02-17
-Hierarchy level: Dataset
+*Object name*: Darwin Core Archive InboVeg Niche in Flanders, vegetation relevé  
+*Character encoding*: UTF-8  
+*Format name*: Darwin Core Archive format  
+*Format version*: 1.0  
+*Distribution*: http://data.inbo.be/ipt/archive.do?=inboveg_niche_vlaanderen  
+*Publication date of data*: 2016-05-10  
+*Language*: English  
+*Licences of use*: To the extent possible under law, the publisher has waived all rights to these data and has dedicated them to the <a href="http://creativecommons.org/publicdomain/zero/1.0/legalcode">Public Domain (CC0 1.0)</a>. Users may copy, modify, distribute and use the work, including for commercial purposes, without restriction.  
+*Metadata language*: English  
+*Date of metadata creation*: 2016-02-17
+*Hierarchy level*: Dataset
 
