@@ -52,7 +52,7 @@ Phylum: Tracheophyta, Bryophyta
 
 **Spatial coverage**
 
-General spatial coverage: Flanders, Watina (Water in Nature Reserves) Network
+**General spatial coverage**: Flanders, Watina (Water in Nature Reserves) Network
 Flanders, Belgium
 
 Flanders has a temperate maritime climate influenced by the North Sea and the Atlantic Ocean, with relatively moderate summers and mild winters. Flanders is the northern part of Belgium. The two main geographical regions of Flanders are the Yser basin, in the North-West and the central plain. 
@@ -64,32 +64,10 @@ Coordinates: 50°40'48''N and 51°30'36''N Latitude; 2°32'24''E and 5°55'12''E
 
 **Methods**
 
-Method step description: 
-Londo scale
+*Method step description*: 
+Vegetation relevé data is recorded in the InboVeg database. This data was mapped to Darwin Core by creating a specific view. We mapped the data to Darwin core event, Darwin Core occurrence extension and Darwin Core Measurements or Facts for the specific Relevé data. 
+In our sandbox ipt the releve data is also mapped to Darwin Core GBIF releve. This data is only available on http://oefendata.inbo.be/ipt/resource?r=inboveg_niche_vlaanderen
 
-||**species with coverage below 5%**||
-|---|---|---|
-|**code**|**individuals**|**in combination with:**|
-|r.	|1 or 2	|**code** |	percentages
-|p.	|few (tens)	|.1	|< 1%
-|a.	|many (hundreds)	|.2	|1-3%
-|m.	|much (thousands)	|.4	|3-5 %
-||**species with coverage of 5% or more:**| 
-||**code **|**percentage**||
-||1-	|5-10%
-||1	|5-10%
-||1+	|10-15%
-||2	|15-25%
-||3	|25-35%
-||4	|35-45%
-||5-	|45 -50%
-||5	|45-55%
-||5+	|50-55%
-||6	|55-65%
-||7	|65-75%
-||8	|75-85%
-||9	|85-95%
-||10	&|100%
 
 
 
