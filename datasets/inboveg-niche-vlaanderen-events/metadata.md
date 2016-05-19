@@ -66,28 +66,34 @@ Coordinates: 50°40'48''N and 51°30'36''N Latitude; 2°32'24''E and 5°55'12''E
 
 Method step description: 
 Londo scale
-species with coverage below 5%
-code	individuals	in combination with:
-r.	1 or 2	code 	percentages
-p.	few (tens)	.1	< 1%
-a.	many (hundreds)	.2	1-3%
-m.	much (thousands)	.4	3-5 %
-species with coverage of 5% or more: 
-code	percentage
-1-	5-10%
-1	5-10%
-1+	10-15%
-2	15-25%
-3	25-35%
-4	35-45%
-5-	45 -50%
-5	45-55%
-5+	50-55%
-6	55-65%
-7	65-75%
-8	75-85%
-9	85-95%
-10	100%
+
+||**species with coverage below 5%**||
+|---|---|
+|**code**|**individuals**|**in combination with:**|
+|r.	|1 or 2	|**code** |	percentages
+|p.	|few (tens)	|.1	|< 1%
+|a.	|many (hundreds)	|.2	|1-3%
+|m.	|much (thousands)	|.4	|3-5 %
+||**species with coverage of 5% or more:**| 
+||**code **|**percentage**||
+||1-	|5-10%
+||1	|5-10%
+||1+	|10-15%
+||2	|15-25%
+||3	|25-35%
+||4	|35-45%
+||5-	|45 -50%
+||5	|45-55%
+||5+	|50-55%
+||6	|55-65%
+||7	|65-75%
+||8	|75-85%
+||9	|85-95%
+||10	&|100%
+
+
+
+
 
 Low coverage code | Low coverage | Low coverage code| Low coverage
 --- | --- | --- | ---
