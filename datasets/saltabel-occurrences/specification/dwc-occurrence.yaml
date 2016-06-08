@@ -50,7 +50,7 @@ ownerInstitutionCode:
 basisOfRecord:
   allowed: [HumanObservation, PreservedSpecimen]
   if:
-    - collectionCode:
+    - collectionCode: 
         empty: false # If collectionCode is populated => basisOfRecord = "PreservedSpecimen"
       allowed: PreservedSpecimen
 
@@ -154,14 +154,31 @@ verbatimCoordinates:
         allowed: [Belgian Lambert 72, '']
       allowed: ''
 
+# NW Belgium XY: 23038 246055
+# SE Belgium XY: 297889 21829
+# NW Flanders XY: 23038 246055 (idem as BE)
+# SE Flanders XY: 259627 153303
+
+verbatimLatitude:
+  type: integer
+  min: 21829 # SE Belgium
+  max: 246055 # NW Belgium
+  empty: true # 9 records
+
+verbatimLongitude:
+  type: integer
+  min: 23038 # NW Belgium
+  max: 297889 # SE Belgium
+  empty: true
+
 verbatimLatitude:
   empty: true
   if:
     - verbatimCoordinateSystem:
         allowed: Belgian Lambert 72
       type: integer
-      min: 37000
-      max: 255000
+      min: 297889 # SE, for Belgium
+      max: 246055 # NW, for Belgium
     - verbatimCoordinateSystem:
         allowed: [UTM 1km, UTM 5km, '']
       allowed: ''
@@ -172,8 +189,8 @@ verbatimLongitude:
     - verbatimCoordinateSystem:
         allowed: Belgian Lambert 72
       type: integer
-      min: 158000
-      max: 230000
+      min: 23038 # NW, for Belgium (21829 for Belgium)
+      max: 259627 # SE, for Belgium
     - verbatimCoordinateSystem:
         allowed: [UTM 1km, UTM 5km, '']
       allowed: ''
@@ -197,15 +214,15 @@ verbatimSRS:
 
 decimalLatitude:
   type: float
-  numberformat: '.5f'
-  min: 49.49
-  max: 51.51
+  numberformat: '.5'
+  min: 49.49 # SE Belgium
+  max: 51.51 # NW Belgium
 
 decimalLongitude:
   type: float
-  numberformat: '.5f'
-  min: 2.54 # Will fail for 8 records
-  max: 6.41
+  numberformat: '.5'
+  min: 2.54 # NW Belgium, will fail for 8 records
+  max: 6.41 # SE Belgium
 
 geodeticDatum:
   allowed: WGS84
@@ -260,7 +277,7 @@ order:
   allowed: Orthoptera
 
 taxonRank:
-  allowed: species # Only species in this dataset
+  allowed: species
 
 scientificNameAuthorship:
   empty: false
