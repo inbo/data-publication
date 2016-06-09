@@ -74,7 +74,7 @@ verbatimLocality:
   empty: false # Always populated 
 
 locationAccordingTo:
-  allowed: Watina
+  allowed: MILKLIM areas
 
 verbatimLatitude:
   type: integer
