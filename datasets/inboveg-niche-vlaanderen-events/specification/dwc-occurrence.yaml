@@ -6,14 +6,15 @@
 # Syntax version: 0.1
 
 id:
+  # eventID, links to core
   regex: INBO:INBOVEG:0IV(\d){16}
 
 basisOfRecord:
   allowed: HumanObservation
 
 occurrenceID:
+  # Record ID, has to be unique
   allowed: # TODO
-  # Has to be unique
 
 recordedBy:
   allowed: [Bart Vandevoorde, Els De Bie, Jan Wouters, Kris Rombouts, Wim Mertens]

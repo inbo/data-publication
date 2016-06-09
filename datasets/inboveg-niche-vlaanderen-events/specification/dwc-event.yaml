@@ -5,9 +5,9 @@
 # Author: Peter Desmet
 # Syntax version: 0.1
 
-eventID:
+id:
+  # Record ID, has to be unique
   regex: 'INBO:INBOVEG:0IV(\d){16}'
-  # Has to be unique
 
 type:
   allowed: Event
@@ -35,6 +35,9 @@ datasetName:
 
 ownerInstitutionCode:
   allowed: INBO
+
+eventID:
+  # Identical to record ID (id)
 
 samplingProtocol:
   allowed: vegetation plot with Londo scale (1976)

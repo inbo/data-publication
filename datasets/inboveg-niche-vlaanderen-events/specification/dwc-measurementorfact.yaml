@@ -6,11 +6,12 @@
 # Syntax version: 0.1
 
 id:
+  # eventID, links to core
   regex: 'INBO:INBOVEG:0IV(\d){16}'
 
 measurementID:
+  # Record ID, has to be unique
   regex: 'INBO:INBOVEG:MEAS:[HP]:(\d){10}'
-  # Has to be unique
 
 # Conditional tests below are based on measurementUnit: % or cm
 
