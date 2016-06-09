@@ -46,10 +46,9 @@ sampleSizeUnit:
   allowed: m²
 
 eventDate:
-  allowed: # TO COMPLETE
-
-verbatimEventDate:
-  allowed: # TO COMPLETE
+  dateformat: ['%Y-%m-%d', '%Y-%m', '%Y']
+  mindate: 2002-05-21
+  maxdate: 2005-07-07
 
 locationID:
   regex: '[A-Z]+\d\d\dX'
@@ -71,7 +70,7 @@ verbatimLocality:
   empty: false # Always populated 
 
 locationAccordingTo:
-  allowed: Watina # UPDATE IN DATA
+  allowed: Watina
 
 verbatimLatitude:
   type: integer
