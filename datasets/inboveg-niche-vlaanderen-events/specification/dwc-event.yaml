@@ -39,6 +39,10 @@ ownerInstitutionCode:
 samplingProtocol:
   allowed: vegetation plot with Londo scale (1976)
 
+samplingEffort:
+  type: json
+  allowed: '{mossesIdentified: true}'
+
 sampleSizeValue:
   allowed: [4, 9, 25, 100]
 
