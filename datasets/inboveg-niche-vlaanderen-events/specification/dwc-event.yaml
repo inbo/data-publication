@@ -7,7 +7,7 @@
 
 eventID:
   regex: 'INBO:INBOVEG:0IV(\d){16}'
-  # Has to be unique as well
+  # Has to be unique
 
 type:
   allowed: Event

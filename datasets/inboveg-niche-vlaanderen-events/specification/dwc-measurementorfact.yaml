@@ -10,8 +10,9 @@ id:
 
 measurementID:
   regex: 'INBO:INBOVEG:MEAS:[HP]:(\d){10}'
+  # Has to be unique
 
-# Conditional tests are based on measurementUnit: % or cm
+# Conditional tests below are based on measurementUnit: % or cm
 
 measurementType:
   if:
