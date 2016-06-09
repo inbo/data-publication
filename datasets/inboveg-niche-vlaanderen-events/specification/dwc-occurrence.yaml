@@ -1,0 +1,48 @@
+# Dataset: http://dataset.inbo.be/inboveg-niche-vlaanderen-events
+# DOI: 
+# 
+# Scope: dwc-occurrence
+# Author: Peter Desmet
+# Syntax version: 0.1
+
+id:
+  allowed: # TODO
+
+basisOfRecord:
+  allowed: HumanObservation
+
+occurrenceID:
+  allowed: # TODO
+
+recordedBy:
+  allowed: [Bart Vandevoorde, Els De Bie, Jan Wouters, Kris Rombouts, Wim Mertens]
+
+organismQuantity:
+  allowed: # TODO
+
+organismQuantityType:
+  allowed: Londo scale (1976)
+
+occurrenceStatus:
+  allowed: present
+
+eventID:
+  allowed: # TODO
+
+identifiedBy:
+  allowed: [Bart Vandevoorde, Els De Bie, Jan Wouters, Kris Rombouts, Wim Mertens]
+
+taxonID:
+  allowed: # TODO
+
+scientificName:
+  empty: false
+
+kingdom:
+  allowed: Plantae
+
+taxonRank:
+  allowed: [genus, species, speciesAggregate, subspecies, variety]
+
+scientificNameAuthorship:
+  allowed: # TODO

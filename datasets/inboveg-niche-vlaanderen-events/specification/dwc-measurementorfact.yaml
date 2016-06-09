@@ -41,7 +41,7 @@ measurementMethod:
   if:
     - measurementUnit:
         allowed: '%'
-      allowed: 'coverage estimate in 1%-scale'
+      allowed: coverage estimate in 1%-scale
     - measurementUnit:
         allowed: cm
       allowed: height estimate in cm
