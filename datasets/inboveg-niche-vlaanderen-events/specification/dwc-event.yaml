@@ -77,7 +77,7 @@ verbatimLocality:
   empty: false # Always populated 
 
 locationAccordingTo:
-  allowed: MILKLIM areas
+  allowed: MILKLIM-areas
 
 verbatimLatitude:
   type: integer
