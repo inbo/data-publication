@@ -18,10 +18,10 @@ measurementType:
   if:
     - measurementUnit:
         allowed: '%'
-      allowed: [shrubsCoverage, treesCoverage, herbsCoverage, mossesCoverage, totalCoverage]
+      allowed: [coverShrubsInPercentage, coverTreesInPercentage, coverHerbsInPercentage, coverMossesInPercentage, coverTotalInPercentage]
     - measurementUnit:
         allowed: cm
-      allowed: herbsLayerHeight
+      allowed: herbLayerHeightInCentimeters
 
 measurementValue:
   type: int

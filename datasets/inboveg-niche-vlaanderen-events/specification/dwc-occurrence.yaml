@@ -31,7 +31,7 @@ identifiedBy:
   allowed: [Bart Vandevoorde, Els De Bie, Jan Wouters, Kris Rombouts, Wim Mertens]
 
 taxonID:
-  allowed: # TODO
+  empty: false # Currently fails for 6 species
 
 scientificName:
   empty: false
