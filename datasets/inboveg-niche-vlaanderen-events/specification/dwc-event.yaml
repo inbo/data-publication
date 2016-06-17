@@ -25,7 +25,7 @@ accessRights:
   allowed: http://www.inbo.be/en/norms-for-data-use
 
 datasetID:
-#  allowed: DOI
+  allowed: '' # To complete
 
 institutionCode:
   allowed: INBO
@@ -37,13 +37,14 @@ ownerInstitutionCode:
   allowed: INBO
 
 eventID:
-  # Identical to record ID (id)
+  required: true
+  # Identical to id
 
 samplingProtocol:
-  allowed: vegetation plot with Londo scale (1976)
+  allowed: 'vegetation plot with Londo scale (1976): mosses identified' # Remove mosses identified once releve extension is used.
 
-samplingEffort:
-  type: json
+samplingEffort: # Suggestion
+  type: json 
   allowed: '{mossesIdentified: true}'
 
 sampleSizeValue:
@@ -57,6 +58,8 @@ eventDate:
   mindate: 2002-05-21
   maxdate: 2005-07-07
 
+# verbatimEventDate should be removed
+
 locationID:
   regex: '[A-Z]+\d\d\dX'
 
@@ -67,11 +70,11 @@ countryCode:
   allowed: BE
 
 stateProvince:
-  empty: true
+  empty: false # Unless we allow missing coordinates
   allowed: [Antwerp, East Flanders, Flemish Brabant, Limburg, West Flanders]
 
 municipality:
-  empty: true
+  empty: false # Unless we allow missing coordinates
 
 verbatimLocality:
   empty: false # Always populated 

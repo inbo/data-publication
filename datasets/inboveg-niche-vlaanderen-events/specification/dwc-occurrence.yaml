@@ -14,7 +14,7 @@ basisOfRecord:
 
 occurrenceID:
   # Record ID, has to be unique
-  allowed: # TODO
+  allowed: '' # TODO
 
 recordedBy:
   allowed: [Bart Vandevoorde, Els De Bie, Jan Wouters, Kris Rombouts, Wim Mertens]
@@ -27,6 +27,10 @@ organismQuantityType:
 
 occurrenceStatus:
   allowed: present
+
+eventID:
+  required: true
+  # Identical to id
 
 identifiedBy:
   allowed: [Bart Vandevoorde, Els De Bie, Jan Wouters, Kris Rombouts, Wim Mertens]
