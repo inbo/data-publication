@@ -11,8 +11,8 @@ SELECT
     sum(individualcount)/2 as breeding_pairs
 FROM broedvogels
 WHERE
-    samplesize = 25
-    AND samplingmethod != 'loose observations'
+    samplesizeValue = 25
+    AND samplingProtocol != 'loose observations'
     AND scientificname = 'Acrocephalus schoenobaenus'
 GROUP BY
     the_geom_webmercator,
