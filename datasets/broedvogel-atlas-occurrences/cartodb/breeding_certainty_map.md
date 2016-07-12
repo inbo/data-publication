@@ -9,8 +9,8 @@ SELECT *
 FROM broedvogels
 WHERE
     behavior != ''
-    AND samplesize = 25
-    AND samplingmethod != 'loose observations'
+    AND samplesizeValue = 25
+    AND samplingProtocol != 'loose observations'
     AND scientificname = 'Acrocephalus schoenobaenus'
 ```
 
