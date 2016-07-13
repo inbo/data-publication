@@ -1,3 +1,6 @@
 
 .DS_Store
-*checkpoint.ipynb
+*.ipynb_checkpoints
+*.pyc
+datasets/*/data/interim/*
+datasets/*/data/processed/*
