@@ -25,7 +25,16 @@ http://doi.org/10.15468/lj0udq
 
 ## Rationale
 
-Counting waterbirds has a long tradition in Flanders, going back to the 1960s. The aim of this long-running monitoring scheme is to gather reliable information on the numbers, trends, and distribution of these species during their winter and migration period. Through this project, required data become available for international treaties and conventions such as the European Union (EU) [Birds](http://ec.europa.eu/environment/nature/legislation/birdsdirective/index_en.htm) and [Habitats](http://ec.europa.eu/environment/nature/legislation/habitatsdirective/index_en.htm) Directives, the [Ramsar Convention on Wetlands](http://www.ramsar.org/), and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds ([AEWA](http://www.unep-aewa.org/)). These results are also used for informed decision-making by conservation bodies, planners and developers, and contribute to the sustainable use and management of wetlands and their dependent waterbirds.
+Counting waterbirds has a long tradition in Flanders, going back to the 1960s. The aim of this long-running monitoring scheme is to gather reliable information on the numbers, trends, and distribution of these species during their winter and migration period. 
+Through this project, required data become available for international treaties and conventions such as the European Union (EU) [Birds](http://ec.europa.eu/environment/nature/legislation/birdsdirective/index_en.htm) and [Habitats](http://ec.europa.eu/environment/nature/legislation/habitatsdirective/index_en.htm) Directives, the [Ramsar Convention on Wetlands](http://www.ramsar.org/), and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds ([AEWA](http://www.unep-aewa.org/)). These results are also used for informed decision-making by conservation bodies, planners and developers, and contribute to the sustainable use and management of wetlands and their dependent waterbirds.
+
+  
+
+## Waterbirds application
+
+
+
+
 
 ## Taxonomic coverage
 
