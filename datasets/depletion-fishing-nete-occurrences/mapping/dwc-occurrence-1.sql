@@ -49,6 +49,11 @@ SELECT
 													  , 1))
      
 	  -- identification --
+	  , [recordedBy] =
+			CASE
+				WHEN inbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY], ' | ') = 'Unknown' THEN '' 
+				ELSE inbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY], ' | ')
+			END
       , [identifiedBy] = COALESCE(  I.[Forename]
                                   , I.[Initials]
                                   , '') + ' ' + COALESCE( I.[Surname], '')
