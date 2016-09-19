@@ -23,7 +23,6 @@ SELECT
                                  ELSE St.Short_name
                             END
       , [institutionCode] = CONVERT( NVARCHAR(20), 'INBO')
-      , [NBN_SurveyName] = CONVERT( NVARCHAR(100), S.Item_name)
       , [language] = CONVERT( NVARCHAR(20), 'en')
 
       -- Taxonomic Elements --
@@ -33,8 +32,6 @@ SELECT
                           END
       , [scientificName] = Ns.Recommended_scientific_name
       , [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
-      
-	  , [informalGroup] = Max(ns.[INFORMAL GROUP])
       , [kingdom] = 'Animalia' 
       , [phylum] = CASE WHEN MAX(ns.[INFORMAL GROUP]) = N'schaaldier' THEN N'Arthropoda' 
 						WHEN MAX(ns.[INFORMAL GROUP]) IN ('beenvis (Actinopterygii)','rondbek (Agnatha)')  THEN N'Chordata'
@@ -79,6 +76,8 @@ SELECT
 	  , [continent] = N'Europe'
 
 	  --, [sampleref] = Sa.SAMPLE_REFERENCE
+	  --, [NBN_SurveyName] = CONVERT( NVARCHAR(100), S.Item_name)
+	  --, [informalGroup] = Max(ns.[INFORMAL GROUP])
 
 FROM  Dbo.Survey S
         INNER JOIN [Dbo].[Survey_event] Se ON  Se.[Survey_key] = S.[Survey_key]
@@ -123,9 +122,6 @@ FROM  Dbo.Survey S
         LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY
         LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
         LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY
-		
-		
-		
 		
 WHERE  S.[Item_name] = 'Depletie-afvissingen Grote en Kleine Nete'
 
