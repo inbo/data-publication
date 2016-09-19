@@ -188,34 +188,6 @@ GROUP BY  Tao.[Taxon_occurrence_key]
 		, Sa.SAMPLE_REFERENCE
       ;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 
 -- ChangeDate 20130807
@@ -223,11 +195,6 @@ GROUP BY  Tao.[Taxon_occurrence_key]
 -- Modif 20150908 => Eventdate to Single date ( no range ), range => [verbatimEventDate]
 -- Modif 20150908 => GlobalUniqueId => [occurrenceID]
 */
-
-
-
-
-/****** Object:  View [ipt].[vwGBIF_TrekVis]    Script Date: 07/04/2012 15:45:17 ******/
 
 GO
 

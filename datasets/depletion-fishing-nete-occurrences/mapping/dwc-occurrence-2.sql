@@ -14,23 +14,22 @@ ALTER VIEW [ipt].[vwGBIF_DepletionFishingNeteMeasurement]
 AS
  
 SELECT  [occurrenceID] = 'INBO:NBN:' + Tao.Taxon_occurrence_key
-	, [MeasurementId] = 'INBO:MEAS:' + taoMeas.TAXON_OCCURRENCE_DATA_KEY
-	, [MeasurementMethod] = 'Depletion Fishing (Laurent & Lamarque 1975, De Lury depletion model)'
-	, [MeasurementType] = CASE  
+	, [measurementID] = 'INBO:MEAS:' + taoMeas.TAXON_OCCURRENCE_DATA_KEY
+	, [measurementMethod] = 'DeLury depletion method' --Depletion Fishing (Laurent & Lamarque 1975, De Lury depletion model)
+	, [measurementType] = CASE  
 			WHEN MTMeas.SHORT_NAME = 'Lengte' THEN 'length'
 			WHEN MTMeas.SHORT_NAME = 'Gewicht' THEN 'weight'
 			WHEN MTMeas.SHORT_NAME = 'Abundance' THEN 'abundance'
 			ELSE MTMeas.SHORT_NAME
 			END 
-	, [MeasurementValue] = CASE  WHEN TAOMeas.ACCURACY = 'Exact' THEN TAOMeas.DATA
+	, [measurementValue] = CASE  WHEN TAOMeas.ACCURACY = 'Exact' THEN TAOMeas.DATA
 								ELSE CONVERT(nvarchar(10), ROUND (CONVERT(Decimal(12,1), TAOMeas.DATA),1))
 								END
-	, [MeasurementAccuracy] = LOWER( TAOMeas.ACCURACY )
-	, [MeasurementUnit] =  CASE WHEN MTMeas.SHORT_NAME = 'abundance' THEN 'individualCount / ' + Traject.[Length] + 'm'
+	, [measurementAccuracy] = LOWER( TAOMeas.ACCURACY )
+	, [measurementUnit] =  CASE WHEN MTMeas.SHORT_NAME = 'abundance' THEN 'individualCount / ' + Traject.[Length] + 'm'
 			WHEN MTMeas.SHORT_NAME = 'Gewicht' THEN 'g / ' + Traject.[Length] + 'm'
 			ELSE MUMeas.SHORT_NAME 
 			END
-	, Traject.[Length] as [TrajectLength]
 FROM  Dbo.Survey S
         INNER JOIN [Dbo].[Survey_event] Se ON  Se.[Survey_key] = S.[Survey_key]
         LEFT JOIN [Dbo].[Location] L ON  L.[Location_key] = Se.[Location_key]
@@ -138,34 +137,6 @@ GROUP BY  Tao.[Taxon_occurrence_key]
 		, Traject.[Length]
 		, TAOMeas.ACCURACY
 		;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/****** Object:  View [ipt].[vwGBIF_TrekVis]    Script Date: 07/04/2012 15:45:17 ******/
---SET ANSI_NULLS ON
---GO
---SET QUOTED_IDENTIFIER ON
---GO
 
 GO
 
