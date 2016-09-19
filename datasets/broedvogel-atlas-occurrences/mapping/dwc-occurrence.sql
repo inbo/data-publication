@@ -71,18 +71,6 @@ SELECT
     , [verbatimCoordinates] = '31U' + tWH.Atlasblok
     , [verbatimCoordinateSystem] = N'MGRS'
     , [verbatimSRS] = N'ED50'
-    , [georeferenceProtocol] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'doi:10.1080/13658810412331280211'
-        END
-    , [georeferenceSources] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'MGRS'
-        END
-    , [georeferenceVerificationStatus] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'unverified'
-        END
     , [georeferenceRemarks] = 
         CASE
             WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'coordinates are centroid of 5x5km grid square'
@@ -173,18 +161,6 @@ SELECT
     , [verbatimCoordinates] = '31U' + tWKD.KilometerHok
     , [verbatimCoordinateSystem] = N'MGRS'
     , [verbatimSRS] = N'ED50'
-    , [georeferenceProtocol] = 
-        CASE
-            WHEN utm_1.Lat_wgs84 + utm_1.Long_wgs84 IS NOT NULL THEN N'doi:10.1080/13658810412331280211'
-        END
-    , [georeferenceSources] = 
-        CASE
-            WHEN utm_1.Lat_wgs84 + utm_1.Long_wgs84 IS NOT NULL THEN N'MGRS'
-        END
-    , [georeferenceVerificationStatus] = 
-        CASE
-            WHEN utm_1.Lat_wgs84 + utm_1.Long_wgs84 IS NOT NULL THEN N'unverified'
-        END
     , [georeferenceRemarks] = 
         CASE
             WHEN utm_1.Lat_wgs84 + utm_1.Long_wgs84 IS NOT NULL THEN N'coordinates are centroid of 1x1km grid square'
@@ -277,18 +253,6 @@ SELECT
     , [verbatimCoordinates] = '31U' + tWPD.KilometerHok
     , [verbatimCoordinateSystem] = N'MGRS'
     , [verbatimSRS] = N'ED50'
-    , [georeferenceProtocol] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'doi:10.1080/13658810412331280211'
-        END
-    , [georeferenceSources] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'MGRS'
-        END
-    , [georeferenceVerificationStatus] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'unverified'
-        END
     , [georeferenceRemarks] = 
         CASE
             WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'coordinates are centroid of 1x1km grid square'
@@ -387,25 +351,12 @@ SELECT
     , [verbatimCoordinates] = '31U' + tWL.Atlasblok -- KilometerHok is available in this table, but only populated for 18 records => We use Atlashok for all Losse Waarnemingen records
     , [verbatimCoordinateSystem] = N'MGRS'
     , [verbatimSRS] = N'ED50'
-    , [georeferenceProtocol] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'doi:10.1080/13658810412331280211'
-        END
-    , [georeferenceSources] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'MGRS'
-        END
-    , [georeferenceVerificationStatus] = 
-        CASE
-            WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'unverified'
-        END
     , [georeferenceRemarks] = 
         CASE
             WHEN utm_5.Lat_wgs84 + utm_5.Long_wgs84 IS NOT NULL THEN N'coordinates are centroid of 5x5km grid square'
         END
 
     , [identifiedBy] = tW.Voornaam + ' ' + tW.Naam
-
     , [taxonID] = 'euring:' + euring.Code
     , [scientificName] = euring.NietSoepEend
     , [kingdom] = N'Animalia'
