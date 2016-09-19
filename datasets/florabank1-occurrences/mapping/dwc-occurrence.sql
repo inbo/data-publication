@@ -38,8 +38,9 @@ CHANGE IPT (2015-08-17)
 	add accessrights, remove rights , add license
 	Change globalUniqueIdentifier --> occurrenceID
 
---Modif 20150908 => Eventdate to Single date ( no range ), range => [verbatimEventDate]
+-- Modif 20150908 => Eventdate to Single date ( no range ), range => [verbatimEventDate]
 -- Aanpasing 20160113 tblNameServer_12 => NameServer_12
+Starting 06/2016 -> changelog on github.org/inbo/data-publication
 
 */
 /*********************************************************/
@@ -47,40 +48,10 @@ CHANGE IPT (2015-08-17)
 
 SELECT  
 		[occurrenceID] = 'INBO:FLORA:' + Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8) 
-		, [modified] = CASE 
-			WHEN tW.WRNG_USR_CRE_DTE  IS NOT NULL
-				AND tW.WRNG_USR_CRE_DTE >= COALESCE(tMt.METI_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tW.WRNG_USR_CRE_DTE >= COALESCE(tMt.METI_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tW.WRNG_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				THEN CONVERT(Date, tW.WRNG_USR_CRE_DTE ,120) 
-				
-			WHEN tW.WRNG_USR_UPD_DTE  IS NOT NULL
-				AND tW.WRNG_USR_UPD_DTE >= COALESCE(tMt.METI_USR_CRE_DTE , CONVERT(Date,'1900-01-01',120) )
-				AND tW.WRNG_USR_UPD_DTE >= COALESCE(tMt.METI_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tW.WRNG_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				THEN CONVERT(Date, tW.WRNG_USR_UPD_DTE ,120) 	
-						
-			WHEN tMt.METI_USR_CRE_DTE IS NOT NULL
-				AND tMt.METI_USR_CRE_DTE >= COALESCE(tMt.METI_USR_UPD_DTE , CONVERT(Date,'1900-01-01',120) )
-				AND tMt.METI_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tMt.METI_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				THEN CONVERT(Date, tMt.METI_USR_CRE_DTE ,120) 
-				
-			WHEN tMt.METI_USR_UPD_DTE IS NOT NULL
-				AND tMt.METI_USR_UPD_DTE >= COALESCE(tMt.METI_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tMt.METI_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tMt.METI_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				THEN CONVERT(Date, tMt.METI_USR_UPD_DTE ,120) 
-				
-			ELSE CONVERT(Date, GETDATE(),120) 
-		END 
-
 		, [verbatimLocality] = tW.WRNG_OPM 
-		
 		, [basisOfRecord] = CONVERT(Nvarchar(20),'HumanObservation')
 		, [institutionCode] = CONVERT(Nvarchar(20),'INBO') 
-		, [language] = CONVERT(Nvarchar(20),'nl') 
-		, [catalogNumber] = Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8)
+		, [language] = CONVERT(Nvarchar(20),'en') 
 
 -- Taxonomic Elements --
 		--, [originalNameUsage] = tT.TAXN_NAM_WET 
@@ -103,7 +74,6 @@ SELECT
 -- Identification Elements --
 
 -- Locality Elements --
-		, [country] = CONVERt(Nvarchar(20),'BELGIUM') 
 		, [countryCode] = CONVERt(Nvarchar(20),'BE')  
 -- Collecting Event Elements --
 		, [verbatimEventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  + '/' + CONVERT(Nvarchar(12) , tW.WRNG_END_DTE , 120)  
@@ -115,8 +85,6 @@ SELECT
 
 		
 -- Curatorial Extension --
-		, [CatalogNumberNumeric] = tMt.METI_ID 
-
 
 -- Geospatial Extension --
 		, [decimalLatitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(tI84.IFBL_LAT,5)) )
@@ -151,9 +119,9 @@ SELECT
         , [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 		, [type] = CONVERT(Nvarchar(20),'Event')
 		, [bibliographicCitation] = CONVERT(Nvarchar(300),'Van Landuyt W, Vanhecke L, Brosens D (2012) Florabank 1: a grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region). PhytoKeys 12: 59–67. doi: team.3897/phytokeys.12.2849' )
-		, [datasetID] = CONVERT(Nvarchar(100),'http://dataset.inbo.be/florabank1-occurrences')
+		, [datasetID] = CONVERT(Nvarchar(100),'http://dx.doi.org/10.3897/phytokeys.12.2849')
 		
-		, [datasetName] = CONVERT(Nvarchar(200),'FLORABANK 1: a grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region)')
+		, [datasetName] = CONVERT(Nvarchar(200),'Florabank 1 - A grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region)')
 		, [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
 		, [dataGeneralizations] = CONVERT(Nvarchar(100),'The centroid coördinates of the IFBL square containing the occurence were given')
 		, [references] = cB.BRON_DES 
