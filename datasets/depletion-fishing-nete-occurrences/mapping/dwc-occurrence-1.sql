@@ -12,8 +12,6 @@ GO
 ALTER VIEW [ipt].[vwGBIF_DepletionFishingNeteOccurrence]
 AS
 
--- SELECT [INFORMAL GROUP], aantal = COUNT(*)
---FROM (
 SELECT
 	  [occurrenceID] = 'INBO:NBN:' + Tao.Taxon_occurrence_key
       , [verbatimLocality] = Ln.Item_name
@@ -43,7 +41,7 @@ SELECT
 						ELSE NULL END 
 	  , [class] = 'Actinopterygii'
       , [taxonRank] = LOWER(Ns.Recommended_name_rank_long)
-	  --, [vernacularName] = 
+	  , [vernacularName] = NormNaam.ITEM_NAME
       , [nomenclaturalCode] = CONVERT(Nvarchar(20),'ICZN') 
       , [countryCode] = CONVERT( NVARCHAR(20), 'BE')
      
@@ -79,6 +77,7 @@ SELECT
 	  , [datasetName] = 'Depletion fishing in the rivers Grote Nete and Kleine Nete in Flanders, Belgium'
 	  , [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
 	  , [continent] = N'Europe'
+
 	  --, [sampleref] = Sa.SAMPLE_REFERENCE
 
 FROM  Dbo.Survey S
@@ -99,11 +98,19 @@ FROM  Dbo.Survey S
         LEFT JOIN [Dbo].[Taxon_version] Tv ON  Tv.[Taxon_version_key] = Tli.[Taxon_version_key]
         LEFT JOIN [Dbo].[Taxon] T ON  T.[Taxon_key] = Tv.[Taxon_key]
         INNER JOIN [Dbo].[Taxon_rank] Tr ON  Tr.Taxon_rank_key = Tli.Taxon_rank_key
-                                             --Lijst
-                                             --LEFT JOIN [dbo].[TAXON_LIST_VERSION] TLV ON TLV.TAXON_LIST_VERSION_KEY = TLI.TAXON_LIST_VERSION_KEY
-                                             --LEFT JOIN [dbo].[TAXON_LIST] TL ON TL.TAXON_LIST_KEY =  TLV.TAXON_LIST_KEY
-                                             --Normalizeren Namen 
-                                             --LEFT JOIN [dbo].[NAMESERVER] NS ON NS.INPUT_TAXON_VERSION_KEY = TD.TAXON_LIST_ITEM_KEY
+		INNER JOIN dbo.NAMESERVER NSR ON NSR.INPUT_TAXON_VERSION_KEY = tli.TAXON_VERSION_KEY
+
+		--Normalizing to Vernacular names
+		LEFT OUTER JOIN (	SELECT TVen.*
+								, ROW_NUMBER() OVER (PARTITION by NS.INPUT_TAXON_VERSION_KEY ORDER BY Tven.ITEM_NAME) as Nbr
+								, NS.INPUT_TAXON_VERSION_KEY AS [INBO_TAXON_VERSION_KEY]
+							FROM [dbo].[NameServer] NS
+								 INNER JOIN dbo.TAXON_LIST_ITEM TLIVen ON TLIVen.PREFERRED_NAME = NS.RECOMMENDED_TAXON_LIST_ITEM_KEY
+								 INNER JOIN dbo.TAXON_VERSION TVVen ON TVVen.TAXON_VERSION_KEY = TLIVen.TAXON_VERSION_KEY
+								 INNER JOIN dbo.TAXON TVen ON TVVen.TAXON_KEY = TVen.TAXON_KEY
+							WHERE TVen.[LANGUAGE] = 'nl'
+						) NormNaam on NormNaam.[INBO_TAXON_VERSION_KEY] = tli.[TAXON_VERSION_KEY] AND NormNaam.Nbr = 1
+
                                              
         INNER JOIN [Inbo].[Nameserver_12] Ns ON  Ns.[Inbo_taxon_version_key] = Tli.[Taxon_version_key]
                                                  -->Common name nog opzoeken...
@@ -150,15 +157,9 @@ WHERE  S.[Item_name] = 'Depletie-afvissingen Grote en Kleine Nete'
         AND MUMeas.SHORT_NAME = 'Count'
         
         AND ISNUMERIC( TAOMeas.DATA) = 1
-        
-       --AND MTMeas.SHORT_NAME IN ('Lengte', 'Gewicht')
-       --AND tao.Taxon_occurrence_key = 'BFN0017900003094'
-       
 		AND MTMeas.SHORT_NAME = 'Abundance' 
-		
 		-- No Abscent records
 		 AND TAOMeas.DATA <> '0' 
-       
        --AND  Tao.Taxon_occurrence_key = 'BFN0017900002YGF'
        
 GROUP BY  Tao.[Taxon_occurrence_key]
@@ -183,17 +184,12 @@ GROUP BY  Tao.[Taxon_occurrence_key]
 		, CONVERT( NVARCHAR(20), CONVERT( DECIMAL( 12, 5), Round( SA.LONG, 5)))
         , SA.SPATIAL_REF
         , SA.SPATIAL_REF_SYSTEM
-  --      , MTMeas.SHORT_NAME 
-		--, TAOMeas.DATA
-		--, MUMeas.SHORT_NAME
-		--, taoMeas.TAXON_OCCURRENCE_DATA_KEY
+		, NormNaam.ITEM_NAME
 		, NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
 		, CASE WHEN TAOMeas.DATA <> '0' THEN 'present' 
 								ELSE 'absent'
 							END
 		, Sa.SAMPLE_REFERENCE
-      --)tmp
-      --group BY tmp.[INFORMAL GROUP]  
       ;
 
 
