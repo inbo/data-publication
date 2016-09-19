@@ -16,117 +16,71 @@ AS
 --FROM (
 SELECT
 	  [occurrenceID] = 'INBO:NBN:' + Tao.Taxon_occurrence_key
-      , [Modified] = MAX([inbo].[LCReturnVagueDateGBIF](  Td.Vague_date_start
-												, Td.Vague_date_end
-                                                , Td.Vague_date_type
-												, 0))
-     
-      
-      , [verbatimlocality] = Ln.Item_name
-      , [samplingprotocol] = CASE
-                                 WHEN St.Short_name = 'Elektrovisserij' THEN 'electro fishing'
+      , [verbatimLocality] = Ln.Item_name
+      , [samplingProtocol] = CASE
+                                 WHEN St.Short_name = 'Elektrovisserij' THEN 'electrofishing'
                                  WHEN St.Short_name IN ( 'Fuik', 'schietfuik') THEN 'fyke'
 								 WHEN St.Short_name IN ( 'Kruisnet') THEN 'liftnet'
 								 WHEN St.Short_name IN ( 'Sleepstaal') THEN 'dragnet'
                                  ELSE St.Short_name
                             END
-      , [institutioncode] = CONVERT( NVARCHAR(20), 'INBO')
-      
-      
+      , [institutionCode] = CONVERT( NVARCHAR(20), 'INBO')
       , [NBN_SurveyName] = CONVERT( NVARCHAR(100), S.Item_name)
-      
-      , [language] = CONVERT( NVARCHAR(20), 'nl')
-      
-      
-      , [catalognumber] = Tao.Taxon_occurrence_key
-     
+      , [language] = CONVERT( NVARCHAR(20), 'en')
+
       -- Taxonomic Elements --
-      
-      , [basisofrecord] = CASE
+      , [basisOfRecord] = CASE
                               WHEN RT.[SHORT_NAME] = 'Collection' THEN 'PreservedSpecimen'
                               ELSE 'HumanObservation'
                           END
-                          
-                          
-      , [scientificname] = Ns.Recommended_scientific_name
+      , [scientificName] = Ns.Recommended_scientific_name
       , [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
       
-	  , [INFORMAL GROUP] = Max(ns.[INFORMAL GROUP])
-      , [Kingdom] = 'Animalia' 
-      , [Phylum] = CASE WHEN MAX(ns.[INFORMAL GROUP]) = N'schaaldier' THEN N'Arthropoda' 
+	  , [informalGroup] = Max(ns.[INFORMAL GROUP])
+      , [kingdom] = 'Animalia' 
+      , [phylum] = CASE WHEN MAX(ns.[INFORMAL GROUP]) = N'schaaldier' THEN N'Arthropoda' 
 						WHEN MAX(ns.[INFORMAL GROUP]) IN ('beenvis (Actinopterygii)','rondbek (Agnatha)')  THEN N'Chordata'
 						ELSE NULL END 
-
-      , [Taxonrank] = LOWER(Ns.Recommended_name_rank_long)
-      
-      , [NomenclaturalCode] = CONVERT(Nvarchar(20),'ICZN') 
-       
-      , [Countrycode] = CONVERT( NVARCHAR(20), 'BE')
+	  , [class] = 'Actinopterygii'
+      , [taxonRank] = LOWER(Ns.Recommended_name_rank_long)
+	  --, [vernacularName] = 
+      , [nomenclaturalCode] = CONVERT(Nvarchar(20),'ICZN') 
+      , [countryCode] = CONVERT( NVARCHAR(20), 'BE')
      
       -- Collecting Event Elements --
-     
-      , verbatimEventDate = MAX( [inbo].[LCReturnVagueDateGBIF](  Sa.Vague_date_start
-                                                      , Sa.Vague_date_end
-                                                      , Sa.Vague_date_type
-													  , 0))
       , [eventDate] = MAX( [inbo].[LCReturnVagueDateGBIF](  Sa.Vague_date_start
                                                       , Sa.Vague_date_end
                                                       , Sa.Vague_date_type
 													  , 1))
-      
-      -- Biological Elements --
-
-      -- References Elements --
-      
-      --cB.BRON_DES AS occurrenceDetails, 
      
-      
-      
-      , [Identifiedby] = COALESCE(  I.[Forename]
+	  -- identification --
+      , [identifiedBy] = COALESCE(  I.[Forename]
                                   , I.[Initials]
                                   , '') + ' ' + COALESCE( I.[Surname], '')
-	  , [DateIdentified] =  CONVERT(  NVARCHAR(10)
-                              , CONVERT(  DATETIME
-                                        , Dbo.Lcreturnvaguedateshort(  TD.VAGUE_DATE_START
-                                                                     , TD.Vague_date_end
-                                                                     , Td.Vague_date_type)
-                                        , 103)
-                              , 120)
-	 
-      
-      , [Decimallatitude] = CONVERT( NVARCHAR(20), CONVERT( DECIMAL( 12, 5), Round( SA.LAT , 5)))
-      , [Decimallongitude] = CONVERT( NVARCHAR(20), CONVERT( DECIMAL( 12, 5), Round( SA.LONG, 5)))
-      , [Geodeticdatum] = CONVERT( NVARCHAR(10), 'WGS84')
-      
-      
-      , [CoordinateUncertaintyInMeters] = '30'
-         
-      
-      , [verbatimLatitude] =  CONVERT( DECIMAL( 12, 0), LEFT( Sa.Spatial_ref, Charindex(  ',', Sa.Spatial_ref, 1) - 1))
-                                                                                        
+
+	  -- location --
+      , [decimalLatitude] = CONVERT( NVARCHAR(20), CONVERT( DECIMAL( 12, 5), Round( SA.LAT , 5)))
+      , [decimalLongitude] = CONVERT( NVARCHAR(20), CONVERT( DECIMAL( 12, 5), Round( SA.LONG, 5)))
+      , [geodeticDatum] = CONVERT( NVARCHAR(10), 'WGS84')
+      , [coordinateUncertaintyInMeters] = '30'
+      , [verbatimLatitude] =  CONVERT( DECIMAL( 12, 0), LEFT( Sa.Spatial_ref, Charindex(  ',', Sa.Spatial_ref, 1) - 1))                                                           
       , [verbatimLongitude] =  CONVERT( DECIMAL( 12, 0), Substring(  Sa.Spatial_ref, Charindex(  ',', Sa.Spatial_ref, 1) + 1, Len( Sa.Spatial_ref)))
-      
-      , [Verbatimcoordinatesystem] = CASE WHEN SA.SPATIAL_REF_SYSTEM = 'BD72' THEN 'Lambert 72'
+      , [verbatimCoordinateSystem] = CASE WHEN SA.SPATIAL_REF_SYSTEM = 'BD72' THEN 'Belgian Lambert 72'
 										ELSE SA.SPATIAL_REF_SYSTEM 
 									END
-	  , [VerbatimSRS] = 'BD72'
+	  , [verbatimSRS] = 'Belgian Datum 1972'
       
-	
-	, [accessRights] = 'https://www.inbo.be/en/norms-for-data-use'
-	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
-	--, [Rights] = 'http://creativecommons.org/publicdomain/zero/1.0/'
-	, [RightsHolder] =  CONVERT(Nvarchar(20),'INBO')
-	, [Type] = CONVERT(Nvarchar(20), 'Event') -->"Dataset" tpye
-	, [DatasetID] = 'http://dataset.inbo.be/depletion-fishing-nete-occurrences'
-	, [DatasetName] = 'Depletion Fishing in the river "Grote Nete" and "Kleine Nete" 1989-1996'
-	, [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
-	, [continent] = N'Europe'
+	  -- record --
+	  , [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
+	  , [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
+	  , [rightsHolder] =  CONVERT(Nvarchar(20),'INBO')
+	  , [type] = CONVERT(Nvarchar(20), 'Event') -->"Dataset" tpye
+	  , [datasetID] = 'http://doi.org/10.15468/zan6uj'
+	  , [datasetName] = 'Depletion fishing in the rivers Grote Nete and Kleine Nete in Flanders, Belgium'
+	  , [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
+	  , [continent] = N'Europe'
+	  --, [sampleref] = Sa.SAMPLE_REFERENCE
 
-	, [occurrenceStatus] = CASE WHEN TAOMeas.DATA <> '0' THEN 'present' 
-								ELSE 'absent'
-							END
-	--, COUNT(*)
-	, [sampleref] = Sa.SAMPLE_REFERENCE
 FROM  Dbo.Survey S
         INNER JOIN [Dbo].[Survey_event] Se ON  Se.[Survey_key] = S.[Survey_key]
         LEFT JOIN [Dbo].[Location] L ON  L.[Location_key] = Se.[Location_key]
