@@ -12,8 +12,6 @@ GO
 ALTER VIEW [ipt].[vwGBif] 
 AS
 
-
-
 /*********************************************************/
 /*                                                       
 ChangeLog IPT (2013-01-07) 
@@ -38,61 +36,51 @@ CHANGE IPT (2015-08-17)
 	add accessrights, remove rights , add license
 	Change globalUniqueIdentifier --> occurrenceID
 
--- Modif 20150908 => Eventdate to Single date ( no range ), range => [verbatimEventDate]
--- Aanpasing 20160113 tblNameServer_12 => NameServer_12
-Starting 06/2016 -> changelog on github.org/inbo/data-publication
+CHANGE IPT (2015-09-08)
+	Eventdate to Single date ( no range ), range => [verbatimEventDate]
+CHANGE IPT (2016-01-13)
+	tblNameServer_12 => NameServer_12
 
+FROM 2016-06-01: Changelog on github.org/inbo/data-publication
 */
 /*********************************************************/
 
-
 SELECT  
-		[occurrenceID] = 'INBO:FLORA:' + Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8) 
-		, [verbatimLocality] = tW.WRNG_OPM 
+		[occurrenceID] = 'INBO:FLORA:' + Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8)
+
+		/* Category: Record */
+		, [type] = CONVERT(Nvarchar(20),'Event')
+		, [language] = CONVERT(Nvarchar(20),'en')
+	    , [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
+		, [rightsHolder] = 'INBO'
+        , [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
+		, [bibliographicCitation] = CONVERT(Nvarchar(300),'Van Landuyt W, Vanhecke L, Brosens D (2012) Florabank 1: a grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region). PhytoKeys 12: 59–67. doi: team.3897/phytokeys.12.2849' )
+		, [references] = cB.BRON_DES
+		, [datasetID] = CONVERT(Nvarchar(100),'http://dx.doi.org/10.3897/phytokeys.12.2849')
+		, [institutionCode] = CONVERT(Nvarchar(20),'INBO')
+		, [datasetName] = CONVERT(Nvarchar(200),'Florabank 1 - A grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region)')
+		, [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO')
 		, [basisOfRecord] = CONVERT(Nvarchar(20),'HumanObservation')
-		, [institutionCode] = CONVERT(Nvarchar(20),'INBO') 
-		, [language] = CONVERT(Nvarchar(20),'en') 
 
--- Taxonomic Elements --
-		--, [originalNameUsage] = tT.TAXN_NAM_WET 
-		, [scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME    --recommended scientific soort + genus 
----		NULL::text AS HigherTaxon,
-		, [kingdom] = CONVERT(Nvarchar(10),'Plantae')
---- 	NULL::text AS Phylum, 
----		tc.name::text AS Class, 
----		NULL::text AS Order, 
----		tf.name::text AS Family, 
----		tg.name::text AS Genus, 
----		ts.name::text AS SpecificEpithet, 
-		--, [verbatimTaxonRank] = NS.RECOMMENDED_NAME_RANK  -- recomended rank 
-		, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG 
----		NULL::text AS InfraSpecificEpithet,
-		, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
-		--, NS. 	-- recommended auth 
-		, [nomenclaturalCode] = CONVERT(Nvarchar(20),'ICBN')
-		--tT.TAXN_NAM_WET , -debugging
--- Identification Elements --
-
--- Locality Elements --
-		, [countryCode] = CONVERt(Nvarchar(20),'BE')  
--- Collecting Event Elements --
-		, [verbatimEventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  + '/' + CONVERT(Nvarchar(12) , tW.WRNG_END_DTE , 120)  
-		, [eventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  
-		, [recordedBy] = dbo.ufn_MedewerkersPerWaarneming(tW.WRNG_ID) 
--- Biological Elements --
-
--- References Elements --
-
+		/* Category: Occurence */
+		, [recordedBy] = dbo.ufn_MedewerkersPerWaarneming(tW.WRNG_ID)		
 		
--- Curatorial Extension --
+		/* Category: Event */
+		, [eventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  	
+		, [verbatimEventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  + '/' + CONVERT(Nvarchar(12) , tW.WRNG_END_DTE , 120)  
 
--- Geospatial Extension --
+		/* Category: Location */
+		, [continent] = 'Europe'
+		, [countryCode] = CONVERt(Nvarchar(20),'BE')  
+		, [verbatimLocality] = tW.WRNG_OPM 
+		, [verbatimCoordinates] = tIH.IFBL_CDE
+	    , [verbatimCoordinateSystem] = CASE 
+										WHEN LEN([tIH].[IFBL_CDE]) > 5 THEN 'IFBL 1km'
+										ELSE 'IFBL 4km'
+									   END
 		, [decimalLatitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(tI84.IFBL_LAT,5)) )
 		, [decimalLongitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(tI84.IFBL_LONG,5)) ) 
-		, [GeodeticDatum] = CONVERT(Nvarchar(10),'WGS84') 
-		--CONVERT(Nvarchar(10),ROUND(tIH.IFBL_COR_Y,3)) AS verbatimLatitude, 
-		--CONVERT(Nvarchar(10),ROUND(tIH.IFBL_COR_X,3)) AS verbatimLongitude, 
-		--CONVERT(Nvarchar(10),'EPSG:31370') AS verbatimCoordinateSystem, 
+		, [geodeticDatum] = CONVERT(Nvarchar(10),'WGS84')
 		, [coordinateUncertaintyInMeters] = CONVERT(Nvarchar(5),
 			CONVERT(INT, CASE 
 				WHEN cHP.HOPR_CDE = 1 THEN 	700  --zeker kmhok
@@ -102,31 +90,20 @@ SELECT
 				WHEN cHP.HOPR_CDE = 5 THEN 	3500  --voorkeur uurhok			
 				ELSE 10000	
 			END )
-			) 
+			)
+		, [georeferenceRemarks] = CONVERT(Nvarchar(100),'The centroid coördinates of the IFBL square containing the occurence were given')
+		
+		/* Category: Taxon */
+		, [scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
+		, [kingdom] = CONVERT(Nvarchar(10),'Plantae')
+		, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
+		, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
+		, [nomenclaturalCode] = CONVERT(Nvarchar(20),'ICBN')
 
----		NULL::text AS PointRadiusSpatialFit,
-
-		, [verbatimCoordinates] = tIH.IFBL_CDE 
-
-	    , [verbatimCoordinateSystem] = CASE 
-				WHEN LEN([tIH].[IFBL_CDE]) > 5 THEN 'IFBL 1km'
-				ELSE 'IFBL 4km'
-			END 	
-		--, [VerbatimSRS] = 'ED50' --/ WGS84 --BD72
-		
-		
-	    , [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
-        , [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
-		, [type] = CONVERT(Nvarchar(20),'Event')
-		, [bibliographicCitation] = CONVERT(Nvarchar(300),'Van Landuyt W, Vanhecke L, Brosens D (2012) Florabank 1: a grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region). PhytoKeys 12: 59–67. doi: team.3897/phytokeys.12.2849' )
-		, [datasetID] = CONVERT(Nvarchar(100),'http://dx.doi.org/10.3897/phytokeys.12.2849')
-		
-		, [datasetName] = CONVERT(Nvarchar(200),'Florabank 1 - A grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region)')
-		, [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
-		, [dataGeneralizations] = CONVERT(Nvarchar(100),'The centroid coördinates of the IFBL square containing the occurence were given')
-		, [references] = cB.BRON_DES 
-		, [continent] = 'Europe'
-		
+		/* Following fields are mentioned in the data paper doi: 10.3897/phytokeys.12.2849, butnot taken into account in current updates */
+		-- originalNameUsage
+		-- verbatimTaxonrank
+		-- modified
 		
 	FROM [dbo].[tblWaarneming] tW 
 		INNER JOIN [dbo].[tblMeting] tMt ON ( tMt.METI_WRNG_ID = tW.WRNG_ID )
@@ -157,24 +134,6 @@ SELECT
 
 	--ORDER BY tW.WRNG_ID, tMt.METI_ID
 		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 GO
