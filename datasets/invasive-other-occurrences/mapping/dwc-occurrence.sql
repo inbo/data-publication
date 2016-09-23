@@ -37,8 +37,8 @@ SELECT
 	, [eventID] = SE.SURVEY_EVENT_KEY
 	, [eventDate] = 
 		CASE 
-			WHEN [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 1) = 'Unknown' THEN ''
-			ELSE [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE, 1)
+			WHEN [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE) = 'Unknown' THEN ''
+			ELSE [inbo].[LCReturnVagueDateGBIF](SA.VAGUE_DATE_START, SA.VAGUE_DATE_END, SA.VAGUE_DATE_TYPE)
 		END
 	, [continent] = 'Europe'
 	, [countryCode] = 'BE'
