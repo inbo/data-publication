@@ -108,6 +108,7 @@ SELECT
 		-- verbatimTaxonrank
 		-- modified
 		*/
+		, NormNaam.LANGUAGE as langue
 		
 	FROM [dbo].[tblWaarneming] tW 
 		INNER JOIN [dbo].[tblMeting] tMt ON ( tMt.METI_WRNG_ID = tW.WRNG_ID )
