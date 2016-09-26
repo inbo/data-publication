@@ -100,7 +100,7 @@ SELECT
 		, [kingdom] = CONVERT(Nvarchar(10),'Plantae')
 		, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
 		, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
-		, [vernacularName] = NormNaam.ITEM_NAME
+		, [vernacularName] = tT.TAXN_NAM_NED
 		, [nomenclaturalCode] = CONVERT(Nvarchar(20),'ICBN')
 
 		/* Following fields are mentioned in the data paper doi: 10.3897/phytokeys.12.2849, butnot taken into account in current updates:
@@ -108,7 +108,6 @@ SELECT
 		-- verbatimTaxonrank
 		-- modified
 		*/
-		, NormNaam.LANGUAGE as langue
 		
 	FROM [dbo].[tblWaarneming] tW 
 		INNER JOIN [dbo].[tblMeting] tMt ON ( tMt.METI_WRNG_ID = tW.WRNG_ID )
@@ -124,11 +123,12 @@ SELECT
 
 		--Normalizing to Vernacular names
 		LEFT OUTER JOIN (SELECT T.* 
+								, COMMON_NAME
 							FROM [NBNData].[dbo].INDEX_TAXON_NAME ITN
 								INNER JOIN [NBNData].[dbo].TAXON_LIST_ITEM TLI ON TLI.TAXON_LIST_ITEM_KEY = ITN.TAXON_LIST_ITEM_KEY
 								INNER join [NBNData].[dbo].TAXON_VERSION TV on TV.TAXON_VERSION_KEY = TLI.TAXON_VERSION_KEY
 								INNER join [NBNData].[dbo].TAXON T ON T.TAXON_KEY = TV.TAXON_KEY
-							WHERE T.LANGUAGE ='nl'
+							--WHERE T.LANGUAGE ='nl'
 							) NormNaam on NormNaam.TAXON_KEY = TA.TAXON_KEY
 		INNER JOIN [dbo].[cdeMetingStatus] cMS ON (cms.MEST_CDE = tMt.METI_MEST_CDE)
 		INNER JOIN [dbo].[cdeWaarnemingStatus] cW ON (cW.WGST_CDE = tW.WRNG_WGST_CDE)
