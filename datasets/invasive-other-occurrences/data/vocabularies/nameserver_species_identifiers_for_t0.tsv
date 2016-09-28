@@ -1,6 +1,6 @@
-gbifapi_acceptedScientificName	gbifapi_acceptedKey	INBO_identifier
+gbifapi_acceptedScientificName	gbifapi_acceptedKey	nbn_recommendedTaxonVersionKey
 Acer negundo L.	3189866	NBNSYS0000014604
-Alopochen aegyptiaca (Linnaeus, 1766)	2498252	
+Alopochen aegyptiaca (Linnaeus, 1766)	2498252	NHMSYS0001689380
 Alternanthera philoxeroides (Mart.) Griseb.	3084923	
 Ameiurus melas (Rafinesque, 1820)	2340977	NHMSYS0000544615
 Asclepias syriaca L.	3170247	INBSYS0000005932
@@ -14,10 +14,10 @@ Castor canadensis Kuhl, 1820	2439838	INBSYS0000032589
 Celastrus orbiculatus C.P. Thunberg ex A. Murray	8104460	NHMSYS0100000968
 Corvus splendens Vieillot, 1817	2482499	
 Cotoneaster acutifolius var. lucidus (Schltdl.) L. T. Lu	3026061	NHMSYS0000457606
-Cotoneaster acutifolius var. villosulus Rehd. & E.H. Wilson	3025565	INBSYS0000005533
-Cotoneaster acutifolius var. villosulus Rehd. & E.H. Wilson	3025565	INBSYS0000009453
-Cotoneaster acutifolius var. villosulus Rehd. & E.H. Wilson	3025565	NBNSYS0000034264
 Cotoneaster acutifolius var. villosulus Rehd. & E.H. Wilson	3025565	NHMSYS0000457636
+Cotoneaster acutifolius var. villosulus Rehd. & E.H. Wilson	3025565	INBSYS0000009453
+Cotoneaster acutifolius var. villosulus Rehd. & E.H. Wilson	3025565	INBSYS0000005533
+Cotoneaster acutifolius var. villosulus Rehd. & E.H. Wilson	3025565	NBNSYS0000034264
 Cotoneaster ambiguus Rehd. & E.H. Wilson	3025858	
 Cotoneaster ascendens Flinck & B. Hylmö	3026024	NHMSYS0000457556
 Cotoneaster bullatus Bois in Bilm. & Bois	3026294	NBNSYS0000004710
@@ -27,8 +27,8 @@ Cotoneaster conspicuus H. F. Comber ex C. Marquand	3025875	NHMSYS0000457572
 Cotoneaster coriaceus Franch.	3026035	NHMSYS0000457601
 Cotoneaster dammeri C.K. Schneid.	3026049	NHMSYS0000457575
 Cotoneaster dammeri C.K. Schneid.	3026049	INBSYS0000011373
-Cotoneaster dielsianus E. Pritz.	3025896	NBNSYS0000014211
 Cotoneaster dielsianus E. Pritz.	3025896	NHMSYS0000457576
+Cotoneaster dielsianus E. Pritz.	3025896	NBNSYS0000014211
 Cotoneaster dielsianus E. Pritz.	3025896	INBSYS0000005539
 Cotoneaster divaricatus Rehd. & E.H. Wilson	3026334	NBNSYS0000014035
 Cotoneaster fangianus T.T. Yu	3025932	NBNSYS0100002626
@@ -37,7 +37,8 @@ Cotoneaster hjelmqvistii K.E. Flinck & B. Hylmö	3026092	NHMSYS0000457586
 Cotoneaster hjelmqvistii K.E. Flinck & B. Hylmö	3026092	NBNSYS0000014085
 Cotoneaster horizontalis Decne	3025617	NBNSYS0000003425
 Cotoneaster horizontalis Decne	3025617	INBSYS0000005538
-Cotoneaster integrifolius (Lindl.) Koehne	7671502	
+Cotoneaster integrifolius (Lindl.) Koehne	7671502	NBNSYS0000003426
+Cotoneaster integrifolius (Lindl.) Koehne	7671502	INBSYS0000005537
 Cotoneaster mairei	3025944	NHMSYS0000457607
 Cotoneaster moupinensis Franch.	3025731	NHMSYS0000457612
 Cotoneaster moupinensis Franch.	3025731	NBNSYS0000013945
@@ -60,7 +61,7 @@ Elodea nuttallii (Planch.) H.St.John	5329212	INBSYS0000005372
 Eriocheir sinensis H. Milne Edwards, 1853	2225776	NHMSYS0001593547
 Euthamia graminifolia (L.) Nutt.	3092782	NBNSYS0000004420
 Fraxinus pennsylvanica Marshall	3172348	INBSYS0000005186
-Gaillardia grandiflora Hort. ex Van Houtte	5387817	
+Gaillardia grandiflora Hort. ex Van Houtte	5387817	NBNSYS0000033914
 Gunnera manicata Linden	8078925	NBNSYS0000003613
 Gunnera manicata Linden	8078925	NHMSYS0000459162
 Gunnera tinctoria (Molina) Mirbel	2984306	NHMSYS0000459164
@@ -92,8 +93,10 @@ Lysichiton americanus Hultén & H.St.John	2869311	NHMSYS0000460540
 Lysichiton camtschatcensis (L.) Schott	2869301	NBNSYS0000033298
 Micropterus dolomieu Lacepède, 1802	5211250	
 Microstegium vimineum (Trin.) A.Camus	5289808	
-Muntiacus reevesi (Ogilby, 1839)	2440946	NBNSYS0000005147
+Muntiacus reevesi (Ogilby, 1839)	2440946	INBSYS0000032642
 Muntiacus reevesi (Ogilby, 1839)	2440946	NHMSYS0000080204
+Muntiacus reevesi (Ogilby, 1839)	2440946	NBNSYS0000005147
+Muntiacus reevesi (Ogilby, 1839)	2440946	INBSYS0000012720
 Myocastor coypus (Molina, 1782)	4264680	NHMSYS0000080217
 Myriophyllum aquaticum (Vellozo) Verdcourt	5361785	INBSYS0000004739
 Myriophyllum aquaticum (Vellozo) Verdcourt	5361785	NHMSYS0000460832
@@ -103,8 +106,8 @@ Myriophyllum heterophyllum Michx.	5361762	NBNSYS0000003611
 Nasua nasua (Linnaeus, 1766)	2433536	INBSYS0000012724
 Neovison vison (Schreber, 1777)	2433652	NHMSYS0000332758
 Nyctereutes procyonoides (Gray, 1834)	2434552	INBSYS0000012539
-Oenothera affinis Camb.	3188847	INBSYS0000009677
 Oenothera affinis Camb.	3188847	NBNSYS0200002718
+Oenothera affinis Camb.	3188847	INBSYS0000009677
 Oenothera angustissima Gates	3188889	INBSYS0000009678
 Oenothera biennis L.	3188924	NBNSYS0000003599
 Oenothera cambrica K. Rostanski	7322292	INBSYS0000009679
@@ -112,8 +115,8 @@ Oenothera cambrica K. Rostanski	7322292	NBNSYS0000004772
 Oenothera curtiflora W.L.Wagner & Hoch	3667406	
 Oenothera deflexa Gates	7322773	INBSYS0000004698
 Oenothera elata Kunth	3188829	INBSYS0000009682
-Oenothera fallax Renner	7915783	NBNSYS0000004774
 Oenothera fallax Renner	7915783	NHMSYS0100002165
+Oenothera fallax Renner	7915783	NBNSYS0000004774
 Oenothera fruticosa subsp. glauca (Michx.) Straley	8637919	
 Oenothera glazioviana M. Micheli	3188894	NHMSYS0000461148
 Oenothera glazioviana M. Micheli	3188894	INBSYS0000004697
@@ -125,10 +128,11 @@ Oenothera lindheimeri (Engelm. & A.Gray) W.L.Wagner & Hoch	3664589
 Oenothera nuda Renner ex Rostanski	3667628	
 Oenothera oakesiana (A. Gray) S. Watson	3188884	INBSYS0000009684
 Oenothera oehlkersii A. Kappus	8153538	INBSYS0000009685
+Oenothera oehlkersii A. Kappus	8153538	INBSYS0000004694
 Oenothera paradoxa Hudziok	3667238	
-Oenothera parviflora L.	3188833	
+Oenothera parviflora L.	3188833	NBNSYS0000003602
 Oenothera perangusta Gates	7322738	NBNSYS0000013948
-Oenothera perennis L.	3188838	
+Oenothera perennis L.	3188838	NBNSYS0200002726
 Oenothera pycnocarpa Atkinson & Bartlett	3188926	INBSYS0000009686
 Oenothera rosea Aiton	3188875	NBNSYS0000005672
 Oenothera rosea Aiton	3188875	NBNSYS0200003883
@@ -139,10 +143,11 @@ Oenothera rubricauloides Rostanski	3665817
 Oenothera speciosa Nutt.	3188859	
 Oenothera stricta Ledeb. ex Link	3188830	INBSYS0000004691
 Oenothera subterminalis R.R.Gates	3664677	INBSYS0000004690
+Oenothera victorinii Gates & Catcheside	7322143	INBSYS0000004689
 Oenothera victorinii Gates & Catcheside	7322143	NHMSYS0000461158
 Oenothera wratislaviensis Rostanski	3667721	
-Ondatra zibethicus (Linnaeus, 1766)	5219858	INBSYS0000012540
 Ondatra zibethicus (Linnaeus, 1766)	5219858	NBNSYS0000040193
+Ondatra zibethicus (Linnaeus, 1766)	5219858	INBSYS0000012540
 Orconectes limosus (Rafinesque, 1817)	2227000	NHMSYS0001593792
 Orconectes virilis (Hagen, 1870)	2227064	INBSYS0000045066
 Oxyura jamaicensis (Gmelin, 1789)	2498305	NHMSYS0000530524
@@ -152,8 +157,8 @@ Parthenium hysterophorus L.	3086784	NBNSYS0200002802
 Parthenocissus quinquefolia (L.) Planchon	3039194	NBNSYS0000033673
 Parthenocissus quinquefolia (L.) Planchon	3039194	NHMSYS0000461527
 Parthenocissus tricuspidata (Siebold & Zucc.) Planchon	3039209	NHMSYS0000461528
-Parthenocissus tricuspidata (Siebold & Zucc.) Planchon	3039209	INBSYS0000004602
 Parthenocissus tricuspidata (Siebold & Zucc.) Planchon	3039209	NBNSYS0000033485
+Parthenocissus tricuspidata (Siebold & Zucc.) Planchon	3039209	INBSYS0000004602
 Parthenocissus vitacea (Knerr) A.S. Hitchc.	3039193	NBNSYS0000033674
 Parthenocissus vitacea (Knerr) A.S. Hitchc.	3039193	INBSYS0000004603
 Parthenocissus vitacea (Knerr) A.S. Hitchc.	3039193	NHMSYS0000461525
@@ -177,15 +182,15 @@ Sciurus carolinensis Gmelin, 1788	5219681	NHMSYS0000332764
 Sciurus niger Linnaeus, 1758	5219683	
 Sicyos angulatus L.	2874655	NBNSYS0000034270
 Solanum eleagnifolium	7299960	NBNSYS0200003195
-Spartina pectinata Bosc ex Link	5290030	NBNSYS0000014303
 Spartina pectinata Bosc ex Link	5290030	NHMSYS0000463858
+Spartina pectinata Bosc ex Link	5290030	NBNSYS0000014303
 Spartina pectinata Bosc ex Link	5290030	INBSYS0000009805
 Spartina townsendii H.Groves & J.Groves	5290034	INBSYS0000003939
 Spartina townsendii H.Groves & J.Groves	5290034	NBNSYS0000002679
 Spartina townsendii H.Groves & J.Groves	5290034	NHMSYS0000463860
 Spiraea salicifolia L.	3026454	NBNSYS0000003313
 Spiraea tomentosa L.	3026819	NBNSYS0000014176
-Spiraea ×pseudosalicifolia Silverside	3026444	
+Spiraea ×pseudosalicifolia Silverside	3026444	INBSYS0000003921
 Symphyotrichum salignum (Willd.) G.L.Nesom	3151811	
 Tamias sibiricus (Laxmann, 1769)	2437450	INBSYS0000012543
 Threskiornis aethiopicus (Latham, 1790)	2480764	NHMSYS0000534047
