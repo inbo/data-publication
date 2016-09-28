@@ -1,6 +1,7 @@
-
+datasets/*/data/interim/*
+datasets/*/data/processed/*
+!datasets/name-server/data/interim/*
+!datasets/name-server/data/processed/*
 .DS_Store
 *.ipynb_checkpoints
 *.pyc
-datasets/*/data/interim/*
-datasets/*/data/processed/*
