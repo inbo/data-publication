@@ -175,7 +175,8 @@ FROM observation AS obs
     -- via surveyevent
     LEFT JOIN controlledvocabulary AS observer1 ON survey.observer1 = observer1.id AND observer1.type = 'observer'
     LEFT JOIN controlledvocabulary AS observer2 ON survey.observer2 = observer2.id AND observer2.type = 'observer'
+    LEFT JOIN condition AS condition ON survey.observer2 = observer2.id AND observer2.type = 'observer'
 WHERE
-	taxon.inbocode != 0 -- exclude observations without birds TODO: f3310e23-e014-4897-80c4-07fd293525db
-	AND taxon.inbocode != 9999 -- exclude boat observations TODO: d818f147-2571-4770-aed8-f5338e303fb5
+    taxon.id != 'f3310e23-e014-4897-80c4-07fd293525db' -- exclude observations without birds (inbocode: 0)
+    AND taxon.id != 'd818f147-2571-4770-aed8-f5338e303fb5' -- exclude boat observations (inbocode: 9999)
 LIMIT 10
