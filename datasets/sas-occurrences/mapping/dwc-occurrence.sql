@@ -17,8 +17,6 @@ controlled vocabulary           y
 - name
 - esascode                      
 - esasdescription
-- observer1
-- observer2
 controlledvocabulary_warning    n
 databasechangelog               n
 databasechangeloglock           n
@@ -57,6 +55,8 @@ surveyevent                     y
 - tripid                        
 - dateofsurvey                  y
 - ship                          
+- observer1                     y
+- observer2                     y
 taxon                           y
 - id                            n
 - inbocode                      n
@@ -90,9 +90,12 @@ SELECT
     'see metadata' AS informationWitheld, -- TODO: verify
 
 -- occurrence
-	-- recordedBy,
 	-- individualCount,
     -- occurrenceRemarks,
+    CASE
+        WHEN observer2.id IS NOT NULL THEN observer1.name || ', ' || observer2.name
+        ELSE observer1.name
+    END AS recordedBy,
     -- organismQuantity,
     -- organismQuantityType,
     -- sex,
@@ -143,8 +146,10 @@ SELECT
     -- georeferenceVerificationStatus,
     
 -- identification
-	-- identifiedBy,
-	-- identificationVerificationStatus,
+    CASE
+        WHEN observer2.id IS NOT NULL THEN observer1.name || ', ' || observer2.name
+        ELSE observer1.name
+    END AS identifiedBy,
 
 -- taxon
     CASE
@@ -167,7 +172,9 @@ FROM observation AS obs
     LEFT JOIN controlledvocabulary AS behaviour ON obs.behaviour = behaviour.id AND behaviour.type = 'behaviour'
     LEFT JOIN calculatedmeasurement AS loc ON obs.calculatedmeasurement = loc.id
     LEFT JOIN surveyevent AS survey ON obs.surveyevent = survey.id
-
+    -- via surveyevent
+    LEFT JOIN controlledvocabulary AS observer1 ON survey.observer1 = observer1.id AND observer1.type = 'observer'
+    LEFT JOIN controlledvocabulary AS observer2 ON survey.observer2 = observer2.id AND observer2.type = 'observer'
 WHERE
 	taxon.inbocode != 0 -- exclude observations without birds TODO: f3310e23-e014-4897-80c4-07fd293525db
 	AND taxon.inbocode != 9999 -- exclude boat observations TODO: d818f147-2571-4770-aed8-f5338e303fb5
