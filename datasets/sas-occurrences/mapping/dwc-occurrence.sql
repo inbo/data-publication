@@ -90,12 +90,12 @@ SELECT
     'see metadata' AS informationWitheld, -- TODO: verify
 
 -- occurrence
-	-- individualCount,
     -- occurrenceRemarks,
     CASE
         WHEN observer2.id IS NOT NULL THEN observer1.name || ', ' || observer2.name
         ELSE observer1.name
     END AS recordedBy,
+    obs.number AS individualCount,
     -- organismQuantity,
     -- organismQuantityType,
     -- sex,
@@ -130,7 +130,7 @@ SELECT
     -- eventRemarks
 
 -- location
-	-- locationID,
+    loc.id AS locationID,
     -- continent,
     -- waterbody,
     -- countryCode,
@@ -158,9 +158,7 @@ SELECT
     END AS taxonID,
     taxon.scientificname AS scientificName,
     'Animalia' AS kingdom,
-    'Chordata' AS phylum, -- TODO: verify
-    -- order, -- SAS contains birds and cetaceans, so no single order
-    taxon.taxonrank AS taxonRank,
+    'Chordata' AS phylum, -- SAS contains birds, cetaceans and Basking shark
     -- scientificNameAuthorship, -- This information is not available in SAS
     taxon.dutchvernacularname AS vernacularName, -- TODO: decide EN or NL
     'ICZN' AS nomenclaturalCode
