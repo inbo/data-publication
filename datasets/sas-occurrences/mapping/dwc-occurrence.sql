@@ -2,7 +2,6 @@
 Tables and fields we want to include:
 (datecreated, datelastchange and version are not included)
 
-condition						
 allowedusers                    n
 calculatedmeasurement           y
 - id                            n
@@ -10,6 +9,19 @@ calculatedmeasurement           y
 - longitude                     y
 - km                            
 - km2                           
+condition                       y
+- id                            
+- starttime                     
+- endtime                       
+- transectwidth                 
+- countmethod                   
+- speciescounted                
+- visibility                    
+- waveheight                    
+- windforce                     
+- glare                         
+- remarks                       
+- surveyevent                   n
 controlled vocabulary           y
 - id
 - type                          n                        
