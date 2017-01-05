@@ -7,7 +7,7 @@
 
 id:
   # eventID, links to core
-  regex: INBO:INBOVEG:0IV(\d){16}
+  regex: 'INBO:INBOVEG:0IV(\d){16}'
 
 basisOfRecord:
   allowed: HumanObservation
