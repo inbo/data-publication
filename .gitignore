@@ -6,3 +6,6 @@ datasets/*/data/interim/*
 datasets/pink-libellen-events/~$Libel_PINK_original.xlsx
 *.xlsx
 *.xls
+*.dbf
+*.csv
+*.accdb
