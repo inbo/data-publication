@@ -1,6 +1,6 @@
 # Pink-permanent inventarisation of coastal areas: Odonata  Flanders, Belgium
 
-*Pink-permanent inventarisation of coastal areas: Odonata* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/***********
+*Pink-permanent inventarisation of coastal areas: Odonata* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://data.inbo.be/ipt/resource?r=pink-odonata-events
 
 ## Data publication process
 
