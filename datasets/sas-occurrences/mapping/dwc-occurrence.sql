@@ -22,13 +22,13 @@ condition                       y
 - glare                         
 - remarks                       
 - surveyevent                   n
-controlled vocabulary           y
-- id
-- type                          n                        
+controlledvocabulary            y
+- id                            
+- type                          n
 - code                          
-- name
+- name                          
 - esascode                      
-- esasdescription
+- esasdescription               
 controlledvocabulary_warning    n
 databasechangelog               n
 databasechangeloglock           n
@@ -36,6 +36,7 @@ exportdownload                  n
 exportposkey                    n?
 exportstatus                    n
 measurement                     
+measurementgeographicalinformation
 measurementsummary              n
 measurementuploads              n
 measurementvalidationerror      n
@@ -61,7 +62,8 @@ observation                     y
 - calculatedmeasurement         y
 - behaviour                     y
 - flagged                       ?
-positionalkey                    
+observation_warning             
+positionalkey                      
 surveyevent                     y
 - survey                        
 - tripid                        
@@ -69,6 +71,7 @@ surveyevent                     y
 - ship                          
 - observer1                     y
 - observer2                     y
+surveyevent_warning             
 taxon                           y
 - id                            n
 - inbocode                      n
@@ -103,10 +106,10 @@ SELECT
 
 -- occurrence
     -- occurrenceRemarks,
-    CASE
-        WHEN observer2.id IS NOT NULL THEN observer1.name || ', ' || observer2.name
-        ELSE observer1.name
-    END AS recordedBy,
+    -- CASE
+    --    WHEN observer2.id IS NOT NULL THEN observer1.name || ', ' || observer2.name
+    --    ELSE observer1.name
+    -- END AS recordedBy, -- TODO: uncomment
     obs.number AS individualCount,
     -- organismQuantity,
     -- organismQuantityType,
@@ -158,10 +161,10 @@ SELECT
     -- georeferenceVerificationStatus,
     
 -- identification
-    CASE
-        WHEN observer2.id IS NOT NULL THEN observer1.name || ', ' || observer2.name
-        ELSE observer1.name
-    END AS identifiedBy,
+    -- CASE
+    --    WHEN observer2.id IS NOT NULL THEN observer1.name || ', ' || observer2.name
+    --    ELSE observer1.name
+    -- END AS identifiedBy, -- TODO: Uncomment
 
 -- taxon
     CASE
