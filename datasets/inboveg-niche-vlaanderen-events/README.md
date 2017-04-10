@@ -1,8 +1,6 @@
-# Inboveg - Niche Vlaanderen
+# InboVeg - NICHE-Vlaanderen groundwater related vegetation relevés for Flanders, Belgium
 
-*Inboveg - Niche Vlaanderen* is a sampling event dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/inboveg-niche-vlaanderen-events.
-
-**This dataset has not yet been published.**
+*InboVeg - NICHE-Vlaanderen groundwater related vegetation relevés for Flanders, Belgium* is a sampling event dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/inboveg-niche-vlaanderen-events.
 
 ## Data publication process
 
