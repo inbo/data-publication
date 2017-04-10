@@ -1,11 +1,12 @@
+# Interim data
 datasets/*/data/interim/*
 !datasets/name-server/data/interim/*
+
+# File extensions
 .DS_Store
 *.ipynb_checkpoints
 *.pyc
-datasets/pink-libellen-events/~$Libel_PINK_original.xlsx
 *.xlsx
 *.xls
 *.dbf
-*.csv
 *.accdb
