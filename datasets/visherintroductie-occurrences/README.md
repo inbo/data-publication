@@ -5,5 +5,5 @@
 ## Data publication process
 
 * [Metadata](metadata.md) (working document)
-* [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/visherintroductie-occurrences)
-* [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
+* [Known issues](https://github.com/inbo/data-publication/labels/visherintroductie-occurrences)
+* [Submit an issue](https://github.com/inbo/data-publication/issues/new) (please mention the dataset name)
