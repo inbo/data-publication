@@ -9,19 +9,19 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This document describes how our bird tracking data are standardized to [Darwin Core](https://en.wikipedia.org/wiki/Darwin_Core), so these can be published via [our IPT](http://data.inbo.be/ipt) to the [Global Biodiversity Information Facility (GBIF)](http://www.gbif.org/).
+This document describes how our bird tracking data are standardized to [Darwin Core](https://en.wikipedia.org/wiki/Darwin_Core), so these can be published via [our Integrated Publishing Toolkit (IPT)](http://data.inbo.be/ipt) to the [Global Biodiversity Information Facility (GBIF)](http://www.gbif.org/).
 
 For those familiar with Darwin Core: the data are mapped to an [Occurrence core](http://rs.gbif.org/core/dwc_occurrence_2015-07-02.xml), with every recorded position/time as an occurrence. Individual tracks can be created by filtering on `organismID` and sorting on `eventDate` (done by default).
 
 ## Pre-processing
 
-These steps are done by the [bird-tracking-etl](https://github.com/inbo/bird-tracking-etl) (R package) which runs on [AWS](https://github.com/inbo/bird-tracking-aws):
+These steps are done by the R package [bird-tracking-etl](https://github.com/inbo/bird-tracking-etl) which runs monthly on AWS:
 
 1. Download INBO bird tracking data (logs) from the UvA-BiTS virtual lab.
 2. Process and augment these, including joining the data with the `bird_tracking_devices` metadata, which are managed in [this Google Spreadsheet](https://drive.google.com/open?id=168lV0h4f0uljItStoNX16j8stjJg640ozrgzHW-5d9w).
-3. Upload the resulting processed data as `csv` and `sqlite` for registered users at http://birdtracking-downloader.eu-west-1.elasticbeanstalk.com/, as well as the original unprocessed data as `csv`.
+3. Upload the resulting processed data as `csv` and `sqlite` for registered users at http://birdtracking-downloader.eu-west-1.elasticbeanstalk.com/, as well as the original unprocessed data (as `csv`).
 
-We need the processed data for the further steps, because we want the metadadta, be able to filter on outliers (`calc_outlier`) and species (`species_code`), and make use of the calculated field `calc_time_diff`.
+We need the processed data for the further steps, because we want the metadata, be able to filter on outliers (`calc_outlier == FALSE`) and species (`species_code`), and make use of the calculated field `calc_time_diff`.
 
 ## Download data
 
@@ -30,7 +30,7 @@ We need the processed data for the further steps, because we want the metadadta,
 
 ## Transform data
 
-The following data transformation script was initially created in [Exploratory](https://exploratory.io/), but can be adapted as it is just an R script. Here I describe how to run it in Exploratory, but with minor adaptions I should be able to run elsewhere.
+The following data transformation script was initially created in [Exploratory](https://exploratory.io/), but can be adapted as it is just an R script. Here we describe how to run it in Exploratory, but with minor adaptions it should be able to run elsewhere.
 
 1. Create a new project in Exploratory.
 2. Add a Data Frame with the option `Import by writing R script`, give it a name, and copy/paste the following script (the only thing to adapt is the name and location of the source file):
@@ -112,13 +112,54 @@ The following data transformation script was initially created in [Exploratory](
     mutate(vernacularName = case_when(.$species_code == "lbbg" ~ "Lesser Black-backed Gull", .$species_code == "hg" ~ "Herring Gull", .$species_code == "wmh" ~ "Western Marsh Harrier")) %>%
     mutate(nomenclaturalCode = "ICZN") %>%
 
-    # Remove source columns (except species_code and calc_outlier)
-    select(-calc_corine_value, -device_info_serial, -project_leader, -bird_name, -ring_code, -colour_ring_code, -scientific_name, -catch_weight, -catch_location, -tracking_started_at, -tracking_ended_at, -is_active, -remarks, -colony_latitude, -colony_longitude, -date_time, -latitude, -longitude, -altitude, -pressure, -temperature, -satellites_used, -gps_fixtime, -positiondop, -h_accuracy, -v_accuracy, -x_speed, -y_speed, -z_speed, -speed_accuracy, -userflag, -speed_3d, -speed_2d, -direction, -altitude_agl, -calc_year, -calc_month, -calc_hour, -calc_time_diff, -calc_distance_diff, -calc_speed_2d, -calc_distance_to_colony, -calc_sunlight, -calc_corine_legend)
+    # Assume NA values for calc_outlier are not outliers
+    # https://github.com/inbo/bird-tracking-etl/issues/12
+    mutate(calc_outlier = coalesce(calc_outlier, FALSE)) %>%
+
+    # Remove source columns (except device_info_serial, species_code, and calc_outlier)
+    select(-calc_corine_value, -project_leader, -bird_name, -ring_code, -colour_ring_code, -scientific_name, -catch_weight, -catch_location, -tracking_started_at, -tracking_ended_at, -is_active, -remarks, -colony_latitude, -colony_longitude, -date_time, -latitude, -longitude, -altitude, -pressure, -temperature, -satellites_used, -gps_fixtime, -positiondop, -h_accuracy, -v_accuracy, -x_speed, -y_speed, -z_speed, -speed_accuracy, -userflag, -speed_3d, -speed_2d, -direction, -altitude_agl, -calc_year, -calc_month, -calc_hour, -calc_time_diff, -calc_distance_diff, -calc_speed_2d, -calc_distance_to_colony, -calc_sunlight, -calc_corine_legend)
+    ```
+
+3. Once loaded, the number of records should be the same as the number of lines in the source file (minus the header), e.g. in shell:
+
+    ```bash
+    wc -l 2017-04-03-processed-logs.csv
     ```
 
 4. Filter the records for publication (either in the UI of Exploratory or by extending the script)
 
-   ```r
-   ### For bird-tracking-gull-occurrences
-   filter(userflag == 0) %>%
-   ```
+    * For bird-tracking-gull-occurrences
+
+        ```r
+        # Remove outliers
+        filter(!calc_outlier) %>%
+        # Filter on gulls
+        filter(species_code %in% c("hg", "lbbg")) %>%
+        # Set an enddate
+        filter(eventDate <= as.POSIXct("2015-09-02")) %>%
+        # Remove non-Darwin Core fields
+        select(-device_info_serial, -species_code, -calc_outlier)
+        ```
+    * For bird-tracking-wmh-occurrences
+
+        ```r
+        # Remove outliers
+        filter(!calc_outlier) %>%
+        # Filter on gulls
+        filter(species_code %in% c("wmh")) %>%
+        # Set an enddate
+        filter(eventDate <= as.POSIXct("2016-09-02")) %>%
+        # Remove non-Darwin Core fields
+        select(-device_info_serial, -species_code, -calc_outlier)
+        ```
+
+5. Export the data as a comma-separated csv with the name `bird-tracking.csv`.
+6. Zip the file.
+
+## Upload data to the IPT
+
+1. Open to the corresponding dataset on the [IPT](http://data.inbo.be/ipt).
+2. Upload the generated zip as source data, replacing the previous file.
+3. Check the mapping to the Occurrence core (which should make use of automapping).
+4. Update the metadata where appropriate (e.g. temporal coverage).
+5. Republish the dataset.
