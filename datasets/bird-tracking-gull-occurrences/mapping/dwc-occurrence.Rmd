@@ -72,10 +72,10 @@ The following data transformation script was initially created in [Exploratory](
     mutate(datasetID = case_when(.$species_code %in% c("lbbg", "hg") ~ "https://doi.org/10.15468/02omly", .$species_code == "wmh" ~ "no doi yet")) %>%
     mutate(institutionCode = "INBO") %>%
     mutate(datasetName = case_when(.$species_code %in% c("lbbg", "hg") ~ "Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast", .$species_code == "wmh" ~ "Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border")) %>%
-    mutate(ownerInstitutionCode = "INBO") %>%
+    mutate(ownerInstitutionCode = case_when(.$species_code %in% c("lbbg", "hg") ~ "INBO/VLIZ/UGent/UA", .$species_code == "wmh" ~ "INBO")) %>%
     mutate(basisOfRecord = "MachineObservation") %>%
     mutate(informationWithheld = "see metadata") %>%
-    mutate(dynamicProperties = paste("{\"device_info_serial\":", device_info_serial, "}", sep = "")) %>%
+    mutate(dynamicProperties = paste("{\"device_info_serial\":", device_info_serial, ", \"catch_location\":\"", catch_location, "\", \"tracking_started_at\":\"", format(tracking_started_at,"%Y-%m-%d"), "\"}", sep = "")) %>%
 
     ## Occurrence terms
     select(-sex, everything()) %>% # This field already exist, so just move it to correct place
@@ -96,21 +96,15 @@ The following data transformation script was initially created in [Exploratory](
     mutate(decimalLatitude = sprintf("%.7f", round(latitude, digits = 7))) %>%
     mutate(decimalLongitude = sprintf("%.7f", round(longitude, digits = 7))) %>%
     mutate(geodeticDatum = "WGS84") %>%
-    mutate(coordinateUncertaintyInMeters = as.integer(str_replace_na(round(h_accuracy, digits = 0), 30))) %>%
+    mutate(coordinateUncertaintyInMeters = as.integer(str_replace_na(round(h_accuracy, digits = 0), 30))) %>% # Assume 30 meters if no h_accuracy is recorded
     mutate(georeferenceSources = "GPS") %>%
     mutate(georeferenceVerificationStatus = "unverified") %>%
 
     ## Taxon terms
     mutate(scientificName = scientific_name) %>%
     mutate(kingdom = "Animalia") %>%
-    mutate(phylum = "Chordata") %>%
-    mutate(class = "Aves") %>%
-    mutate(order = case_when(.$species_code %in% c("lbbg", "hg") ~ "Charadriiformes", .$species_code == "wmh" ~ "Accipitriformes")) %>%
-    mutate(family = case_when(.$species_code %in% c("lbbg", "hg") ~ "Laridae", .$species_code == "wmh" ~ "Accipitridae")) %>%
     mutate(taxonRank = "species") %>%
-    mutate(scientificNameAuthorship = case_when(.$species_code == "lbbg" ~ "Linnaeus, 1758", .$species_code == "hg" ~ "Pontoppidan, 1763", .$species_code == "wmh" ~ "(Linnaeus, 1758)")) %>%
     mutate(vernacularName = case_when(.$species_code == "lbbg" ~ "Lesser Black-backed Gull", .$species_code == "hg" ~ "Herring Gull", .$species_code == "wmh" ~ "Western Marsh Harrier")) %>%
-    mutate(nomenclaturalCode = "ICZN") %>%
 
     # Assume NA values for calc_outlier are not outliers
     # https://github.com/inbo/bird-tracking-etl/issues/12
