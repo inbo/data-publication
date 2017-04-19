@@ -1,0 +1,124 @@
+---
+title: "Darwin Core mapping for bird tracking data (gulls)"
+author: "Peter Desmet"
+date: "2017-04-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This document describes how our bird tracking data are standardized to [Darwin Core](https://en.wikipedia.org/wiki/Darwin_Core), so these can be published via [our IPT](http://data.inbo.be/ipt) to the [Global Biodiversity Information Facility (GBIF)](http://www.gbif.org/).
+
+For those familiar with Darwin Core: the data are mapped to an [Occurrence core](http://rs.gbif.org/core/dwc_occurrence_2015-07-02.xml), with every recorded position/time as an occurrence. Individual tracks can be created by filtering on `organismID` and sorting on `eventDate` (done by default).
+
+## Pre-processing
+
+These steps are done by the [bird-tracking-etl](https://github.com/inbo/bird-tracking-etl) (R package) which runs on [AWS](https://github.com/inbo/bird-tracking-aws):
+
+1. Download INBO bird tracking data (logs) from the UvA-BiTS virtual lab.
+2. Process and augment these, including joining the data with the `bird_tracking_devices` metadata, which are managed in [this Google Spreadsheet](https://drive.google.com/open?id=168lV0h4f0uljItStoNX16j8stjJg640ozrgzHW-5d9w).
+3. Upload the resulting processed data as `csv` and `sqlite` for registered users at http://birdtracking-downloader.eu-west-1.elasticbeanstalk.com/, as well as the original unprocessed data as `csv`.
+
+We need the processed data for the further steps, because we want the metadadta, be able to filter on outliers (`calc_outlier`) and species (`species_code`), and make use of the calculated field `calc_time_diff`.
+
+## Download data
+
+1. Go to http://birdtracking-downloader.eu-west-1.elasticbeanstalk.com/ (login required) and manually download the latest processed data as a zipped csv (e.g. `2017-04-03-processed-logs.csv.gz`) to your Downloads folder. This download tends to be very slow.
+2. Unzip the `gz` file.
+
+## Transform data
+
+The following data transformation script was initially created in [Exploratory](https://exploratory.io/), but can be adapted as it is just an R script. Here I describe how to run it in Exploratory, but with minor adaptions I should be able to run elsewhere.
+
+1. Create a new project in Exploratory.
+2. Add a Data Frame with the option `Import by writing R script`, give it a name, and copy/paste the following script (the only thing to adapt is the name and location of the source file):
+
+    ```r
+    # Define source file
+    source_file <- "/Users/peter_desmet/Downloads/2017-04-03-processed-logs.csv"
+
+    # Set libPaths
+    .libPaths("/Users/peter_desmet/.exploratory/R/3.3")
+
+    # Load required packages
+    library(janitor)
+    library(lubridate)
+    library(hms)
+    library(tidyr)
+    library(stringr)
+    library(readr)
+    library(forcats)
+    library(RcppRoll)
+    library(dplyr)
+    library(exploratory)
+
+    # Load source file
+    exploratory::read_delim_file(source_file, ",", quote = "\"", skip = 0 , col_names = TRUE , na = c("","NA") , locale=locale(encoding = "UTF-8", decimal_mark = "."), trim_ws = FALSE , progress = FALSE) %>% exploratory::clean_data_frame() %>%
+
+    # Sort by device_info_serial and date_time
+    arrange(device_info_serial) %>%
+    arrange(date_time) %>%
+
+    # Map to Darwin Core
+    ## Record terms
+    mutate(occurrenceID = paste(device_info_serial, format(date_time, "%Y%m%d%H%M%S"), sep = ":")) %>%
+    mutate(type = "Event") %>%
+    mutate(language = "en") %>%
+    mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/") %>%
+    mutate(rightsHolder = "INBO") %>%
+    mutate(accessRights = "http://www.inbo.be/en/norms-for-data-use") %>%
+    mutate(datasetID = case_when(.$species_code %in% c("lbbg", "hg") ~ "https://doi.org/10.15468/02omly", .$species_code == "wmh" ~ "no doi yet")) %>%
+    mutate(institutionCode = "INBO") %>%
+    mutate(datasetName = case_when(.$species_code %in% c("lbbg", "hg") ~ "Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast", .$species_code == "wmh" ~ "Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border")) %>%
+    mutate(ownerInstitutionCode = "INBO") %>%
+    mutate(basisOfRecord = "MachineObservation") %>%
+    mutate(informationWithheld = "see metadata") %>%
+    mutate(dynamicProperties = paste("{\"device_info_serial\":", device_info_serial, "}", sep = "")) %>%
+
+    ## Occurrence terms
+    select(-sex, everything()) %>% # This field already exist, so just move it to correct place
+    mutate(lifeStage = "adult") %>%
+
+    ## Organism terms
+    mutate(organismID = ring_code) %>%
+    mutate(organismName = bird_name) %>%
+
+    ## Event terms
+    mutate(samplingProtocol = "https://doi.org/10.1007/s10336-012-0908-1") %>%
+    mutate(samplingEffort = paste("{\"secondsSinceLastOccurrence\":", str_replace_na(calc_time_diff, "\"\""), "}", sep = "")) %>%
+    mutate(eventDate = format(date_time,"%Y-%m-%dT%H:%M:%SZ")) %>%
+
+    ## Location terms
+    mutate(minimumElevationInMeters = as.integer(0)) %>%
+    mutate(minimumDistanceAboveSurfaceInMeters = as.integer(round(altitude, digits = 0))) %>%
+    mutate(decimalLatitude = sprintf("%.7f", round(latitude, digits = 7))) %>%
+    mutate(decimalLongitude = sprintf("%.7f", round(longitude, digits = 7))) %>%
+    mutate(geodeticDatum = "WGS84") %>%
+    mutate(coordinateUncertaintyInMeters = as.integer(str_replace_na(round(h_accuracy, digits = 0), 30))) %>%
+    mutate(georeferenceSources = "GPS") %>%
+    mutate(georeferenceVerificationStatus = "unverified") %>%
+
+    ## Taxon terms
+    mutate(scientificName = scientific_name) %>%
+    mutate(kingdom = "Animalia") %>%
+    mutate(phylum = "Chordata") %>%
+    mutate(class = "Aves") %>%
+    mutate(order = case_when(.$species_code %in% c("lbbg", "hg") ~ "Charadriiformes", .$species_code == "wmh" ~ "Accipitriformes")) %>%
+    mutate(family = case_when(.$species_code %in% c("lbbg", "hg") ~ "Laridae", .$species_code == "wmh" ~ "Accipitridae")) %>%
+    mutate(taxonRank = "species") %>%
+    mutate(scientificNameAuthorship = case_when(.$species_code == "lbbg" ~ "Linnaeus, 1758", .$species_code == "hg" ~ "Pontoppidan, 1763", .$species_code == "wmh" ~ "(Linnaeus, 1758)")) %>%
+    mutate(vernacularName = case_when(.$species_code == "lbbg" ~ "Lesser Black-backed Gull", .$species_code == "hg" ~ "Herring Gull", .$species_code == "wmh" ~ "Western Marsh Harrier")) %>%
+    mutate(nomenclaturalCode = "ICZN") %>%
+
+    # Remove source columns (except species_code and calc_outlier)
+    select(-calc_corine_value, -device_info_serial, -project_leader, -bird_name, -ring_code, -colour_ring_code, -scientific_name, -catch_weight, -catch_location, -tracking_started_at, -tracking_ended_at, -is_active, -remarks, -colony_latitude, -colony_longitude, -date_time, -latitude, -longitude, -altitude, -pressure, -temperature, -satellites_used, -gps_fixtime, -positiondop, -h_accuracy, -v_accuracy, -x_speed, -y_speed, -z_speed, -speed_accuracy, -userflag, -speed_3d, -speed_2d, -direction, -altitude_agl, -calc_year, -calc_month, -calc_hour, -calc_time_diff, -calc_distance_diff, -calc_speed_2d, -calc_distance_to_colony, -calc_sunlight, -calc_corine_legend)
+    ```
+
+4. Filter the records for publication (either in the UI of Exploratory or by extending the script)
+
+   ```r
+   ### For bird-tracking-gull-occurrences
+   filter(userflag == 0) %>%
+   ```
