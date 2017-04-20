@@ -87,7 +87,7 @@ The following data transformation script was initially created in [Exploratory](
 
     ## Event terms
     mutate(samplingProtocol = "https://doi.org/10.1007/s10336-012-0908-1") %>%
-    mutate(samplingEffort = paste("{\"secondsSinceLastOccurrence\":", str_replace_na(calc_time_diff, "\"\""), "}", sep = "")) %>%
+    mutate(samplingEffort = paste("{\"seconds_since_last_occurrence\":", str_replace_na(calc_time_diff, "\"\""), "}", sep = "")) %>%
     mutate(eventDate = format(date_time,"%Y-%m-%dT%H:%M:%SZ")) %>%
 
     ## Location terms
