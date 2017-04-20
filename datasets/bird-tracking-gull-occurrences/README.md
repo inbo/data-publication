@@ -16,4 +16,4 @@
 
 ## Accessing the bird tracking data with CartoDB
 
-[See this document](https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/README.md).
+[See this document](https://github.com/inbo/bird-tracking/blob/master/cartodb/README.md).

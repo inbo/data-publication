@@ -30,7 +30,7 @@ The dataset description has this default format, unless it has been changed for 
 
 Example:
 
-> *VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 350,000 fish occurrences sampled between 1992 and 2012 from over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 75 fish species, as well as a number of non-target species (mainly crustaceans). The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/vis-inland-occurrences
+> *VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 350,000 fish occurrences sampled between 1992 and 2012 from over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 75 fish species, as well as a number of non-target species (mainly crustaceans). The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at https://github.com/inbo/data-publication/tree/master/datasets/vis-inland-occurrences
 
 ### Metadata & resource language
 
@@ -78,13 +78,14 @@ The metadata provider is the person responsible for processing the resource meta
 
 ## Geographic coverage
 
-###Description
+### Description
 
 Short and concise description of the geographic area. 
 
 Example:
 
     Inland rivers, streams, canals, and enclosed waters in Flanders, Belgium.
+
 Example:
 
     The birds were counted at 1,196 predefined locations (waterVogelTelgebieden, figure 1), covering the wetlands and coast of Flanders, Belgium. 
@@ -93,7 +94,7 @@ Example:
     The polygon shape for most of these localities can be found at https://github.com/LifeWatchINBO/watervogels-occurrences/blob/master/localities/localities.geojson. 
     The geographic coordinates for the occurrences represent the centroid of the locality. 
 
-###Bounding coordinates
+### Bounding coordinates
 
      50.68° to 51.51° latitude, 2.54° to 5.92° longitude
 
@@ -112,7 +113,6 @@ Example:
 
 	The inland waters dataset contains 64 fish species reported from Flemish enclosed waters and watercourses (some of which are non-native or invasive species), as well as a number of non-target species (mainly crustaceans). This dataset also includes a number of typical brackish water fish species which sometimes can be found in inland water sites in proximity to the sea and/or behind the sluice gates. The class of Actinopterygii is best represented (63 species), along with one Petromyzontida (Lampetra planeri) and 7 crustaceans from the order Decapoda.
 	The estuarine waters dataset contains 116 fish species found in the estuaries of the River Yser and the River Scheldt, as well as 9 non-target crustacean species. The class of Actinopterygii is most represented (110 species), along with three Petromyzontida, and three Chondrichthyes. All the crustaceans in this dataset are from the order of the Decapoda.
-
 
 ### Add several taxa
 
@@ -138,34 +138,27 @@ Example:
 
 list keywords, use , as a separator. Thesaurus vocabulary, use n/a
 
-    waterfowl, birds, monitoring, wetlands, occurrence, observation, lifewatch
-
-
+    waterfowl, birds, monitoring, wetlands, occurrence, observation
 
 ## Associated parties
 
-The associated parties are (in order):
-
-    point of contact (required)
-    other researchers (optional)
-    organizations (optional)
-    processor(s) (required): Dimitri Brosens; Peter Desmet
+Avoid using, rather add involved people as resource creators.
 
 ## Project data
 
 Short description of the project, if any. 
 
-				Project title: Waterbird counts Flanders
-				Personnel:
-					Principal investigators: Koen Devos
-					Resource contact: 
-					Resource creator: 
-					Point of contact:
-					Metadata provider:
-					Content providers:
-					Developer:
-					Processors: Dimitri Brosens, Peter Desmet
-				Funding: This monitoring project receives funding from the Flemish Government.
+	Project title: Waterbird counts Flanders
+	Personnel:
+		Principal investigators: Koen Devos
+		Resource contact: 
+		Resource creator: 
+		Point of contact:
+		Metadata provider:
+		Content providers:
+		Developer:
+		Processors: Dimitri Brosens, Peter Desmet
+	Funding: This monitoring project receives funding from the Flemish Government.
 
 ### Study area description
 
@@ -185,7 +178,6 @@ Example datapaper:
 
     Over 2000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium have been sampled since 1992. In 2001, these locations were consolidated in a monitoring network ("VISmeetnet") of 900 sampling points. The geographic coordinates in the dataset are those of the sampling locations. Since these do not always represent the actual coordinates of the catch, which may have occurred further up- or downriver, the coordinateUncertaintyInMeters has been set to 250.
 
-
 ### Sampling description
 
 Example metadata:
@@ -204,9 +196,8 @@ Example datapaper:
 	In riverine environments, electric fishing was carried out on both riverbanks in upstream direction. All fishes were identified to species level, counted, and their length and weight was measured.
 	The default method used in estuarine waters is paired fyke netting, but additional techniques such as anchor netting, seine netting, pound netting, electric fishing, and eel fyke netting were used as well (Breine et al., 2011).
 	All fishes were identified to species level, counted their length and weight was measured.
-				
 
-###Quality control description
+### Quality control description
 
 Extended information on the validation and quality control used in the dataset generation.
 
@@ -218,7 +209,6 @@ Example datapaper:
 
     Strict field protocols where used. The Manual for Application of the European Fish Index (EFI) (Fame consortium, 2004) served as a guideline for electrofishing and was used in support of the EU water framework directive.
     Users of the data can comment on the inland waters and estuarine waters dataset at https://github.com/LifeWatchINBO/vis-inland-occurrences and https://github.com/LifeWatchINBO/vis-estuarine-occurrences respectively.
-
 
 ## Citations
 
@@ -247,7 +237,6 @@ Example:
 		Verbiest H, Belpaire C, Vandenabeele P, Ollevier F (1996) Het in werking stellen van de visdatabank met de nadruk op de gebruiksvriendelijkheid ervan IBW.Wb.V.R.96.042.
 		Verbiest H, Vandenabeele P, Belpaire C, Ollevier F (1994) Ontwerp van de visdatabank en implementatie van historische en recente gegevens IBW.Wb.V.R.94.029.
 
-
 ## Collection data
 
 ## External links
@@ -256,7 +245,7 @@ Example:
 
 Hierarchy level: dataset
 
-###Purpose  - Rationale
+### Purpose  - Rationale
 
 The rationale of the dataset. In a datapaper this will come directly under the `Data Published through` section
 
@@ -264,8 +253,7 @@ Example:
 
 	Counting waterbirds has a long tradition in Flanders, going back to the 1960s. The aim of this long-running monitoring scheme is to gather reliable information on the numbers, trends, and distribution of these species during their winter and migration period. Through this project, required data become available for international treaties and conventions such as the European Union (EU) Birds and Habitats Directives, the Ramsar Convention on Wetlands, and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA). These results are also used for informed decision-making by conservation bodies, planners and developers, and contribute to the sustainable use and management of wetlands and their dependent waterbirds.
 
-
-###Additional information
+### Additional information
 
 Example:
 
