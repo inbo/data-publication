@@ -7,10 +7,7 @@
 ## Data publication process
 
 * [Metadata](metadata.md) (working document)
-* [Darwin Core mapping](mapping/)
+* Darwin Core mapping: see `bird-tracking-gull-occurrences`, it is [described there](../bird-tracking-gull-occurrences) and the same.
 * [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/bird-tracking-wmh-occurrences)
 * [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
 
-## Accessing the bird tracking data with CartoDB
-
-[See this document](https://github.com/LifeWatchINBO/bird-tracking/blob/master/cartodb/README.md).
