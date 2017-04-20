@@ -120,35 +120,49 @@ The following data transformation script was initially created in [Exploratory](
     wc -l 2017-04-03-processed-logs.csv
     ```
 
-4. Filter the records for publication (either in the UI of Exploratory or by extending the script)
+4. Verify columns for `NA` values: there should be none, otherwise replace with empty strings (see script below).
+5. Filter the records for publication (either in the UI of Exploratory or by extending the script)
 
     * For bird-tracking-gull-occurrences
 
         ```r
+        # Replace NA with blank
+        mutate(sex = str_replace_na(sex, "")) %>%
+        mutate(minimumDistanceAboveSurfaceInMeters = str_replace_na(minimumDistanceAboveSurfaceInMeters, "")) %>%
+        
         # Remove outliers
         filter(!calc_outlier) %>%
+
         # Filter on gulls
         filter(species_code %in% c("hg", "lbbg")) %>%
         # Set an enddate
-        filter(eventDate <= as.POSIXct("2015-09-02")) %>%
+        filter(eventDate <= as.POSIXct("2016-08-31 23:59:59")) %>%
+        
         # Remove non-Darwin Core fields
         select(-device_info_serial, -species_code, -calc_outlier)
         ```
     * For bird-tracking-wmh-occurrences
 
         ```r
+        # Replace NA with blank
+        mutate(sex = str_replace_na(sex, "")) %>%
+        mutate(minimumDistanceAboveSurfaceInMeters = str_replace_na(minimumDistanceAboveSurfaceInMeters, "")) %>%
+        
         # Remove outliers
         filter(!calc_outlier) %>%
+        
         # Filter on gulls
-        filter(species_code %in% c("wmh")) %>%
+        filter(species_code == "wmh") %>%
         # Set an enddate
-        filter(eventDate <= as.POSIXct("2016-09-02")) %>%
+        filter(eventDate <= as.POSIXct("2016-08-31 23:59:59")) %>%
+        
         # Remove non-Darwin Core fields
         select(-device_info_serial, -species_code, -calc_outlier)
         ```
 
-5. Export the data as a comma-separated csv with the name `bird-tracking.csv`.
-6. Zip the file.
+
+6. Export the data as a comma-separated csv with the name `bird-tracking.csv`.
+7. Zip the file.
 
 ## Upload data to the IPT
 
