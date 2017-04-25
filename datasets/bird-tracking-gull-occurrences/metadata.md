@@ -40,7 +40,7 @@ http://doi.org/10.15468/02omly
 
 ## Rationale
 
-As part of our terrestrial and marine observatory for LifeWatch (http://lifewatch.inbo.be), the Research Institute for Nature and Forest (INBO), the Flanders Marine Institute (VLIZ), Ghent University (UGent), and the University of Antwerp (UA) are tracking large gull species with lightweight, solar powered GPS trackers. The project builds upon the extensive knowledge the INBO has acquired since 1999, studying in particular postnuptial migration, as well as mate and site fidelity of large gulls, by means of sightings of colour-marked individuals ringed in Belgium and via individual-based life-history studies by UGent and UA. The data collected through this bird tracking network allows to study the migration patterns and habitat use of the gulls in more detail. Furthermore, data collection is no longer biased towards locations where observers can see colour-ringed birds. To allow greater use of the data beyond our research questions, all data are published as open data.
+As part of our terrestrial and marine observatory for LifeWatch (http://lifewatch.inbo.be), the Research Institute for Nature and Forest (INBO), the Flanders Marine Institute (VLIZ), Ghent University (UGent), and the University of Antwerp (UA) are tracking large gull species with lightweight, solar powered GPS trackers. The project builds upon the extensive knowledge the INBO has acquired since 1999, studying in particular postnuptial migration, as well as mate and site fidelity of large gulls, by means of sightings of colour-marked individuals ringed in Belgium and via individual-based life-history studies by UGent and UA. The data collected through this bird tracking network allows to study the migration patterns and habitat use of the gulls in more detail. Furthermore, data collection is no longer biased towards locations where observers can see colour-ringed birds. To allow greater use of the data beyond our research questions, all data are periodically published as open data.
 
 ## Taxonomic coverage
 
@@ -123,7 +123,7 @@ See the section Sampling description for more details: the full processing of th
 3. GPS tracker records data.
 4. GPS tracker automatically receives new measurement settings and transmits recorded data when a connection can be established with the base station at the colony.
 5. Recorded data are automatically harvested, post-processed, and stored in a central PostgreSQL database at UvA-BiTS.
-6. Tracking data are automatically exported, cleaned, and enhanced monthly.
+6. Tracking data specific to LifeWatch Flanders are exported, cleaned, and enhanced monthly with a bird tracking ETL.
 7. LifeWatch INBO team periodically (re)publishes data as a Darwin Core Archive, registered with GBIF.
 8. Data stream stops when bird no longer returns to colony or if GPS tracker no longer functions (typical tracker lifespan: 2-3 years).
 
