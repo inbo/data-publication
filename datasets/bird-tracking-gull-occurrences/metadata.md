@@ -142,20 +142,6 @@ See the section Sampling description for more details: the full processing of th
 * **Distribution**: http://dataset.inbo.be/bird-tracking-gull-occurrences
 * **DOI**: http://doi.org/10.15468/02omly
 
-## Project data
-
-### Project title
-
-Bird tracking network
-
-### Funding
-
-This bird tracking network is funded for LifeWatch by Research Foundation Flanders (FWO, http://www.fwo.be/en/), with additional funding from Interreg Natura People (EFRO) through the Province of West Flanders.
-
-## Project website
-
-http://www.lifewatch.be/en/gps-tracking-network-large-birds
-
 ## Acknowledgements
 
 The authorities of the ports of Zeebrugge (MBZ), Ostend, and Vlissingen-Oost (Zeeland Seaports) permitted access to the breeding sites of the gulls and placed base stations at strategic points in the ports. PSA and APM (Belgium), COVRA and Van Citters Beheer B.V. (Netherlands) kindly permitted access to their sites.
