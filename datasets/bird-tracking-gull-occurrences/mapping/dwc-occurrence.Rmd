@@ -217,7 +217,7 @@ The [IPT only accepts uploads (including zips) of less than 100MB](https://githu
 2. Individually zip the resulting `bird_tracking_aa.csv`, `bird_tracking_ab.csv`, etc. files.
 3. Verify none of these are more than 100MB. If they are, use less lines per chunk.
 4. Upload the files one by one to the IPT.
-5. Map the files to Darwin Core (should be automapping for all fields). *The order in which they are mapped is also the order in which they will be concatenated ([see this issue](https://github.com/gbif/ipt/issues/1339)*
+5. Map the files to Darwin Core (should be automapping for all fields). *The order in which they are mapped is also the order in which they will be concatenated ([see this issue](https://github.com/gbif/ipt/issues/1339)).*
 
 ## Republish
 
