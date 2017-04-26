@@ -1,5 +1,5 @@
 ---
-title: "Darwin Core mapping for bird tracking data (gulls)"
+title: "Darwin Core mapping for bird tracking data"
 author: "Peter Desmet"
 date: "2017-04-18"
 output: html_document
