@@ -199,7 +199,7 @@ The [IPT only accepts uploads (including zips) of less than 100MB](https://githu
 
 8. In the IPT, click `Edit` next to source, then `Analyze` (might take a while) and `Save` to get the correct metrics.
 
-## Split the file in chunks
+### Split the file in chunks (not recommended)
 
 1. Copy and execute this bash script ([inspired by this](http://stackoverflow.com/questions/1411713/how-to-split-a-file-and-keep-the-first-line-in-each-of-the-pieces)) in the terminal to split the original file in chunks of a 3 million lines (this might take a while):
 
