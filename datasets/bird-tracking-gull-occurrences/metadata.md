@@ -24,11 +24,11 @@ Eric W.M. Stienen [^1], Peter Desmet [^1], Bart Aelterman [^1], Wouter Courtens 
 
 *Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described (v5.5) in Stienen et al. 2016 (http://doi.org/10.3897/zookeys.555.6173). The dataset contains close to 8.5 million occurrences (GPS fixes) recorded by GPS trackers mounted on 108 Lesser Black-backed Gulls and 37 Herring Gulls breeding at the Belgian and Dutch coast. The trackers are developed by the University of Amsterdam Bird Tracking System (UvA-BiTS, http://www.uva-bits.nl) and allow to study the gulls' habitat use and migration behaviour in great detail. Our bird tracking network is operational since 2013 and is maintained and used by the INBO, the Flanders Marine Institute (VLIZ), UvA-BiTS, Ghent University (UGent), and the University of Antwerp (UA). See the dataset metadata for contact information, scope, and methodology. Issues with the dataset can be reported at https://github.com/inbo/data-publication/tree/master/datasets/bird-tracking-gull-occurrences
 
-The following information is not included in the dataset and available upon request: outliers, temperature, speed, accelerometer data, GPS metadata (fix time, number of satellites used, vertical accuracy), bird biometrics data measured during tagging (bill length, bill depth, tarsus length, wing length, body mass), life history data (day of ringing, age, resightings by volunteers), as well as growth data of chicks.
+The following information is not included in the dataset and available upon request: outliers, speed, temperature, barometric pressure, accelerometer data, GPS metadata (fix time, number of satellites used, vertical accuracy), bird biometrics data measured during tagging (bill length, bill depth, tarsus length, wing length, body mass), life history data (day of ringing, age, resightings by volunteers), as well as growth data of chicks.
 
 To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/02omly) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
-The bird tracking network generating these data is supported by the INBO and VLIZ as part of the Flemish contribution to LifeWatch.
+The bird tracking network used to collect these data is set up and maintained by the INBO and VLIZ as part of the Flemish contribution to LifeWatch.
 
 ## Keywords
 
@@ -68,7 +68,7 @@ The tracked birds breed at the southern North Sea coast in three colonies, locat
 
 ### Bounding box
 
-10° to 60° latitude, -25° to 10° longitude
+10° to 55° latitude, -20° to 20° longitude
 
 ## Temporal coverage
 
