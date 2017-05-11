@@ -75,7 +75,7 @@ The following data transformation script was initially created in [Exploratory](
     mutate(ownerInstitutionCode = case_when(.$species_code %in% c("lbbg", "hg") ~ "INBO/VLIZ/UGent/UA", .$species_code == "wmh" ~ "INBO")) %>%
     mutate(basisOfRecord = "MachineObservation") %>%
     mutate(informationWithheld = "see metadata") %>%
-    mutate(dynamicProperties = paste("{\"device_info_serial\":", device_info_serial, ", \"catch_location\":\"", catch_location, "\", \"tracking_started_at\":\"", format(tracking_started_at,"%Y-%m-%d"), "\"}", sep = "")) %>%
+    mutate(dynamicProperties = paste("{\"device_info_serial\":", device_info_serial, ", \"catch_location\":\"", catch_location, "\", \"tracking_started_at\":\"", format(tracking_started_at,"%Y-%m-%d"), "\", \"heading_in_degrees\":", str_replace_na(sprintf("%.3f", round(direction, digits = 3)), "null"), "}", sep = "")) %>%
 
     ## Occurrence terms
     select(-sex, everything()) %>% # This field already exist, so just move it to correct place
@@ -87,7 +87,7 @@ The following data transformation script was initially created in [Exploratory](
 
     ## Event terms
     mutate(samplingProtocol = "https://doi.org/10.1007/s10336-012-0908-1") %>%
-    mutate(samplingEffort = paste("{\"seconds_since_last_occurrence\":", str_replace_na(calc_time_diff, "\"\""), "}", sep = "")) %>%
+    mutate(samplingEffort = paste("{\"seconds_since_last_occurrence\":", str_replace_na(calc_time_diff, "null"), "}", sep = "")) %>%
     mutate(eventDate = format(date_time,"%Y-%m-%dT%H:%M:%SZ")) %>%
 
     ## Location terms
