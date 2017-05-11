@@ -152,7 +152,7 @@ The following data transformation script was initially created in [Exploratory](
         # Remove outliers
         filter(!calc_outlier) %>%
         
-        # Filter on gulls
+        # Filter on harriers
         filter(species_code == "wmh") %>%
         
         # Remove non-Darwin Core fields
