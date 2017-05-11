@@ -44,9 +44,6 @@ collectionCode:
 datasetName:
   allowed: Saltabel - Orthoptera in Belgium
 
-ownerInstitutionCode:
-  allowed: INBO
-
 basisOfRecord:
   allowed: [HumanObservation, PreservedSpecimen]
   if:

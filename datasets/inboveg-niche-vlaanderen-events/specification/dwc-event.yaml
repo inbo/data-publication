@@ -33,9 +33,6 @@ institutionCode:
 datasetName:
   allowed: InboVeg - NICHE-Vlaanderen groundwater related vegetation relevés for Flanders, Belgium
 
-ownerInstitutionCode:
-  allowed: INBO
-
 eventID:
   required: true
   # Identical to id
