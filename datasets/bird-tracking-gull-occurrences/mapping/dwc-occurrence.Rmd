@@ -135,6 +135,8 @@ The following data transformation script was initially created in [Exploratory](
 
         # Filter on gulls
         filter(species_code %in% c("hg", "lbbg")) %>%
+        # Set an enddate
+        filter(eventDate <= as.POSIXct("2016-08-31 23:59:59")) %>%
         
         # Remove non-Darwin Core fields
         select(-device_info_serial, -species_code, -calc_outlier)
@@ -152,8 +154,6 @@ The following data transformation script was initially created in [Exploratory](
         
         # Filter on gulls
         filter(species_code == "wmh") %>%
-        # Set an enddate
-        filter(eventDate <= as.POSIXct("2016-08-31 23:59:59")) %>%
         
         # Remove non-Darwin Core fields
         select(-device_info_serial, -species_code, -calc_outlier)
