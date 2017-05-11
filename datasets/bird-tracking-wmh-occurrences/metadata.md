@@ -68,7 +68,7 @@ The tracked birds were tagged in their breeding range near the Belgium-Netherlan
 
 ## Temporal coverage
 
-**Date range**: 2013-05-16 to 2017-04-30
+**Date range**: 2013-05-16 to 2017-04-24
 
 **Formation periods**:
 

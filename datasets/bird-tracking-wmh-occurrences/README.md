@@ -8,5 +8,6 @@
 
 * [Metadata](metadata.md) (working document)
 * Darwin Core mapping: see `bird-tracking-gull-occurrences`, it is [described there](../bird-tracking-gull-occurrences) and the same.
+* [Data specifications](specification/)
 * [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/bird-tracking-wmh-occurrences)
 * [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
