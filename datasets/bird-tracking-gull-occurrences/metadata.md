@@ -68,7 +68,7 @@ The tracked birds breed at the southern North Sea coast in three colonies, locat
 
 ### Bounding box
 
-10° to 55° latitude, -20° to 20° longitude
+10° to 60° latitude, -20° to 20° longitude
 
 ## Temporal coverage
 
