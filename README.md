@@ -37,8 +37,8 @@ Title (and directory in this repo) | DOI  | 1st publication | Type
 [VIS - Reference freshwater monitoring in Flanders, Belgium (post 2013)](datasets/vis-freshwater-monitoring-events) | http://doi.org/10.15468/klsy8u | 2017-01-10 | sampling-event
 [VIS - Estuarine monitoring in Flanders, Belgium (post 2013)](datasets/vis-estuarine-monitoring-events) | http://doi.org/10.15468/jhv16z | 2017-01-20 | sampling-event
 [PINK - Dragonfly (Odonata) monitoring for the permanent surveillance of coastal areas in Flanders, Belgium](datasets/pink-odonata-events) | http://doi.org/10.15468/wp82td | 2017-01-24 | sampling-event
+[Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border](datasets/bird-tracking-wmh-occurrences) | https://doi.org/10.15468/rbguhj | 2017-05-12 | occurrence
 [Invasive species - Previously unpublished occurrences in Flanders, Belgium](datasets/invasive-other-occurrences) |  |  | occurrence
-[Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border](datasets/bird-tracking-wmh-occurrences) |  |  | occurrence
 [SAS - Seabirds at sea monitoring in the Belgian part of the North Sea](datasets/sas-occurrences) |  |  | occurrence
 
 ## Standardization

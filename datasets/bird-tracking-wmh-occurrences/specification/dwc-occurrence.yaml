@@ -1,5 +1,5 @@
 # Dataset: bird-tracking-wmh-occurrences
-# DOI: 
+# DOI: https://doi.org/10.15468/rbguhj
 # 
 # Scope: dwc-occurrence
 # Author: Peter Desmet
@@ -24,7 +24,7 @@ accessRights:
   allowed: 'http://www.inbo.be/en/norms-for-data-use'
 
 datasetID:
-#  allowed: TODO
+  allowed: https://doi.org/10.15468/rbguhj
 
 institutionCode:
   allowed: INBO
