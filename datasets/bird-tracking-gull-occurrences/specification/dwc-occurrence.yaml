@@ -15,16 +15,16 @@ language:
   allowed: en
 
 license:
-  allowed: 'http://creativecommons.org/publicdomain/zero/1.0/'
+  allowed: http://creativecommons.org/publicdomain/zero/1.0/
 
 rightsHolder:
   allowed: INBO
 
 accessRights:
-  allowed: 'http://www.inbo.be/en/norms-for-data-use'
+  allowed: http://www.inbo.be/en/norms-for-data-use
 
 datasetID:
-  allowed: 'https://doi.org/10.15468/02omly'
+  allowed: https://doi.org/10.15468/02omly
 
 institutionCode:
   allowed: INBO
