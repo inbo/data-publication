@@ -69,7 +69,7 @@ The following data transformation script was initially created in [Exploratory](
     mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/") %>%
     mutate(rightsHolder = "INBO") %>%
     mutate(accessRights = "http://www.inbo.be/en/norms-for-data-use") %>%
-    mutate(datasetID = case_when(.$species_code %in% c("lbbg", "hg") ~ "https://doi.org/10.15468/02omly", .$species_code == "wmh" ~ "no doi yet")) %>%
+    mutate(datasetID = case_when(.$species_code %in% c("lbbg", "hg") ~ "https://doi.org/10.15468/02omly", .$species_code == "wmh" ~ "https://doi.org/10.15468/rbguhj")) %>%
     mutate(institutionCode = "INBO") %>%
     mutate(datasetName = case_when(.$species_code %in% c("lbbg", "hg") ~ "Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast", .$species_code == "wmh" ~ "Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border")) %>%
     mutate(basisOfRecord = "MachineObservation") %>%

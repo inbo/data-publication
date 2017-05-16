@@ -11,7 +11,6 @@ Tim Adriaens[^1], Gilles San Martin[^2], Dirk Maes[^1], Dimitri Brosens[^1]
 
 **Resource citation**: Adriaens T, San Martin y Gomez G, Maes D, Brosens D, Desmet P (2012): Belgian Coccinellidae - Ladybird beetles in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/0refva
 
-
 ## Abstract
 
 The Belgian Coccinellidae dataset which is published, is the result of a merge of 4 datasets. The INBO (Research Institute for Nature and Forest; Flemish Region Database), the DFF database (The Walloon Region Database), Observations.be data provided by Natagora (The Walloon Region and Brussels Capital Region) and the Walloon Region Online Encoding Tool (DEMNA - OFFH, observatoire.biodiversite.wallonie.be/encodage) data. At present, the database contains about 80.000 records, of which 15% come from museum collections and literature data.

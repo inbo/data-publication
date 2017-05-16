@@ -1,5 +1,4 @@
-#InboVeg - NICHE-Vlaanderen a vegetation relevé database database on groundwater dependent terrestrial vegetationin Flanders, Belgium.
-
+# InboVeg - NICHE-Vlaanderen a vegetation relevé database database on groundwater dependent terrestrial vegetationin Flanders, Belgium.
 
 Els De Bie[^1]
 

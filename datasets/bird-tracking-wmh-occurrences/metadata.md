@@ -14,7 +14,7 @@ Anny Anselin [^1], Peter Desmet [^1], Kjell Janssens [^1], Filiep T'Jollyn [^1],
 
 ---
 
-**Resource citation**: Anselin A, Desmet P, Janssens K, T'Jollyn F, De Bruyn L, Hernandez F, Bouten W, Lens L (2017): Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://data.inbo.be/ipt/resource?r=bird-tracking-wmh-occurrences
+**Resource citation**: Anselin A, Desmet P, Janssens K, T'Jollyn F, De Bruyn L, Hernandez F, Bouten W, Lens L (2017): Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. https://doi.org/10.15468/rbguhj
 
 ## Abstract
 
