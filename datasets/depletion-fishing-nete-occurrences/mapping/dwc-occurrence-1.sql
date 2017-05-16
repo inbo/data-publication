@@ -75,7 +75,7 @@ SELECT
 	  , [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	  , [rightsHolder] =  CONVERT(Nvarchar(20),'INBO')
 	  , [type] = CONVERT(Nvarchar(20), 'Event') -->"Dataset" tpye
-	  , [datasetID] = 'http://doi.org/10.15468/zan6uj'
+	  , [datasetID] = 'https://doi.org/10.15468/zan6uj'
 	  , [datasetName] = 'Depletion fishing in the rivers Grote Nete and Kleine Nete in Flanders, Belgium'
 	  , [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
 	  , [continent] = N'Europe'

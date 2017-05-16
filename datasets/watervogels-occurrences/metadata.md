@@ -9,11 +9,13 @@ Koen Devos[^1], Filiep T'Jollyn[^1], Peter Desmet[^1], Dimitri Brosens[^1]
 ---
 
 **Resource citation**: Devos K, T'Jollyn F, Brosens D, Desmet P (2012): Watervogels - Wintering waterbirds in Flanders, Belgium. Research
- Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/lj0udq
+ Institute for Nature and Forest (INBO). Dataset/Occurrence. https://doi.org/10.15468/lj0udq
 
 ## Abstract
 
 *Watervogels - Wintering waterbirds in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains more than 75,000 bird counts, covering over 600,000 observations and 35 million individuals for the period 1991-2013. It includes information on 170 species in nearly 1,200 wetland sites. The aim of these bird counts is to gather information on the size, distribution and long term trends of wintering waterbird populations in Flanders. These data are also used to assess the importance of individual sites for waterbirds, using quantitative criteria. Furthermore, the waterbird counts contribute to international monitoring programs, such as the International Waterbird Census (coordinated by Wetlands International) and fulfil some of the objectives of the European Bird Directive, the Ramsar Convention, and the Agreement on the Conservation of African-Eurasian Migratory Waterbirds (AEWA). The data are released in bulk as open data. See the dataset metadata or the publication for contact information, scope and methodology. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/watervogels-occurrences
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (https://doi.org/10.15468/lj0udq) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Keywords
 
@@ -21,7 +23,7 @@ waterbirds, birds, monitoring, wetlands, population trends, distribution, Lifewa
 
 ## Data published through
 
-http://doi.org/10.15468/lj0udq
+https://doi.org/10.15468/lj0udq
 
 ## Rationale
 
@@ -130,11 +132,7 @@ The Darwin Core terms (http://rs.tdwg.org/dwc/terms/) in the dataset are: `occur
 * **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2014-11-27
 * **Distribution**: http://dataset.inbo.be/watervogels-occurrences
-* **DOI**: http://doi.org/10.15468/lj0udq
-
-## Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/lj0udq) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
+* **DOI**: https://doi.org/10.15468/lj0udq
 
 ### Additional information
 

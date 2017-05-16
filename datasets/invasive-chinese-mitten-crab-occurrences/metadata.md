@@ -8,11 +8,13 @@ Sander Devisscher[^1], Tim Adriaens [^1], Dimitri Brosens[^1], Peter Desmet[^1]
 
 ---
 
-**Resource citation**: Devisscher S, Adriaens T, Brosens D, Desmet P (2015): Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/eakzzv
+**Resource citation**: Devisscher S, Adriaens T, Brosens D, Desmet P (2015): Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. https://doi.org/10.15468/eakzzv
 
 ## Abstract
 
 *Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 6,000 occurrences (Chinese mitten crab exclusively) sampled between 2000 and now. The data are compiled from different monitoring initiatives at the INBO. The Chinese mitten crab is listed as a species of EU concern sensu the EU regulation 1143/2014 on the prevention and management of the introduction of invasive alien species (IAS). This requires member states to report on the status of such species. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/invasive-chinese-mitten-crab-occurrences
+
+We strongly believe an open attitude is essential for tackling the IAS problem (Groom et al. 2015). To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it however if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (https://doi.org/10.15468/eakzzv) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Keywords
 
@@ -20,7 +22,7 @@ Chinese mitten crab, Eriocheir sinensis, crustaceans, invasive alien species, no
 
 ## Data published through
 
-http://doi.org/10.15468/eakzzv
+https://doi.org/10.15468/eakzzv
 
 ## Rationale
 
@@ -85,11 +87,7 @@ Not provided.
 * **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2015-10-30
 * **Distribution**: http://dataset.inbo.be/invasive-chinese-mitten-crab-occurrences
-* **DOI**: http://doi.org/10.15468/eakzzv
-
-### Usage norms
-
-We strongly believe an open attitude is essential for tackling the IAS problem (Groom et al. 2015). To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it however if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/eakzzv) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
+* **DOI**: https://doi.org/10.15468/eakzzv
 
 ## Project
 
@@ -111,4 +109,4 @@ Research Institute for Nature and Forest (INBO)
 
 ## References
 
-Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions (2015) Volume 6, Issue 2: 119–125 doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
+Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions (2015) Volume 6, Issue 2: 119–125 https://doi.org/10.3391/mbi.2015.6.2.02

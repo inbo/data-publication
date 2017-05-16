@@ -8,11 +8,13 @@ Stijn Vanacker[^1], Dimitri Brosens[^1], Peter Desmet [^1]
 
 ---
 
-**Recource citation**: Vanacker S, Brosens D, Desmet P (2013): Loopkevers Grensmaas - Ground beetles near the river Meuse in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/hy3pzl
+**Recource citation**: Vanacker S, Brosens D, Desmet P (2013): Loopkevers Grensmaas - Ground beetles near the river Meuse in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. https://doi.org/10.15468/hy3pzl
 
 ## Abstract
 
 *Loopkevers Grensmaas - Ground beetles near the river Meuse in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 5,800 beetle occurrences sampled between 1998 and 1999 from 28 locations on the left bank (Belgium) of the river Meuse on the border between Belgium and the Netherlands. The dataset includes over 100 ground beetles species (Carabidae) and some non-target species. The data were used to assess the dynamics of the Grensmaas area and to help river management. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/kevers-grensmaas-occurrences
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (https://doi.org/10.15468/hy3pzl) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Keywords
 
@@ -20,7 +22,7 @@ nature restoration, beetles, Carabidae, Occurrence, Observation
 
 ## Data published through
 
-http://doi.org/10.15468/hy3pzl
+https://doi.org/10.15468/hy3pzl
 
 ## Rationale
 
@@ -85,11 +87,7 @@ Pitfalls were placed on 80 plots and sampled from May to October.
 * **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2013-06-11
 * **Distribution**: http://dataset.inbo.be/kevers-grensmaas-occurrences
-* **DOI**: http://doi.org/10.15468/hy3pzl
-
-### Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/hy3pzl) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
+* **DOI**: https://doi.org/10.15468/hy3pzl
 
 ## Project data
 

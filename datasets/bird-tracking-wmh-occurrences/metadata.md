@@ -116,4 +116,4 @@ The tracked birds were tagged in their breeding range near the Belgium-Netherlan
 
 ## References
 
-Bouten W., Baaij E.W., Shamoun-Baranes J., Camphuysen K.C.J. (2013) A flexible GPS tracking system for studying bird behaviour at multiple scales. Journal of Ornithology 154 (2): 571-580. doi: [10.1007/s10336-012-0908-1](http://doi.org/10.1007/s10336-012-0908-1)
+Bouten W., Baaij E.W., Shamoun-Baranes J., Camphuysen K.C.J. (2013) A flexible GPS tracking system for studying bird behaviour at multiple scales. Journal of Ornithology 154 (2): 571-580. https://doi.org/10.1007/s10336-012-0908-1

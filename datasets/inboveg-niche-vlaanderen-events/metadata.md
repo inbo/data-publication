@@ -12,7 +12,7 @@ Els De Bie[^1]
 
 **Resource Citation**
 
-De Bie E (2016): InboVeg Niche in Flanders, vegetation relevé. v1.4. Test Organisation #1. Dataset/Samplingevent. http://oefendata.inbo.be/ipt/resource?r=inboveg_niche_vlaanderen&v=1.4
+De Bie E (2016): InboVeg Niche in Flanders, vegetation relevé. v1.4. Test Organisation #1. Dataset/Samplingevent. http://data.inbo.be/ipt/resource?r=inboveg_niche_vlaanderen&v=1.4
 
 **Abstract**
 

@@ -10,11 +10,13 @@ Sander Devisscher[^1], Tim Adriaens[^1], Dimitri Brosens[^1], Frank Huysentruyt[
 
 ---
 
-**Resource citation**: Devisscher S, Adriaens T, Brosens D, Huysentruyt F, Driessens G, Desmet P (2016): Zomerganzen - Summering geese management and population counts in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Samplingevent. http://doi.org/10.15468/a5ubtp
+**Resource citation**: Devisscher S, Adriaens T, Brosens D, Huysentruyt F, Driessens G, Desmet P (2016): Zomerganzen - Summering geese management and population counts in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Samplingevent. https://doi.org/10.15468/a5ubtp
 
 ## Abstract
 
 *Zomerganzen - Summering geese management and population counts in Flanders, Belgium* is a sampling event dataset published by the Research Institute for Nature and Forest (INBO). The dataset contains over 3,700 sampling events, carried out since 2009, mostly in the months June and July. The data are compiled from different summering geese related projects, but most data were collected through fieldwork within the framework of the EU co-funded Interreg projects INVEXO (http://www.invexo.eu) and RINSE (www.rinse-europe.eu). Since 2015, data collection is funded by INBO. The dataset includes close to 5,000 presence occurrences, as well as over 15,000 absence occurrences. The sampling protocol for the majority of the occurrences are simultaneous counts. Here, the number of individuals of different geese species in a fixed set of areas is determined. Counts are performed within the same weekend to avoid double counting. Simultaneous counts were organised yearly since 2008 and take place the first weekend after July 15, the best period for monitoring the summering population of geese. These counts are performed by professional INBO employees as well as experienced birdwatchers from Natuurpunt using a standardized field protocol. Data are recorded in a citizen science portal (http://waarnemingen.be/waarnemingen_projecten.php?project=231). However, The dataset also comprises opportunistic field observations from the same portal outside this period. Furthermore, data are derived from management actions, such as fertility reduction (egg shaking and pricking), the use of Larsen traps (for Egyptian goose), and the execution of moult captures. Here, the individuals in the dataset were actually removed from the environment. The aim of the data collection is management follow-up and evaluation. Consequently, caution is advised when using these data for trend analysis, distribution range calculation, niche modeling or other. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/zomerganzen-events
+
+We strongly believe an open attitude is essential for tackling the IAS problem (Groom et al. 2015). To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it however if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (https://doi.org/10.15468/a5ubtp) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Keywords
 
@@ -22,7 +24,7 @@ invasive alien species, summering geese, monitoring, citizen science, Samplingev
 
 ## Data published through
 
-http://doi.org/10.15468/a5ubtp
+https://doi.org/10.15468/a5ubtp
 
 ## Rationale
 
@@ -95,11 +97,7 @@ To allow reliable comparisons between years and areas, the counts are aimed for 
 * **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2016-01-22
 * **Distribution**: http://dataset.inbo.be/zomerganzen-events
-* **DOI**: http://doi.org/10.15468/a5ubtp
-
-### Usage norms
-
-We strongly believe an open attitude is essential for tackling the IAS problem (Groom et al. 2015). To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate it however if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/a5ubtp) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
+* **DOI**: https://doi.org/10.15468/a5ubtp
 
 ## Project
 
@@ -149,4 +147,4 @@ Invexo-Project brochure: 'Minder invasieve planten en dieren, meer biodiversitei
 
 Adriaens T, Huysentruyt F, Van Daele P, Devos K, Casaer J (2014) Evaluatie bescherming en beheer van ganzenpopulaties. Inhoudsevaluatie van natuurbeleid in landbouwgebied: case vogelbeheer en erosiebestrijding. van Gossum, P. (ed.). INBO.R.2012.50 ed. Brussel: Instituut voor Natuur- en Bosonderzoek, blz. 29-41 13 blz. https://www.inbo.be/nl/publicatie/evaluatie-bescherming-en-beheer-van-ganzenpopulaties
 
-Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions (2015) Volume 6, Issue 2: 119–125 doi: [10.3391/mbi.2015.6.2.02](http://doi.org/10.3391/mbi.2015.6.2.02)
+Groom QJ, Desmet P, Vanderhoeven S, Adriaens T (2015) The importance of open data for invasive alien species research, policy and management. Management of Biological Invasions (2015) Volume 6, Issue 2: 119–125 https://doi.org/10.3391/mbi.2015.6.2.02

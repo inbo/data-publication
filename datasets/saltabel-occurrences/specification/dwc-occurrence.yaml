@@ -1,5 +1,5 @@
 # Dataset: http://dataset.inbo.be/saltabel-occurrences
-# DOI: http://doi.org/10.15468/1rcpsq
+# DOI: https://doi.org/10.15468/1rcpsq
 # 
 # Scope: dwc-occurrence
 # Author: Peter Desmet
@@ -32,7 +32,7 @@ accessRights:
   allowed: http://www.inbo.be/en/norms-for-data-use
 
 datasetID:
-  allowed: http://doi.org/10.15468/1rcpsq
+  allowed: https://doi.org/10.15468/1rcpsq
 
 institutionCode:
   allowed: INBO

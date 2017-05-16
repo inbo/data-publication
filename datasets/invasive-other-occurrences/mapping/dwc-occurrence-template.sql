@@ -14,7 +14,7 @@ SELECT
     , [license] = 'http://creativecommons.org/publicdomain/zero/1.0/'
     , [rightsHolder] = 'INBO'
     , [accessRights] = 'http://www.inbo.be/en/norms-for-data-use'
-    , [datasetID] = 'http://doi.org/10.15468/1rcpsq'
+    , [datasetID] = 'https://doi.org/10.15468/1rcpsq'
     , [institutionCode] = 'INBO'
     , [datasetName] = 'invasive-other-occurrences'
     , [ownerInstitutionCode] = 'INBO'

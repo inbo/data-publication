@@ -8,11 +8,13 @@ Geert De Knijf[^1]
 
 ---
 
-**Resource citation**: De Knijf G, Brosens D, Desmet P (2014): Red list of dragonflies in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Checklist. http://doi.org/10.15468/wgegyc
+**Resource citation**: De Knijf G, Brosens D, Desmet P (2014): Red list of dragonflies in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Checklist. https://doi.org/10.15468/wgegyc
 
 ## Abstract
 
 *Red list of dragonflies in Flanders, Belgium* is a regional checklist dataset published by the Research Institute for Nature and Forest (INBO). It is the official red list of dragonflies (Odonata) in Flanders, as published in De Knijf 2006. The dataset includes 66 species, with their Dutch vernacular name and IUCN status in Flanders. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/rl-libellen-checklist
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (https://doi.org/10.15468/wgegyc) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Keywords
 
@@ -20,7 +22,7 @@ Odonata, red list, Flanders, Checklist, Inventoryregional
     
 ## Data published through
 
-http://doi.org/10.15468/wgegyc
+https://doi.org/10.15468/wgegyc
 
 ## Taxonomic coverage
 
@@ -61,11 +63,7 @@ Flanders, Belgium.
 * **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2014-05-06
 * **Distribution**: http://dataset.inbo.be/rl-libellen-checklist
-* **DOI**: http://doi.org/10.15468/wgegyc
-
-### Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/wgegyc) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
+* **DOI**: https://doi.org/10.15468/wgegyc
 
 ## References
 

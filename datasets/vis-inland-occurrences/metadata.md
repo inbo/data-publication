@@ -10,11 +10,15 @@ Gerlinde Van Thuyne[^1], Jan Breine[^1], Hugo Verreycken[^1], Tom De Boeck[^2], 
 
 ---
 
-**Resource citation**: Van Thuyne G, Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2013): VIS - Fishes in inland waters in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/gzyxyd Data paper: http://doi.org/10.3897/zookeys.475.8556
+**Resource citation**: Van Thuyne G, Breine J, Verreycken H, De Boeck T, Brosens D, Desmet P (2013): VIS - Fishes in inland waters in Flanders, Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. https://doi.org/10.15468/gzyxyd Data paper: https://doi.org/10.3897/zookeys.475.8556
 
 ## Abstract
 
-*VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described in Brosens et al. 2015 (http://doi.org/10.3897/zookeys.475.8556). The dataset contains over 350,000 fish occurrences sampled between 1992 and 2012 from over 2,000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 64 fish species, as well as a number of non-target species (mainly crustaceans). The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-inland-occurrences
+*VIS - Fishes in inland waters in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) and described in Brosens et al. 2015 (https://doi.org/10.3897/zookeys.475.8556). The dataset contains over 350,000 fish occurrences sampled between 1992 and 2012 from over 2,000 locations in inland rivers, streams, canals, and enclosed waters in Flanders, Belgium. The dataset includes over 64 fish species, as well as a number of non-target species (mainly crustaceans). The data are retrieved from the Fish Information System (VIS), a database set up to monitor the status of fishes and their habitats in Flanders and are collected in support of the Water Framework Directive, the Habitat Directive, certain red lists, and biodiversity research. Additional information, such as measurements, absence information and abiotic data are available upon request. Issues with the dataset can be reported at https://github.com/LifeWatchINBO/data-publication/tree/master/datasets/vis-inland-occurrences
+
+Length and weight measurement data of the individual fishes, absence information, occurrence data since 2013, as well as abiotic data of the sampling points (pH, temperature, etc.) are not included in the Darwin Core Archive and are available upon request.
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (https://doi.org/10.15468/gzyxyd) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Keywords
 
@@ -22,7 +26,7 @@ ecosystem functioning, fish-based index of biotic integrity, fish distribution, 
 
 ## Data published through
 
-http://doi.org/10.15468/gzyxyd
+https://doi.org/10.15468/gzyxyd
 
 ## Rationale
 
@@ -115,15 +119,7 @@ Effort: 15% of riverbank (minimum 1000 m, maximum 2000 m) or 100% if perimeter i
 * **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2013-12-20
 * **Distribution**: http://dataset.inbo.be/vis-inland-occurrences
-* **DOI**: http://doi.org/10.15468/gzyxyd
-
-### Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/gzyxyd) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
-
-### Additional information
-
-Length and weight measurement data of the individual fishes, absence information, occurrence data since 2013, as well as abiotic data of the sampling points (pH, temperature, etc.) are not included in the Darwin Core Archive and are available upon request.
+* **DOI**: https://doi.org/10.15468/gzyxyd
 
 ## Project data
 
@@ -137,13 +133,13 @@ Flemish government
 
 ## References
 
-Brosens D, Breine J, Van Thuyne G, Belpaire C, Desmet P, Verreycken H (2015) VIS – A database on the distribution of fishes in inland and estuarine waters in Flanders, Belgium. ZooKeys 475: 119-145. doi: [10.3897/zookeys.475.8556](http://doi.org/10.3897/zookeys.475.8556)
+Brosens D, Breine J, Van Thuyne G, Belpaire C, Desmet P, Verreycken H (2015) VIS – A database on the distribution of fishes in inland and estuarine waters in Flanders, Belgium. ZooKeys 475: 119-145. https://doi.org/10.3897/zookeys.475.8556
 
-Belpaire C, Smolders R, Vanden Auweele I, Erecken D, Breine J, Van Thuyne G, Ollevier F (2000) An Index of Biotic Integrity characterizing fish populations and the ecological quality of Flandrian water bodies. Hydrobiologia 434: 17–33. doi: [10.1023/A:1004026121254](http://doi.org/10.1023/A:1004026121254)
+Belpaire C, Smolders R, Vanden Auweele I, Erecken D, Breine J, Van Thuyne G, Ollevier F (2000) An Index of Biotic Integrity characterizing fish populations and the ecological quality of Flandrian water bodies. Hydrobiologia 434: 17–33. https://doi.org/10.1023/A:1004026121254
 
-Breine J, Simoens I, Goethals P, Quataert P, Ercken D, Van Liefferinghe C, Belpaire C (2004) A fish-based index of biotic integrity for upstream brooks in Flanders (Belgium). Hydrobiologia 522: 133–148. doi: [10.1023/B:HYDR.0000029991.42922.a4](http://doi.org/10.1023/B:HYDR.0000029991.42922.a4)
+Breine J, Simoens I, Goethals P, Quataert P, Ercken D, Van Liefferinghe C, Belpaire C (2004) A fish-based index of biotic integrity for upstream brooks in Flanders (Belgium). Hydrobiologia 522: 133–148. https://doi.org/10.1023/B:HYDR.0000029991.42922.a4
 
-Breine J, Maes J, Quataert P, Van den Bergh E, Simoens I, Van Thuyne G, Belpaire C (2007) A fish-based assessment tool for the ecological quality of the brackish Schelde estuary in Flanders (Belgium). Hydrobiologia 575: 141–159. doi: [10.1007/s10750-006-0357-z](http://doi.org/10.1007/s10750-006-0357-z)
+Breine J, Maes J, Quataert P, Van den Bergh E, Simoens I, Van Thuyne G, Belpaire C (2007) A fish-based assessment tool for the ecological quality of the brackish Schelde estuary in Flanders (Belgium). Hydrobiologia 575: 141–159. https://doi.org/10.1007/s10750-006-0357-z
 
 Breine J, Quataert P, Stevens M, Ollevier F, Volckaert FAM, Van den Bergh E, Maes J (2010) A zone-specific fish-based biotic index as a management tool for the Zeeschelde estuary (Belgium). Marine Pollution bulletin 60: 1099–1112.
 
@@ -153,7 +149,7 @@ EU Water Framework Directive (2000) Directive 2000/60/EC of the European Parliam
 
 FAME Consortium (2004) Manual for the application of the European Fish Index - EFI. A fish-based method to assess the ecological status of European rivers in support of the Water Framework Directive. Version 1.1, January 2005.
 
-Karr JR (1981) Assessment of biotic integrity using fish communities. Fisheries 6: 21–27. doi: [ 10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2](http://doi.org/10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2)
+Karr JR (1981) Assessment of biotic integrity using fish communities. Fisheries 6: 21–27. https://doi.org/10.1577/1548-8446(1981)006<0021:AOBIUF>2.0.CO;2
 
 Van Thuyne G, Breine J (2010) Visbestandopnames in Vlaamse beken en rivieren in het kader van het ‘Meetnet Zoetwatervis’ 2009. Rapporten van het Instituut voor Natuur- en Bosonderzoek, 2010 (42). INBO, Brussel, 196 pp.
 
@@ -161,4 +157,4 @@ Verbiest H, Belpaire C, Vandenabeele P, Ollevier F (1996) Het in werking stellen
 
 Verbiest H, Vandenabeele P, Belpaire C, Ollevier F (1994) Ontwerp van de visdatabank en implementatie van historische en recente gegevens IBW.Wb.V.R.94.029.
 
-Verreycken H, Belpaire C, Van Thuyne G, Breine J, Buysse D, Coeck J, Mouton A, Stevens M, Van den Neucker T, De Bruyn L, Maes D (2014) IUCN Red List of freshwater fishes and lampreys in Flanders (north Belgium). Fisheries Management and Ecology 21: 122–132. doi: [10.1111/fme.12052](http://doi.org/10.1111/fme.12052)
+Verreycken H, Belpaire C, Van Thuyne G, Breine J, Buysse D, Coeck J, Mouton A, Stevens M, Van den Neucker T, De Bruyn L, Maes D (2014) IUCN Red List of freshwater fishes and lampreys in Flanders (north Belgium). Fisheries Management and Ecology 21: 122–132. https://doi.org/10.1111/fme.12052

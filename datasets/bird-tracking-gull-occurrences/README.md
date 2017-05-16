@@ -13,7 +13,7 @@
 
 ## Data paper
 
-> Stienen EWM, Desmet P, Aelterman B, Courtens W, Feys S, Vanermen N, Verstraete H, Van de walle M, Deneudt K, Hernandez F, Houthoofdt R, Vanhoorne B, Bouten W, Buijs RJ, Kavelaars MM, Müller W, Herman D, Matheve H, Sotillo A, Lens L (2016) GPS tracking data of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast. ZooKeys 555: 115–124. doi: [10.3897/zookeys.555.6173](http://doi.org/10.3897/zookeys.555.6173)
+> Stienen EWM, Desmet P, Aelterman B, Courtens W, Feys S, Vanermen N, Verstraete H, Van de walle M, Deneudt K, Hernandez F, Houthoofdt R, Vanhoorne B, Bouten W, Buijs RJ, Kavelaars MM, Müller W, Herman D, Matheve H, Sotillo A, Lens L (2016) GPS tracking data of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast. ZooKeys 555: 115–124. https://doi.org/10.3897/zookeys.555.6173
 
 ## Accessing the bird tracking data with CartoDB
 

@@ -28,7 +28,7 @@ select
   'http://creativecommons.org/publicdomain/zero/1.0/'::text as license,
   'INBO'::text as rightsholder,
   'http://www.inbo.be/en/norms-for-data-use'::text as accessRights,
-  'http://doi.org/10.15468/02omly'::text as datasetID,
+  'https://doi.org/10.15468/02omly'::text as datasetID,
   'INBO'::text as institutionCode,
   'Bird tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North Sea coast'::text as datasetName,
   'INBO'::text as ownerInstitutionCode,

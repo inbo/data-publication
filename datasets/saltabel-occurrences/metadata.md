@@ -14,11 +14,13 @@ Tim Adriaens[^1], Kris Decleer[^1], Hendrik Devriese[^2], Koen Lock[^2], Jorg La
 
 ---
 
-**Resource citation**: Adriaens T, Decleer K, Devriese H, Lock K, Lambrechts J, San Martin y Gomez G, Piesschaert F, Maes D, Brosens D, Desmet P (2013): Saltabel - Orthoptera in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. http://doi.org/10.15468/1rcpsq
+**Resource citation**: Adriaens T, Decleer K, Devriese H, Lock K, Lambrechts J, San Martin y Gomez G, Piesschaert F, Maes D, Brosens D, Desmet P (2013): Saltabel - Orthoptera in Belgium. Research Institute for Nature and Forest (INBO). Dataset/Occurrence. https://doi.org/10.15468/1rcpsq
 
 ## Abstract
 
 The Saltabel dataset deals with grasshopper and cricket occurrences in Belgium. The data are largely gathered by volunteer naturalists, who also reviewed and digitized data from existing museum and university collections in Belgium. Input in a database, feedback to observers, validation and database maintenance were cared for by a professional employee at the Institute for Nature Conservation (IN), now INBO (The Institute for Forest and Nature research). The Saltabel (Salta  Saltatoria; bel  Belgium) working group was established in 1989. The purpose of the Saltabel Database was mainly to collect information about the distribution, faunistics and ecology of grasshoppers and crickets in Belgium, The Netherlands and Luxembourg.  The working group produced a newsletter which appeared irregularly in the period 1989-2002 with the intention to inform observers about latest findings, interesting observations, ecological research etc., provide feedback to naturalists and to raise awareness about the conservation value of Orthoptera in general. During this period, the working group was most active and organized annual weekends, in turn organized in Belgium, the Netherlands and sometimes also northern France . These weekends were intended to perform inventories for badly prospected regions and to stimulate knowledge exchange between collaborators. In 1997, a standard work on the grasshoppers and crickets of The Netherlands was published using data from this project (Kleukers et al. 1997). In 2000, a provisional atlas and red lists of grasshoppers and crickets in Flanders , Brussels and Wallonia was published (Decleer et al. 2000), providing the first major output of this faunistic project for Belgium. As a consequence, the interest for grasshoppers and crickets in conservation increased, as these insects became important indicators of natural quality and successful nature management. After this milestone, the working group lost some incentive, the network of volunteers was no longer professionally supported and Saltabel became less active. In 2006, a dedicated survey was organised in Brussels Capital Region through the SaltaBru project, greatly increasing the number of records for this region. More recently, Saltabel became a study group of the Flemish NGO Natuurpunt and the working group revived with numerous activities and a growing number of recorders involved (http://www.saltabel.org). Since 2011, the online encoding platform http://www.waarnemingen.be is promoted and used for online reporting of records. Since 2012, the focus of the working group was put on enhancing the knowledge of threatened species in Flanders, with dedicated surveys prospecting historically known locations of e.g. Stenobothrus stigmaticus, Stenobothrus lineatus and Ephippiger ephippiger. The database described here, however, does not contain these recent records.
+
+To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (https://doi.org/10.15468/1rcpsq) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
 
 ## Keywords
 
@@ -26,7 +28,7 @@ Orthoptera, grasshoppers, crickets, locusts, distribution, faunistics, Belgium, 
 
 ## Data published through
 
-http://doi.org/10.15468/1rcpsq
+https://doi.org/10.15468/1rcpsq
 
 ## Rationale
 
@@ -142,11 +144,7 @@ Observations pertaining to common species which were previously validated to occ
 * **Usage norms**: http://www.inbo.be/en/norms-for-data-use
 * **Publication date**: 2013-09-13
 * **Distribution**: http://dataset.inbo.be/saltabel-occurrences
-* **DOI**: http://doi.org/10.15468/1rcpsq
-
-### Usage norms
-
-To allow anyone to use this dataset, we have released the data to the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original dataset (http://doi.org/10.15468/1rcpsq) whenever possible. If you use these data for a scientific paper, please cite the dataset following the applicable citation norms and/or consider us for co-authorship. We are always interested to know how you have used or visualized the data, or to provide more information, so please contact us via the contact information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.
+* **DOI**: https://doi.org/10.15468/1rcpsq
 
 ## Project data
 
