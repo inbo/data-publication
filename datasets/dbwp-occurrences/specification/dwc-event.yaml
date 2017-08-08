@@ -70,7 +70,7 @@ country:
   allowed: [Belgium, Estonia, France, Germany, Hungary, Iran, Norway, Romania, Spain, United Kingdom]
 
 countryCode:
-  allowed: # TODO
+  allowed: [BE, EE, FR, DE, HU, IR, NO, RO, ES, GB]
 
 locality:
   empty: false
