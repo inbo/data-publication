@@ -1,0 +1,102 @@
+# Dataset: http://dataset.inbo.be/dbwp-occurrences
+# 
+# Scope: Darwin Core Event Core
+# Author: Peter Desmet
+# Syntax version: 0.1
+
+id:
+  regex: # TODO
+
+type:
+  allowed: Event
+
+language:
+  allowed: en
+
+license:
+  allowed: http://creativecommons.org/publicdomain/zero/1.0/
+
+rightsHolder:
+  allowed: INBO
+
+accessRights:
+  allowed: http://www.inbo.be/en/norms-for-data-use
+
+datasetID:
+  allowed: https://doi.org/ # TODO
+
+institutionCode:
+  allowed: INBO
+
+datasetName:
+  allowed: Dung Beetles of the Western Palaearctic
+
+eventID:
+  empty: false
+  # Identical to id
+
+samplingProtocol:
+  allowed: [pitfall (T1 type), pitfall (T1L type), pitfall (T5 type)]
+
+samplingSizeValue:
+  allowed: 7
+
+sampleSizeUnit:
+  allowed: day
+
+eventDate:
+  dateformat: '%Y-%m-%dT%H:%M:%SZ'] # e.g. 2015-09-25T22:00:00Z
+  mindate: 2013-01-08
+  maxdate: 2016-07-06
+
+startDayOfYear:
+  min: 0
+  max: 337
+
+endDayOfYear:
+  min: 7
+  max: 344
+
+habitat:
+  allowed: [grasslands, Mediterranean montane grassland, montane grassland, perennial calcareous grassland and basic steppes, permanent mesotrophic pastures and aftermath-grazed meadows, temperate shrub heathland]
+
+locationID:
+  regex: DBWP:LOCID\d{1,2} # e.g. DBWP:LOCID13
+
+continent:
+  allowed: [Europe, Asia]
+
+country:
+  allowed: [Belgium, Estonia, France, Germany, Hungary, Iran, Norway, Romania, Spain, United Kingdom]
+
+countryCode:
+  allowed: # TODO
+
+locality:
+  empty: false
+
+minimumElevationInMeters:
+  min: 2
+  max: 2113
+
+maximumElevationInMeters:
+  min: 2
+  max: 2113
+
+decimalLatitude:
+  type: float
+  numberformat: '.5'
+  min: 32.278333
+  max: 60.68722
+
+decimalLongitude:
+  type: float
+  numberformat: '.5'
+  min: -3.66361
+  max: 51.02139
+
+geodeticDatum:
+  allowed: WGS84
+
+coordinateUncertaintyInMeters:
+  allowed: 30
