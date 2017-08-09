@@ -6,14 +6,14 @@
 
 occurrenceID:
   # eventID, links to core
-  regex: # TODO
+  regex: '^[A-Za-z0-9_\/\-]+:[0-9]{8}' # e.g. BI_T5/41_T5:20140710
 
 basisOfRecord:
   allowed: HumanObservation
 
 occurrenceID:
   # Record ID, has to be unique
-  regex: INBO:DBWP:ID\d{1,5}
+  regex: INBO:DBWP:OCC:\d{1,5}
 
 recordedBy:
   empty: false
@@ -29,8 +29,8 @@ lifeStage:
   allowed: adult
 
 eventID:
-  empty: false
   # Identical to id
+  empty: false
 
 identifiedBy:
   # Identical to recordedBy
@@ -55,6 +55,12 @@ order:
 
 family:
   allowed: [Scarabaeidae, Geotrupidae]
+
+genus:
+  empty: false
+
+specificEpithet:
+  empty: true # For sp. species
 
 scientificNameAuthorship:
   empty: true
