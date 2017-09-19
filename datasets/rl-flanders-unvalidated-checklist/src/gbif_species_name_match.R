@@ -26,7 +26,16 @@ library('assertable')
 request_species_information <- function(df, name_col,
                                         gbif_terms = c('usageKey',
                                                        'scientificName',
-                                                       'rank',
+                                                       #'acceptedScientificName',
+                                                       'rank',                                                         
+                                                       'order',
+                                                       'matchType',
+                                                       'phylum',
+                                                       'kingdom',
+                                                       'genus',
+                                                       'class',
+                                                       'confidence',
+                                                       'synonym',
                                                        'status',
                                                        'family')) {
 
