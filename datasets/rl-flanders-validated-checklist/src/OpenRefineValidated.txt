@@ -1,0 +1,1010 @@
+[
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Mobility",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Mobility",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Non Cuddly"
+        ],
+        "to": "Sedentary"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column Mobility",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Mobility",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Cuddly"
+        ],
+        "to": "Mobile"
+      }
+    ]
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column scientificName Corrected at index 11 based on column scientificName using expression grel:value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "scientificName Corrected",
+    "columnInsertIndex": 11,
+    "baseColumnName": "scientificName",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/blank-down",
+    "description": "Blank down cells in column scientificName Corrected",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "EXACT",
+                "l": "EXACT"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "scientificName Corrected"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column scientificName Corrected using expression grel:\" \"",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "EXACT",
+                "l": "EXACT"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "scientificName Corrected",
+    "expression": "grel:\" \"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column scientificName Corrected",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "scientificName Corrected",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          " "
+        ],
+        "to": ""
+      }
+    ]
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column scientificName Corrected to ScientificName Suggestion",
+    "oldColumnName": "scientificName Corrected",
+    "newColumnName": "ScientificName Suggestion"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column ScientificName Suggestion to Suggestion ScientificName",
+    "oldColumnName": "ScientificName Suggestion",
+    "newColumnName": "Suggestion ScientificName"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column scientificName to verbatimScientificName",
+    "oldColumnName": "scientificName",
+    "newColumnName": "verbatimScientificName"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column Suggestion ScientificName to ScientificName",
+    "oldColumnName": "Suggestion ScientificName",
+    "newColumnName": "ScientificName"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column ScientificName using expression grel:cells[\"verbatimScientificName\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "EXACT",
+                "l": "EXACT"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "grel:cells[\"verbatimScientificName\"].value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "FUZZY",
+                "l": "FUZZY"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Atropa bella-donna L."
+        ],
+        "to": "Atropa belladonna L."
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "FUZZY"
+        ],
+        "to": "FUZZY_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE",
+                "l": "NONE"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Gomphocerippus rufus"
+        ],
+        "to": "Gomphocerippus rufus"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE",
+                "l": "NONE"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Gomphocerripus rufus"
+        ],
+        "to": "Gomphocerippus rufus"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE"
+        ],
+        "to": "NONE_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "FUZZY_done",
+                "l": "FUZZY_done"
+              }
+            },
+            {
+              "v": {
+                "v": "EXACT",
+                "l": "EXACT"
+              }
+            },
+            {
+              "v": {
+                "v": "NONE_done",
+                "l": "NONE_done"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": true,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Carex demissa Vahl ex Hartm."
+        ],
+        "to": "Carex demissa Hornem."
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "FUZZY_done",
+                "l": "FUZZY_done"
+              }
+            },
+            {
+              "v": {
+                "v": "EXACT",
+                "l": "EXACT"
+              }
+            },
+            {
+              "v": {
+                "v": "NONE_done",
+                "l": "NONE_done"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": true,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Epipactis phyllanthes"
+        ],
+        "to": "Epipactis phyllanthes G.E.Sm."
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "FUZZY_done",
+                "l": "FUZZY_done"
+              }
+            },
+            {
+              "v": {
+                "v": "EXACT",
+                "l": "EXACT"
+              }
+            },
+            {
+              "v": {
+                "v": "NONE_done",
+                "l": "NONE_done"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": true,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Harpalus azureus"
+        ],
+        "to": "Harpalus sulphuripes subsp. sulphuripe"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE No match because of too little confidence"
+        ],
+        "to": "NONE No match because of too little confidence_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Agonum obscurum"
+        ],
+        "to": "NONE Multiple equal matches for Agonum obscurum_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Alosa fallax"
+        ],
+        "to": "NONE Multiple equal matches for Alosa fallax_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Carex cuprina"
+        ],
+        "to": "NONE Multiple equal matches for Carex cuprina_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Carex viridula"
+        ],
+        "to": "NONE Multiple equal matches for Carex viridula_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Crocidura russula"
+        ],
+        "to": "NONE Multiple equal matches for Crocidura russula_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Dipsacus fullonum"
+        ],
+        "to": "NONE Multiple equal matches for Dipsacus fullonum_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Erithacus rubecula"
+        ],
+        "to": "NONE Multiple equal matches for Erithacus rubecula_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Felis silvestris"
+        ],
+        "to": "NONE Multiple equal matches for Felis silvestris_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Harpalus azureus"
+        ],
+        "to": "NONE Multiple equal matches for Harpalus azureus_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Harpalus cordatus"
+        ],
+        "to": "NONE Multiple equal matches for Harpalus cordatus_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Harpalus nitidulus"
+        ],
+        "to": "NONE Multiple equal matches for Harpalus nitidulus_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Limenitis camilla"
+        ],
+        "to": "NONE Multiple equal matches for Limenitis camilla_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Pterostichus longicollis"
+        ],
+        "to": "NONE Multiple equal matches for Pterostichus longicollis_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column verbatimScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE Multiple equal matches for Rosa tomentella",
+                "l": "NONE Multiple equal matches for Rosa tomentella"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "verbatimScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Rosa tomentella LÃ©man"
+        ],
+        "to": "Rosa tomentella Léman"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Rosa tomentella"
+        ],
+        "to": "NONE Multiple equal matches for Rosa tomentella_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Vipera berus"
+        ],
+        "to": "NONE Multiple equal matches for Vipera berus_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE Multiple equal matches for Vulpes vulpes"
+        ],
+        "to": "NONE Multiple equal matches for Vulpes vulpes_done"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE Multiple equal matches for Alosa fallax_done",
+                "l": "NONE Multiple equal matches for Alosa fallax_done"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Alosa fallax"
+        ],
+        "to": "Alosa fallax (Lacepède, 1803)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE Multiple equal matches for Erithacus rubecula_done",
+                "l": "NONE Multiple equal matches for Erithacus rubecula_done"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Erithacus rubecula"
+        ],
+        "to": "Erithacus rubecula (Linnaeus, 1758)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ScientificName",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE Multiple equal matches for Limenitis camilla_done",
+                "l": "NONE Multiple equal matches for Limenitis camilla_done"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "ScientificName",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Limenitis camilla (Linnaeus, 1764)"
+        ],
+        "to": "Limenitis camilla (Linnaeus, 1764)"
+      }
+    ]
+  }
+]

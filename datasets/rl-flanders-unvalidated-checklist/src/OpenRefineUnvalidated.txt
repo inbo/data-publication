@@ -1,0 +1,851 @@
+[
+  {
+    "op": "core/column-addition",
+    "description": "Create column suggestion_scientificName at index 5 based on column scientificName using expression grel:value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE",
+                "l": "NONE"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "newColumnName": "suggestion_scientificName",
+    "columnInsertIndex": 5,
+    "baseColumnName": "scientificName",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column suggestion_scientificName",
+    "columnName": "suggestion_scientificName"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column suggestion_scientificName at index 5 based on column scientificName using expression grel:value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "suggestion_scientificName",
+    "columnInsertIndex": 5,
+    "baseColumnName": "scientificName",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column suggestion_scientificName using expression grel:\" \"",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "EXACT",
+                "l": "EXACT"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "suggestion_scientificName",
+    "expression": "grel:\" \"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Critically endangered"
+        ],
+        "to": "Critically Endangered (CR)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Vulnerable (VU)",
+          "Vulnerable"
+        ],
+        "to": "Vulnerable (VU)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Endangered (EN), maar niet gekend in welke mate"
+        ],
+        "to": "Endangered (EN), but not known to what extent"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Geografisch beperkt"
+        ],
+        "to": "Geographically Limited"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Least concern"
+        ],
+        "to": "Least Concern (LC)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Near threatened"
+        ],
+        "to": "Near Threatened (NT)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Niet bedreigd"
+        ],
+        "to": "Least Concern (LC)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Near Threatened (NT) (vrij zeldzaam)"
+        ],
+        "to": "Near Threatened (NT) (quite rare)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Regionally extinct"
+        ],
+        "to": "Regionally Extinct (REX)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Near Threatened (NT) (zeer zeldzaam)"
+        ],
+        "to": "Near Threatened (NT) (very rare)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Near Threatened (NT) (zeldzaam)"
+        ],
+        "to": "Near Threatened (NT) (rare)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Sterk bedreigd"
+        ],
+        "to": "Critically Endangered (EN)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Vatbaar voor bedreiging"
+        ],
+        "to": "Vulnerable to threat"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Verdwenen"
+        ],
+        "to": "Disappeared"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Vermoedelijk bedreigd"
+        ],
+        "to": "Presumably Threatened"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Waarschijnlijk bedreigd"
+        ],
+        "to": "Probably Endangered"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Endangered"
+        ],
+        "to": "Endangered (EN)"
+      }
+    ]
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column RLC code Translated term at index 21 based on column threadStatus using expression grel:value + \" / \" + cells[\"RLC\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "RLC code Translated term",
+    "columnInsertIndex": 21,
+    "baseColumnName": "threadStatus",
+    "expression": "grel:value + \" / \" + cells[\"RLC\"].value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Regionally Extinct (REX) in Flanders"
+        ],
+        "to": "Regionally Extinct (RE) in Flanders"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Regionally Extinct (REX)"
+        ],
+        "to": "Regionally Extinct (RE)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column RLC code Translated term",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "RLC code Translated term",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Regionally Extinct (REX) / RE"
+        ],
+        "to": "Regionally Extinct (RE) / RE"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column RLC code Translated term",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "RLC code Translated term",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Regionally Extinct (REX) in Flanders / RE"
+        ],
+        "to": "Regionally Extinct (RE) in Flanders / RE"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Disappeared"
+        ],
+        "to": "Disappeared (RE)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Geographically Limited"
+        ],
+        "to": "Geographically Limited (NT)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Presumably Threatened"
+        ],
+        "to": "Presumably Threatened (DD/PT)"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column threadStatus",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "threadStatus",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Vulnerable to threat"
+        ],
+        "to": "Vulnerable to threat (VU)"
+      }
+    ]
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column scientificName to verbatimScientificName",
+    "oldColumnName": "scientificName",
+    "newColumnName": "verbatimScientificName"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column suggestion_scientificName to scientificName",
+    "oldColumnName": "suggestion_scientificName",
+    "newColumnName": "scientificName"
+  },
+  {
+    "op": "core/row-star",
+    "description": "Star rows",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE",
+                "l": "NONE"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "starred": true
+  },
+  {
+    "op": "core/row-star",
+    "description": "Unstar rows",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "NONE",
+                "l": "NONE"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "starred": false
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "NONE"
+        ],
+        "to": "NONE_done"
+      }
+    ]
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column gbifapi_species to position 0",
+    "columnName": "gbifapi_species",
+    "index": 0
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column gbifapi_species to position 1",
+    "columnName": "gbifapi_species",
+    "index": 1
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column gbifapi_species to position 2",
+    "columnName": "gbifapi_species",
+    "index": 2
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column gbifapi_species to position 3",
+    "columnName": "gbifapi_species",
+    "index": 3
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column gbifapi_species to position 4",
+    "columnName": "gbifapi_species",
+    "index": 4
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column gbifapi_species to position 5",
+    "columnName": "gbifapi_species",
+    "index": 5
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column gbifapi_species to position 6",
+    "columnName": "gbifapi_species",
+    "index": 6
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column scientificName using expression grel:\" \"",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "FUZZY",
+                "l": "FUZZY"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "scientificName",
+    "expression": "grel:\" \"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column scientificName using expression grel:cells[\"gbifapi_species\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "FUZZY",
+                "l": "FUZZY"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "gbifapi_matchType",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "gbifapi_matchType"
+        }
+      ]
+    },
+    "columnName": "scientificName",
+    "expression": "grel:cells[\"gbifapi_species\"].value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column gbifapi_matchType",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "gbifapi_matchType",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "FUZZY"
+        ],
+        "to": "FUZZY_done"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column scientificName using expression grel:cells[\"verbatimScientificName\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": " ",
+                "l": " "
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "scientificName",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "scientificName"
+        }
+      ]
+    },
+    "columnName": "scientificName",
+    "expression": "grel:cells[\"verbatimScientificName\"].value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  }
+]
