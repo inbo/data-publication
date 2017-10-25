@@ -1,10 +1,4 @@
-# Interim data
-
 # File extensions
 .DS_Store
 *.ipynb_checkpoints
 *.pyc
-*.xlsx
-*.xls
-*.dbf
-*.accdb
