@@ -5,8 +5,8 @@
 ## Data publication process
 
 * [Metadata](metadata.md) (working document)
-* [Darwin Core mapping (R) from the processed log files](mapping/dwc-occurrence.Rmd)
-* [Darwin Core mapping (SQL) from CartoDB (DEPRECATED)](mapping/dwc-occurrence.sql)
+* [Darwin Core mapping (R) from the processed log files](src/dwc_occurrence.Rmd)
+* [Darwin Core mapping (SQL) from CartoDB (DEPRECATED)](src/dwc_occurrence.sql)
 * [Data specifications](specification/)
 * [Known issues](https://github.com/LifeWatchINBO/data-publication/labels/bird-tracking-gull-occurrences)
 * [Submit an issue](https://github.com/LifeWatchINBO/data-publication/issues/new) (please mention the dataset name)
