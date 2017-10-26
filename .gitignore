@@ -2,3 +2,12 @@
 .DS_Store
 *.ipynb_checkpoints
 *.pyc
+*.cpg
+*.dbf
+*.prj
+*.sbx
+*.sbn
+*.shp
+*.shx
+*.qix
+*.docx
