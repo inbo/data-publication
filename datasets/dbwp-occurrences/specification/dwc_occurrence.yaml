@@ -1,0 +1,69 @@
+# Dataset: http://dataset.inbo.be/dbwp-occurrences
+# 
+# Scope: Darwin Core Occurrence extension
+# Author: Peter Desmet
+# Syntax version: 0.1
+
+occurrenceID:
+  # eventID, links to core
+  regex: '^[A-Za-z0-9_\/\-]+:[0-9]{8}' # e.g. BI_T5/41_T5:20140710
+
+basisOfRecord:
+  allowed: HumanObservation
+
+occurrenceID:
+  # Record ID, has to be unique
+  regex: INBO:DBWP:OCC:\d{1,5}
+
+recordedBy:
+  empty: false
+  delimitedvalues:
+    delimiter: ' | '
+
+individualCount:
+  type: integer
+  min: 1
+  max: 1848
+
+lifeStage:
+  allowed: adult
+
+eventID:
+  # Identical to id
+  empty: false
+
+identifiedBy:
+  # Identical to recordedBy
+  empty: false
+  delimitedvalues:
+    delimiter: ' | '
+
+scientificName:
+  empty: false
+
+kingdom:
+  allowed: Animalia
+
+phylum:
+  allowed: Arthropoda
+
+class:
+  allowed: Insecta
+
+order:
+  allowed: Coleoptera
+
+family:
+  allowed: [Scarabaeidae, Geotrupidae]
+
+genus:
+  empty: false
+
+specificEpithet:
+  empty: true # For sp. species
+
+scientificNameAuthorship:
+  empty: true
+
+nomenclaturalCode:
+  allowed: ICZN

@@ -1,0 +1,49 @@
+# Dataset: http://dataset.inbo.be/inboveg-niche-vlaanderen-events
+# DOI: 
+# 
+# Scope: dwc-measurementorfact
+# Author: Peter Desmet
+# Syntax version: 0.1
+
+id:
+  # eventID, links to core
+  regex: 'INBO:INBOVEG:0IV(\d){16}'
+
+measurementID:
+  # Record ID, has to be unique
+  regex: 'INBO:INBOVEG:MEAS:[HP]:(\d){10}'
+
+# Conditional tests below are based on measurementUnit: % or cm
+
+measurementType:
+  if:
+    - measurementUnit:
+        allowed: '%'
+      allowed: [coverShrubsInPercentage, coverTreesInPercentage, coverHerbsInPercentage, coverMossesInPercentage, coverTotalInPercentage]
+    - measurementUnit:
+        allowed: cm
+      allowed: herbLayerHeightInCentimeters
+
+measurementValue:
+  type: int
+  if:
+    - measurementUnit:
+        allowed: '%'
+      min: 1
+      max: 100
+    - measurementUnit:
+        allowed: cm
+      min: 10
+      max: 170
+
+measurementUnit:
+  allowed: ['%', cm]
+
+measurementMethod:
+  if:
+    - measurementUnit:
+        allowed: '%'
+      allowed: coverage estimate in 1%-scale
+    - measurementUnit:
+        allowed: cm
+      allowed: height estimate in cm
