@@ -30,7 +30,6 @@ Title (and directory in this repo) | DOI  | 1st publication | Type
 [Broedvogels - Atlas of the breeding birds in Flanders 2000-2002](datasets/broedvogel-atlas-occurrences) | https://doi.org/10.15468/sccg5a | 2015-05-06 | occurrence
 [Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium](datasets/invasive-bullfrog-occurrences) | https://doi.org/10.15468/2hqkqn | 2015-09-04 | occurrence
 [Invasive species - Chinese mitten crab (Eriocheir sinensis) in Flanders, Belgium](datasets/invasive-chinese-mitten-crab-occurrences) | https://doi.org/10.15468/eakzzv | 2015-10-30 | occurrence
-[Alien macro-invertebrates in Flanders, Belgium](datasets/alien-macroinvertebrate-occurrences) | https://doi.org/10.15468/xjtfoo | 2016-01-06 | occurrence
 [Vlinderdatabank - Butterflies in Flanders and the Brussels Capital Region, Belgium](datasets/dagvlinders-inbo-occurrences) | https://doi.org/10.15468/njgbmh | 2016-01-13 | occurrence
 [Zomerganzen - Summering geese management and population counts in Flanders, Belgium](datasets/zomerganzen-events) | https://doi.org/10.15468/a5ubtp | 2016-01-22 | sampling-event
 [InboVeg - NICHE-Vlaanderen groundwater related vegetation relevés for Flanders, Belgium](datasets/inboveg-niche-vlaanderen-events) | https://doi.org/10.15468/gouexm | 2016-08-03 | sampling-event
