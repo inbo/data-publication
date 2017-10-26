@@ -1,12 +1,13 @@
-# Interim data
-datasets/*/data/interim/*
-!datasets/name-server/data/interim/*
-
 # File extensions
 .DS_Store
 *.ipynb_checkpoints
 *.pyc
-*.xlsx
-*.xls
+*.cpg
 *.dbf
-*.accdb
+*.prj
+*.sbx
+*.sbn
+*.shp
+*.shx
+*.qix
+*.docx
