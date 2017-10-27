@@ -89,7 +89,7 @@ surveyevent                     y
 - dateofsurvey                  y
 - ship                          y
 - observer1                     y
-- observer2                     y
+- secondaryobservers            y
 surveyevent_warning             
 taxon                           y
 - id                            n
@@ -206,7 +206,7 @@ FROM
     LEFT JOIN controlledvocabulary AS observer1
 	    ON trip.observer1 = observer1.id AND observer1.type = 'observer'
     LEFT JOIN controlledvocabulary AS observer2
-        ON trip.observer2 = observer2.id AND observer2.type = 'observer'
+        ON trip.secondaryobservers = observer2.id AND observer2.type = 'observer'
     LEFT JOIN controlledvocabulary as ship
         ON trip.ship = ship.id AND ship.type = 'ship'
     
