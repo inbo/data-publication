@@ -151,22 +151,19 @@ verbatimCoordinates:
         allowed: [Belgian Lambert 72, '']
       allowed: ''
 
-# NW Belgium XY: 23038 246055
-# SE Belgium XY: 297889 21829
-# NW Flanders XY: 23038 246055 (idem as BE)
-# SE Flanders XY: 259627 153303
-
-verbatimLatitude:
-  type: integer
-  min: 21829 # SE Belgium
-  max: 246055 # NW Belgium
-  empty: true # 9 records
-
-verbatimLongitude:
-  type: integer
-  min: 23038 # NW Belgium
-  max: 297889 # SE Belgium
-  empty: true
+# NW Belgium:
+# - latlong: 51.51 2.53
+# - XY: 22344 246072
+# 
+# NW Flanders: idem
+# 
+# SE Belgium:
+# - latlong: 49.49 6.41
+# - XY: 297889 21829
+# 
+# SE Flanders:
+# - latlong: 50.67 5.94
+# - XY: 261064 152221
 
 verbatimLatitude:
   empty: true
@@ -174,8 +171,8 @@ verbatimLatitude:
     - verbatimCoordinateSystem:
         allowed: Belgian Lambert 72
       type: integer
-      min: 297889 # SE, for Belgium
-      max: 246055 # NW, for Belgium
+      min: 21829 # SE Belgium
+      max: 246072 # NW Belgium
     - verbatimCoordinateSystem:
         allowed: [UTM 1km, UTM 5km, '']
       allowed: ''
@@ -186,8 +183,8 @@ verbatimLongitude:
     - verbatimCoordinateSystem:
         allowed: Belgian Lambert 72
       type: integer
-      min: 23038 # NW, for Belgium (21829 for Belgium)
-      max: 259627 # SE, for Belgium
+      min: 22344 # NW Belgium
+      max: 297889 # SE Belgium
     - verbatimCoordinateSystem:
         allowed: [UTM 1km, UTM 5km, '']
       allowed: ''
@@ -218,7 +215,7 @@ decimalLatitude:
 decimalLongitude:
   type: float
   numberformat: '.5'
-  min: 2.54 # NW Belgium, will fail for 8 records
+  min: 2.53 # NW Belgium
   max: 6.41 # SE Belgium
 
 geodeticDatum:
