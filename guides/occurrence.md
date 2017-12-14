@@ -1,4 +1,4 @@
-# Guide for Darwin Core occurrence data
+# Darwin Core Occurrence mapping
 
 ## Terms to verify
 
