@@ -38,9 +38,9 @@ Title (and directory in this repo) | DOI  | 1st publication | Type
 [PINK - Dragonfly (Odonata) monitoring for the permanent surveillance of coastal areas in Flanders, Belgium](datasets/pink-odonata-events) | https://doi.org/10.15468/wp82td | 2017-01-24 | sampling-event
 [Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border](datasets/bird-tracking-wmh-occurrences) | https://doi.org/10.15468/rbguhj | 2017-05-12 | occurrence
 [PINK - Amphibia monitoring for the permanent surveillance of coastal areas in Flanders, Belgium](datasets/pink-amphibia-events) | https://doi.org/10.15468/jvtefa | 2017-06-01 | sampling-event
+[Dung Beetles of the Western Palaearctic](datasets/dung-beetles-of-the-western-palaearctic-events) | https://doi.org/10.15468/zbazdy | 2017-08-21 | sampling-event
 [Invasive species - Previously unpublished occurrences in Flanders, Belgium](datasets/invasive-other-occurrences) |  |  | occurrence
 [SAS - Seabirds at sea monitoring in the Belgian part of the North Sea](datasets/sas-occurrences) |  |  | occurrence
-[Dung Beetles of the Western Palaearctic](datasets/dung-beetles-of-the-western-palaearctic-events) | https://doi.org/10.15468/zbazdy |2017-08-21  | sampling-event
 
 ## Standardization
 
