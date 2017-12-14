@@ -1,7 +1,7 @@
 # Data publication guidelines for the INBO
 
-* [Occurrence](guides/occurrence.md): Darwin Core mapping guidelines for Occurrence datasets
-* [Checklist](guides/checklist.md): Darwin Core mapping guidelines for Checklist datasets
-* [Metadata](guides/metadata.md): EML metadata guidelines
-* [IPT](guides/ipt.md): How to update IPT
-* [Vlaams Open Data Portaal](guides/vodap.md): How to synchronize IPT datasets with VODAP
+* [Occurrence](guides/occurrence.md): Mapping Occurrence datasets to Darwin Core
+* [Checklist](guides/checklist.md): Mapping Checklist datasets to Darwin Core
+* [Metadata](guides/metadata.md): Writing EML metadata
+* [IPT](guides/ipt.md): Maintaining the IPT
+* [Vlaams Open Data Portaal](guides/vodap.md): Synchronizing IPT datasets with VODAP
