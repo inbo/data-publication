@@ -38,21 +38,23 @@ Title (and directory in this repo) | DOI  | 1st publication | Type
 [PINK - Dragonfly (Odonata) monitoring for the permanent surveillance of coastal areas in Flanders, Belgium](datasets/pink-odonata-events) | https://doi.org/10.15468/wp82td | 2017-01-24 | sampling-event
 [Bird tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands border](datasets/bird-tracking-wmh-occurrences) | https://doi.org/10.15468/rbguhj | 2017-05-12 | occurrence
 [PINK - Amphibia monitoring for the permanent surveillance of coastal areas in Flanders, Belgium](datasets/pink-amphibia-events) | https://doi.org/10.15468/jvtefa | 2017-06-01 | sampling-event
-[Dung Beetles of the Western Palaearctic](datasets/dung-beetles-of-the-western-palaearctic-events) | https://doi.org/10.15468/zbazdy | 2017-08-21 | sampling-event
+[Dung Beetles of the Western Palaearctic](datasets/dbwp-events) | https://doi.org/10.15468/zbazdy | 2017-08-21 | sampling-event
+[InboVeg - Amphibious vegetation of shallow lakes at Turnhout](datasets/inboveg-turnhout-ponds-events) | https://doi.org/10.15468/xkuvwe | 2017-12-13 | sampling-event
+[ABV - Common breeding birds in Flanders, Belgium](datasets/abv-events) | https://doi.org/10.15468/xj0ikb | 2017-12-13 | sampling-event
+[Invasive species - Fallopia japonica on river dikes along the river Zeeschelde, Rupel and Durme](datasets/invasive-fallopia-occurrences) | https://doi.org/10.15468/di2s6j | 2018-01-29 | occurrence
+
+Other datasets managed on this repository:
+
+Title (and directory in this repo) | DOI  | 1st publication | Type
+--- | --- | --- | ---
+[Inland water macroinvertebrate occurrences in Flanders, Belgium](vmm-macroinvertebrates-events) | https://doi.org/10.15468/4cvbka | 2018-01-26 | sampling-event
 [Invasive species - Previously unpublished occurrences in Flanders, Belgium](datasets/invasive-other-occurrences) |  |  | occurrence
 [SAS - Seabirds at sea monitoring in the Belgian part of the North Sea](datasets/sas-occurrences) |  |  | occurrence
-
-## Standardization
-
-We use a Google Spreadsheet as a working document to compare standardization between our datasets:
-
-* [Occurrence datasets](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1895280180)
-* [Checklist datasets](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=250319423)
+[aquatic-management](datasets/aquatic-management) | | | 
+[name-server](datasets/name-server) | | | 
+[rl-flanders-unvalidated-checklist](datasets/rl-flanders-unvalidated-checklist) | | | 
+[rl-flanders-validated-checklist](datasets/rl-flanders-validated-checklist) | | | 
 
 ## Guidelines
 
-We are trying to document the guidelines we follow. They should be considered drafts:
-
-* [Guide for Darwin Core occurrence data](guidelines/data/occurrence-guide.md)
-* [Guide for IPT metadata](guidelines/metadata/metadata-guide.md)
-* [Data paper template](https://docs.google.com/document/d/1mlxAQzfcJR4edRkRntQczaiGgqIiqxZolGzbiqhJ-z0/edit?usp=sharing)
+We are trying to [document the guidelines we follow](http://inbo.github.io/data-publication/). They should be considered drafts.
