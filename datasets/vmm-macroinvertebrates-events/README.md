@@ -1,8 +1,6 @@
-# VMM - Macro-invertebrates in Flanders, Belgium
+# Inland water macroinvertebrate occurrences in Flanders, Belgium
 
-*VMM - Macro-invertebrates in Flanders, Belgium* is a sampling event dataset published by the Flanders Environment Agency (VMM) at http://dataset.inbo.be/vmm-macroinvertebrates-events.
-
-**This dataset has not yet been published.**
+*Inland water macroinvertebrate occurrences in Flanders, Belgium* is a sampling event dataset published by the Flanders Environment Agency (VMM) at http://dataset.inbo.be/vmm-macroinvertebrates-events.
 
 ## Data publication process
 
