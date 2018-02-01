@@ -42,13 +42,6 @@ Title (and directory in this repo) | DOI  | 1st publication | Type
 [Invasive species - Previously unpublished occurrences in Flanders, Belgium](datasets/invasive-other-occurrences) |  |  | occurrence
 [SAS - Seabirds at sea monitoring in the Belgian part of the North Sea](datasets/sas-occurrences) |  |  | occurrence
 
-## Standardization
-
-We use a Google Spreadsheet as a working document to compare standardization between our datasets:
-
-* [Occurrence datasets](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=1895280180)
-* [Checklist datasets](https://docs.google.com/spreadsheets/d/13qSyBS7mZPYENHjPpgEAJirQ58G3pI9tmtW6gvv2vKk/edit#gid=250319423)
-
 ## Guidelines
 
 We are trying to [document the guidelines we follow](http://inbo.github.io/data-publication/). They should be considered drafts.
