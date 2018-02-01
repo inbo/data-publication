@@ -51,8 +51,4 @@ We use a Google Spreadsheet as a working document to compare standardization bet
 
 ## Guidelines
 
-We are trying to document the guidelines we follow. They should be considered drafts:
-
-* [Guide for Darwin Core occurrence data](guidelines/data/occurrence-guide.md)
-* [Guide for IPT metadata](guidelines/metadata/metadata-guide.md)
-* [Data paper template](https://docs.google.com/document/d/1mlxAQzfcJR4edRkRntQczaiGgqIiqxZolGzbiqhJ-z0/edit?usp=sharing)
+We are trying to [document the guidelines we follow](http://inbo.github.io/data-publication/). They should be considered drafts.
