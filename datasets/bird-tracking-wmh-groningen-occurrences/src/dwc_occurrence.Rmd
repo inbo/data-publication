@@ -1,0 +1,135 @@
+---
+title: "Darwin Core mapping"
+subtitle: "For western marsh harriers tracking data from Groningen"
+author: "Peter Desmet"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Setup
+
+Load libraries:
+
+```{r}
+library(dplyr)
+library(RODBC)
+```
+
+Define username and password:
+
+```{r}
+my_username <- rstudioapi::askForPassword("UvA-BiTS user")
+my_password <- rstudioapi::askForPassword("UvA-BiTS password")
+```
+
+Setup connection with UvA-BiTS database using `RODBC` package:
+
+```{r}
+# See https://public.e-ecology.sara.nl/wiki/index.php/Connecting_to_the_UvA-BiTS_database
+connection_string <- paste(
+  "driver=PostgreSQL",
+  "server=public.e-ecology.sara.nl",
+  "port=5432",
+  "sslmode=require",
+  "database=eecology",
+  paste0("username=", my_username),
+  paste0("password=", my_password),
+  sep = ";"
+)
+
+con <- odbcDriverConnect(connection_string, case = "postgresql")
+```
+
+Test connection:
+
+```{r}
+sqlTables(con) %>% head()
+```
+
+# Read track session information
+
+1. Check if no double ring_numbers
+2. Check if no overlap in track sessions
+3. Export data
+4. Use returned `device_info_serial` (+ potentially `start_date`, `end_date`) to a function to get the gps fixes for that individual.
+
+SQL statement:
+
+```{r}
+fixes <- "SELECT
+    i.ring_number,
+    i.species_latin_name,
+    i.colour_ring,
+    i.mass,
+    i.remarks,
+    i.sex,
+--  i.start_date,
+--  i.end_date,
+    i.individual_id,
+    s.key_name,
+    s.start_date,
+    s.end_date,
+    s.start_latitude,
+    s.start_longitude,
+    s.remarks,
+    s.track_session_id,
+    s.project_id,
+    s.tracker_id,
+    t.device_info_serial,
+    t.date_time,
+    t.latitude,
+    t.longitude,
+    t.altitude,
+--  t.pressure,
+--  t.temperature,
+--  t.satellites_used,
+--  t.gps_fixtime,
+--  t.positiondop,
+    t.h_accuracy,
+--  t.v_accuracy,
+--  t.x_speed,
+--  t.y_speed,
+--  t.z_speed,
+--  t.speed_accuracy,
+--  t.location,
+--  t.userflag,
+--  t.speed_3d,
+    t.speed_2d,
+    t.direction,
+--  t.altitude_agl,
+    calc.distance,
+    calc.interval,
+    calc.speed as interval_speed,
+    calc.direction as interval_direction -- could be removed
+FROM
+    gps.get_uvagps_track_speed(6008) calc
+    INNER JOIN gps.ee_tracking_speed_limited t
+    ON
+        calc.device_info_serial = t.device_info_serial
+        AND calc.date_time = t.date_time
+    INNER JOIN gps.ee_track_session_limited s
+    ON
+        t.device_info_serial = s.device_info_serial
+        AND t.date_time >= s.start_date
+        AND t.date_time <= s.end_date
+    INNER JOIN gps.ee_individual_limited i
+    ON
+        s.ring_number = i.ring_number"
+```
+
+```{r}
+data <- sqlQuery(con, fixes)
+data %>% head()
+nrow(data)
+```
+
+1. Show number of fixes
+2. Remap data to Darwin Core using `dplyr`
+3. Export file
+4. Create a dwc-100 file
+5. Join the files together
+
