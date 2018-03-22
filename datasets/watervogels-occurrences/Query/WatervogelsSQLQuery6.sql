@@ -9,10 +9,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 /**ALTER VIEW [iptdev].[vwGBIF_INBO_Watervogels_new_occurrences]
-AS **/
+AS**/
 
 SELECT  TOP 1000
-	  [eventID ] = N'INBO:WATERVOGELS:Se:' + Right( N'000000000' + CONVERT(nvarchar(20) ,ds.SampleKey),10)  
+	  [eventID ] = N'INBO:WATERVOGELS:EVENT:' + Right( N'000000000' + CONVERT(nvarchar(20) ,ds.SampleKey),10)  
 	, [type] = N'Event'
 	, [language] = N'en'
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
@@ -24,7 +24,7 @@ SELECT  TOP 1000
 	, [ownerInstitutionCode] = N'INBO'
 	, [basisOfRecord] = N'HumanObservation'
 	, [occurrenceID] = N'INBO:WATERVOGELS:Occ:' + Right( N'000000000' + CONVERT(nvarchar(20) ,fta.OccurrenceKey),10)
-	, ds.PrimaryRecorderNaam 
+	, [recordedBy] = ds.PrimaryRecorderNaam 
 	, ds.IceCoverDescription 
 	, '<!!> ' as SplitOccurence
 	, fta.OccurrenceKey
