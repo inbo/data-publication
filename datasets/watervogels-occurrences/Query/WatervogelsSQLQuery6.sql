@@ -39,8 +39,8 @@ SELECT  TOP 1000
 	, dtw.euringcode
 	, '<!!>' as SplitLocationWV
 	, lwv.LocationWVNaam
-	, lwv.LocationGeometry.STCentroid() as LocCenter
-
+	, lwv.LocationGeometry.STCentroid().ToString() as LocCenter
+	, ds.SampleDate as eventDate
 	, [eventRemarks] = 
 		'{'
 		+
@@ -101,7 +101,8 @@ INNER JOIN dbo.DimTaxonWV dtw ON dtw.TaxonWVKey = fta.TaxonWVKey
 INNER JOIN dbo.DimLocationWV lwv ON lwv.LocationWVKey = fta.LocationWVKey
 WHERE ds.SampleKey > 0
 AND fta.TaxonCount > 0
-
+AND IsStandardizedLocationWV = 1
+AND ds.SampleDateKey < 20150331
 
 GO
 
