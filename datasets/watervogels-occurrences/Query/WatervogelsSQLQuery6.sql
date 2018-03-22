@@ -8,16 +8,17 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-ALTER VIEW [iptdev].[vwGBIF_INBO_Watervogels_new_occurrences]
-AS
+/**ALTER VIEW [iptdev].[vwGBIF_INBO_Watervogels_new_occurrences]
+AS **/
 
 SELECT  TOP 1000
-	ds.SampleKey 
+	  [eventID ] = N'INBO:WATERVOGELS:Se:' + Right( N'000000000' + CONVERT(nvarchar(20) ,ds.SampleKey),10)  
+	, [occurrenceID] = N'INBO:WATERVOGELS:Occ:' + Right( N'000000000' + CONVERT(nvarchar(20) ,fta.OccurrenceKey),10)
 	, ds.PrimaryRecorderNaam 
 	, ds.IceCoverDescription 
 	, '<!!> ' as SplitOccurence
 	, fta.OccurrenceKey
-	, fta.TaxonCount
+	, fta.TaxonCount as 'individualCount'
 	, '<!!> ' as SplitTaxon
 	, dt.LijstNaam
 	, dt.Author
