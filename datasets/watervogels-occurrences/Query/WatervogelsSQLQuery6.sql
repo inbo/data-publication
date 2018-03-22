@@ -13,6 +13,17 @@ AS **/
 
 SELECT  TOP 1000
 	  [eventID ] = N'INBO:WATERVOGELS:Se:' + Right( N'000000000' + CONVERT(nvarchar(20) ,ds.SampleKey),10)  
+	, [type] = N'Event'
+	, [language] = N'en'
+	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
+	, [rights] = N'http://creativecommons.org/publicdomain/zero/1.0/'
+	, [rightsHolder] = N'INBO'
+	, [accessRights] = N'https://github.com/LifeWatchINBO/norms-for-data-use'
+	, [datasetID] = N'http://dataset.inbo.be/watervogels-occurrences'
+	, [institutionCode] = N'INBO'
+	, [datasetName] = N'Watervogels - Wintering waterbirds in Flanders, Belgium'
+	, [ownerInstitutionCode] = N'INBO'
+	, [basisOfRecord] = N'HumanObservation'
 	, [occurrenceID] = N'INBO:WATERVOGELS:Occ:' + Right( N'000000000' + CONVERT(nvarchar(20) ,fta.OccurrenceKey),10)
 	, ds.PrimaryRecorderNaam 
 	, ds.IceCoverDescription 
