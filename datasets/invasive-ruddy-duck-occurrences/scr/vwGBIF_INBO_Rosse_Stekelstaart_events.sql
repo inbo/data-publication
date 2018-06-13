@@ -20,7 +20,7 @@ GO
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]
+CREATE View [ipt].[vwGBIF_INBO_Muntjak_events]
 AS
 
 SELECT 
@@ -151,7 +151,8 @@ FROM dbo.Survey S
 		),0) )= 1 **/
 
 WHERE
-	S.[ITEM_NAME] IN ('Rosse Stekelstaart') 
+--	S.[ITEM_NAME] IN ('Rosse Stekelstaart')
+	S.SURVEY_KEY in ('BFN001790000004K','BFN0017900000044') 
 	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
