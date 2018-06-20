@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 20/06/2018 10:18:29 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 20/06/2018 13:39:17 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,10 +16,11 @@ GO
 
 
 
-/**ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
-AS**/
 
-SELECT TOP 100
+ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
+AS
+
+SELECT 
 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 
@@ -62,6 +63,7 @@ SELECT TOP 100
      ,[scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
 	, [kingdom]	= N'Animalia'
 	, [phylum] = N'Chordata'
+	, [class] = N'Aves'
 	, [taxonRank] = N'species'
 /**	, [taxonRank] = 
 		CASE
@@ -276,6 +278,9 @@ AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))
 AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
 AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
 -- AND ST.SHORT_NAME NOT IN ('Nestcontrole', 'nest beschrijving') **/
+
+
+
 
 
 
