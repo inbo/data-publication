@@ -147,8 +147,7 @@ The following mandatory terms cannot be populated:
 
 Try to populate these terms:
 
-* [ ] `organismQuantity`
-* [ ] `organismQuantityType`
+
 * [ ] `parentEventID`
 * [ ] `sampleSizeValue`
 * [ ] `sampleSizeUnit`
