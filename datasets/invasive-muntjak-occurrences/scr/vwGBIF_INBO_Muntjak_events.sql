@@ -1,12 +1,13 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 18/05/2018 16:58:45 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 20/06/2018 11:34:17 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -25,7 +26,7 @@ ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
 AS
 
 SELECT 
-	  [eventID]= SA.[SAMPLE_KEY]
+	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 
 	--- RECORD ---	
 	, [type] = N'Event'
@@ -34,20 +35,21 @@ SELECT
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'datasetName - Ruddy duck in Flanders, Belgium'
+	, [datasetName] = 'datasetName - Muntjak in Flanders, Belgium'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
 	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 
 	--- EVENT ---
-	, [parentEventID] = SA.[survey_event_key]
+	, [parentEventID] = 'INBO:NBN:' + SA.[survey_event_key]
 	, [samplingProtocol] = 
 		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
 			WHEN 'Afvangst' THEN 'Capture'
-			WHEN 'Afschot' THEN 'culling - shooting'
+			WHEN 'Afschot' THEN 'Shooting'
 			WHEN 'Field observation' THEN 'casual observation'
 			WHEN 'Afvangst' THEN 'culling - moult capture'
 			WHEN 'Weather' THEN 'Weather report'
+			WHEN 'Valwild' THEN 'roadkill'
 			ELSE ST.SHORT_NAME
 		END 
 --, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
@@ -157,8 +159,9 @@ WHERE
 	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
-	and ST.SHORT_NAME <> 'Weather'
+--	and ST.SHORT_NAME <> 'Weather'
 		
+
 
 
 

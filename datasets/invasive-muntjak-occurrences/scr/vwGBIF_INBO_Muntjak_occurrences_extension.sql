@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 20/06/2018 10:14:56 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 20/06/2018 10:18:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,150 +16,267 @@ GO
 
 
 
+/**ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
+AS**/
 
-/**********************************
-2018-05-17  Maken generische querie voor TrIAS
-*********************************/
+SELECT TOP 100
 
-ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
-AS
-
-SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 
 	--- RECORD ---	
-	, [type] = N'Event'
-	, [language] = N'en'
-	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
-	, [rightsHolder] = N'INBO'
-	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
-	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'datasetName - Ruddy duck in Flanders, Belgium'
-	, [institutionCode] = N'INBO'
-	, [ownerInstitutionCode] = N'INBO'
-	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
+	, [type] = event_core.[type]
+/**	, [language] = event_core.[language]
+	, [license] = event_core.[license]
+	, [rightsHolder] = event_core.[rightsHolder]
+	, [accessRights] = event_core.[accessRights]
+	, [datasetID] = event_core.[datasetID]
+	, [datasetName] = event_core.[datasetName]
+	, [institutionCode] = event_core.[institutionCode]
+	, [ownerInstitutionCode] = event_core.[ownerInstitutionCode]**/
+	, [basisOfRecord] = N'HumanObservation'
 
-	--- EVENT ---
-	, [parentEventID] = 'INBO:NBN:' + SA.[survey_event_key]
-	, [samplingProtocol] = 
-		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
-			WHEN 'Afvangst' THEN 'Capture'
-			WHEN 'Afschot' THEN 'Shooting'
-			WHEN 'Field observation' THEN 'casual observation'
-			WHEN 'Afvangst' THEN 'culling - moult capture'
-			WHEN 'Weather' THEN 'Weather report'
-			WHEN 'Valwild' THEN 'WildTrap'
-			ELSE ST.SHORT_NAME
+
+	--- OCCURRENCE ---
+	, [occurrenceID] = N'INBO:NBN:' + TAO.TAXON_OCCURRENCE_KEY
+	, [recordedBy] = Recorders.NameKeyChain -- Is anonymous. If names are required, use: Recorders.Recorders
+	, [individualCount] = calculatedIndividualCount
+	, summaryIndividualCount
+	, [sex] = 
+		CASE
+			WHEN calculatedSex != '' THEN '{' + calculatedSex + '}'
+		END
+	, [lifestage] = 
+		CASE
+			WHEN calculatedLifestage != '' THEN '{' + calculatedLifestage + '}'
+		END
+	 ,[occurrenceStatus] =
+		CASE
+			WHEN calculatedIndividualCount = '0' THEN 'absent'
+			ELSE 'present'
 		END 
---, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
-/**	, [samplingEffort] =
+	,[samplingProtocol] = event_core.[samplingProtocol]
+	--- IDENTIFICATION ---
+	, [identifiedBy] = I.[NAME_KEY] -- Is anonymous. If names are required, use: IdentifiedBy.IdentifiedBy
+
+	--- TAXON ---
+     ,[scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
+	, [kingdom]	= N'Animalia'
+	, [phylum] = N'Chordata'
+	, [taxonRank] = N'species'
+/**	, [taxonRank] = 
 		CASE
-			WHEN SA.DURATION IS NOT NULL THEN '{"trapDurationInMinutes":' + CONVERT(Nvarchar(20),SA.DURATION) + '}' 
-			WHEN Durations.CommentContainsDuration = 1 AND DATEDIFF(mi,Convert(time, Durations.StartTime) ,  Convert(time, Durations.EndTime) ) > 0 THEN '{"trapDurationInMinutes":' + CONVERT(Nvarchar(20),DateDiff(mi,CONVERT(Time, Durations.StartTime), CONVERT(Time, Durations.EndTime))) + '}' 
-			ELSE NULL
+			WHEN ns.RECOMMENDED_SCIENTIFIC_NAME = 'Invasieve zomergans' THEN 'family'
+			ELSE LOWER(NS.RECOMMENDED_NAME_RANK_LONG)
 		END **/
-	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
-	
-	--- LOCATION ---
-	, [locationID] = SA.LOCATION_KEY
-	, [continent] = N'Europe'
-	, [countryCode] = N'BE'
-	, [verbatimLocality] = COALESCE(CONVERT(Nvarchar(500), LN.ITEM_NAME) + ' ', '') + COALESCE(CONVERT(Nvarchar(4000), Sa.LOCATION_NAME),'')
-	, [verbatimLatitude] = LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))) -- Everything after , = y = latitude
-	, [verbatimLongitude] = SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)) -- Everything before , = x = longitude
-	, [verbatimCoordinateSystem] =
+	, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '') 
+/**	, [nomenclaturalCode] = 
 		CASE
-			WHEN SA.SPATIAL_REF IS NOT NULL AND SA.SPATIAL_REF_SYSTEM = 'BD72' THEN N'Belgian Lambert 72'
-		END
-	, [verbatimSRS] = 
-		CASE 
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN N'Belgian Datum 1972'
-		END
-	, [decimalLatitude] = 
-		CASE
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN CONVERT(Nvarchar(20),CONVERT(decimal(12,5),ROUND(COALESCE(SA.Lat,0),5))) -- SA.SPATIAL_REF is needed, because NULL ones are translated to 0.000 in Lat and Long
-		END
-	, [decimalLongitude] = 
-		CASE
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN CONVERT(Nvarchar(20),CONVERT(decimal(12,5),ROUND(COALESCE(SA.Long,0),5)))
-		END
-	, [geodeticDatum] = 
-		CASE 
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN N'WGS84'
-		END
-	-- , [coordinateUncertaintyInMeters] = ... -- Polygonen en bronnen te verschillend om hier een nuttige schatting te maken
-    , [georeferenceSources] = 
-		CASE
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN LOWER(SA.[SPATIAL_REF_QUALIFIER])
-		END
-	
-	/*, [wkt] =
-		CASE 
-			WHEN SA.SPATIAL_REF IS NULL THEN NULL 
-			ELSE 
-				Convert(Nvarchar(100),'POINT ( ' + Substring(LTRIM(Rtrim(SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)))), 1,
-				CASE
-					WHEN CHARINDEX('.', LTRIM(Rtrim(SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)))))-1 > 0 
-					THEN CHARINDEX('.', LTRIM(Rtrim(SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)))))-1 
-					ELSE LEN (LTRIM(Rtrim(SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)))))
-				END    ) 
-		+ ' '  
-		+ Substring( RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF)))) , 1, CASE WHEN CHARINDEX('.',  RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 > 0 THEN CHARINDEX('.', RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 ELSE LEN(RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) END ) 
-		+ ' ) ' )
-		END
-	*/  
+			WHEN ns.RECOMMENDED_SCIENTIFIC_NAME = 'Invasieve zomergans' THEN ''
+			ELSE N'ICZN'
+		END **/
+	, [vernacularName] = NormNaam.ITEM_NAME
+
+
+
 FROM dbo.Survey S
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
-	LEFT OUTER JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
-	LEFT OUTER JOIN [dbo].[Location_Name] LN ON LN.[Location_Key] = L.[Location_Key] AND LN.[PREFERRED] = 1
+	LEFT JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
+	LEFT JOIN [dbo].[Location_Name] LN ON LN.[Location_Key] = L.[Location_Key] AND LN.[PREFERRED] = 1
 	INNER JOIN [dbo].[SAMPLE] SA ON SA.[SURVEY_EVENT_KEY] = SE.[SURVEY_EVENT_KEY]
-	LEFT OUTER JOIN [dbo].[SAMPLE_TYPE] ST ON  ST.[SAMPLE_TYPE_KEY] = SA.[SAMPLE_TYPE_KEY]
-/**	LEFT OUTER JOIN (
-		SELECT
-			-- Extract startTime-endTime from comment field
-			  SA1.SAMPLE_KEY
-			, Rtrim(Ltrim(Substring ([dbo].[ufn_RtfToPlaintext](SA1.COMMENT) ,CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT)) + 6 , 8000))) AS Comment
-			, [CommentContainsDuration] = 
-				CASE 
-					WHEN CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT)) > 5
-					AND Substring([dbo].[ufn_RtfToPlaintext](SA1.COMMENT), 1, CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))) LIKE '[0123456789][0123456789]:[0123456789][0123456789]-'
-					AND Substring([dbo].[ufn_RtfToPlaintext](SA1.COMMENT), CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))+1,5) LIKE '[0123456789][0123456789]:[0123456789][0123456789]'
-					THEN 1
-					ELSE NULL
-				END
-			, [StartTime] = 
-				CASE
-					WHEN CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))-1 > 1 THEN Substring([dbo].[ufn_RtfToPlaintext](SA1.COMMENT), 1,CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))-1) + ':00'
-					ELSE NULL
-				END
-			, [EndTime] = 
-				Substring([dbo].[ufn_RtfToPlaintext](SA1.COMMENT), CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))+1,5)  + ':00'
-		FROM dbo.SAMPLE SA1
-		) Durations ON Durations.SAMPLE_KEY = SA.SAMPLE_KEY 
-		AND Durations.CommentContainsDuration = 1
+	LEFT JOIN [dbo].[SAMPLE_TYPE] ST ON  ST.[SAMPLE_TYPE_KEY] = SA.[SAMPLE_TYPE_KEY] 
+	INNER JOIN [dbo].[TAXON_OCCURRENCE] TAO ON TAO.[SAMPLE_KEY] = SA.[SAMPLE_KEY]	
+	LEFT JOIN [dbo].[RECORD_TYPE] RT ON RT.[RECORD_TYPE_KEY] = TAO.[RECORD_TYPE_KEY]
+	LEFT JOIN [dbo].[SPECIMEN] SP ON SP.[TAXON_OCCURRENCE_KEY] = TAO.[TAXON_OCCURRENCE_KEY]
+	
+	--IdentifiedBy
+	LEFT JOIN ( SELECT TD.[TAXON_OCCURRENCE_KEY]
+					, dbo.Concatenate(1, COALESCE (I.[FORENAME], I.[INITIALS] ,'') + ' ' + COALESCE (I.[SURNAME], ''), ';')  as identifiedBy
+					, DT.SHORT_Name
+					, DT.Long_Name
+					, TD.TAXON_LIST_ITEM_KEY
+					, MAX(TD.VAGUE_DATE_END) as VAGUE_DATE_END
+					, MAX(TD.VAGUE_DATE_START) as VAGUE_DATE_START
+					, MAX(TD.VAGUE_DATE_TYPE) as VAGUE_DATE_TYPE
+				FROM [dbo].[TAXON_DETERMINATION] TD 
+					LEFT JOIN [dbo].[INDIVIDUAL] I ON I.[NAME_KEY] = TD.[DETERMINER]
+					LEFT JOIN [dbo].[DETERMINATION_TYPE] DT ON DT.[DETERMINATION_TYPE_KEY] = TD.[DETERMINATION_TYPE_KEY]
+				WHERE 1=1
+				AND TD.PREFERRED = 1 
+				--AND TD.[TAXON_OCCURRENCE_KEY] = 'BFN0017900009G7Z'
+				GROUP BY TD.TAXON_LIST_ITEM_KEY
+					, DT.SHORT_Name
+					, DT.Long_Name
+					, TD.[TAXON_OCCURRENCE_KEY]
+				) IdentifiedBy ON IdentifiedBy.[TAXON_OCCURRENCE_KEY] = TAO.[TAXON_OCCURRENCE_KEY] 
+
+	--Taxon
+	LEFT JOIN [dbo].[TAXON_LIST_ITEM] TLI ON TLI.[TAXON_LIST_ITEM_KEY] = IdentifiedBy.[TAXON_LIST_ITEM_KEY]
+	LEFT JOIN [dbo].[TAXON_VERSION] TV ON TV.[TAXON_VERSION_KEY] = TLI.[TAXON_VERSION_KEY]
+	LEFT JOIN [dbo].[TAXON] T ON T.[TAXON_KEY] = TV.[TAXON_KEY]
+	INNER JOIN [dbo].[TAXON_RANK] TR ON TR.TAXON_RANK_KEY = TLI.TAXON_RANK_KEY
+
+	--Normalizeren Namen 
+	INNER JOIN [inbo].[NameServer_12] NS ON NS.[INBO_TAXON_VERSION_KEY] = TLI.[TAXON_VERSION_KEY]
+	LEFT OUTER JOIN ( SELECT TVen.*
+						, NS.INPUT_TAXON_VERSION_KEY						AS [INBO_TAXON_VERSION_KEY]
+					FROM [dbo].[NameServer] NS
+						 INNER JOIN dbo.TAXON_LIST_ITEM TLIVen ON TLIVen.PREFERRED_NAME = NS.RECOMMENDED_TAXON_LIST_ITEM_KEY
+						 INNER JOIN dbo.TAXON_VERSION TVVen ON TVVen.TAXON_VERSION_KEY = TLIVen.TAXON_VERSION_KEY
+						 INNER JOIN dbo.TAXON TVen ON TVVen.TAXON_KEY = TVen.TAXON_KEY
+					WHERE TVen.[LANGUAGE] = 'nl'
+				) NormNaam on NormNaam.[INBO_TAXON_VERSION_KEY] = TLI.[TAXON_VERSION_KEY]
+		
+	--Recorders
+	LEFT OUTER JOIN ( SELECT SR.[SAMPLE_KEY]
+					--, SR.SE_RECORDER_KEY, I.FORENAME, I.INITIALS, I.SURNAME
+					, dbo.Concatenate(1, COALESCE(I.[FORENAME],I.[INITIALS],'') + ' ' + COALESCE(I.[SURNAME],'') ,';') as Recorders
+					, dbo.Concatenate(1, I.NAME_KEY ,' | ') as NameKeyChain
+					, Count(DISTINCT I.NAME_KEY) as NbrRecorders
+				FROM [dbo].[SAMPLE_RECORDER] SR 
+					LEFT JOIN [dbo].[SURVEY_EVENT_RECORDER] SER ON SER.[SE_RECORDER_KEY] = SR.[SE_RECORDER_KEY]
+					LEFT JOIN dbo.INDIVIDUAL I ON I.NAME_KEY = SER.NAME_KEY
+				WHERE 1=1
+				--AND SR.[SAMPLE_KEY] = 'BFN0017900002RM8'
+				GROUP BY SR.[SAMPLE_KEY]
+				) Recorders ON Recorders.[SAMPLE_KEY] = SA.[SAMPLE_KEY]
+     --LEFT JOIN [dbo].[SAMPLE_RECORDER] SR ON SR.[SAMPLE_KEY] = SA.[SAMPLE_KEY]
+	 
+	 LEFT JOIN [dbo].[TAXON_DETERMINATION] TD ON TD.[TAXON_OCCURRENCE_KEY] = TAO.[TAXON_OCCURRENCE_KEY]
+	 LEFT JOIN [dbo].[INDIVIDUAL] I ON I.[NAME_KEY] = TD.[DETERMINER]
+	 LEFT JOIN [dbo].[DETERMINATION_TYPE] DT ON DT.[DETERMINATION_TYPE_KEY] = TD.[DETERMINATION_TYPE_KEY]
+
+
+	--measurement
+/**		LEFT OUTER JOIN ( SELECT taoMeas.TAXON_OCCURRENCE_KEY 
+								, taoMeas.DATA
+								, MUMeas.SHORT_NAME as DataShortName
+								, MUMeas.LONG_NAME as DataLongName
+								, MUMeas.[DESCRIPTION] as DataDescription
+ 								, MQMeas.SHORT_NAME as QualifierShortName
+								, MQMeas.LONG_NAME as QualifierLongName
+								, MQMeas.[DESCRIPTION] as QualifierDescription
+							FROM [dbo].[TAXON_OCCURRENCE_DATA] taoMeas 
+								LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY
+								LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
+								LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY )
+							WHERE 1=1
+							--AND taoMeas.TAXON_OCCURRENCE_KEY = 'BFN0017900009PCB'
+							AND  MTMeas.SHORT_NAME = 'Abundance'
+						) Meas on meas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY **/
+
+	--measurement
 	LEFT OUTER JOIN (
 		SELECT
-			  SA2.SAMPLE_KEY
-			, Rtrim(Ltrim(Substring([dbo].[ufn_RtfToPlaintext] (SA2.COMMENT) , Len('CodeGans:')+1, 10))) as Code
-		FROM dbo.SAMPLE SA2
-		WHERE
-			[dbo].[ufn_RtfToPlaintext] (COMMENT) LIKE 'CodeGans:%'
-	) CodeGanzen ON CodeGanzen.SAMPLE_KEY = SA.SAMPLE_KEY
-	INNER JOIN shp.Locatie_UTM1_vl shp ON 
-		shp.UTM1_vl.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
-		LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
-		CONVERT( DECIMAL (12,3) ,
-		SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
-		),0) )= 1 **/
+			  tmp.TAXON_OCCURRENCE_KEY 
+			, tmp.DataShortName
+			, dbo.Concatenate (0,tmp.QualifierShortName + ':' + tmp.DATA, ';') as Data
+			, dbo.Concatenate (0,
+				'"' +
+				CASE tmp.QualifierShortName 
+					WHEN 'Gevangen' THEN 'caught' 
+					WHEN 'niet Gevangen' THEN 'not caught' 
+					
+					ELSE tmp.QualifierShortName
+				END
+				+ '":' + tmp.DATA ,', ')
+				AS summaryIndividualCount
+			, dbo.Concatenate (0,
+				'"' + 
+				CASE tmp.QualifierShortName 
+					WHEN 'adult man' THEN 'male' 
+					WHEN 'adult vrouw' THEN 'female' 
+					WHEN 'man' THEN 'male' 
+					WHEN 'vrouw' THEN 'female' 
+				END 
+				+ '":' + tmp.DATA ,', ')
+				AS calculatedSex
+			, dbo.Concatenate (0,
+				'"' +
+				CASE tmp.QualifierShortName 
+					WHEN 'Pulli' THEN 'pulli' 
+					WHEN 'adult man' THEN 'adult' 
+					WHEN 'adult vrouw' THEN 'adult' 
+					WHEN 'subadult' THEN 'subadult'
+					WHEN 'juveniel' THEN 'juvenile'
+					WHEN 'Adult' THEN 'adult' 
+					WHEN 'ei' THEN 'egg'
+				END
+				+ '":' + tmp.DATA , ', ')
+				AS calculatedLifestage
+			, dbo.Concatenate (0,
+				'"' +
+				CASE tmp.QualifierShortName 
+					WHEN 'gevangen' THEN 'individualsCaught' 
+					WHEN 'niet gevangen' THEN 'individualsNotCaught'
+					WHEN 'nest' THEN 'numberOfNests'												 
+				END
+				+ '":' + tmp.DATA, ', ' )
+				AS calculatedDynamicProperties
 
-WHERE
---	S.[ITEM_NAME] IN ('Rosse Stekelstaart')
-	S.SURVEY_KEY in ('BFN001790000004K','BFN0017900000044') 
-	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
-	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
-	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
---	and ST.SHORT_NAME <> 'Weather'
-		
+			, CASE WHEN SUM(Convert(decimal, tmp.CountGevangen)) IS NULL THEN SUM(( COALESCE(Convert(decimal, CountAdult),0) + COALESCE(Convert(decimal, CountAdultMan),0) + COALESCE(Convert(decimal, CountAdultVrouw),0) + COALESCE(Convert(decimal, CountPulli),0) + COALESCE(Convert(decimal, CountSubAdult),0) + COALESCE(Convert(decimal, CountJuveniel),0) ))
+									ELSE SUM(Convert(decimal, tmp.CountGevangen)) END 
+							+ SUM(COALESCE (Convert(decimal, CountNietGevangen), 0))
+							+ SUM(COALESCE (Convert(decimal, CountEi), 0)) 
+							+ SUM(COALESCE (Convert(decimal, CountNone), 0)) 
+							as calculatedIndividualCount
+
+						FROM ( SELECT taoMeas.TAXON_OCCURRENCE_KEY 
+								, taoMeas.DATA
+								, MUMeas.SHORT_NAME as DataShortName
+								, MUMeas.LONG_NAME as DataLongName
+								, MUMeas.[DESCRIPTION] as DataDescription
+ 								, MQMeas.SHORT_NAME as QualifierShortName
+								, MQMeas.LONG_NAME as QualifierLongName
+								, MQMeas.[DESCRIPTION] as QualifierDescription
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME IN ('Gevangen', 'Gevangen AM', 'Gevangen AV', 'Onbekend') THEN taoMeas.DATA ELSE NULL END CountGevangen
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME IN ('Niet Gevangen', 'Niet gevangen AV') THEN taoMeas.DATA ELSE NULL END CountNietGevangen
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME = 'Nest' THEN taoMeas.DATA ELSE NULL END CountNest
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME = 'None' THEN taoMeas.DATA ELSE NULL END CountNone
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME = 'Adult' THEN taoMeas.DATA ELSE NULL END CountAdult
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME IN ('Adult Man', 'Bok') THEN taoMeas.DATA ELSE NULL END CountAdultMan
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME IN ('Adult Vrouw', 'Geit') THEN taoMeas.DATA ELSE NULL END CountAdultVrouw
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME = 'Kits (onbekend)' THEN taoMeas.DATA ELSE NULL END CountPulli
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME = 'SubAdult' THEN taoMeas.DATA ELSE NULL END CountSubAdult
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME IN ( 'Juveniel', 'Juveniel Vrouw', 'Juveniel Man','Kits (vrouw)') THEN taoMeas.DATA ELSE NULL END CountJuveniel
+								, Case WHEN dbo.isReallyNumeric(taoMeas.DATA) = 1 AND MQMeas.SHORT_NAME = 'EI' THEN taoMeas.DATA ELSE NULL END CountEi
+
+							FROM [dbo].[TAXON_OCCURRENCE_DATA] taoMeas 
+								LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY
+								LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
+								LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY  )
+							WHERE 1=1
+							--AND tao.TAXON_OCCURRENCE_KEY = taoMeas.TAXON_OCCURRENCE_KEY
+							---AND taoMeas.TAXON_OCCURRENCE_KEY IN ('BFN0017900009E2Q', 'BFN0017900009E4D','BFN0017900007NXQ','BFN0017900001YCV','BFN0017900004RE8')
+							AND  MTMeas.SHORT_NAME = 'Abundance'
+							)tmp
+							GROUP BY tmp.TAXON_OCCURRENCE_KEY , tmp.DataShortName
+						) Meas on meas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY 
+	
+	INNER JOIN ipt.vwGBIF_INBO_Muntjak_events event_core ON event_core.eventID = 'INBO:NBN:' + SA.[SAMPLE_KEY]
+	
+WHERE 
+S.SURVEY_KEY in ('BFN001790000004K','BFN0017900000044')
+--S.[ITEM_NAME] IN ('INBO - Muntjak - Bestrijding') 
+--AND TD.[PREFERRED] = 1
+--AND NS.[RECOMMENDED_NAME_RANK] NOT IN ( 'FunGp','Agg','SppGrp' )
+--AND DT.[SHORT_NAME] NOT In ('Incorrect','Invalid','Considered Incorrect','Requires Confirmation')
+----AND TR.[SEQUENCE] >= 230 
+--AND SE.COMMENT NOT LIKE 'waarnemingen.be (INBODATAVR88)'
+--AND TAO.[TAXON_OCCURRENCE_KEY] = 'BFN00179000023M5'
+--AND [data] <> '0'
+AND TD.[PREFERRED] = 1
+--AND NS.RECOMMENDED_NAME_RANK_LONG like 'functional group'
+
+---AND NS.RECOMMENDED_NAME_RANK_LONG like 'species hybrid'
+---AND ns.RECOMMENDED_SCIENTIFIC_NAME like 'invasieve zomergans'
+---AND TAO.TAXON_OCCURRENCE_KEY  in ('BFN00179000025SE', 'BFN0017900002OH3')
+--AND calculatedIndividualCount > 0  --CHECK THE CALCULATION ALSO HERE
+--Don't try to make Coordinates without numbers
+AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))=1
+AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
+AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
+-- AND ST.SHORT_NAME NOT IN ('Nestcontrole', 'nest beschrijving') **/
+
 
 
 
