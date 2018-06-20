@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 20/06/2018 11:34:17 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 20/06/2018 14:32:20 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -12,12 +12,19 @@ GO
 
 
 
+
+
+
+
+
+
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
-AS**/
+ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
+AS
 
 SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
@@ -40,7 +47,7 @@ SELECT
 		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
 			WHEN 'Afvangst' THEN 'capture'
 			WHEN 'Afschot' THEN 'shooting'
-			WHEN 'Field observation' THEN 'casual observation'
+			WHEN 'Field observation' THEN 'observation'
 			WHEN 'Afvangst' THEN 'culling - moult capture'
 			WHEN 'Weather' THEN 'Weather report'
 			WHEN 'Valwild' THEN 'roadkill'
@@ -155,6 +162,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 --	and ST.SHORT_NAME <> 'Weather'
 		
+
 
 
 
