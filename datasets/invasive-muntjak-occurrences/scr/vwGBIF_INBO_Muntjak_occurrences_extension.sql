@@ -9,14 +9,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-
-
-
-
-
-
-
-
 ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
 AS
 
@@ -258,6 +250,7 @@ FROM dbo.Survey S
 	
 WHERE 
 S.SURVEY_KEY in ('BFN001790000004K','BFN0017900000044')
+
 --S.[ITEM_NAME] IN ('INBO - Muntjak - Bestrijding') 
 --AND TD.[PREFERRED] = 1
 --AND NS.[RECOMMENDED_NAME_RANK] NOT IN ( 'FunGp','Agg','SppGrp' )
@@ -268,7 +261,7 @@ S.SURVEY_KEY in ('BFN001790000004K','BFN0017900000044')
 --AND [data] <> '0'
 AND TD.[PREFERRED] = 1
 --AND NS.RECOMMENDED_NAME_RANK_LONG like 'functional group'
-
+AND calculatedIndividualCount > '0'
 ---AND NS.RECOMMENDED_NAME_RANK_LONG like 'species hybrid'
 ---AND ns.RECOMMENDED_SCIENTIFIC_NAME like 'invasieve zomergans'
 ---AND TAO.TAXON_OCCURRENCE_KEY  in ('BFN00179000025SE', 'BFN0017900002OH3')
