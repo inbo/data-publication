@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]    Script Date: 18/05/2018 15:39:27 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]    Script Date: 21/06/2018 11:55:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,11 +20,11 @@ GO
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
 
-CREATE View [ipt].[vwGBIF_INBO_Muntjak_events]
+ALTER View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]
 AS
 
 SELECT 
-	  [eventID]= SA.[SAMPLE_KEY]
+	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 
 	--- RECORD ---	
 	, [type] = N'Event'
@@ -39,7 +39,7 @@ SELECT
 	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 
 	--- EVENT ---
-	, [parentEventID] = SA.[survey_event_key]
+	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
 	, [samplingProtocol] = 
 		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
 			WHEN 'Afvangst' THEN 'Capture'
@@ -151,8 +151,7 @@ FROM dbo.Survey S
 		),0) )= 1 **/
 
 WHERE
---	S.[ITEM_NAME] IN ('Rosse Stekelstaart')
-	S.SURVEY_KEY in ('BFN001790000004K','BFN0017900000044') 
+	S.[ITEM_NAME] IN ('Rosse Stekelstaart') 
 	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1

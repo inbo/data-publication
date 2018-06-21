@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences_extension]    Script Date: 18/05/2018 15:41:05 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences_extension]    Script Date: 21/06/2018 12:37:20 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -19,7 +19,7 @@ AS
 
 SELECT 
 top 100
-	  [eventID]= SA.[SAMPLE_KEY]
+	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 
 	--- RECORD ---	
 	, [type] = event_core.[type]
@@ -251,7 +251,7 @@ FROM dbo.Survey S
 							GROUP BY tmp.TAXON_OCCURRENCE_KEY , tmp.DataShortName
 						) Meas on meas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY 
 	
-	INNER JOIN ipt.vwGBIF_INBO_Rosse_stekelstaart_events event_core ON event_core.eventID = SA.[SAMPLE_KEY]
+	INNER JOIN ipt.vwGBIF_INBO_Rosse_stekelstaart_events event_core ON event_core.eventID =  'INBO:NBN:' + SA.[SAMPLE_KEY]
 	
 WHERE 
 S.[ITEM_NAME] IN ('Rosse Stekelstaart') 
