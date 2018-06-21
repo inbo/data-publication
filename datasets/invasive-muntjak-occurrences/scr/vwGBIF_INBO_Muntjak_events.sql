@@ -9,22 +9,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-
-
-
-
-
-
-
-
-
-
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
+AS**/
 
 SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]

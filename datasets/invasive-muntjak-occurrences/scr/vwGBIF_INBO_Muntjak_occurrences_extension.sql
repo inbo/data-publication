@@ -9,8 +9,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
-AS
+/**ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
+AS**/
 
 SELECT 
 
