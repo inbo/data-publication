@@ -20,8 +20,8 @@ GO
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]
+AS**/
 
 SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
