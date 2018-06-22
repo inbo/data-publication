@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences_extension]    Script Date: 21/06/2018 12:37:20 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences_extension]    Script Date: 22/06/2018 15:42:05 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -14,15 +14,16 @@ GO
 
 
 
+
 ALTER VIEW [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences_extension]
 AS
 
 SELECT 
 top 100
-	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
+	  
 
 	--- RECORD ---	
-	, [type] = event_core.[type]
+	  [type] = event_core.[type]
 /**	, [language] = event_core.[language]
 	, [license] = event_core.[license]
 	, [rightsHolder] = event_core.[rightsHolder]
@@ -53,11 +54,16 @@ top 100
 			ELSE 'present'
 		END 
 	,[samplingProtocol] = event_core.[samplingProtocol]
+	
+	---Event
+	, [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
+	
 	--- IDENTIFICATION ---
 	, [identifiedBy] = I.[NAME_KEY] -- Is anonymous. If names are required, use: IdentifiedBy.IdentifiedBy
 
 	--- TAXON ---
-     ,[scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
+ --   , [taxonID] = 
+	, [scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
 	, [kingdom]	= N'Animalia'
 	, [phylum] = N'Chordata'
 	, [class] = N'Aves'
@@ -74,7 +80,7 @@ top 100
 			ELSE N'ICZN'
 		END **/
 	, [vernacularName] = NormNaam.ITEM_NAME
-
+	, [nomenclaturalCode] = 'ICZN'
 
 
 FROM dbo.Survey S
@@ -274,6 +280,7 @@ AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))
 AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
 AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
 -- AND ST.SHORT_NAME NOT IN ('Nestcontrole', 'nest beschrijving') **/
+
 
 
 
