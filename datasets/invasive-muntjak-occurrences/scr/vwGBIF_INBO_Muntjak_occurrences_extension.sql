@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 22/06/2018 8:49:01 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 22/06/2018 14:59:27 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -18,15 +18,15 @@ GO
 
 
 
-/**ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
-AS**/
+ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
+AS
 
 SELECT 
 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
-
+	 ,[samplingProtocol] = event_core.[samplingProtocol]
 	--- RECORD ---	
-	, [type] = event_core.[type]
+	
 /**	, [language] = event_core.[language]
 	, [license] = event_core.[license]
 	, [rightsHolder] = event_core.[rightsHolder]
@@ -35,7 +35,7 @@ SELECT
 	, [datasetName] = event_core.[datasetName]
 	, [institutionCode] = event_core.[institutionCode]
 	, [ownerInstitutionCode] = event_core.[ownerInstitutionCode]**/
-	, [basisOfRecord] = N'HumanObservation'
+	
 
 
 	--- OCCURRENCE ---
@@ -56,7 +56,8 @@ SELECT
 			WHEN calculatedIndividualCount = '0' THEN 'absent'
 			ELSE 'present'
 		END 
-	,[samplingProtocol] = event_core.[samplingProtocol]
+	 , [type] = event_core.[type]
+	 , [basisOfRecord] = N'HumanObservation'
 	--- IDENTIFICATION ---
 	, [identifiedBy] = I.[NAME_KEY] -- Is anonymous. If names are required, use: IdentifiedBy.IdentifiedBy
 
@@ -72,12 +73,14 @@ SELECT
 			ELSE LOWER(NS.RECOMMENDED_NAME_RANK_LONG)
 		END **/
 	, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '') 
+	
 /**	, [nomenclaturalCode] = 
 		CASE
 			WHEN ns.RECOMMENDED_SCIENTIFIC_NAME = 'Invasieve zomergans' THEN ''
 			ELSE N'ICZN'
 		END **/
 	, [vernacularName] = NormNaam.ITEM_NAME
+	, [nomenclaturalCode] = 'ICZN'
 
 
 
