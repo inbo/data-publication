@@ -9,14 +9,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-
-
-
-
-
-
-
-
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
@@ -165,5 +157,4 @@ WHERE
 
 
 GO
-
 
