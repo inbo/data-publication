@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 20/06/2018 13:39:17 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 22/06/2018 8:49:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,8 +9,17 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-/**ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
-AS**/
+
+
+
+
+
+
+
+
+
+ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
+AS
 
 SELECT 
 
@@ -55,7 +64,7 @@ SELECT
      ,[scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
 	, [kingdom]	= N'Animalia'
 	, [phylum] = N'Chordata'
-	, [class] = N'Aves'
+	, [class] = N'Mammalia'
 	, [taxonRank] = N'species'
 /**	, [taxonRank] = 
 		CASE
@@ -271,6 +280,7 @@ AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))
 AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
 AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
 -- AND ST.SHORT_NAME NOT IN ('Nestcontrole', 'nest beschrijving') **/
+
 
 
 
