@@ -17,21 +17,26 @@ GO
 AS**/
 
 SELECT 
-	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
+	 
 
 	--- RECORD ---	
-	, [type] = N'Event'
+	  [type] = N'Event'
 	, [language] = N'en'
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
+	
 	, [datasetID] = N'Complete with DOI'
 	, [datasetName] = 'datasetName - Muntjak in Flanders, Belgium'
-	, [institutionCode] = N'INBO'
+--	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
+	
 	, [ownerInstitutionCode] = N'INBO'
-	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
+--	, [institutionCode] = N'INBO'
+	
+	
 
 	--- EVENT ---
+	, [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 	, [parentEventID] = 'INBO:NBN:' + SA.[survey_event_key]
 	, [samplingProtocol] = 
 		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
@@ -85,7 +90,7 @@ SELECT
 			WHEN SA.SPATIAL_REF IS NOT NULL THEN LOWER(SA.[SPATIAL_REF_QUALIFIER])
 		END
 	
-	/*, [wkt] =
+/**	, [wkt] =
 		CASE 
 			WHEN SA.SPATIAL_REF IS NULL THEN NULL 
 			ELSE 
@@ -98,8 +103,8 @@ SELECT
 		+ ' '  
 		+ Substring( RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF)))) , 1, CASE WHEN CHARINDEX('.',  RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 > 0 THEN CHARINDEX('.', RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 ELSE LEN(RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) END ) 
 		+ ' ) ' )
-		END
-	*/  
+		END**/
+	  
 FROM dbo.Survey S
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
 	LEFT OUTER JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
@@ -152,6 +157,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 --	and ST.SHORT_NAME <> 'Weather'
 		
+
 
 
 
