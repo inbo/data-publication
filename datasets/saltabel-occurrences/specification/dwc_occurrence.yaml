@@ -149,7 +149,9 @@ verbatimCoordinates:
       regex: '31U[D-G][S-T]\d\d[A-D]' # UTM 5km for Flanders, e.g. 31UDS76C
     - verbatimCoordinateSystem:
         allowed: [Belgian Lambert 72, '']
+        empty: true
       allowed: ''
+      empty: true
 
 # NW Belgium:
 # - latlong: 51.51 2.53
@@ -174,8 +176,10 @@ verbatimLatitude:
       min: 21829 # SE Belgium
       max: 246072 # NW Belgium
     - verbatimCoordinateSystem:
+        empty: true
         allowed: [UTM 1km, UTM 5km, '']
       allowed: ''
+      empty: true
 
 verbatimLongitude:
   empty: true
@@ -187,7 +191,9 @@ verbatimLongitude:
       max: 297889 # SE Belgium
     - verbatimCoordinateSystem:
         allowed: [UTM 1km, UTM 5km, '']
+        empty: true
       allowed: ''
+      empty: true
 
 verbatimCoordinateSystem:
   empty: true
@@ -204,7 +210,9 @@ verbatimSRS:
       allowed: Belgian Datum 1972
     - verbatimCoordinateSystem:
         allowed: ''
+        empty: true
       allowed: ''
+      empty: true
 
 decimalLatitude:
   type: float
@@ -236,9 +244,11 @@ coordinateUncertaintyInMeters:
         allowed: Belgium Lambert 72
       type: integer
       allowed: 30
-    - verbatimCoordinateSystem: # VERIFY
+    - verbatimCoordinateSystem: 
         allowed: ''
+        empty: true
       allowed: ''
+      empty: true
 
 georeferenceRemarks:
   empty: true
@@ -248,7 +258,9 @@ georeferenceRemarks:
       allowed: coordinates are centroid of used grid square
     - verbatimCoordinateSystem:
         allowed: [Belgian Lambert 72, '']
+        empty: true
       allowed: ''
+      empty: true
 
 identifiedBy:
   empty: true
