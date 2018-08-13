@@ -34,7 +34,7 @@ datasetName:
   allowed: InboVeg - NICHE-Vlaanderen groundwater related vegetation relevés for Flanders, Belgium
 
 eventID:
-  required: true
+  empty: False
   # Identical to id
 
 samplingProtocol:
@@ -80,12 +80,12 @@ locationAccordingTo:
   allowed: MILKLIM-areas
 
 verbatimLatitude:
-  type: integer
+  numberformat: x
   min: 153303 # SE Flanders
   max: 246055 # NW Belgium
 
 verbatimLongitude:
-  type: integer
+  numberformat: x
   min: 23038 # NW Belgium
   max: 259627 # SE Flanders
 
@@ -96,13 +96,11 @@ verbatimSRS:
   allowed: Belgium Datum 1972
 
 decimalLatitude:
-  type: float
   numberformat: '.5'
   min: 50.68 # SE Flanders
   max: 51.51 # NW Belgium
 
 decimalLongitude:
-  type: float
   numberformat: '.5'
   min: 2.54 # NW Belgium
   max: 5.92 # SE Flanders
