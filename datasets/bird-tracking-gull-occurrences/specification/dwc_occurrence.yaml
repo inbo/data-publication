@@ -3,7 +3,7 @@
 # 
 # Scope: dwc-occurrence
 # Author: Peter Desmet
-# Syntax version: https://github.com/inbo/whip/blob/5468ffc2b4b0ab163eca4e1f5acb2470cdb95a26/docs/syntax.md
+# Syntax version: https://github.com/inbo/whip/blob/430694e9f50d252276a8983628e657c4737d0c8a/docs/syntax.md
 
 occurrenceID:
   regex: '\d{3,4}:\d{14}'
@@ -70,18 +70,16 @@ minimumElevationInMeters:
 
 minimumDistanceAboveSurfaceInMeters:
   empty: True # Not available for all records
-  type: integer # Can we use this definition? See https://github.com/inbo/whip/issues/14
   min: -1100
   max: 10000
+  numberformat: x
 
 decimalLatitude:
-  type: float # Can we use this definition? See https://github.com/inbo/whip/issues/14
   numberformat: '.7'
   min: 12
   max: 58
 
 decimalLongitude:
-  type: float # Can we use this definition? See https://github.com/inbo/whip/issues/14
   numberformat: '.7'
   min: -18
   max: 18
@@ -90,9 +88,9 @@ geodeticdatum:
   allowed: WGS84
 
 coordinateUncertaintyInMeters:
-  type: integer # Can we use this definition? See https://github.com/inbo/whip/issues/14
   min: 1
   max: 1000
+  numberformat: x
 
 georeferenceSources:
   allowed: GPS
