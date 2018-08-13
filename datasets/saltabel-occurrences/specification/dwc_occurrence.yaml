@@ -235,15 +235,15 @@ coordinateUncertaintyInMeters:
     - verbatimCoordinateSystem:
         allowed: UTM 1km
       numberformat: x
-      allowed: 707
+      allowed: '707'
     - verbatimCoordinateSystem:
         allowed: UTM 5km
       numberformat: x
-      allowed: 3536
+      allowed: '3536'
     - verbatimCoordinateSystem:
         allowed: Belgium Lambert 72
       numberformat: x
-      allowed: 30
+      allowed: '30'
     - verbatimCoordinateSystem: 
         allowed: ''
         empty: true
