@@ -58,7 +58,7 @@ recordedBy:
 
 individualCount:
   empty: true
-  type: integer
+  numberformat: x
   min: 1
   max: 15000 # Verified by Tim Adriaens
 
@@ -170,7 +170,7 @@ verbatimLatitude:
   if:
     - verbatimCoordinateSystem:
         allowed: Belgian Lambert 72
-      type: integer
+      numberformat: x
       min: 21829 # SE Belgium
       max: 246072 # NW Belgium
     - verbatimCoordinateSystem:
@@ -182,7 +182,7 @@ verbatimLongitude:
   if:
     - verbatimCoordinateSystem:
         allowed: Belgian Lambert 72
-      type: integer
+      numberformat: x
       min: 22344 # NW Belgium
       max: 297889 # SE Belgium
     - verbatimCoordinateSystem:
