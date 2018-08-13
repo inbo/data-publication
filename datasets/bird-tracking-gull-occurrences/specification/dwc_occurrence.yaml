@@ -70,18 +70,15 @@ minimumElevationInMeters:
 
 minimumDistanceAboveSurfaceInMeters:
   empty: True # Not available for all records
-  type: integer # Can we use this definition? See https://github.com/inbo/whip/issues/14
   min: -1100
   max: 10000
 
 decimalLatitude:
-  type: float # Can we use this definition? See https://github.com/inbo/whip/issues/14
   numberformat: '.7'
   min: 12
   max: 58
 
 decimalLongitude:
-  type: float # Can we use this definition? See https://github.com/inbo/whip/issues/14
   numberformat: '.7'
   min: -18
   max: 18
@@ -90,7 +87,6 @@ geodeticdatum:
   allowed: WGS84
 
 coordinateUncertaintyInMeters:
-  type: integer # Can we use this definition? See https://github.com/inbo/whip/issues/14
   min: 1
   max: 1000
 
