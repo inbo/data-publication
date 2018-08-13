@@ -100,7 +100,7 @@ behavior:
 
 occurrenceRemarks:
   empty: true
-  type: json # Indicates number of individuals per group: {"female": 4, "male": 1}
+  stringformat: json # Indicates number of individuals per group: {"female": 4, "male": 1}
 
 eventID:
   empty: false
@@ -110,7 +110,7 @@ eventID:
 
 eventDate:
   dateformat: ['%Y-%m-%d', '%Y-%m', '%Y']
-  mindate: 1800
+  mindate: 1800-01-01
   maxdate: 2013-06-18
 
 verbatimEventDate:
