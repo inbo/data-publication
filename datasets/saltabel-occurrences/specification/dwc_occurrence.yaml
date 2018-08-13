@@ -234,15 +234,15 @@ coordinateUncertaintyInMeters:
   if:
     - verbatimCoordinateSystem:
         allowed: UTM 1km
-      type: integer
+      numberformat: x
       allowed: 707
     - verbatimCoordinateSystem:
         allowed: UTM 5km
-      type: integer
+      numberformat: x
       allowed: 3536
     - verbatimCoordinateSystem:
         allowed: Belgium Lambert 72
-      type: integer
+      numberformat: x
       allowed: 30
     - verbatimCoordinateSystem: 
         allowed: ''
