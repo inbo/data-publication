@@ -215,13 +215,11 @@ verbatimSRS:
       empty: true
 
 decimalLatitude:
-  type: float
   numberformat: '.5'
   min: 49.49 # SE Belgium
   max: 51.51 # NW Belgium
 
 decimalLongitude:
-  type: float
   numberformat: '.5'
   min: 2.53 # NW Belgium
   max: 6.41 # SE Belgium
