@@ -1,0 +1,29 @@
+---
+title: "Dolichopodidae geocoding"
+author: "Dimitri Brosens"
+date: "29 augustus 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Add needed Libraries
+
+```{r}
+library(tidyverse) # tidyverse
+library(magrittr)  # For %<>% pipes
+library(janitor)    # For cleaning input data
+library(knitr)      # For nicer (kable) tables
+library(readxl)     # To read excel files
+library(stringr)    # To perform string operations
+library(digest)     # To generate hashes
+library(rgbif)      # To Match GBIF
+library(assertable) # because it sneeded for rGBIF
+library(inborutils) # wrap GBIF api data
+library(readr)
+library(dplyr)
+library(assertthat)
+library(inborutils)
