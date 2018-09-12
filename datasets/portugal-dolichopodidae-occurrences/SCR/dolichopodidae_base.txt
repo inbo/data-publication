@@ -1,0 +1,195 @@
+[
+  {
+    "op": "core/column-rename",
+    "description": "Rename column country_cd to countryCode",
+    "oldColumnName": "country_cd",
+    "newColumnName": "countryCode"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column province_cd to stateProvince",
+    "oldColumnName": "province_cd",
+    "newColumnName": "stateProvince"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column sample_cd to eventID",
+    "oldColumnName": "sample_cd",
+    "newColumnName": "eventID"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column municipality_PT_nm to municipality",
+    "oldColumnName": "municipality_PT_nm",
+    "newColumnName": "municipality"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column district_nm to county",
+    "oldColumnName": "district_nm",
+    "newColumnName": "county"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column locality at index 7 based on column locality_nm using expression grel:value + \" | \" +cells['location_nm'].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "locality",
+    "columnInsertIndex": 7,
+    "baseColumnName": "locality_nm",
+    "expression": "grel:value + \" | \" +cells['location_nm'].value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column locality to position 6",
+    "columnName": "locality",
+    "index": 6
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column longitude to position 11",
+    "columnName": "longitude",
+    "index": 11
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column altitude to verbatimElevation",
+    "oldColumnName": "altitude",
+    "newColumnName": "verbatimElevation"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column collector_nm to collectedBy",
+    "oldColumnName": "collector_nm",
+    "newColumnName": "collectedBy"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column species_nm_full to scientificName",
+    "oldColumnName": "species_nm_full",
+    "newColumnName": "scientificName"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column identified_by to identifiedBy",
+    "oldColumnName": "identified_by",
+    "newColumnName": "identifiedBy"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column identified_date to dateIdentified",
+    "oldColumnName": "identified_date",
+    "newColumnName": "dateIdentified"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column collection cd to collectionCode",
+    "oldColumnName": "collection cd",
+    "newColumnName": "collectionCode"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column occurrenceID at index 1 based on column eventID using expression grel:\"PT:\"+\"DOL:\"+\"0000\"[0,4-row.index.length()] + row.index",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "occurrenceID",
+    "columnInsertIndex": 1,
+    "baseColumnName": "eventID",
+    "expression": "grel:\"PT:\"+\"DOL:\"+\"0000\"[0,4-row.index.length()] + row.index",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column occurrenceID using expression grel:\"PT:\"+\"DOL:\"+\"0000\"[0,4-row.index.length()] + (row.index +1)",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "occurrenceID",
+    "expression": "grel:\"PT:\"+\"DOL:\"+\"0000\"[0,4-row.index.length()] + (row.index +1)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column individualCount at index 23 based on column mm using expression grel:value + cells[\"ff\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "individualCount",
+    "columnInsertIndex": 23,
+    "baseColumnName": "mm",
+    "expression": "grel:value + cells[\"ff\"].value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column ff to position 23",
+    "columnName": "ff",
+    "index": 23
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column sex at index 23 based on column mm using expression grel:value + \" male\" + \" | \" +cells[\"ff\"].value + \" female\"",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "sex",
+    "columnInsertIndex": 23,
+    "baseColumnName": "mm",
+    "expression": "grel:value + \" male\" + \" | \" +cells[\"ff\"].value + \" female\"",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column mm to position 23",
+    "columnName": "mm",
+    "index": 23
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column individualCount to position 24",
+    "columnName": "individualCount",
+    "index": 24
+  },
+  {
+    "op": "core/column-move",
+    "description": "Move column individualCount to position 23",
+    "columnName": "individualCount",
+    "index": 23
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column preservation_method_cd to preparations",
+    "oldColumnName": "preservation_method_cd",
+    "newColumnName": "preparations"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column preparations",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "preparations",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "W"
+        ],
+        "to": "Wet | 75% alcohol"
+      }
+    ]
+  }
+]
