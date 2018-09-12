@@ -9,7 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 # Add needed Libraries
 
 ```{r}
@@ -27,3 +26,54 @@ library(readr)
 library(dplyr)
 library(assertthat)
 library(inborutils)
+library(data.table)
+```
+
+
+
+# Read source data
+
+Set file paths (all paths should be relative to this script):
+
+# Raw files:
+```{r}
+raw_data_file = "../data/raw/PT_Dolichopodidae_2018_dataset_GBIF.csv"
+
+```
+
+
+# Processed files:
+```{r}
+dwc_event_file = "../data/processed/dwc_checklist/event.csv"
+dwc_occurrence_file = "../data/processed/dwc_checklist/occurrence.csv"
+```
+
+```{r}
+dwc_event_file <- read_csv("../Data/RAW/PT_Dolichopodidae_2018_dataset_GBIF.csv")
+coordinates <- read_excel("../Data/RAW/coordinates.xlsx")
+```
+
+
+
+
+
+```{r}
+
+```
+
+```{r}
+
+dwc_event_file.dt <- data.table(dwc_event_file)
+dwc_event_file.dt[ , DMS_dec := dg2dec(DMS_lat, Dg="°", Min="'")]
+
+dg2dec(varb=coordinates$DMS_lat, Dg="°", Min="'")
+
+head(dwc_event_file.dt)
+
+x.dt <- data.table(x) # transform data frame "x" to data table "x.dt"
+# create new column "DMS_dec" by applying dg2dec() function on column "DMS"
+x.dt[, DMS_dec := dg2dec(DMS, Dg="°", Min="'")]
+x.dt
+```
+
+View(dw)
