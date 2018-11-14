@@ -58,7 +58,7 @@ recordedBy:
 
 individualCount:
   empty: true
-  type: integer
+  numberformat: x
   min: 1
   max: 15000 # Verified by Tim Adriaens
 
@@ -100,7 +100,7 @@ behavior:
 
 occurrenceRemarks:
   empty: true
-  type: json # Indicates number of individuals per group: {"female": 4, "male": 1}
+  stringformat: json # Indicates number of individuals per group: {"female": 4, "male": 1}
 
 eventID:
   empty: false
@@ -110,7 +110,7 @@ eventID:
 
 eventDate:
   dateformat: ['%Y-%m-%d', '%Y-%m', '%Y']
-  mindate: 1800
+  mindate: 1800-01-01
   maxdate: 2013-06-18
 
 verbatimEventDate:
@@ -149,7 +149,9 @@ verbatimCoordinates:
       regex: '31U[D-G][S-T]\d\d[A-D]' # UTM 5km for Flanders, e.g. 31UDS76C
     - verbatimCoordinateSystem:
         allowed: [Belgian Lambert 72, '']
+        empty: true
       allowed: ''
+      empty: true
 
 # NW Belgium:
 # - latlong: 51.51 2.53
@@ -170,24 +172,28 @@ verbatimLatitude:
   if:
     - verbatimCoordinateSystem:
         allowed: Belgian Lambert 72
-      type: integer
+      numberformat: x
       min: 21829 # SE Belgium
       max: 246072 # NW Belgium
     - verbatimCoordinateSystem:
+        empty: true
         allowed: [UTM 1km, UTM 5km, '']
       allowed: ''
+      empty: true
 
 verbatimLongitude:
   empty: true
   if:
     - verbatimCoordinateSystem:
         allowed: Belgian Lambert 72
-      type: integer
+      numberformat: x
       min: 22344 # NW Belgium
       max: 297889 # SE Belgium
     - verbatimCoordinateSystem:
         allowed: [UTM 1km, UTM 5km, '']
+        empty: true
       allowed: ''
+      empty: true
 
 verbatimCoordinateSystem:
   empty: true
@@ -204,16 +210,16 @@ verbatimSRS:
       allowed: Belgian Datum 1972
     - verbatimCoordinateSystem:
         allowed: ''
+        empty: true
       allowed: ''
+      empty: true
 
 decimalLatitude:
-  type: float
   numberformat: '.5'
   min: 49.49 # SE Belgium
   max: 51.51 # NW Belgium
 
 decimalLongitude:
-  type: float
   numberformat: '.5'
   min: 2.53 # NW Belgium
   max: 6.41 # SE Belgium
@@ -226,19 +232,21 @@ coordinateUncertaintyInMeters:
   if:
     - verbatimCoordinateSystem:
         allowed: UTM 1km
-      type: integer
-      allowed: 707
+      numberformat: x
+      allowed: '707'
     - verbatimCoordinateSystem:
         allowed: UTM 5km
-      type: integer
-      allowed: 3536
+      numberformat: x
+      allowed: '3536'
     - verbatimCoordinateSystem:
         allowed: Belgium Lambert 72
-      type: integer
-      allowed: 30
-    - verbatimCoordinateSystem: # VERIFY
+      numberformat: x
+      allowed: '30'
+    - verbatimCoordinateSystem: 
         allowed: ''
+        empty: true
       allowed: ''
+      empty: true
 
 georeferenceRemarks:
   empty: true
@@ -248,7 +256,9 @@ georeferenceRemarks:
       allowed: coordinates are centroid of used grid square
     - verbatimCoordinateSystem:
         allowed: [Belgian Lambert 72, '']
+        empty: true
       allowed: ''
+      empty: true
 
 identifiedBy:
   empty: true

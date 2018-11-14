@@ -16,37 +16,37 @@ project:
 
 coverTotalInPercentage: 
   empty: true
-  type: int
+  numberformat: x
   min: 1
   max: 100
 
 coverTreesInPercentage: 
   empty: true
-  type: int
+  numberformat: x
   min: 1
   max: 100
 
 coverShrubsInPercentage: 
   empty: true
-  type: int
+  numberformat: x
   min: 1
   max: 100
 
 coverHerbsInPercentage: 
   empty: true
-  type: int
+  numberformat: x
   min: 1
   max: 100
 
 coverMossesInPercentage: 
   empty: true
-  type: int
+  numberformat: x
   min: 1
   max: 100
 
 herbLayerHeightInCentimeters: 
   empty: true
-  type: int
+  numberformat: x
   min: 10
   max: 170
 

@@ -29,7 +29,7 @@ occurrenceStatus:
   allowed: present
 
 eventID:
-  required: true
+  empty: false
   # Identical to id
 
 identifiedBy:

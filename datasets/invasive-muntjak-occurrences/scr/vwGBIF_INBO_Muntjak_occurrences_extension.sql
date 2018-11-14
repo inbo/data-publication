@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 18/05/2018 16:57:41 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 22/06/2018 14:59:27 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -15,15 +15,18 @@ GO
 
 
 
+
+
+
 ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
 AS
 
 SELECT 
-top 150
-	  [eventID]= SA.[SAMPLE_KEY]
 
+	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
+	 ,[samplingProtocol] = event_core.[samplingProtocol]
 	--- RECORD ---	
-	, [type] = event_core.[type]
+	
 /**	, [language] = event_core.[language]
 	, [license] = event_core.[license]
 	, [rightsHolder] = event_core.[rightsHolder]
@@ -32,7 +35,7 @@ top 150
 	, [datasetName] = event_core.[datasetName]
 	, [institutionCode] = event_core.[institutionCode]
 	, [ownerInstitutionCode] = event_core.[ownerInstitutionCode]**/
-	, [basisOfRecord] = N'HumanObservation'
+	
 
 
 	--- OCCURRENCE ---
@@ -53,7 +56,8 @@ top 150
 			WHEN calculatedIndividualCount = '0' THEN 'absent'
 			ELSE 'present'
 		END 
-	,[samplingProtocol] = event_core.[samplingProtocol]
+	 , [type] = event_core.[type]
+	 , [basisOfRecord] = N'HumanObservation'
 	--- IDENTIFICATION ---
 	, [identifiedBy] = I.[NAME_KEY] -- Is anonymous. If names are required, use: IdentifiedBy.IdentifiedBy
 
@@ -61,7 +65,7 @@ top 150
      ,[scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME
 	, [kingdom]	= N'Animalia'
 	, [phylum] = N'Chordata'
-	, [class] = N'Aves'
+	, [class] = N'Mammalia'
 	, [taxonRank] = N'species'
 /**	, [taxonRank] = 
 		CASE
@@ -69,12 +73,14 @@ top 150
 			ELSE LOWER(NS.RECOMMENDED_NAME_RANK_LONG)
 		END **/
 	, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '') 
+	
 /**	, [nomenclaturalCode] = 
 		CASE
 			WHEN ns.RECOMMENDED_SCIENTIFIC_NAME = 'Invasieve zomergans' THEN ''
 			ELSE N'ICZN'
 		END **/
 	, [vernacularName] = NormNaam.ITEM_NAME
+	, [nomenclaturalCode] = 'ICZN'
 
 
 
@@ -252,10 +258,11 @@ FROM dbo.Survey S
 							GROUP BY tmp.TAXON_OCCURRENCE_KEY , tmp.DataShortName
 						) Meas on meas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY 
 	
-	INNER JOIN ipt.vwGBIF_INBO_Muntjak_events event_core ON event_core.eventID = SA.[SAMPLE_KEY]
+	INNER JOIN ipt.vwGBIF_INBO_Muntjak_events event_core ON event_core.eventID = 'INBO:NBN:' + SA.[SAMPLE_KEY]
 	
 WHERE 
 S.SURVEY_KEY in ('BFN001790000004K','BFN0017900000044')
+
 --S.[ITEM_NAME] IN ('INBO - Muntjak - Bestrijding') 
 --AND TD.[PREFERRED] = 1
 --AND NS.[RECOMMENDED_NAME_RANK] NOT IN ( 'FunGp','Agg','SppGrp' )
@@ -266,7 +273,7 @@ S.SURVEY_KEY in ('BFN001790000004K','BFN0017900000044')
 --AND [data] <> '0'
 AND TD.[PREFERRED] = 1
 --AND NS.RECOMMENDED_NAME_RANK_LONG like 'functional group'
-
+AND calculatedIndividualCount > '0'
 ---AND NS.RECOMMENDED_NAME_RANK_LONG like 'species hybrid'
 ---AND ns.RECOMMENDED_SCIENTIFIC_NAME like 'invasieve zomergans'
 ---AND TAO.TAXON_OCCURRENCE_KEY  in ('BFN00179000025SE', 'BFN0017900002OH3')
@@ -276,6 +283,9 @@ AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))
 AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
 AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
 -- AND ST.SHORT_NAME NOT IN ('Nestcontrole', 'nest beschrijving') **/
+
+
+
 
 
 

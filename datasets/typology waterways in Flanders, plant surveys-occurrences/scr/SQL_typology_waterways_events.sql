@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]    Script Date: 22/06/2018 15:29:54 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]    Script Date: 21/06/2018 14:23:13 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,31 +9,31 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
+2018-06-21  Start typologie waterlopen
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]
-AS**/
+CREATE View [ipt].[vwGBIF_INBO_Ecologische typologie waterlopen - vegetatieopnamen]
+AS
 
 SELECT 
-	
+	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
+
 	--- RECORD ---	
-	  [type] = N'Event'
+	, [type] = N'Event'
 	, [language] = N'en'
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'datasetName - Ruddy duck in Flanders, Belgium'
+	, [datasetName] = 'datasetName - Ecologische typologie waterlopen - vegetatieopnamen'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
---	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
-	
-	
-	
+	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
+
 	--- EVENT ---
-	, [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
 	, [samplingProtocol] = 
 		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
@@ -52,7 +52,6 @@ SELECT
 			ELSE NULL
 		END **/
 	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
-	
 	
 	--- LOCATION ---
 	, [locationID] = SA.LOCATION_KEY
@@ -147,7 +146,7 @@ FROM dbo.Survey S
 		),0) )= 1 **/
 
 WHERE
-	S.[ITEM_NAME] IN ('Rosse Stekelstaart') 
+	S.[ITEM_NAME] IN ('Ecologische typologie waterlopen - vegetatieopnamen') 
 	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
@@ -157,4 +156,5 @@ WHERE
 
 
 GO
+
 

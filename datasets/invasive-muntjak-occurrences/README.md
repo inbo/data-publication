@@ -1,6 +1,6 @@
-# Invasive species - Previously unpublished Muntjak occurrences in Flanders, Belgium
+# Invasive species - Chinese muntjac (Muntiacus reevesi) in Flanders, Belgium
 
-*Invasive species - Muntjak occurrences in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/ruddy-duck-occurrences.
+*Invasive species - Muntjak occurrences in Flanders, Belgium* is a species occurrence dataset published by the Research Institute for Nature and Forest (INBO) at http://dataset.inbo.be/invasive-muntjak-occurrences.
 
 **This dataset is not yet published**
 

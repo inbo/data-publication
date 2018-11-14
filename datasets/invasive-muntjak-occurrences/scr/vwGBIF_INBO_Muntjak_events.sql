@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 18/05/2018 16:58:45 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 20/06/2018 14:32:20 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,45 +9,43 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-
-
-
-
-
-
-
-
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
+AS**/
 
 SELECT 
-	  [eventID]= SA.[SAMPLE_KEY]
+	 
 
 	--- RECORD ---	
-	, [type] = N'Event'
+	  [type] = N'Event'
 	, [language] = N'en'
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
+	
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'datasetName - Ruddy duck in Flanders, Belgium'
-	, [institutionCode] = N'INBO'
+	, [datasetName] = 'datasetName - Muntjak in Flanders, Belgium'
+--	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
+	
 	, [ownerInstitutionCode] = N'INBO'
-	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
+--	, [institutionCode] = N'INBO'
+	
+	
 
 	--- EVENT ---
-	, [parentEventID] = SA.[survey_event_key]
+	, [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
+	, [parentEventID] = 'INBO:NBN:' + SA.[survey_event_key]
 	, [samplingProtocol] = 
 		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
-			WHEN 'Afvangst' THEN 'Capture'
-			WHEN 'Afschot' THEN 'culling - shooting'
-			WHEN 'Field observation' THEN 'casual observation'
+			WHEN 'Afvangst' THEN 'capture'
+			WHEN 'Afschot' THEN 'shooting'
+			WHEN 'Field observation' THEN 'observation'
 			WHEN 'Afvangst' THEN 'culling - moult capture'
 			WHEN 'Weather' THEN 'Weather report'
+			WHEN 'Valwild' THEN 'roadkill'
 			ELSE ST.SHORT_NAME
 		END 
 --, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
@@ -92,7 +90,7 @@ SELECT
 			WHEN SA.SPATIAL_REF IS NOT NULL THEN LOWER(SA.[SPATIAL_REF_QUALIFIER])
 		END
 	
-	/*, [wkt] =
+/**	, [wkt] =
 		CASE 
 			WHEN SA.SPATIAL_REF IS NULL THEN NULL 
 			ELSE 
@@ -105,8 +103,8 @@ SELECT
 		+ ' '  
 		+ Substring( RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF)))) , 1, CASE WHEN CHARINDEX('.',  RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 > 0 THEN CHARINDEX('.', RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 ELSE LEN(RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) END ) 
 		+ ' ) ' )
-		END
-	*/  
+		END**/
+	  
 FROM dbo.Survey S
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
 	LEFT OUTER JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
@@ -157,8 +155,11 @@ WHERE
 	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
-	and ST.SHORT_NAME <> 'Weather'
+--	and ST.SHORT_NAME <> 'Weather'
 		
+
+
+
 
 
 

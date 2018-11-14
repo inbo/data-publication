@@ -12,3 +12,5 @@
 *.qix
 *.docx
 datasets/invasive-fallopia-occurrences/published/dwca-invasive-fallopia-occurrences-v1.2.zip
+datasets/invasive-ruddy-duck-occurrences/scr/vwGBIF_INBO_Rosse_Stekelstaart_events.sql
+.Rproj.user

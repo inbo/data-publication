@@ -1,0 +1,330 @@
+[
+  {
+    "op": "core/column-removal",
+    "description": "Remove column occurrenceIDOriginal",
+    "columnName": "occurrenceIDOriginal"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column datasetName",
+    "columnName": "datasetName"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column language",
+    "columnName": "language"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column license",
+    "columnName": "license"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column rightsHolder",
+    "columnName": "rightsHolder"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column eventID using expression grel:replace(value, '/', \":\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "eventID",
+    "expression": "grel:replace(value, '/', \":\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column countryCode",
+    "columnName": "countryCode"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column stateProvince",
+    "columnName": "stateProvince"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column district_cd",
+    "columnName": "district_cd"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column county",
+    "columnName": "county"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column locality",
+    "columnName": "locality"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column municipality",
+    "columnName": "municipality"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column locality_nm",
+    "columnName": "locality_nm"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column location_nm",
+    "columnName": "location_nm"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column sampling_site_cd",
+    "columnName": "sampling_site_cd"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column continent",
+    "columnName": "continent"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column longitude",
+    "columnName": "longitude"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column latitude",
+    "columnName": "latitude"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column decimalLatitude",
+    "columnName": "decimalLatitude"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column decimalLongitude",
+    "columnName": "decimalLongitude"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column coordinateUncertaintyInMeters",
+    "columnName": "coordinateUncertaintyInMeters"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column geodeticDatum",
+    "columnName": "geodeticDatum"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column verbatimElevation",
+    "columnName": "verbatimElevation"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column sampling_date_b",
+    "columnName": "sampling_date_b"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column sampling_date_e",
+    "columnName": "sampling_date_e"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column basisOfRecord",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "observation only",
+                "l": "observation only"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": true,
+          "name": "samplingProtocol",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "samplingProtocol"
+        }
+      ]
+    },
+    "columnName": "basisOfRecord",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "HumanObservation"
+        ],
+        "to": "preservedSpecimen"
+      }
+    ]
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column species_cd",
+    "columnName": "species_cd"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column mm",
+    "columnName": "mm"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column ff",
+    "columnName": "ff"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column ID_doubtful?",
+    "columnName": "ID_doubtful?"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column coll_position_cd",
+    "columnName": "coll_position_cd"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column preparations",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "HumanObservation",
+                "l": "HumanObservation"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "basisOfRecord",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "basisOfRecord"
+        }
+      ]
+    },
+    "columnName": "preparations",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "Wet | 75% alcohol"
+        ],
+        "to": ""
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column collectionCode",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "HumanObservation",
+                "l": "HumanObservation"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "basisOfRecord",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "basisOfRecord"
+        }
+      ]
+    },
+    "columnName": "collectionCode",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "MAPC"
+        ],
+        "to": ""
+      }
+    ]
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column remarks_spm",
+    "columnName": "remarks_spm"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column sex using expression grel:replace(value, '.0', \"\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "sex",
+    "expression": "grel:replace(value, '.0', \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-split",
+    "description": "Split column dateIdentified by separator",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "dateIdentified",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": "T",
+    "regex": false,
+    "maxColumns": 0
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column dateIdentified 2",
+    "columnName": "dateIdentified 2"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column dateIdentified 1 to dateIdentified",
+    "oldColumnName": "dateIdentified 1",
+    "newColumnName": "dateIdentified"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column collectedBy to recordedBy",
+    "oldColumnName": "collectedBy",
+    "newColumnName": "recordedBy"
+  }
+]
