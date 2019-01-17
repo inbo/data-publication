@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_event]    Script Date: 17/01/2019 10:46:41 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_event]    Script Date: 17/01/2019 13:49:53 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,13 +11,14 @@ GO
 
 
 
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-06-21  Start typologie waterlopen
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_event]
-AS**/
+ALTER View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_event]
+AS
 
 SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
@@ -29,22 +30,21 @@ SELECT
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'datasetName - Ecologische typologie waterlopen - vegetatieopnamen'
-	, [institutionCode] = N'INBO'
+	, [datasetName] = 'NBN Grensmaas florakartering'
 	, [ownerInstitutionCode] = N'INBO'
 	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 
 	--- EVENT ---
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
-	, [samplingProtocol] = 
-		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
+	, [samplingProtocol] = ST.SHORT_NAME
+		/**CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
 			WHEN 'Afvangst' THEN 'Capture'
 			WHEN 'Afschot' THEN 'culling - shooting'
 			WHEN 'Field observation' THEN 'casual observation'
 			WHEN 'Afvangst' THEN 'culling - moult capture'
 			WHEN 'Weather' THEN 'Weather report'
 			ELSE ST.SHORT_NAME
-		END 
+		END **/
 --, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
 /**	, [samplingEffort] =
 		CASE
@@ -153,6 +153,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 	and ST.SHORT_NAME <> 'Weather' **/
 		
+
 
 
 

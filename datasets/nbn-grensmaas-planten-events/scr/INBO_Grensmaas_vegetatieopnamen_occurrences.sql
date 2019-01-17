@@ -1,12 +1,13 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_occurrences]    Script Date: 17/01/2019 12:16:09 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_occurrences]    Script Date: 17/01/2019 13:52:17 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -40,7 +41,7 @@ SELECT
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'Grensmaas florakartering'
+	, [datasetName] = 'NBN Grensmaas florakartering'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
 	, [basisOfRecord] = N'HumanObservation'
@@ -175,6 +176,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
 --	and ST.SHORT_NAME <> 'Weather' 
 		
+
 
 
 
