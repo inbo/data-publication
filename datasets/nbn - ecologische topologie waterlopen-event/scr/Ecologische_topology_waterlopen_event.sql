@@ -16,7 +16,7 @@ GO
 2018-06-21  Start typologie waterlopen
 *********************************/
 
-CREATE View [ipt].[vwGBIF_INBO_Ecologische typologie waterlopen - event]
+ALTER View [ipt].[vwGBIF_INBO_Ecologische typologie waterlopen - event]
 AS
 
 SELECT 
@@ -29,7 +29,7 @@ SELECT
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'datasetName - Ecologische typologie waterlopen - vegetatieopnamen'
+	, [datasetName] = 'Ecologische typologie waterlopen'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
 	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'

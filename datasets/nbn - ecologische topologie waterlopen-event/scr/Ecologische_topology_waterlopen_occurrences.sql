@@ -18,7 +18,7 @@ GO
 2018-12-10  Grensmaas vegetatie starts DiB
 *********************************/
 
-CREATE View [ipt].[vwGBIF_INBO_INBO_Ecologische typologie waterlopen - occurrences]
+ALTER View [ipt].[vwGBIF_INBO_INBO_Ecologische typologie waterlopen - occurrences]
 AS
 
 SELECT 
@@ -40,7 +40,7 @@ SELECT
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'Grensmaas florakartering'
+	, [datasetName] = 'Ecologische topologie waterlopen'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
 	, [basisOfRecord] = N'HumanObservation'
