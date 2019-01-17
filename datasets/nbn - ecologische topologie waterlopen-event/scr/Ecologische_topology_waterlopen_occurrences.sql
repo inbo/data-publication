@@ -18,8 +18,8 @@ GO
 2018-12-10  Grensmaas vegetatie starts DiB
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_INBO_Ecologische typologie waterlopen - occurrences]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_INBO_Ecologische typologie waterlopen - occurrences]
+AS**/
 
 SELECT 
       --- EVENT ---

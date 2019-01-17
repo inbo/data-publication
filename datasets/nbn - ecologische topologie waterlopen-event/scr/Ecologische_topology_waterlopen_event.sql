@@ -16,8 +16,8 @@ GO
 2018-06-21  Start typologie waterlopen
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_Ecologische typologie waterlopen - event]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_Ecologische typologie waterlopen - event]
+AS**/
 
 SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
