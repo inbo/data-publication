@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_occurrences]    Script Date: 17/01/2019 14:33:15 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_LSVI 3260_event]    Script Date: 17/01/2019 14:58:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -15,25 +15,16 @@ GO
 
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
-2018-12-10  Grensmaas vegetatie starts DiB
+2018-06-21  Start typologie waterlopen
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_LSVI 3260_occurrences]
+CREATE View [ipt].[vwGBIF_INBO_LSVI 3260_event]
 AS
 
 SELECT 
-      --- EVENT ---
-
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
-	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
-	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE,1),126)
-	, [eventDate2] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
-	, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
-	, [individualCount] = meas.DATA
-
 
 	--- RECORD ---	
-	
 	, [type] = N'Event'
 	, [language] = N'en'
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
@@ -43,31 +34,27 @@ SELECT
 	, [datasetName] = 'LSVI 3260'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
-	, [basisOfRecord] = N'HumanObservation'
 	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 
-		--- Occurrence---
-
-	,[occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
-	,[recordedBy] = NAME_KEY
-	,[occurrenceStatus] = N'present'
-	,[taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
-
-		--- TAXON ---
-
-	, [scientificName] = RECOMMENDED_SCIENTIFIC_NAME
-	, [scientificNameAuthorship] = RECOMMENDED_NAME_AUTHORITY
-	, [kingdom] = N'Plantae'
-
-	
-
+	--- EVENT ---
+	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
+	, [samplingProtocol] = 
+		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
+			WHEN 'Afvangst' THEN 'Capture'
+			WHEN 'Afschot' THEN 'culling - shooting'
+			WHEN 'Field observation' THEN 'casual observation'
+			WHEN 'Afvangst' THEN 'culling - moult capture'
+			WHEN 'Weather' THEN 'Weather report'
+			ELSE ST.SHORT_NAME
+		END 
+--, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
 /**	, [samplingEffort] =
 		CASE
 			WHEN SA.DURATION IS NOT NULL THEN '{"trapDurationInMinutes":' + CONVERT(Nvarchar(20),SA.DURATION) + '}' 
 			WHEN Durations.CommentContainsDuration = 1 AND DATEDIFF(mi,Convert(time, Durations.StartTime) ,  Convert(time, Durations.EndTime) ) > 0 THEN '{"trapDurationInMinutes":' + CONVERT(Nvarchar(20),DateDiff(mi,CONVERT(Time, Durations.StartTime), CONVERT(Time, Durations.EndTime))) + '}' 
 			ELSE NULL
 		END **/
-	
+	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
 	
 	--- LOCATION ---
 	, [locationID] = SA.LOCATION_KEY
@@ -118,62 +105,55 @@ SELECT
 		END
 	*/  
 FROM dbo.Survey S
-	
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
 	LEFT OUTER JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
 	LEFT OUTER JOIN [dbo].[Location_Name] LN ON LN.[Location_Key] = L.[Location_Key] AND LN.[PREFERRED] = 1
 	INNER JOIN [dbo].[SAMPLE] SA ON SA.[SURVEY_EVENT_KEY] = SE.[SURVEY_EVENT_KEY]
 	LEFT OUTER JOIN [dbo].[SAMPLE_TYPE] ST ON  ST.[SAMPLE_TYPE_KEY] = SA.[SAMPLE_TYPE_KEY]
-	INNER JOIN [dbo].[TAXON_OCCURRENCE] TAO ON TAO.[SAMPLE_KEY] = SA.[SAMPLE_KEY]
-
-	LEFT JOIN [dbo].[RECORD_TYPE] RT ON RT.[RECORD_TYPE_KEY] = TAO.[RECORD_TYPE_KEY]
-	LEFT JOIN [dbo].[SPECIMEN] SP ON SP.[TAXON_OCCURRENCE_KEY] = TAO.[TAXON_OCCURRENCE_KEY]
-	
-	LEFT JOIN [dbo].[TAXON_DETERMINATION] TD ON TD.[TAXON_OCCURRENCE_KEY] = TAO.[TAXON_OCCURRENCE_KEY]
-	LEFT JOIN [dbo].[INDIVIDUAL] I ON I.[NAME_KEY] = TD.[DETERMINER]
-	LEFT JOIN [dbo].[DETERMINATION_TYPE] DT ON DT.[DETERMINATION_TYPE_KEY] = TD.[DETERMINATION_TYPE_KEY]
-
-	
-	--Taxon
-	LEFT JOIN [dbo].[TAXON_LIST_ITEM] TLI ON TLI.[TAXON_LIST_ITEM_KEY] = TD.[TAXON_LIST_ITEM_KEY]
-	LEFT JOIN [dbo].[TAXON_VERSION] TV ON TV.[TAXON_VERSION_KEY] = TLI.[TAXON_VERSION_KEY]
-	LEFT JOIN [dbo].[TAXON] T ON T.[TAXON_KEY] = TV.[TAXON_KEY]
-	
-	INNER JOIN [dbo].[TAXON_RANK] TR ON TR.TAXON_RANK_KEY = TLI.TAXON_RANK_KEY
-	--Lijst
-	--LEFT JOIN [dbo].[TAXON_LIST_VERSION] TLV ON TLV.TAXON_LIST_VERSION_KEY = TLI.TAXON_LIST_VERSION_KEY
-	--LEFT JOIN [dbo].[TAXON_LIST] TL ON TL.TAXON_LIST_KEY =  TLV.TAXON_LIST_KEY
-
-	--Normalizeren Namen 
-	--LEFT JOIN [dbo].[NAMESERVER] NS ON NS.INPUT_TAXON_VERSION_KEY = TD.TAXON_LIST_ITEM_KEY
-	INNER JOIN [inbo].[NameServer_12] NS ON NS.[INBO_TAXON_VERSION_KEY] = TLI.[TAXON_VERSION_KEY]
-
-	--measurement
-		LEFT OUTER JOIN ( SELECT taoMeas.TAXON_OCCURRENCE_KEY 
-								, taoMeas.DATA
-								, MUMeas.SHORT_NAME as DataShortName
-								, MUMeas.LONG_NAME as DataLongName
-								, MUMeas.[DESCRIPTION] as DataDescription
- 								, MQMeas.SHORT_NAME as QualifierShortName
-								, MQMeas.LONG_NAME as QualifierLongName
-								, MQMeas.[DESCRIPTION] as QualifierDescription
-							FROM [dbo].[TAXON_OCCURRENCE_DATA] taoMeas 
-								LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY
-								LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
-								LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY )
-							WHERE 1=1
-							--AND taoMeas.TAXON_OCCURRENCE_KEY = 'BFN0017900009PCB'
-							AND  MTMeas.SHORT_NAME = 'Abundance'
-						) Meas on meas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY 
-
-	--measurement
+/**	LEFT OUTER JOIN (
+		SELECT
+			-- Extract startTime-endTime from comment field
+			  SA1.SAMPLE_KEY
+			, Rtrim(Ltrim(Substring ([dbo].[ufn_RtfToPlaintext](SA1.COMMENT) ,CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT)) + 6 , 8000))) AS Comment
+			, [CommentContainsDuration] = 
+				CASE 
+					WHEN CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT)) > 5
+					AND Substring([dbo].[ufn_RtfToPlaintext](SA1.COMMENT), 1, CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))) LIKE '[0123456789][0123456789]:[0123456789][0123456789]-'
+					AND Substring([dbo].[ufn_RtfToPlaintext](SA1.COMMENT), CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))+1,5) LIKE '[0123456789][0123456789]:[0123456789][0123456789]'
+					THEN 1
+					ELSE NULL
+				END
+			, [StartTime] = 
+				CASE
+					WHEN CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))-1 > 1 THEN Substring([dbo].[ufn_RtfToPlaintext](SA1.COMMENT), 1,CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))-1) + ':00'
+					ELSE NULL
+				END
+			, [EndTime] = 
+				Substring([dbo].[ufn_RtfToPlaintext](SA1.COMMENT), CHARINDEX('-', [dbo].[ufn_RtfToPlaintext](SA1.COMMENT))+1,5)  + ':00'
+		FROM dbo.SAMPLE SA1
+		) Durations ON Durations.SAMPLE_KEY = SA.SAMPLE_KEY 
+		AND Durations.CommentContainsDuration = 1
+	LEFT OUTER JOIN (
+		SELECT
+			  SA2.SAMPLE_KEY
+			, Rtrim(Ltrim(Substring([dbo].[ufn_RtfToPlaintext] (SA2.COMMENT) , Len('CodeGans:')+1, 10))) as Code
+		FROM dbo.SAMPLE SA2
+		WHERE
+			[dbo].[ufn_RtfToPlaintext] (COMMENT) LIKE 'CodeGans:%'
+	) CodeGanzen ON CodeGanzen.SAMPLE_KEY = SA.SAMPLE_KEY
+	INNER JOIN shp.Locatie_UTM1_vl shp ON 
+		shp.UTM1_vl.STContains(geometry::Point( CONVERT( DECIMAL (12,3) ,
+		LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1)), 
+		CONVERT( DECIMAL (12,3) ,
+		SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF )) 
+		),0) )= 1 **/
 
 WHERE
 	S.[ITEM_NAME] IN ('LSVI 3260') 
 /**	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
-	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
---	and ST.SHORT_NAME <> 'Weather' 
+	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
+	and ST.SHORT_NAME <> 'Weather' **/
 		
 
 
