@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_occurrences]    Script Date: 17/01/2019 14:33:15 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Crassula helmsii_occurrences]    Script Date: 21/01/2019 14:00:16 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,13 +13,17 @@ GO
 
 
 
+
+
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
-2018-12-10  Grensmaas vegetatie starts DiB
+2018-12-10  Ecologische waterlopen vegetatie starts DiB
+2019-01-20  DataLongName = 'Brauwn-Blanquet
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_LSVI 3260_occurrences]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_Crassula helmsii_occurrences]
+AS**/
 
 SELECT 
       --- EVENT ---
@@ -28,8 +32,8 @@ SELECT
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
 	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE,1),126)
 	, [eventDate2] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
-	, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
-	, [individualCount] = meas.DATA
+	
+	
 
 
 	--- RECORD ---	
@@ -40,7 +44,7 @@ SELECT
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'LSVI 3260'
+	, [datasetName] = 'Crassula helmsii occurrences'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
 	, [basisOfRecord] = N'HumanObservation'
@@ -48,10 +52,13 @@ SELECT
 
 		--- Occurrence---
 
-	,[occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
-	,[recordedBy] = NAME_KEY
-	,[occurrenceStatus] = N'present'
-	,[taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
+	, [occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
+	, [recordedBy] = NAME_KEY
+	, [organismQuantity] = meas.DATA
+	, [organismQuantityType] = DataShortName
+	, [occurrenceStatus] = N'present'
+	, [samplingProtocol] = CONVERT(Nvarchar(500),DataLongName)
+	, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
 
 		--- TAXON ---
 
@@ -163,18 +170,22 @@ FROM dbo.Survey S
 								LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY )
 							WHERE 1=1
 							--AND taoMeas.TAXON_OCCURRENCE_KEY = 'BFN0017900009PCB'
-							AND  MTMeas.SHORT_NAME = 'Abundance'
+							--AND  MTMeas.SHORT_NAME = 'Abundance'
 						) Meas on meas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY 
 
 	--measurement
 
 WHERE
-	S.[ITEM_NAME] IN ('LSVI 3260') 
+	S.[ITEM_NAME] IN ('Crassula helmsii standplaatsonderzoek')
+	AND DataLongName IN ('Braun-Blanquet')  --('Crassula') -- OR 
 /**	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
 --	and ST.SHORT_NAME <> 'Weather' 
 		
+
+
+
 
 
 
