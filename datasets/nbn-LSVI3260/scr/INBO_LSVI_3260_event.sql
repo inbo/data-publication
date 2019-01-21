@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_LSVI 3260_event]    Script Date: 17/01/2019 14:58:02 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_LSVI 3260_event]    Script Date: 21/01/2019 15:40:43 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,6 +16,7 @@ GO
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-06-21  Start typologie waterlopen
+2019-01-20  aanpassen LSVI
 *********************************/
 
 CREATE View [ipt].[vwGBIF_INBO_LSVI 3260_event]
@@ -38,15 +39,15 @@ SELECT
 
 	--- EVENT ---
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
-	, [samplingProtocol] = 
-		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
+	, [samplingProtocol] = ST.SHORT_NAME
+		/**CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
 			WHEN 'Afvangst' THEN 'Capture'
 			WHEN 'Afschot' THEN 'culling - shooting'
 			WHEN 'Field observation' THEN 'casual observation'
 			WHEN 'Afvangst' THEN 'culling - moult capture'
 			WHEN 'Weather' THEN 'Weather report'
 			ELSE ST.SHORT_NAME
-		END 
+		END **/
 --, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
 /**	, [samplingEffort] =
 		CASE

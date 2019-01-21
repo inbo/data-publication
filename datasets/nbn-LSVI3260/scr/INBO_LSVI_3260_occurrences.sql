@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_LSVI 3260_occurrences]    Script Date: 17/01/2019 14:59:35 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_LSVI 3260_occurrences]    Script Date: 21/01/2019 15:43:29 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -17,9 +17,10 @@ GO
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-12-10  Grensmaas vegetatie starts DiB
+2019-01-20  aanpassen voor LSVI
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_LSVI 3260_occurrences]
+CREATE View [ipt].[vwGBIF_INBO_LSVI 3260_occurrences]
 AS
 
 SELECT 
@@ -29,8 +30,8 @@ SELECT
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
 	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE,1),126)
 	, [eventDate2] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
-	, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
-	, [individualCount] = meas.DATA
+	
+	
 
 
 	--- RECORD ---	
@@ -49,11 +50,14 @@ SELECT
 
 		--- Occurrence---
 
-	,[occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
-	,[recordedBy] = NAME_KEY
-	,[occurrenceStatus] = N'present'
-	,[taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
-
+	, [occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
+	, [recordedBy] = NAME_KEY
+	, [occurrenceStatus] = N'present'
+	, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
+	, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
+--	, [organismQuantity] = meas.DATA
+--	, [organismQuantityType] = DataShortName
+--  , [individualCount] = meas.DATA
 		--- TAXON ---
 
 	, [scientificName] = RECOMMENDED_SCIENTIFIC_NAME
