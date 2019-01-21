@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_occurrences]    Script Date: 17/01/2019 13:58:30 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_INBO_Ecologische_typologie_waterlopen_occurrences]    Script Date: 21/01/2019 11:27:27 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,12 +13,15 @@ GO
 
 
 
+
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
-2018-12-10  Grensmaas vegetatie starts DiB
+2018-12-10  Ecologische waterlopen vegetatie starts DiB
+2019-01-20  Finaliseren Query
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_INBO_Ecologische typologie waterlopen - occurrences]
+/**ALTER View [ipt].[vwGBIF_INBO_INBO_Ecologische_typologie_waterlopen_occurrences]
 AS**/
 
 SELECT 
@@ -29,7 +32,7 @@ SELECT
 	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE,1),126)
 	, [eventDate2] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
 	, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
-	, [individualCount] = meas.DATA
+	
 
 
 	--- RECORD ---	
@@ -48,10 +51,12 @@ SELECT
 
 		--- Occurrence---
 
-	,[occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
-	,[recordedBy] = NAME_KEY
-	,[occurrenceStatus] = N'present'
-	,[taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
+	, [occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
+	, [recordedBy] = NAME_KEY
+--	, [organismQuantity] = meas.DATA
+--	, [organismQuantityType] = DataShortName
+	, [occurrenceStatus] = N'present'
+	, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
 
 		--- TAXON ---
 
@@ -163,7 +168,7 @@ FROM dbo.Survey S
 								LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY )
 							WHERE 1=1
 							--AND taoMeas.TAXON_OCCURRENCE_KEY = 'BFN0017900009PCB'
-							AND  MTMeas.SHORT_NAME = 'Abundance'
+							--AND  MTMeas.SHORT_NAME = 'Abundance'
 						) Meas on meas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY 
 
 	--measurement
@@ -175,6 +180,8 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
 --	and ST.SHORT_NAME <> 'Weather' 
 		
+
+
 
 
 

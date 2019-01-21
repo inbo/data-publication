@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Ecologische typologie waterlopen - vegetatieopnamen]    Script Date: 17/01/2019 13:56:01 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Ecologische_ typologie_waterlopen_event]    Script Date: 21/01/2019 11:34:40 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,13 +11,17 @@ GO
 
 
 
+
+
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-06-21  Start typologie waterlopen
+2019-01-20  Finaliseren Query
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_Ecologische typologie waterlopen - event]
-AS**/
+CREATE View [ipt].[vwGBIF_INBO_Ecologische_ typologie_waterlopen_event]
+AS
 
 SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
@@ -36,15 +40,16 @@ SELECT
 
 	--- EVENT ---
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
-	, [samplingProtocol] = 
-		CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
+	, [samplingProtocol] = N'Tansley 6'
+	/**ST.SHORT_NAME
+		   CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
 			WHEN 'Afvangst' THEN 'Capture'
 			WHEN 'Afschot' THEN 'culling - shooting'
 			WHEN 'Field observation' THEN 'casual observation'
 			WHEN 'Afvangst' THEN 'culling - moult capture'
 			WHEN 'Weather' THEN 'Weather report'
 			ELSE ST.SHORT_NAME
-		END 
+		END **/
 --, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
 /**	, [samplingEffort] =
 		CASE
@@ -148,11 +153,14 @@ FROM dbo.Survey S
 
 WHERE
 	S.[ITEM_NAME] IN ('Ecologische typologie waterlopen - vegetatieopnamen') 
-	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
+/**	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
-	and ST.SHORT_NAME <> 'Weather'
+	and ST.SHORT_NAME <> 'Weather'**/
 		
+
+
+
 
 
 
