@@ -1,12 +1,14 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_occurrences]    Script Date: 17/01/2019 13:52:17 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_occurrences]    Script Date: 21/01/2019 10:17:27 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 
 
 
@@ -27,10 +29,10 @@ SELECT
 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
-	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE,1),126)
+/**	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE,1),126)
 	, [eventDate2] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
-	, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
-	, [individualCount] = meas.DATA
+	, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME) **/
+	
 
 
 	--- RECORD ---	
@@ -49,10 +51,12 @@ SELECT
 
 		--- Occurrence---
 
-	,[occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
-	,[recordedBy] = NAME_KEY
-	,[occurrenceStatus] = N'present'
-	,[taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
+	, [occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
+	, [recordedBy] = NAME_KEY
+	, [organismQuantity] = meas.DATA
+	, [organismQuantityType] = DataShortName
+	, [occurrenceStatus] = N'present'
+	, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
 
 		--- TAXON ---
 
@@ -176,6 +180,8 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
 --	and ST.SHORT_NAME <> 'Weather' 
 		
+
+
 
 
 

@@ -1,12 +1,13 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_event]    Script Date: 17/01/2019 13:49:53 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_event]    Script Date: 21/01/2019 9:25:10 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -153,6 +154,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 	and ST.SHORT_NAME <> 'Weather' **/
 		
+
 
 
 
