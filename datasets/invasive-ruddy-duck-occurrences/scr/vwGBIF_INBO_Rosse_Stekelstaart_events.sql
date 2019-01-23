@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]    Script Date: 22/06/2018 15:29:54 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]    Script Date: 23/01/2019 10:20:03 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,12 +9,16 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
+
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
+2019-01-23  Query rosse stelkelstaart
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]
-AS**/
+CREATE View [ipt].[vwGBIF_INBO_Rosse_Stekelstaart_events]
+AS
 
 SELECT 
 	
@@ -25,13 +29,11 @@ SELECT
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'datasetName - Ruddy duck in Flanders, Belgium'
+	, [datasetName] = 'Invasive species - Rosse stekelstaart (Oxyura jamaicensis) in Flanders, Belgium'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
 --	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
-	
-	
-	
+
 	--- EVENT ---
 	, [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
@@ -156,5 +158,9 @@ WHERE
 
 
 
+
+
+
 GO
+
 

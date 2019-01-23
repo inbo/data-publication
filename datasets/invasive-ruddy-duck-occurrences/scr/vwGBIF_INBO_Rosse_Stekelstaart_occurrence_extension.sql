@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences_extension]    Script Date: 22/06/2018 15:42:05 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences]    Script Date: 23/01/2019 10:11:45 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,16 +10,17 @@ GO
 
 
 
+/** 2109-01-23 aanmaken query in productie **/
 
 
 
 
 
-ALTER VIEW [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences_extension]
+CREATE VIEW [ipt].[vwGBIF_INBO_Rosse_stekelstaart_occurrences]
 AS
 
 SELECT 
-top 100
+
 	  
 
 	--- RECORD ---	
@@ -280,6 +281,7 @@ AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))
 AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
 AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
 -- AND ST.SHORT_NAME NOT IN ('Nestcontrole', 'nest beschrijving') **/
+
 
 
 
