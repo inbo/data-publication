@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]    Script Date: 22/06/2018 14:59:27 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_occurrences]    Script Date: 24/01/2019 11:21:11 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -15,10 +15,11 @@ GO
 
 
 
+/** 2019-01-24  Aanpassen sex and counts & lifestage **/
 
 
 
-ALTER VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences_extension]
+CREATE VIEW [ipt].[vwGBIF_INBO_Muntjak_occurrences]
 AS
 
 SELECT 
@@ -189,10 +190,18 @@ FROM dbo.Survey S
 			, dbo.Concatenate (0,
 				'"' + 
 				CASE tmp.QualifierShortName 
-					WHEN 'adult man' THEN 'male' 
+					WHEN 'adult man' THEN 'male'
+					WHEN 'Bok' THEN 'male' 
+					WHEN 'Geit' THEN 'female' 
 					WHEN 'adult vrouw' THEN 'female' 
 					WHEN 'man' THEN 'male' 
-					WHEN 'vrouw' THEN 'female' 
+					WHEN 'vrouw' THEN 'female'
+					WHEN 'None' THEN 'unknown' 
+					WHEN 'Adult' THEN 'unknown'
+					WHEN 'Onbekend' THEN 'unknown' 
+					WHEN 'Kits (onbekend)' THEN 'unknown'
+					WHEN 'Juveniel Man' THEN 'male'   
+ 
 				END 
 				+ '":' + tmp.DATA ,', ')
 				AS calculatedSex
@@ -206,6 +215,12 @@ FROM dbo.Survey S
 					WHEN 'juveniel' THEN 'juvenile'
 					WHEN 'Adult' THEN 'adult' 
 					WHEN 'ei' THEN 'egg'
+					WHEN 'Geit' THEN 'adult'
+					WHEN 'Bok' THEN 'adult'
+					WHEN 'Onbekend' THEN 'unknown'
+					WHEN 'None' THEN 'unknown'
+					WHEN 'Kits (onbekend)' THEN 'juvenile' 
+					WHEN 'Juveniel Man' THEN 'juvenile'   
 				END
 				+ '":' + tmp.DATA , ', ')
 				AS calculatedLifestage
@@ -283,6 +298,7 @@ AND ISNUMERIC(LEFT ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )-1))
 AND CHARINDEX ( ',',  SA.SPATIAL_REF , 1 ) > 5
 AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
 -- AND ST.SHORT_NAME NOT IN ('Nestcontrole', 'nest beschrijving') **/
+
 
 
 

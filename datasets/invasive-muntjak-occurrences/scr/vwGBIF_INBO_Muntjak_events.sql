@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 20/06/2018 14:32:20 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 24/01/2019 13:46:16 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,12 +9,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
-AS**/
+CREATE View [ipt].[vwGBIF_INBO_Muntjak_events]
+AS
 
 SELECT 
 	 
@@ -157,6 +158,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 --	and ST.SHORT_NAME <> 'Weather'
 		
+
 
 
 
