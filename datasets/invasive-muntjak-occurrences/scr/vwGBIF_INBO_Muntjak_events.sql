@@ -1,7 +1,7 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 24/01/2019 13:46:16 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Muntjak_events]    Script Date: 8/03/2019 15:08:55 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,11 +10,12 @@ GO
 
 
 
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 *********************************/
 
-CREATE View [ipt].[vwGBIF_INBO_Muntjak_events]
+ALTER View [ipt].[vwGBIF_INBO_Muntjak_events]
 AS
 
 SELECT 
@@ -28,7 +29,7 @@ SELECT
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	
 	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'datasetName - Muntjak in Flanders, Belgium'
+	, [datasetName] = N'Invasive species - Chinese muntjac (Muntiacus reevesi) in Flanders, Belgium'
 --	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 	
 	, [ownerInstitutionCode] = N'INBO'
@@ -158,6 +159,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 --	and ST.SHORT_NAME <> 'Weather'
 		
+
 
 
 
