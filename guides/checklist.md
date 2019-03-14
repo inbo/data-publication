@@ -1,2 +1,0 @@
-# Darwin Core checklist mapping
-
