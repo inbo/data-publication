@@ -1,0 +1,87 @@
+---
+title: "Datasets"
+author: "Peter Desmet"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+Load libraries:
+
+```{r}
+library(tidyverse)
+library(here)
+library(lubridate)
+library(rgbif)
+```
+
+Query metadata for all datasets on [INBO IPT](https://www.gbif.org/installation/9f25fd85-85dc-4dcd-a1b4-b31165442e2b):
+
+```{r get_metadata}
+datasets_metadata <-
+  dataset_search(hostingOrg = "1cd669d0-80ea-11de-a9d0-f1765f95f18b")$data %>%
+  pull(datasetKey) %>%
+  map(function(x) rgbif::datasets(uuid = x)$data)
+```
+
+Extract fields of interest:
+
+```{r}
+datasets <- 
+  datasets_metadata %>%
+  map_df(function(x) list(
+    title = x$title,
+    ipt_url = (x$identifiers %>% filter(type == "URL") %>% pull(identifier))[1],
+    doi = paste0("https://doi.org/", x$doi),
+    publisher = x$publishingOrganizationKey,
+    type = str_to_lower(x$type),
+    first_publication = date(x$created),
+    last_publication = date(x$pubDate),
+    update_freq = ifelse(
+      "maintenanceUpdateFrequency" %in% names(x),
+      str_to_lower(x$maintenanceUpdateFrequency),
+      NA_character_
+    ),
+    uuid = x$key
+  ))
+```
+
+Recode some data:
+
+```{r}
+datasets <-
+  datasets %>%
+  
+  # Separate ipt_url and keep shortname only
+  separate(ipt_url, into = c("ipt_base", "shortname"), sep = "=") %>%
+  select(-ipt_base) %>%
+  
+  # Assign readable publisher
+  mutate(publisher = recode(publisher,
+    "1cd669d0-80ea-11de-a9d0-f1765f95f18b" = "INBO",
+    "4d3ceea8-5699-439d-a899-decac9cbbdac" = "Natuurpunt",
+    "05c249d0-dfa0-11d8-b22e-b8a03c50a862" = "UGent",
+    "ec5f9a9c-09b0-4da3-ae8e-22627620fff6" = "VMM",
+    "cdef28b1-db4e-4c58-aa71-3c5238c2d0b5" = "ISSG"
+  )) %>%
+  
+  # Correct first publication date for early datasets
+  mutate(first_publication = case_when(
+    shortname == "florabank1-occurrences" ~ date("2011-08-18"),
+    shortname == "testwat-occurrences" ~ date("2011-08-17"),
+    shortname == "depletion-fishing-nete-occurrences" ~ date("2013-05-05"),
+    TRUE ~ first_publication
+  )) %>%
+  
+  # Order by first publication
+  arrange(first_publication)
+```
+
+Save to CSV:
+
+```{r}
+write_csv(datasets, here("data", "datasets.csv"), na = "")
+```
