@@ -1,26 +1,5 @@
 # Darwin Core Occurrence mapping
 
-## Terms to verify
-
-Terms with **M** (mandatory) should always be included in the mapping.
-
-* [ ] Term names are in lowerCamelCase
-* [ ] **M** `occurrenceID` does not contain duplicates
-* [ ] `occurrenceID` is globally unique (e.g. by concatenating IDs)
-* [ ] `occurrenceID` is stable (by referring to internal IDs)
-* [ ] **M** `type` uses an UpperCamelCase vocabulary
-* [ ] **M** `language` is `en`
-* [ ] **M** `license` is `http://creativecommons.org/publicdomain/zero/1.0/`
-* [ ] **M** `rightsHolder` is `INBO`
-* [ ] **M** `accessRights` is `http://www.inbo.be/en/norms-for-data-use`
-* [ ] **M** `datasetID` is of the form `http://dataset.inbo.be/shortname`
-* [ ] `datasetID` is the dataset DOI (after registration)
-* [ ] **M** `institutionCode` is `INBO`
-* [ ] **M** `datasetName` is the latest dataset title
-* [ ] **M** `ownerInstitutionCode` is `INBO`
-* [ ] **M** `basisOfRecord` uses [this UpperCamelCase vocabulary](http://rs.gbif.org/vocabulary/dwc/basis_of_record.xml) 
-* [ ] `dynamicProperties` is understandable to an outside user
-* [ ] `dynamicProperties` is valid JSON
 * [ ] `recordedBy` is of the form `First name Last name`, `F. Last name` or an anonymous unique code
 * [ ] **M** `recordedBy` delimits multiple values with ` | `
 * [ ] `individualCount` are all integers
@@ -107,8 +86,7 @@ Terms with **M** (mandatory) should always be included in the mapping.
 
 This is not a full list, just terms we might have populated before.
 
-* [ ] `modified` seldom reflects all modifications, such as altered mapping
-* [ ] `bibliographicCitation` is the citation of a dataset, which is in the metadata and too bulky to repeat for every occurrence
+
 * [ ] `country` is not used, we use `countryCode`
 * [ ] `locality` is not used, as our vocabularies only apply to `municipality` and higher, or `waterBody`
 * [ ] `dateIdentified` is assumed to be the `eventDate` and is thus not populated
