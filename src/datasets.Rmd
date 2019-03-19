@@ -13,8 +13,8 @@ Load libraries:
 
 ```{r}
 library(tidyverse)
-library(here)
 library(lubridate)
+library(here)
 library(rgbif)
 ```
 
@@ -80,8 +80,17 @@ datasets <-
   arrange(first_publication)
 ```
 
+Add number of occurrences:
+
+```{r add_occ_count}
+datasets <-
+  datasets %>%
+  rowwise() %>%
+  mutate(occ_count = occ_count(datasetKey = uuid))
+```
+
 Save to CSV:
 
 ```{r}
-write_csv(datasets, here("data", "datasets.csv"), na = "")
+write_csv(datasets, here::here("data", "datasets.csv"), na = "")
 ```
