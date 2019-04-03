@@ -1,7 +1,7 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Grensmaas_vegetatieopnamen_event]    Script Date: 22/01/2019 12:51:27 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_uitheemse_exoten_rivieren_vegetatieopnamen_event]    Script Date: 3/04/2019 14:11:41 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,13 +13,16 @@ GO
 
 
 
+
+
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-06-21  finaliseren Query Grensmaas vegetatieopnamen
 *********************************/
 
-CREATE View [ipt].[vwGBIF_INBO_uitheemse_exoten_rivieren_vegetatieopnamen_event]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_uitheemse_exoten_rivieren_vegetatieopnamen_event]
+AS**/
 
 SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
@@ -30,15 +33,13 @@ SELECT
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
-	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'Invasive Aliens on waterways'
+	, [datasetID] = N'https://doi.org/10.15468/lgu26x'
+	, [datasetName] = ' Invasive species - Invasive plants near waterways in West and East Flanders, Belgium'
 	, [institutionCode] = N'INBO'
-	, [ownerInstitutionCode] = N'INBO'
-	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 
 	--- EVENT ---
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
-	, [samplingProtocol] = ST.SHORT_NAME
+	, [samplingProtocol] = LOWER(ST.SHORT_NAME)
 	/**	CASE CONVERT(Nvarchar(500),ST.SHORT_NAME)
 			WHEN 'Afvangst' THEN 'Capture'
 			WHEN 'Afschot' THEN 'culling - shooting'
@@ -57,7 +58,7 @@ SELECT
 	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
 	
 	--- LOCATION ---
-	, [locationID] = SA.LOCATION_KEY
+--	, [locationID] = SA.LOCATION_KEY
 	, [continent] = N'Europe'
 	, [countryCode] = N'BE'
 	, [verbatimLocality] = COALESCE(CONVERT(Nvarchar(500), LN.ITEM_NAME) + ' ', '') + COALESCE(CONVERT(Nvarchar(4000), Sa.LOCATION_NAME),'')
@@ -155,6 +156,9 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 	and ST.SHORT_NAME <> 'Weather' **/
 		
+
+
+
 
 
 

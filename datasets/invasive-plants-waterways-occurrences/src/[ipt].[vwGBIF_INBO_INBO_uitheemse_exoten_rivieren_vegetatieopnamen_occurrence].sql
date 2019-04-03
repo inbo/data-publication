@@ -1,19 +1,12 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_INBO_Ecologische_typologie_waterlopen_occurrences]    Script Date: 22/01/2019 12:54:36 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_uitheemse_exoten_rivieren_vegetatieopnamen_occurrence]    Script Date: 3/04/2019 14:17:39 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
-
-
-
-
-
-
 
 
 /**********************************
@@ -22,7 +15,7 @@ GO
 2019-01-20  Finaliseren Query
 *********************************/
 
-CREATE View [ipt].[vwGBIF_INBO_INBO_uitheemse_exoten_rivieren_vegetatieopnamen_occurrence]
+ALTER View [ipt].[vwGBIF_INBO_uitheemse_exoten_rivieren_vegetatieopnamen_occurrence]
 AS
 
 SELECT 
@@ -30,12 +23,8 @@ SELECT
 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
-	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE,1),126)
-	, [eventDate2] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
+		
 	
-	
-
-
 	--- RECORD ---	
 	
 	, [type] = N'Event'
@@ -43,12 +32,10 @@ SELECT
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
-	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'Ecologische topologie waterlopen'
+	, [datasetID] = N'https://doi.org/10.15468/lgu26x'
+	, [datasetName] = 'Invasive species - Invasive plants near waterways in West and East Flanders, Belgium'
 	, [institutionCode] = N'INBO'
-	, [ownerInstitutionCode] = N'INBO'
 	, [basisOfRecord] = N'HumanObservation'
-	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 
 		--- Occurrence---
 
@@ -56,9 +43,15 @@ SELECT
 	, [recordedBy] = NAME_KEY
 	, [individualCount] = meas.DATA
 --	, [organismQuantityType] = DataShortName
-	, [occurrenceStatus] = N'present'
-	, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
-	, [samplingProtocol] = CONVERT(Nvarchar(500),ST.SHORT_NAME)
+--	, [occurrenceStatus] = N'present'
+	, [taxonRank] = CASE
+					 WHEN NS.RECOMMENDED_NAME_RANK_LONG = 'Species' THEN 'species'
+					 WHEN NS.RECOMMENDED_NAME_RANK_LONG = 'Species hybrid' THEN 'species'
+					 WHEN NS.RECOMMENDED_NAME_RANK_LONG = 'Genus' THEN 'genus'
+					ELSE NULL
+					END
+					
+	, [samplingProtocol] = CONVERT(Nvarchar(500),LOWER(ST.SHORT_NAME))
 
 		--- TAXON ---
 
@@ -77,7 +70,6 @@ SELECT
 	
 	
 	--- LOCATION ---
-	, [locationID] = SA.LOCATION_KEY
 	, [continent] = N'Europe'
 	, [countryCode] = N'BE'
 	, [verbatimLocality] = COALESCE(CONVERT(Nvarchar(500), LN.ITEM_NAME) + ' ', '') + COALESCE(CONVERT(Nvarchar(4000), Sa.LOCATION_NAME),'')
@@ -182,6 +174,10 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
 --	and ST.SHORT_NAME <> 'Weather' 
 		
+
+
+
+
 
 
 
