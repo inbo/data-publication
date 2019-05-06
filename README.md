@@ -8,11 +8,11 @@ In this repository we keep track of [issues](https://github.com/inbo/data-public
 
 ## Datasets
 
-Most of the datasets for which we provide technical supported are hosted on the INBO IPT:
+Most of the datasets for which we provide technical support are hosted on the INBO IPT.
 
-- [Datasets on the IPT](https://ipt.inbo.be/), where datasets are published
-- [Datasets on GBIF](https://www.gbif.org/dataset/search?hosting_org=1cd669d0-80ea-11de-a9d0-f1765f95f18b), where datasets are discoverable and interoperable
-- [Datasets as csv](data/datasets.csv), for a quick overview
+- [Datasets on the IPT](https://ipt.inbo.be/): where datasets are published
+- [Datasets on GBIF](https://www.gbif.org/dataset/search?hosting_org=1cd669d0-80ea-11de-a9d0-f1765f95f18b): where datasets are discoverable and interoperable
+- [Datasets as csv](data/datasets.csv): for a quick overview
 
 ## Guidelines
 
