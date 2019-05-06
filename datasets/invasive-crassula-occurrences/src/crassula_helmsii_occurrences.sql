@@ -1,7 +1,7 @@
 USE [NBNData_IPT]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Crassula helmsii_occurrences]    Script Date: 21/01/2019 14:00:16 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Crassula helmsii_occurrences]    Script Date: 6/05/2019 15:18:50 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,10 +16,12 @@ GO
 
 
 
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-12-10  Ecologische waterlopen vegetatie starts DiB
 2019-01-20  DataLongName = 'Brauwn-Blanquet
+2019-05-04  Only Crassula occ
 *********************************/
 
 /**ALTER View [ipt].[vwGBIF_INBO_Crassula helmsii_occurrences]
@@ -181,8 +183,10 @@ WHERE
 /**	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
---	and ST.SHORT_NAME <> 'Weather' 
+--	and ST.SHORT_NAME <> 'Weather'
+	AND RECOMMENDED_SCIENTIFIC_NAME IN ('Crassula helmsii') 
 		
+
 
 
 
