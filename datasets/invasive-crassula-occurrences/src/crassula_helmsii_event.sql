@@ -1,7 +1,7 @@
-USE [NBNData_IPT]
+USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Crassula helmsii_event]    Script Date: 17/01/2019 14:30:26 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Crassula helmsii_event]    Script Date: 10/05/2019 9:29:38 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,10 +11,11 @@ GO
 
 
 
-
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
-2018-06-21  Start typologie waterlopen
+2018-06-21  Start Helmsii occurrences
+looks like inboveg data in recorder
+2019-04-01  check query
 *********************************/
 
 ALTER View [ipt].[vwGBIF_INBO_Crassula helmsii_event]
@@ -29,11 +30,12 @@ SELECT
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
-	, [datasetID] = N'Complete with DOI'
-	, [datasetName] = 'Crassula helmsii standplaatsonderzoek'
+	, [datasetID] = N'https://doi.org/10.15468/ckq9l7'
+	, [datasetName] = 'Invasive species - New Zealand pigmyweed (Crassula helmsii) occurrences in Flanders, Belgium'
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
-	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
+	, [collectionCode] = N'NBN'
+--	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 
 	--- EVENT ---
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
@@ -154,6 +156,9 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 	and ST.SHORT_NAME <> 'Weather' **/
 		
+
+
+
 
 
 
