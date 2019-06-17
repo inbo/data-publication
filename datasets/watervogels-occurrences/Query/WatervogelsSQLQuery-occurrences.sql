@@ -1,7 +1,7 @@
 USE [W0004_00_Waterbirds]
 GO
 
-/****** Object:  View [iptdev].[vwGBIF_INBO_Watervogels_new_occurrences]    Script Date: 20/05/2019 16:01:06 ******/
+/****** Object:  View [iptdev].[vwGBIF_INBO_Watervogels_occurrences2019]    Script Date: 17/06/2019 14:25:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,12 +9,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-/**CREATE VIEW [iptdev].[vwGBIF_INBO_Watervogels_occurrences2019]
-AS**/
+
+
+ALTER VIEW [iptdev].[vwGBIF_INBO_Watervogels_occurrences2019]
+AS
 
 
 
-SELECT  TOP 1000
+SELECT 
 
 [eventID] = N'INBO:WATERVOGELS:EVENT:' + Right(N'000000000' + CONVERT(nvarchar(20) ,dsa.SampleKey),10)  
 
@@ -48,11 +50,25 @@ SELECT  TOP 1000
 	, [scientificNameAuthorship] = dt.Author
 	, [vernacularName] = commonname
 	, [nomenclaturalCode] = N'ICZN'
+	, fta.sampledate
+	, fta.surveyKey
+	, di.surveyCode
 
 FROM dbo.DimSample dsa 
 INNER JOIN dbo.FactTaxonOccurrence fta ON fta.SampleKey = dsa.SampleKey
 INNER JOIN dbo.DimTaxon dt ON dt.NBN_Taxon_List_Item_Key = fta.RecommendedTaxonTLI_Key
 INNER JOIN dbo.DimTaxonWV dtw ON dtw.TaxonWVKey = fta.TaxonWVKey
 INNER JOIN dbo.DimLocationWV lwv ON lwv.LocationWVKey = fta.LocationWVKey
+
+ INNER JOIN dbo.DimSurvey Di on Di.SurveyKey = fta.SurveyKey
+							AND Di.SurveyCode IN ('ZSCH','NOORD','MIDMA')
+
 WHERE dsa.SampleKey > 0
 AND fta.TaxonCount > 0
+--AND YEAR(fta.sampleDate) < 2016
+AND fta.sampleDate < '2016-03-31 00:00:00.000' 
+
+
+GO
+
+
