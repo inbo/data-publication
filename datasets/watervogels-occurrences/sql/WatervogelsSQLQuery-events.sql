@@ -1,7 +1,7 @@
 USE [W0004_00_Waterbirds]
 GO
 
-/****** Object:  View [iptdev].[vwGBIF_INBO_Watervogels_events]    Script Date: 20/05/2019 14:35:32 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_events]    Script Date: 20/06/2019 9:37:31 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,9 @@ GO
 
 
 
-ALTER VIEW [iptdev].[vwGBIF_INBO_Watervogels_events]
+
+
+ALTER VIEW [ipt].[vwGBIF_INBO_Watervogels_events]
 AS
 
 
@@ -109,11 +111,14 @@ SELECT
 FROM dbo.DimSample dsa 
  INNER JOIN (SELECT DISTINCT(SampleKey), SurveyKey, EventKey, LocationWVKey, SampleDateKey FROM FactTaxonOccurrence Fta WHERE SampleKey > 0) as Sa ON sa.sampleKey = dsa.SampleKey
  INNER JOIN dbo.DimSurvey Di on Di.SurveyKey = Sa.SurveyKey
-							AND Di.SurveyCode IN ('ZSCH','NOORD','MIDMA')
+							AND Di.SurveyCode IN ('ZSCH','MIDMA')
  INNER JOIN dbo.DimLocationWV DiL on DiL.LocationWVKey = Sa.LocationWVKey
 									
 --SELECT  *FROM DimSample
 --SELECT  *FROM DimSurvey
+AND dsa.sampleDate < '2016-03-31 00:00:00.000' 
+
+
 
 
 GO

@@ -1,7 +1,7 @@
 USE [W0004_00_Waterbirds]
 GO
 
-/****** Object:  View [iptdev].[vwGBIF_INBO_Watervogels_occurrences2019]    Script Date: 17/06/2019 14:25:02 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_occurrences]    Script Date: 20/06/2019 9:38:34 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,7 +11,10 @@ GO
 
 
 
-ALTER VIEW [iptdev].[vwGBIF_INBO_Watervogels_occurrences2019]
+
+
+
+ALTER VIEW [ipt].[vwGBIF_INBO_Watervogels_occurrences]
 AS
 
 
@@ -67,6 +70,9 @@ WHERE dsa.SampleKey > 0
 AND fta.TaxonCount > 0
 --AND YEAR(fta.sampleDate) < 2016
 AND fta.sampleDate < '2016-03-31 00:00:00.000' 
+
+
+
 
 
 GO
