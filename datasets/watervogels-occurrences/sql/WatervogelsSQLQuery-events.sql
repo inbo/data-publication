@@ -1,7 +1,7 @@
 USE [W0004_00_Waterbirds]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_events]    Script Date: 21/06/2019 9:51:53 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_events]    Script Date: 24/06/2019 10:15:50 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,11 +16,12 @@ GO
 
 
 
+
 ALTER VIEW [ipt].[vwGBIF_INBO_Watervogels_events]
 AS
 
 
-SELECT  
+SELECT 
 
   ---RECORD ---
 
@@ -46,12 +47,11 @@ SELECT
 							ELSE 'survey from land'
 							END
 	, [samplingEffort] = case CoverageDescription
-							WHEN 'Volledig' THEN 'all waterbirds counted'
-							WHEN 'Onvolledig' THEN 'not all waterbirds counted'
+							WHEN 'Volledig' THEN 'complete location survey'
+							WHEN 'Onvolledig' THEN 'partial location survey'
 							ELSE 'unknown'
-							END
-	, [eventRemarks] = case CONCAT(IsgullsCounted,IsGeeseCounted,IsWaderCounted)
-							WHEN '111' THEN 'waterbirds counted'
+							END  + ' & ' + case CONCAT(IsgullsCounted,IsGeeseCounted,IsWaderCounted)
+							WHEN '111' THEN 'all waterbirds counted'
 							WHEN '110' THEN 'waterbirds except waders counted'
 							WHEN '001' THEN 'waterbirds except gulls and geese counted'
 							WHEN '000' THEN 'waterbirds except waders, gulls and geese counted'
@@ -61,6 +61,17 @@ SELECT
 							WHEN '100' THEN 'waterbirds except geese and waders counted'
 							ELSE 'unknown'
 							END
+	/**, [eventRemarks] = case CONCAT(IsgullsCounted,IsGeeseCounted,IsWaderCounted)
+							WHEN '111' THEN 'all waterbirds counted'
+							WHEN '110' THEN 'waterbirds except waders counted'
+							WHEN '001' THEN 'waterbirds except gulls and geese counted'
+							WHEN '000' THEN 'waterbirds except waders, gulls and geese counted'
+							WHEN '011' THEN 'waterbirds except gulls counted'
+							WHEN '010' THEN 'waterbirds except gulls and waders counted'
+							WHEN '101' THEN 'waterbirds except geese counted'
+							WHEN '100' THEN 'waterbirds except geese and waders counted'
+							ELSE 'unknown'
+							END  **/
 	, IsGullsCounted
 	, IsGeeseCounted
 	, IsWaderCounted
@@ -136,6 +147,8 @@ AND dsa.sampleDate < '2016-03-31 00:00:00.000'
 AND dsa.sampleDate > '1991-01-01 00:00:00.000' 
 ---AND CoverageDescription LIKE 'Onvolledig'
 AND LocationGeometry IS NOT NULL
+--AND CoverageDescription NOT LIKE '%volledig'
+
 
 
 
