@@ -1,12 +1,13 @@
 USE [W0004_00_Waterbirds]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_events]    Script Date: 24/06/2019 10:15:50 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_events]    Script Date: 24/06/2019 14:23:38 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -49,6 +50,7 @@ SELECT
 	, [samplingEffort] = case CoverageDescription
 							WHEN 'Volledig' THEN 'complete location survey'
 							WHEN 'Onvolledig' THEN 'partial location survey'
+							WHEN 'Niet geteld' THEN 'no survey'
 							ELSE 'unknown'
 							END  + ' & ' + case CONCAT(IsgullsCounted,IsGeeseCounted,IsWaderCounted)
 							WHEN '111' THEN 'all waterbirds counted'
@@ -148,6 +150,7 @@ AND dsa.sampleDate > '1991-01-01 00:00:00.000'
 ---AND CoverageDescription LIKE 'Onvolledig'
 AND LocationGeometry IS NOT NULL
 --AND CoverageDescription NOT LIKE '%volledig'
+
 
 
 

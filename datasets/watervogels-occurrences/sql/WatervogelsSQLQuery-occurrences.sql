@@ -1,12 +1,15 @@
 USE [W0004_00_Waterbirds]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_occurrences]    Script Date: 20/06/2019 9:38:34 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_occurrences]    Script Date: 26/06/2019 8:32:32 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
+
 
 
 
@@ -21,11 +24,11 @@ AS
 
 SELECT 
 
-[eventID] = N'INBO:WATERVOGELS:EVENT:' + Right(N'000000000' + CONVERT(nvarchar(20) ,dsa.SampleKey),10)  
+[eventID] = N'INBO:WATERVOGELS:EVENT:' + Right(N'000000' + CONVERT(nvarchar(20) ,dsa.SampleKey),6)  
 
  ---RECORD---
 	 
-	, [type] = N'Event'
+	/**, [type] = N'Event'
 	, [language] = N'en'
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	, [rightsHolder] = N'INBO'
@@ -33,23 +36,30 @@ SELECT
 	, [datasetID] = N'http://doi.org/10.15468/lj0udq'
 	, [institutionCode] = N'INBO'
 	, [datasetName] = N'Watervogels - Wintering waterbirds in Flanders, Belgium'
-	, [ownerInstitutionCode] = N'INBO'
+	, [ownerInstitutionCode] = N'INBO' **/
 	, [basisOfRecord] = N'HumanObservation'
 	
 	---- OCCURRENCE ---
 		
-	, [occurrenceID] = N'INBO:WATERVOGELS:Occ:' + Right( N'000000000' + CONVERT(nvarchar(20) ,fta.OccurrenceKey),10)
-	, [recordedBy] = dsa.PrimaryRecorderNaam 
+	, [occurrenceID] = N'INBO:WATERVOGELS:OCC:' + Right( N'000000' + CONVERT(nvarchar(20) ,fta.OccurrenceKey),10)
+	, [recordedBy] = case dsa.PrimaryRecorderNaam 
+						WHEN 'Onbekend' THEN 'unknown'
+						WHEN 'INBO Instituut voor Natuur- en Bosonderzoek' THEN 'INBO'
+						ELSE dsa.PrimaryRecorderNaam
+						END
+	
+
 	, fta.TaxonCount as 'individualCount'
 
 	--- TAXON ---
 
-	, [taxonID] =  dtw.euringcode
-	, [scientificName] = dt.TaxonNaam 
+	, [taxonID] = N'euring:' + dtw.euringcode
+--	, [scientificName2] = dt.TaxonNaam
+	, [scientificName] = scientificname
 	, [kingdom] = N'Animalia'
 	, [phylum] = N'Chordata'
 	, [class] = N'Aves'
-	, [taxonRank] = dt.TaxonRank
+	, [taxonRank] = LOWER (dt.TaxonRank)
 	, [scientificNameAuthorship] = dt.Author
 	, [vernacularName] = commonname
 	, [nomenclaturalCode] = N'ICZN'
@@ -70,7 +80,12 @@ WHERE dsa.SampleKey > 0
 AND fta.TaxonCount > 0
 --AND YEAR(fta.sampleDate) < 2016
 AND fta.sampleDate < '2016-03-31 00:00:00.000' 
+AND dsa.sampleDate > '1991-01-01 00:00:00.000' 
 
+
+---and commonname like 'Chileense Taling'
+--and fta.TaxonCount = '1'
+--and dtw.euringcode like '9999%'
 
 
 
