@@ -1,12 +1,17 @@
 USE [W0004_00_Waterbirds]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_events]    Script Date: 24/06/2019 14:23:38 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_events]    Script Date: 4/07/2019 9:46:58 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
+
+
+
 
 
 
@@ -39,7 +44,7 @@ SELECT
 	
   ---EVENT---	
 	
-	, [eventID ] = N'INBO:WATERVOGELS:EVENT:' + Right( N'000000000' + CONVERT(nvarchar(20) ,dsa.SampleKey),10)  
+	, [eventID ] = N'INBO:WATERVOGELS:EVENT:' + Right( N'000000000' + CONVERT(nvarchar(20) ,dsa.SampleKey),6)  
 -- obsolete	, [parentEventID] = N'INBO:WATERVOGELS:EVENT:' + Right( N'000000000' + CONVERT(nvarchar(20) ,di.SurveyKey),10)
 	, [basisOfRecord] = N'HumanObservation'
 	, [samplingProtocol] = CASE SurveyCode
@@ -48,15 +53,15 @@ SELECT
 							ELSE 'survey from land'
 							END
 	, [samplingEffort] = case CoverageDescription
-							WHEN 'Volledig' THEN 'complete location survey'
-							WHEN 'Onvolledig' THEN 'partial location survey'
+							WHEN 'Volledig' THEN 'complete survey of location'
+							WHEN 'Onvolledig' THEN 'incomplete survey of location'
 							WHEN 'Niet geteld' THEN 'no survey'
-							ELSE 'unknown'
+							ELSE 'survey completion unknown'
 							END  + ' & ' + case CONCAT(IsgullsCounted,IsGeeseCounted,IsWaderCounted)
 							WHEN '111' THEN 'all waterbirds counted'
 							WHEN '110' THEN 'waterbirds except waders counted'
 							WHEN '001' THEN 'waterbirds except gulls and geese counted'
-							WHEN '000' THEN 'waterbirds except waders, gulls and geese counted'
+							WHEN '000' THEN 'no waterbirds counted'
 							WHEN '011' THEN 'waterbirds except gulls counted'
 							WHEN '010' THEN 'waterbirds except gulls and waders counted'
 							WHEN '101' THEN 'waterbirds except geese counted'
@@ -122,7 +127,7 @@ SELECT
 	, [continent] = N'Europe'
 	, [waterbody] = Dil.LocationWVNaam
 	, [countryCode] = N'BE'
-	, [varbatimLocality] = DiL.LocationWVNaam
+	, [locality] = DiL.LocationWVNaam
 	, [georeferenceRemarks] = N'coordinates are centroid of location' 
 	, CONVERT(decimal(10,5), Dil.LocationGeometry.STCentroid().STY) as decimalLatitude
 	, CONVERT(decimal(10,5), Dil.LocationGeometry.STCentroid().STX) as decimalLongitude
@@ -147,9 +152,15 @@ FROM dbo.DimSample dsa
 --SELECT  *FROM DimSurvey
 AND dsa.sampleDate < '2016-03-31 00:00:00.000' 
 AND dsa.sampleDate > '1991-01-01 00:00:00.000' 
----AND CoverageDescription LIKE 'Onvolledig'
+--AND CoverageDescription LIKE 'Onvolledig'
 AND LocationGeometry IS NOT NULL
 --AND CoverageDescription NOT LIKE '%volledig'
+
+AND dsa.SampleKey > 0
+
+---and CONCAT(IsgullsCounted,IsGeeseCounted,IsWaderCounted) <> '000'
+
+
 
 
 
