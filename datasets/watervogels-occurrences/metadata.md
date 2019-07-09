@@ -1,8 +1,8 @@
 # Watervogels - Wintering waterbirds in Flanders, Belgium
 
-Koen Devos[^1], Filiep T'Jollyn[^1], Peter Desmet[^1], Dimitri Brosens[^1]
+Koen Devos <sup>1</sup>, Filiep T'Jollyn <sup>1</sup>, Peter Desmet <sup>1</sup>, Dimitri Brosens<sup>1</sup>
 
-[^1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
+[1]: Research Institute for Nature and Forest (INBO), Kliniekstraat 25, 1070, Brussels, Belgium
 
 **Corresponding author**: Koen Devos (koen.devos@inbo.be)
 

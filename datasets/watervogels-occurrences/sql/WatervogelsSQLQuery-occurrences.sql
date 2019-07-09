@@ -1,7 +1,7 @@
 USE [W0004_00_Waterbirds]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_occurrences]    Script Date: 4/07/2019 9:47:35 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Watervogels_occurrences]    Script Date: 9/07/2019 9:12:54 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -56,7 +56,10 @@ SELECT
 
 	--- TAXON ---
 
-	, [taxonID] = N'euring:' + dtw.euringcode
+	, [taxonID] = case dtw.euringCode
+	                WHEN '99998' then  'no euringCode'
+					ELSE  N'euring:' + dtw.euringcode
+					END
 --	, [scientificName2] = dt.TaxonNaam
 	, [scientificName] = scientificname
 	, [kingdom] = N'Animalia'
@@ -96,7 +99,10 @@ AND LocationGeometry IS NOT NULL
 --and commonname like 'Chileense Taling'
 --and fta.TaxonCount = '1'
 --and dtw.euringcode like '9999%'
+-- AND dtw.euringcode < 1
+--AND scientificname like '%Chloephaga%'
 
+---ORDER BY scientificName asc
 
 
 
