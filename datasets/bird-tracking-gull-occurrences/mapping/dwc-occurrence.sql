@@ -1,7 +1,7 @@
-# DEPRECATED: This workflow is referenced in Stienen et al. 2016 
-# (https://doi.org/10.3897/zookeys.555.6173) but is no longer used. 
-# For the current data publication procedure, see 
-# https://github.com/inbo/bird-tracking
+-- DEPRECATED: This workflow is referenced in Stienen et al. 2016 
+-- (https://doi.org/10.3897/zookeys.555.6173) but is no longer used. 
+-- For the current data publication procedure, see 
+-- https://github.com/inbo/bird-tracking
 
 with no_outliers as (
   select
