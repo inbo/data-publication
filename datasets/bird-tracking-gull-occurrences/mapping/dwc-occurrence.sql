@@ -1,14 +1,14 @@
 # DEPRECATED!
 # 
-# This query mapped the data to Darwin Core in CartoDB
+# This query maps bird tracking data stored in CartoDB to Darwin Core.
 # It was used to publish the bird-tracking-gull-occurrences until v5.5:
-# http://data.inbo.be/ipt/resource?r=bird-tracking-gull-occurrences&v=5.5
+# http://ipt.inbo.be/resource?r=bird-tracking-gull-occurrences&v=5.5
 # 
 # The query is mentioned in the corresponding data paper:
 # https://doi.org/10.3897/zookeys.555.6173
 # 
-# For the current mapping procedure, please see:
-# https://github.com/inbo/data-publication/tree/master/datasets/bird-tracking-gull-occurrences
+# For the current publication procedure, please see:
+# https://github.com/inbo/bird-tracking
 
 with no_outliers as (
   select
