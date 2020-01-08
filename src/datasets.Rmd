@@ -103,10 +103,11 @@ kpi_year <- 2019
 ```
 
 ```{r}
+# Published and updated datasets
 datasets %>%
   filter(year(last_publication) >= kpi_year) %>%
-  mutate(first_publication_year = if_else(year(first_publication) < kpi_year, "previous years", toString(kpi_year))) %>%
-  group_by(first_publication_year) %>%
+  mutate(status = if_else(year(first_publication) == kpi_year, "Newly published", "Updated")) %>%
+  group_by(status) %>%
   summarize(count = n()) %>%
   adorn_totals("row")
 ```
