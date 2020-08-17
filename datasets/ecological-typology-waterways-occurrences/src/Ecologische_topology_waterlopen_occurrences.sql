@@ -1,7 +1,7 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_INBO_Ecologische_typologie_waterlopen_occurrences]    Script Date: 21/01/2019 11:27:27 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Ecologische_typologie_waterlopen_occurrences]    Script Date: 14/10/2019 10:39:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -15,14 +15,18 @@ GO
 
 
 
+
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-12-10  Ecologische waterlopen vegetatie starts DiB
 2019-01-20  Finaliseren Query
+2019-03-27  Checken measurements
+2019-10-14  occurrence remarks update on Tansley
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_INBO_Ecologische_typologie_waterlopen_occurrences]
-AS**/
+ALTER View [ipt].[vwGBIF_INBO_Ecologische_typologie_waterlopen_occurrences]
+AS
 
 SELECT 
       --- EVENT ---
@@ -47,14 +51,23 @@ SELECT
 	, [institutionCode] = N'INBO'
 	, [ownerInstitutionCode] = N'INBO'
 	, [basisOfRecord] = N'HumanObservation'
-	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
+--	, [dynamicProperties] = N'{"projectName":"' + S.ITEM_NAME + '"}'
 
 		--- Occurrence---
 
 	, [occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
 	, [recordedBy] = NAME_KEY
---	, [organismQuantity] = meas.DATA
---	, [organismQuantityType] = DataShortName
+	, [occurrenceRemarks] = CASE meas.Data
+				WHEN '1' THEN 'T6 rare'
+				WHEN '2' THEN 'T6 occasional'
+				WHEN '3' THEN 'T6 frequent'
+				WHEN '4' THEN 'T6 abundant'
+				WHEN '5' THEN 'T6 codominant'
+				WHEN '6' THEN 'T6 dominaant'
+				ELSE 'check'
+				END
+	, [organismQuantity] = meas.DATA
+	, [organismQuantityType] = N'Tansley6'
 	, [occurrenceStatus] = N'present'
 	, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG
 
@@ -72,7 +85,8 @@ SELECT
 			WHEN Durations.CommentContainsDuration = 1 AND DATEDIFF(mi,Convert(time, Durations.StartTime) ,  Convert(time, Durations.EndTime) ) > 0 THEN '{"trapDurationInMinutes":' + CONVERT(Nvarchar(20),DateDiff(mi,CONVERT(Time, Durations.StartTime), CONVERT(Time, Durations.EndTime))) + '}' 
 			ELSE NULL
 		END **/
-	
+	--- Quantity
+	 
 	
 	--- LOCATION ---
 	, [locationID] = SA.LOCATION_KEY
@@ -121,7 +135,8 @@ SELECT
 		+ Substring( RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF)))) , 1, CASE WHEN CHARINDEX('.',  RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 > 0 THEN CHARINDEX('.', RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 ELSE LEN(RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) END ) 
 		+ ' ) ' )
 		END
-	*/  
+	*/ 
+--SELECT * 
 FROM dbo.Survey S
 	
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
@@ -180,6 +195,8 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
 --	and ST.SHORT_NAME <> 'Weather' 
 		
+
+
 
 
 
