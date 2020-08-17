@@ -141,11 +141,11 @@ SELECT
 		--[originalNameUsage] = T.ITEM_NAME,
 		, [ScientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME     --recommended scientific soort + genus 
 		, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '') 
-		, lower(NS.RECOMMENDED_NAME_RANK_LONG) AS taxonRank  
-		, [Kingdom]	= CONVERT( nvarchar(50), N'Animalia' )
-	    , [Phylum]	= CONVERT( nvarchar(50), N'Arthropoda' )
-	    , [Class]	= CONVERT( nvarchar(50), N'Insecta' )
-	    , [Order]	= CONVERT( nvarchar(50), N'Ortopthera' )
+		, [taxonRank] = lower(NS.RECOMMENDED_NAME_RANK_LONG)   
+		, [Kingdom]	  = CONVERT( nvarchar(50), N'Animalia' )
+	    , [Phylum]	  = CONVERT( nvarchar(50), N'Arthropoda' )
+	    , [Class]	  = CONVERT( nvarchar(50), N'Insecta' )
+	    , [Order]	  = CONVERT( nvarchar(50), N'Ortopthera' )
 		, [NomenclaturalCode] = 'ICZN'
 		
 	
@@ -160,7 +160,7 @@ SELECT
 	, Case WHEN ( Left(Convert(Varchar(max), [TAO].COMMENT),7) = '{\rtf1\') THEN dbo.ufn_RtfToPlaintext(Convert(Varchar(max), [TAO].COMMENT))  
 		ELSE Convert(Varchar(max), [TAO].COMMENT) 
 		END as Comment
-	, LTRIM(RTRIM(TAOC.[Collection])) as collectionCode
+	, collectionCode = LTRIM(RTRIM(TAOC.[Collection]))  
 
 
 FROM dbo.Survey S
