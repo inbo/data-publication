@@ -1,7 +1,7 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_Saltabel_2020]    Script Date: 17/08/2020 11:30:39 ******/
+/****** Object:  View [ipt].[vwGBIF_Saltabel_2020]    Script Date: 19/08/2020 9:43:03 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,11 +9,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
+
 --SELECT * FROM Survey WHERE ITEM_NAME LIKE '%Saltabel%'
 
 
-/**ALTER VIEW [ipt].[vwGBIF_Saltabel_2020]
-AS**/
+ALTER VIEW [ipt].[vwGBIF_Saltabel_2020]
+AS
 
 
 /*********************************************************/
@@ -36,6 +38,9 @@ AS**/
 		no [modified]
 		re order
 		fix datasetID
+		ADD UTM squares
+		ADD verbatimLAt verbatim long
+		Deleted 4 records (doubles, only different UTM square)
 
 
 */
@@ -85,9 +90,15 @@ SELECT
 		, [decimalLatitude]  =CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Lat ,0),5)) ) 
 		, [decimalLongitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Long,0),5)) )
 		, [geodeticDatum] = CONVERT(Nvarchar(10),'WGS84') 
-		, [verbatimSRS] = N'WGS84'
+		, [verbatimSRS] = N'BD72'
+		, [verbatimcoordinates] =  SDA.DATA
 		, [REFgrid] = SA.SPATIAL_REF_QUALIFIER
-	    , [CoordinateUncertaintyInMeters] = convert(nvarchar(5),coalesce(case
+
+		, [verbatimLongitude] = substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1)
+		, [verbatimLatitude] = (substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11))
+		, sa.SPATIAL_REF
+	
+		, [CoordinateUncertaintyInMeters] = convert(nvarchar(5),coalesce(case
 																	WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN '3536'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd deelgemnte' THEN '3536'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1 km' THEN '707.1'
@@ -145,7 +156,7 @@ SELECT
 		, [Kingdom]	  = CONVERT( nvarchar(50), N'Animalia' )
 	    , [Phylum]	  = CONVERT( nvarchar(50), N'Arthropoda' )
 	    , [Class]	  = CONVERT( nvarchar(50), N'Insecta' )
-	    , [Order]	  = CONVERT( nvarchar(50), N'Ortopthera' )
+	    , [Order]	  = CONVERT( nvarchar(50), N'Orthoptera' )
 		, [NomenclaturalCode] = 'ICZN'
 		
 	
@@ -169,6 +180,7 @@ FROM dbo.Survey S
 	LEFT JOIN [dbo].[Location_Name] LN ON LN.[Location_Key] = L.[Location_Key] 
 	
 	INNER JOIN [dbo].[SAMPLE] SA ON SA.[SURVEY_EVENT_KEY] = SE.[SURVEY_EVENT_KEY]
+	inner join [dbo].[SAMPLE_DATA] SDA on SDA.[SAMPLE_KEY]=SA.[SAMPLE_KEY]
 	LEFT JOIN [dbo].[SAMPLE_TYPE] ST ON  ST.[SAMPLE_TYPE_KEY] = SA.[SAMPLE_TYPE_KEY] 
 	INNER JOIN [dbo].[TAXON_OCCURRENCE] TAO ON TAO.[SAMPLE_KEY] = SA.[SAMPLE_KEY]
 	LEFT OUTER JOIN (SELECT TAOC.TAXON_OCCURRENCE_KEY
@@ -230,7 +242,8 @@ AND TR.[SEQUENCE] >= 230
 	AND ISNUMERIC(SUBSTRING ( SA.SPATIAL_REF , CHARINDEX ( ',',  SA.SPATIAL_REF , 1 )+1 , LEN (SA.SPATIAL_REF ))) =1
 --AND dbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY]) <> 'Jo Packet'
 AND LN.PREFERRED = 1
-AND TAO.CONFIDENTIAL = 0 
+AND TAO.CONFIDENTIAL = 0
+AND TAO.TAXON_OCCURRENCE_KEY NOT IN ('BFN0017900007ZKN','BFN0017900008DLI', 'BFN0017900008FNM','BFN0017900008RG5')
 GROUP BY TAO.[TAXON_OCCURRENCE_KEY]		
 		, LN.[ITEM_NAME]
 		, RT.[SHORT_NAME]
@@ -243,6 +256,7 @@ GROUP BY TAO.[TAXON_OCCURRENCE_KEY]
 		, RT.[SHORT_NAME] 
 		, SA.[VAGUE_DATE_START], SA.[VAGUE_DATE_END] , SA.[VAGUE_DATE_TYPE]
 		, SA.[SAMPLE_KEY]
+		, SDA.[DATA]
 		, COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])) ,'') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), '')  
 		, CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Lat ,0),5)) ) 
 		, CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Long,0),5)) )
@@ -281,6 +295,8 @@ SELECT * FROM dbo.SAMPLE WHERE Sample_KEY = 'BFN00179000025XV'
 SELECT * FROM dbo.TAXON_OCCURRENCE WHERE TAXON_OCCURRENCE_KEY = 'BFN0017900007XT2'
 
 */
+
+
 
 
 
