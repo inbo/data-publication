@@ -5,7 +5,10 @@
 # Author: Peter Desmet
 # Syntax version: 0.1
 
-occurrenceID:
+# Notes are made for where this dataset differs from
+# Waarnemingen.be - Orthoptera: https://doi.org/10.15468/ffwdxn
+
+id:
   regex: 'INBO:NBN:[A-Z0-9]+'
   # Has to be unique as well
 
@@ -31,27 +34,61 @@ rightsHolder:
 accessRights:
   allowed: http://www.inbo.be/en/norms-for-data-use
 
+# references: Not in this dataset
+
 datasetID:
   allowed: https://doi.org/10.15468/1rcpsq
 
 institutionCode:
   allowed: INBO
 
-collectionCode:
+collectionCode: # Not in waarnemingen.be dataset
   empty: true
-  allowed: [Boosten, Carpentier, COL. SLABBAERT HOGE VENEN, collectie Stijn Vanacker, Decleer Kris, Devriese Rik, FSAG, Haghebaert, Hofmans Kurt, Inst. V. Beneden, KBIN, Keppens, Lebrun M., Mal, Université de Liège, Université de Mons, Universiteit Gent, V.V.E., W]
+  if:
+    - basisOfRecord:
+        allowed: PreservedSpecimen
+      allowed:
+        - Boosten
+        - Carpentier
+        - COL. SLABBAERT HOGE VENEN
+        - collectie Stijn Vanacker
+        - Decleer Kris
+        - Devriese Rik
+        - FSAG
+        - Haghebaert
+        - Hofmans Kurt
+        - Inst. V. Beneden
+        - KBIN
+        - Keppens
+        - Lebrun M.
+        - Mal
+        - Université de Liège
+        - Université de Mons
+        - Universiteit Gent
+        - V.V.E.
+        - W
+      empty: true # Sometimes collection is not known
+    - basisOfRecord:
+        allowed: HumanObservation
+      allowed: FSAG # Some records of this source are not certain to be PreservedSpecimen
+      empty: true # Most records
 
 datasetName:
   allowed: Saltabel - Orthoptera in Belgium
 
 basisOfRecord:
-  allowed: [HumanObservation, PreservedSpecimen]
-  if:
-    - collectionCode: 
-        empty: false # If collectionCode is populated => basisOfRecord = "PreservedSpecimen"
-      allowed: PreservedSpecimen
+  allowed:
+    - HumanObservation
+    - PreservedSpecimen
 
-recordedBy:
+# informationwithheld: Not in this dataset
+
+# dataGeneralizations: Not in this dataset
+
+occurrenceID:
+  regex: 'INBO:NBN:[A-Z0-9]+'
+
+recordedBy: # Not in waarnemingen.be dataset
   empty: true
   delimitedvalues:
     delimiter: " | "
@@ -62,15 +99,18 @@ individualCount:
   min: 1
   max: 15000 # Verified by Tim Adriaens
 
-organismQuantity:
+organismQuantity: # Not in waarnemingen.be dataset # FAILS
   empty: true
-  allowed: [abundant, numerous, scarce]
+  allowed:
+    - rare
+    - frequent
+    - abundant
   if:
     - organismQuantityType: # If organismQuantityType is populated => organismQuantityType is populated
         empty: false
       empty: false
 
-organismQuantityType:
+organismQuantityType: # Not in waarnemingen.be dataset # FAILS
   empty: true
   allowed: abundance
   if:
@@ -82,41 +122,51 @@ sex:
   empty: true
   delimitedvalues:
     delimiter: " | "
-    allowed: [male, female] # Order can be "female | male", "male | female"
+    allowed: # Order can be "female | male" or "male | female"
+      - male
+      - female
 
 lifeStage:
   empty: true
   delimitedvalues:
     delimiter: " | "
-    allowed: [adult, juvenile]
+    allowed:
+      adult
+      juvenile
   if:
     - sex: # If sex is populated => lifeStage presumed to be adult (with additional juvenile)
         empty: false
-      allowed: [adult, adult | juvenile]
+      allowed:
+        - adult
+        - adult | juvenile
+        - juvenile | adult
       
 behavior:
   empty: true
-  allowed: stridulation post
+  allowed: stridulating
 
-occurrenceRemarks:
+occurrenceRemarks: # FAILS
   empty: true
-  stringformat: json # Indicates number of individuals per group: {"female": 4, "male": 1}
+  delimitedvalues:
+    delimiter: " | "
+    regex: '(female|male|adult|juvenile)\:\d+' # female:2 | male:1
 
-eventID:
-  empty: false
+# samplingProtocol: Not in this dataset, there is no more information than what is provided in "type"
 
-# samplingProtocol: there is no more information than what is provided in "type"
-# samplingEffort: not known
+# samplingEffort: Not known
 
 eventDate:
-  dateformat: ['%Y-%m-%d', '%Y-%m', '%Y']
+  empty: true # 3 records have no date
+  dateformat:
+    - '%Y-%m-%d'
+    - '%Y-%m'
+    - '%Y'
+    # And date ranges (GBIF will take start date: )
+    - '%Y-%m-%d/%Y-%m-%d'
+    - '%Y-%m/%Y-%m'
+    - '%Y/%Y'
   mindate: 1800-01-01
   maxdate: 2013-06-18
-
-verbatimEventDate:
-  dateformat: ['%Y-%m-%d/%Y-%m-%d', '%Y-%m/%Y-%m', '%Y/%Y'] # Only accept ranges
-
-# locationID: not provided
 
 continent:
   allowed: Europe
@@ -124,95 +174,67 @@ continent:
 countryCode:
   allowed: BE
 
-stateProvince:
-  empty: true # We only have this information for a few records, when it was recorded with observation
-  allowed: [Antwerp, East Flanders, Flemish Brabant, Limburg, West Flanders]
+# stateProvince: Not in this dataset
 
 municipality:
   empty: false
 
 # For the verbatimCoordinates/lat/long we start from the verbatimCoordinateSystem,
-# which is recorded with the observation:
-# * If UTM1 -> Use lambert xy and look up UTM1 code
-# * If UTM5 -> Use lambert xy and look up UTM5 code
-# * If Belgian Lambert 72 -> Use lambert xy
-# * If empty -> Everything should be empty
+# which is recorded with the observation.
 
 verbatimCoordinates:
-  empty: true
   if:
+    - verbatimCoordinateSystem:
+        allowed: Lambert coordinates
+      allowed: ''
+      empty: true
     - verbatimCoordinateSystem:
         allowed: UTM 1km
       regex: '31U[D-G][S-T]\d\d\d\d' # UTM 1km for Flanders, e.g. 31UDS8748
     - verbatimCoordinateSystem:
         allowed: UTM 5km
       regex: '31U[D-G][S-T]\d\d[A-D]' # UTM 5km for Flanders, e.g. 31UDS76C
-    - verbatimCoordinateSystem:
-        allowed: [Belgian Lambert 72, '']
-        empty: true
-      allowed: ''
-      empty: true
 
-# NW Belgium:
-# - latlong: 51.51 2.53
-# - XY: 22344 246072
-# 
-# NW Flanders: idem
-# 
-# SE Belgium:
-# - latlong: 49.49 6.41
-# - XY: 297889 21829
-# 
-# SE Flanders:
-# - latlong: 50.67 5.94
-# - XY: 261064 152221
-
-verbatimLatitude:
+verbatimLatitude: # Not in waarnemingen.be dataset
   empty: true
   if:
     - verbatimCoordinateSystem:
-        allowed: Belgian Lambert 72
+        allowed: Lambert coordinates
       numberformat: x
       min: 21829 # SE Belgium
       max: 246072 # NW Belgium
     - verbatimCoordinateSystem:
-        empty: true
-        allowed: [UTM 1km, UTM 5km, '']
+        allowed: [UTM 1km, UTM 5km]
       allowed: ''
       empty: true
 
-verbatimLongitude:
+verbatimLongitude: # Not in waarnemingen.be dataset
   empty: true
   if:
     - verbatimCoordinateSystem:
-        allowed: Belgian Lambert 72
+        allowed: Lambert coordinates
       numberformat: x
       min: 22344 # NW Belgium
       max: 297889 # SE Belgium
     - verbatimCoordinateSystem:
-        allowed: [UTM 1km, UTM 5km, '']
-        empty: true
+        allowed: [UTM 1km, UTM 5km]
       allowed: ''
       empty: true
 
 verbatimCoordinateSystem:
-  empty: true
-  allowed: [UTM 1km, UTM 5km, Belgian Lambert 72]
+  allowed:
+    - Lambert coordinates
+    - UTM 1km
+    - UTM 5km
 
 verbatimSRS:
-  empty: true
   if:
     - verbatimCoordinateSystem:
-        allowed: [UTM 1km, UTM 5km]
-      allowed: ED50
-    - verbatimCoordinateSystem:
-        allowed: Belgium Lambert 72
+        allowed: Lambert coordinates
       allowed: Belgian Datum 1972
     - verbatimCoordinateSystem:
-        allowed: ''
-        empty: true
-      allowed: ''
-      empty: true
+        allowed: [UTM 1km, UTM 5km]
+      allowed: WGS84
 
 decimalLatitude:
   numberformat: '.5'
@@ -228,42 +250,52 @@ geodeticDatum:
   allowed: WGS84
 
 coordinateUncertaintyInMeters:
-  empty: true
+  allowed: ['30', '71', '707', '3536']
   if:
-    - verbatimCoordinateSystem:
-        allowed: UTM 1km
-      numberformat: x
-      allowed: '707'
-    - verbatimCoordinateSystem:
-        allowed: UTM 5km
-      numberformat: x
-      allowed: '3536'
-    - verbatimCoordinateSystem:
-        allowed: Belgium Lambert 72
+    - georeferenceRemarks:
+        allowed: coordinates are original point coordinates
       numberformat: x
       allowed: '30'
-    - verbatimCoordinateSystem: 
-        allowed: ''
-        empty: true
-      allowed: ''
-      empty: true
+    - georeferenceRemarks:
+        allowed: coordinates are centroid of 100m grid square
+      numberformat: x
+      allowed: '71' # 70.7
+    - georeferenceRemarks:
+        allowed: coordinates are centroid of 1km grid square
+      numberformat: x
+      allowed: '707'
+    - georeferenceRemarks:
+        allowed:
+          - coordinates are centroid of 5km grid square
+          - coordinates are centroid of municipality
+          - coordinates are centroid of 5km grid square and municipality intersection
+      numberformat: x
+      allowed: '3536'
 
 georeferenceRemarks:
-  empty: true
   if:
     - verbatimCoordinateSystem:
-        allowed: [UTM 1km, UTM 5km]
-      allowed: coordinates are centroid of used grid square
+        allowed: Lambert coordinates
+      allowed:
+        - coordinates are original point coordinates
+        - coordinates are centroid of 100m grid square
+        - coordinates are centroid of 5km grid square and municipality intersection
+        - coordinates are centroid of municipality
     - verbatimCoordinateSystem:
-        allowed: [Belgian Lambert 72, '']
-        empty: true
-      allowed: ''
-      empty: true
+        allowed: UTM 1km
+      allowed: coordinates are centroid of 1km grid square
+    - verbatimCoordinateSystem:
+        allowed: UTM 5km
+      allowed: coordinates are centroid of 5km grid square
 
-identifiedBy:
+identifiedBy: # Not in waarnemingen.be dataset
   empty: true
   delimitedvalues: # There are actually no delimited values in this dataset
     delimiter: " | "
+
+# identificationverificationstatus: Not in this dataset
+
+# taxonID: Not in this dataset
 
 scientificName:
   empty: false
@@ -286,8 +318,7 @@ taxonRank:
 scientificNameAuthorship:
   empty: false
 
-vernacularName:
-  empty: false
+# vernacularName: Not in this dataset
 
 nomenclaturalCode:
   allowed: ICZN
