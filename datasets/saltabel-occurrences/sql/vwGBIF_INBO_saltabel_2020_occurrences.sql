@@ -1,7 +1,7 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_Saltabel_2020]    Script Date: 19/08/2020 9:43:03 ******/
+/****** Object:  View [ipt].[vwGBIF_Saltabel_2020]    Script Date: 4/09/2020 9:10:50 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,11 +11,12 @@ GO
 
 
 
---SELECT * FROM Survey WHERE ITEM_NAME LIKE '%Saltabel%'
 
 
-ALTER VIEW [ipt].[vwGBIF_Saltabel_2020]
-AS
+
+
+/**ALTER VIEW [ipt].[vwGBIF_Saltabel_2020]
+AS**/
 
 
 /*********************************************************/
@@ -42,7 +43,7 @@ AS
 		ADD verbatimLAt verbatim long
 		Deleted 4 records (doubles, only different UTM square)
 
-
+	20200828 => remove group by on total query, todo solve the sex - count distinct problem  
 */
 /*********************************************************/
 
@@ -55,11 +56,11 @@ SELECT
 			
 
 		
-		, [Type] = CASE WHEN RT.SHORT_NAME  IN ('auditory record', 'reference/auditory record' ) THEN 'sound'
-						WHEN RT.SHORT_NAME  IN ( 'field record/photographed', '' ) THEN 'stillImage'
-						WHEN RT.SHORT_NAME  IN ( 'Collection/auditory record', 'Collection', 'Collection/field record', 'Collection/reference') THEN 'physicalObject'
-						WHEN RT.SHORT_NAME  IN ( 'Reference' ) THEN 'text'
-						WHEN RT.SHORT_NAME  IN ( 'field record', 'None', 'reported to recorder', 'trapped in Malaise trap' ) THEN 'event'
+		, [Type] = CASE WHEN RT.SHORT_NAME  IN ('auditory record', 'reference/auditory record' ) THEN 'Sound'
+						WHEN RT.SHORT_NAME  IN ( 'field record/photographed', '' ) THEN 'StillImage'
+						WHEN RT.SHORT_NAME  IN ( 'Collection/auditory record', 'Collection', 'Collection/field record', 'Collection/reference') THEN 'PhysicalObject'
+						WHEN RT.SHORT_NAME  IN ( 'Reference' ) THEN 'Text'
+						WHEN RT.SHORT_NAME  IN ( 'field record', 'None', 'reported to recorder', 'trapped in Malaise trap' ) THEN 'Event'
 						ELSE 'Unknown' END 
         , [Language] = CONVERT(Nvarchar(20),'en')
 		, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
@@ -68,18 +69,22 @@ SELECT
 	    , [DatasetID] = CONVERT(Nvarchar(100),'https://doi.org/10.15468/1rcpsq')
 	    , [DatasetName] = CONVERT(Nvarchar(200),S.ITEM_NAME) + ' - Orthoptera in Belgium' 
 		, [InstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
-		, [dataGeneralizations] = CONVERT(Nvarchar(100),'Coordinate Uncertainty In Meters depends on original UTM1 or UTM5 squares.')
+		-- , [dataGeneralizations] = CONVERT(Nvarchar(100),'Coordinate Uncertainty In Meters depends on original UTM1 or UTM5 squares.')
 
 		
 
 		---EVENT---	
 
-		, [BasisOfRecord] = CASE  WHEN RT.SHORT_NAME  IN ('Collection', 'Collection/auditory record', 'Collection/field record', 'Collection/reference' ) THEN 'preservedSpecimen'
-						  WHEN RT.SHORT_NAME  IN ('field record', 'field record/photographed', 'None' ) THEN 'humanObservation'
+		, [BasisOfRecord] = CASE  WHEN RT.SHORT_NAME  IN ('Collection', 'Collection/auditory record', 'Collection/field record', 'Collection/reference' ) THEN 'PreservedSpecimen'
+						  WHEN RT.SHORT_NAME  IN ('field record', 'field record/photographed', 'None' ) THEN 'HumanObservation'
 						  ELSE 'HumanObservation' 
 						  END
-		, [EventDate] = [inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1) 
-		, [verbatimEventDate] = [inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 0)
+		, [EventDate] = CASE  [inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 0)  --1 changed to 0 for dateranges
+								WHEN 'unknown' then NULL
+								ELSE [inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 0)
+								END
+	
+	--	, [verbatimEventDate] = [inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 0)
 		--, [eventRemarks] = 'nog iets zinnigs toe te voegen?' 
 		
 ---- LOCATION -----
@@ -90,56 +95,115 @@ SELECT
 		, [decimalLatitude]  =CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Lat ,0),5)) ) 
 		, [decimalLongitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Long,0),5)) )
 		, [geodeticDatum] = CONVERT(Nvarchar(10),'WGS84') 
-		, [verbatimSRS] = N'BD72'
-		, [verbatimcoordinates] =  SDA.DATA
-		, [REFgrid] = SA.SPATIAL_REF_QUALIFIER
-
+	--	, [verbatimSRS] = N'BD72'
+		, [verbatimcoordinates] = CASE SA.SPATIAL_REF_QUALIFIER  
+							WHEN 'Centrd UTM5 x dgmnte' THEN sa.SPATIAL_REF
+							WHEN 'Centroïd deelgemnte' THEN sa.SPATIAL_REF
+							WHEN 'Centroïd UTM 1 km' THEN SDA.DATA
+							WHEN 'Centroïd UTM 5 km' THEN SDA.DATA
+							WHEN 'Imported' THEN sa.SPATIAL_REF
+							WHEN 'XY from original rec' THEN sa.SPATIAL_REF
+							ELSE SA.SPATIAL_REF
+							END
+		, [verbatimcoordinateSystem] = CASE SA.SPATIAL_REF_QUALIFIER  
+							WHEN 'Centrd UTM5 x dgmnte' THEN 'Lambert coordinates'
+							WHEN 'Centroïd deelgemnte' THEN sa.SPATIAL_REF
+							WHEN 'Centroïd UTM 1 km' THEN 'UTM 1km'
+							WHEN 'Centroïd UTM 5 km' THEN 'UTM 5km'
+							WHEN 'Imported' THEN 'Lambert coordinates'
+							WHEN 'XY from original rec' THEN 'Lambert coordinates'
+							ELSE SA.SPATIAL_REF
+							END
+		, [verbatimSRS] = CASE SA.SPATIAL_REF_QUALIFIER  
+							WHEN 'Centrd UTM5 x dgmnte' THEN 'BD72'
+							WHEN 'Centroïd deelgemnte' THEN sa.SPATIAL_REF
+							WHEN 'Centroïd UTM 1 km' THEN 'WGS84'
+							WHEN 'Centroïd UTM 5 km' THEN 'WGS84'
+							WHEN 'Imported' THEN 'BD72'
+							WHEN 'XY from original rec' THEN 'BD72'
+							ELSE SA.SPATIAL_REF
+							END
+		
+		
+		--	, [REFgrid] = SA.SPATIAL_REF_QUALIFIER
+	    , [lambert] = sa.SPATIAL_REF
 		, [verbatimLongitude] = substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1)
 		, [verbatimLatitude] = (substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11))
-		, sa.SPATIAL_REF
+	--	, sa.SPATIAL_REF
 	
 		, [CoordinateUncertaintyInMeters] = convert(nvarchar(5),coalesce(case
 																	WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN '3536'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd deelgemnte' THEN '3536'
-																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1 km' THEN '707.1'
+																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1 km' THEN '707'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 5 km' THEN '3536'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='XY from original rec' THEN '30'
-                                                                    when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 100m' then '70.71'
-                                                                    when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1km' then '707.1'
+                                                                    when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 100m' then '70'
+                                                                    when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1km' then '707'
                                                                     when SA.SPATIAL_REF_QUALIFIER='centroïd UTM 5km' then '3536'
                                                                     when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 10km' then '7071'
                                                                     when SA.SPATIAL_REF_QUALIFIER='XY from original rec' then '30'
                                                                     else null
-                                                                    end,'70.71')) 
-		, [georeferenceRemarks] =  SA.SPATIAL_REF_QUALIFIER + ' square'
+                                                                    end,'70')) 
+		--, [verbatimCoordinateSystem] = convert(nvarchar,coalesce(case
+		--															WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN 'UTM 5km'
+		--															WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd deelgemnte' THEN '3536'
+		--															WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1 km' THEN 'UTM 1km'
+		--															WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 5 km' THEN 'UTM 5km'
+		--															WHEN SA.SPATIAL_REF_QUALIFIER='XY from original rec' THEN 'Lambert coordinates'
+  --                                                                  when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 100m' then 'UTM 100m'
+  --                                                                  when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1km' then 'UTM 1km'
+  --                                                                  when SA.SPATIAL_REF_QUALIFIER='centroïd UTM 5km' then 'UTM 5km'
+  --                                                                  when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 10km' then 'UTM 10km'
+  --                                                                  when SA.SPATIAL_REF_QUALIFIER='XY from original rec' then 'Lambert coordinates'
+  --                                                                  else null
+  --                                                                  end,'70')) 
+		, [georeferenceRemarks] = CASE SA.SPATIAL_REF_QUALIFIER  
+							WHEN 'Centrd UTM5 x dgmnte' THEN 'UTM5 km centroid x municipality intersect'
+							WHEN 'Centroïd deelgemnte' THEN 'centroid municipality'
+							WHEN 'Centroïd UTM 1 km' THEN 'UTM1 km centroid'
+							WHEN 'Centroïd UTM 5 km' THEN 'UTM5 km centroid'
+							WHEN 'Imported' THEN 'imported coordinate'
+							WHEN 'XY from original rec' THEN 'point coordinate'
+							ELSE SA.SPATIAL_REF_QUALIFIER
+							END
+
+										
 
 ---- OCCURRENCE ---
-        , [CatalogNumber] = TAO.TAXON_OCCURRENCE_KEY 
+        
         , [recordedBy] = CASE WHEN inbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY], ' | ') = 'Unknown' THEN NULL 
 							ELSE inbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY], ' | ')
 							END  
-		, [IndividualCount]  = SUM (CASE WHEN ISNUMERIC(taoMeas.DATA) = 1 AND MUMeas.SHORT_NAME = 'Count' THEN CONVERT(int , taoMeas.DATA) ELSE NULL END ) 
-		, [sex] = dbo.Concatenate(1, CASE 
-										WHEN MUMeas.SHORT_NAME = 'Count'  THEN CASE 
-																			WHEN MQMeas.SHORT_NAME IN ('Adult Man', 'Man') THEN 'male'  --+ ': ' + taoMeas.DATA 
-																			WHEN MQMeas.SHORT_NAME IN ('Adult Vrouw', 'Vrouw') THEN 'female' -- + ': ' + taoMeas.DATA 
-																			ELSE NULL
-																			END
-																					
-											ELSE NULL 
-											END, ' | ')
-	    , [Lifestage] = dbo.Concatenate(1, CASE 
-											WHEN MUMeas.SHORT_NAME = 'Count' THEN CASE 
-																				WHEN MQMeas.SHORT_NAME in ('Nimf', 'juviniel', 'juveniel') THEN 'juvenile'
-																				WHEN MQMeas.SHORT_NAME in ('Nimf', 'juveniel') THEN 'nymph'
-																				WHEN MQMeas.SHORT_NAME IN ('Vrouw', 'Man', 'none', 'Adult Vrouw', 'Adult Man') THEN 'adult' 
-																				WHEN MQMeas.SHORT_NAME IN ('none') THEN NULL 
-																				ELSE  MQMeas.SHORT_NAME 
-																				END
-																					-- + ': ' + taoMeas.DATA
-											ELSE NULL 
-											END, ' | ')
-
+		, [individualCount]  = LifestageMeas.individualCount
+		, [organismQuantity]  = CASE LifestageMeas.individualNotCount
+									WHEN 'schaars' THEN 'rare'
+									WHEN 'talrijk' THEN 'frequent'
+									WHEN 'zeer talrijk' THEN 'abundant'
+									ELSE NULL
+									END
+		, [organismQuantityType] = CASE LifestageMeas.individualNotCount
+									WHEN 'schaars' THEN 'abundance'
+									WHEN 'talrijk' THEN 'abundance'
+									WHEN 'zeer talrijk' THEN 'abundance'
+									ELSE NULL
+									END
+		--, [organismQuantity] = taoMeas.DATA
+		--, [abutest2] =  SUM (CASE WHEN ISNUMERIC(taoMeas.DATA) = 1 AND taoMeas.ACCURACY = 'exact' THEN CONVERT(int , taoMeas.DATA) ELSE NULL END ) 
+		, LifestageMeas.lifeStage
+		, lifeStage5
+	--	, [lifeStage_ind]
+	    --	, SexMeas.sex
+		, [occurrenceRemarks] = COALESCE(SexMeas.sex, '') + 
+			Case when COALESCE(SexMeas.sex, '') <> '' AND COALESCE(LifestageMeas.lifeStage, '') <> ''  THEN '|' ELSE '' END +
+			COALESCE ( LifestageMeas.lifeStage5, '' ) 
+		, LifestageMeas.rauw as LifestagRauw
+		-- , SexMeas.rauw as SexRauw
+		, [behaviour] = CASE behaviour
+		                  WHEN 'adult | Vleugel | Zangpost' THEN 'stridulating'
+						  WHEN 'adult | Zangpost' THEN 'stridulating'
+						  WHEN 'Zangpost' THEN 'stridulating'
+						  ELSE NULL
+						  END
 
 -----Identification----
 
@@ -163,11 +227,6 @@ SELECT
 -- Perqualifier
 	
 		
-	
-	
-	
-	
-	
 	, Case WHEN ( Left(Convert(Varchar(max), [TAO].COMMENT),7) = '{\rtf1\') THEN dbo.ufn_RtfToPlaintext(Convert(Varchar(max), [TAO].COMMENT))  
 		ELSE Convert(Varchar(max), [TAO].COMMENT) 
 		END as Comment
@@ -180,9 +239,9 @@ FROM dbo.Survey S
 	LEFT JOIN [dbo].[Location_Name] LN ON LN.[Location_Key] = L.[Location_Key] 
 	
 	INNER JOIN [dbo].[SAMPLE] SA ON SA.[SURVEY_EVENT_KEY] = SE.[SURVEY_EVENT_KEY]
-	inner join [dbo].[SAMPLE_DATA] SDA on SDA.[SAMPLE_KEY]=SA.[SAMPLE_KEY]
+--	inner join [dbo].[SAMPLE_DATA] SDA on SDA.[SAMPLE_KEY]=SA.[SAMPLE_KEY]
 	LEFT JOIN [dbo].[SAMPLE_TYPE] ST ON  ST.[SAMPLE_TYPE_KEY] = SA.[SAMPLE_TYPE_KEY] 
-	INNER JOIN [dbo].[TAXON_OCCURRENCE] TAO ON TAO.[SAMPLE_KEY] = SA.[SAMPLE_KEY]
+	LEFT JOIN [dbo].[TAXON_OCCURRENCE] TAO ON TAO.[SAMPLE_KEY] = SA.[SAMPLE_KEY]   -- LEFT or INNER JOIN
 	LEFT OUTER JOIN (SELECT TAOC.TAXON_OCCURRENCE_KEY
 										, RTRIM(LTRIM(spl.Value)) as [TrimmedComment]
 										, Substring(RTRIM(LTRIM(spl.Value)), CHARINDEX(':', spl.Value, 1) + 1, LEN(spl.Value)) as [Collection]
@@ -221,15 +280,117 @@ FROM dbo.Survey S
 	
 	--Recorders
 	--LEFT JOIN [dbo].[SAMPLE_RECORDER] SR ON SR.[SAMPLE_KEY] = SA.[SAMPLE_KEY]
-
-	    LEFT JOIN [dbo].[TAXON_OCCURRENCE_DATA] taoMeas ON  taoMeas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY
-        
-        LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY 
-											AND MUMeas.SHORT_NAME = 'Count' --> individualcount
-        LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
-        LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY 
-											AND  MTMeas.SHORT_NAME = 'Abundance') -- 
 	
+	--Lifestage Measurements
+	LEFT OUTER JOIN ( SELECT lifeStage.TAXON_OCCURRENCE_KEY
+						, [lifeStage] = dbo.Concatenate(1, lifeStage.[lifeStage_ind] , ' | ' )
+						, [lifeStage5] = dbo.Concatenate(1, lifeStage.[lifeStage_ind] + ':' + CONVERT(nvarchar(20), lifeStage.[individualCount]), ' | ' )
+						, [individualCount] = sum(lifeStage.[individualCount])
+						, [individualNotCount] = dbo.Concatenate(1, CASE WHEN LTRIM(RTRIM(lifeStage.[individualNotCount])) = '' THEN NULL ELSE lifeStage.[individualNotCount] END  , ' | ' )
+						, [rauw] = dbo.Concatenate(1, lifeStage.rauw, ' | ' ) 
+					FROM ( SELECT taoMeas.TAXON_OCCURRENCE_KEY
+											, [lifeStage_ind] = CASE WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME in ('juviniel', 'juveniel') THEN 'juvenile'
+																	WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME in ('Nimf') THEN 'nymph'
+																	WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME IN ('Vrouw', 'Man', 'Adult Vrouw', 'Adult Man', 'zangpost') THEN 'adult' 
+																	WHEN MQMeas.SHORT_NAME IN ('none') THEN NULL
+																	ELSE MQMeas.SHORT_NAME  
+																	END
+											, [individualCount]  = sum( CASE WHEN ISNUMERIC(taoMeas.DATA) = 1 AND MUMeas.SHORT_NAME = 'Count' THEN CONVERT(int , taoMeas.DATA) ELSE NULL END )
+											, [individualNotCount]  = dbo.Concatenate(1 , CASE WHEN dbo.isReallyNumeric(taoMeas.DATA) = 0  THEN taoMeas.DATA ELSE NULL END , ',' )
+											, rauw = dbo.Concatenate(1, MQMeas.SHORT_NAME + ' (' + taoMeas.DATA + ';' + taoMeas.ACCURACY + ')' , ' | ' )
+											FROM [dbo].[TAXON_OCCURRENCE_DATA] taoMeas 
+											LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY 
+																					AND MUMeas.SHORT_NAME = 'Count' --> individualcount
+										        LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
+										        LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY 
+																					AND  MTMeas.SHORT_NAME = 'Abundance') --
+											WHERE 1=1
+											--AND taoMeas.TAXON_OCCURRENCE_KEY = 'BFN0017900008HFS'
+											GROUP BY taoMeas.TAXON_OCCURRENCE_KEY
+											    
+												, CASE WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME in ('juviniel', 'juveniel') THEN 'juvenile'
+																	WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME in ('Nimf') THEN 'nymph'
+																	WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME IN ('Vrouw', 'Man', 'Adult Vrouw', 'Adult Man', 'zangpost') THEN 'adult' 
+																	WHEN MQMeas.SHORT_NAME IN ('none') THEN NULL
+																	ELSE MQMeas.SHORT_NAME  
+																	END
+												
+											) lifeStage
+					GROUP BY  lifeStage.TAXON_OCCURRENCE_KEY
+					) lifeStageMeas ON lifeStageMeas.TAXON_OCCURRENCE_KEY= tao.TAXON_OCCURRENCE_KEY
+
+---BEHAVIOUR.... HIER BEN IK AAN T PROBEREN TE PRULLEN
+
+LEFT OUTER JOIN ( SELECT behaviour.TAXON_OCCURRENCE_KEY
+						, [behaviour] = dbo.Concatenate(1, behaviour.[lifeStage_ind] , ' | ' )
+						, [behaviour5] = dbo.Concatenate(1, behaviour.[lifeStage_ind] + ':' + CONVERT(nvarchar(20), behaviour.[individualCount]), ' | ' )
+						, [individualCount] = sum(behaviour.[individualCount])
+						, [individualNotCount] = dbo.Concatenate(1, CASE WHEN LTRIM(RTRIM(behaviour.[individualNotCount])) = '' THEN NULL ELSE behaviour.[individualNotCount] END  , ' | ' )
+						, [rauw] = dbo.Concatenate(1, behaviour.rauw, ' | ' ) 
+					FROM ( SELECT taoMeas.TAXON_OCCURRENCE_KEY
+											, [lifeStage_ind] = CASE WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME in ('juviniel', 'juveniel') THEN 'juvenile'
+																	WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME in ('Nimf') THEN 'nymph'
+																	WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME IN ('Vrouw', 'Man', 'Adult Vrouw', 'Adult Man') THEN 'adult' 
+																	WHEN MQMeas.SHORT_NAME IN ('none') THEN NULL
+																	ELSE MQMeas.SHORT_NAME  
+																	END
+											, [individualCount]  = sum( CASE WHEN ISNUMERIC(taoMeas.DATA) = 1 AND MUMeas.SHORT_NAME = 'Count' THEN CONVERT(int , taoMeas.DATA) ELSE NULL END )
+											, [individualNotCount]  = dbo.Concatenate(1 , CASE WHEN dbo.isReallyNumeric(taoMeas.DATA) = 0  THEN taoMeas.DATA ELSE NULL END , ',' )
+											, rauw = dbo.Concatenate(1, MQMeas.SHORT_NAME + ' (' + taoMeas.DATA + ';' + taoMeas.ACCURACY + ')' , ' | ' )
+											FROM [dbo].[TAXON_OCCURRENCE_DATA] taoMeas 
+											LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY 
+																					AND MUMeas.SHORT_NAME = 'Count' --> individualcount
+										        LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
+										        LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY 
+																					AND  MTMeas.SHORT_NAME = 'Abundance') --
+											WHERE 1=1
+											--AND taoMeas.TAXON_OCCURRENCE_KEY = 'BFN0017900008HFS'
+											GROUP BY taoMeas.TAXON_OCCURRENCE_KEY
+											    
+												, CASE WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME in ('juviniel', 'juveniel') THEN 'juvenile'
+																	WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME in ('Nimf') THEN 'nymph'
+																	WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME IN ('Vrouw', 'Man', 'Adult Vrouw', 'Adult Man') THEN 'adult' 
+																	WHEN MQMeas.SHORT_NAME IN ('none') THEN NULL
+																	ELSE MQMeas.SHORT_NAME  
+																	END
+												
+											) behaviour
+					GROUP BY  behaviour.TAXON_OCCURRENCE_KEY
+					) behaviourMeas ON behaviourMeas.TAXON_OCCURRENCE_KEY= tao.TAXON_OCCURRENCE_KEY
+	 
+	--Sex Measurements
+	LEFT OUTER JOIN ( SELECT sex.TAXON_OCCURRENCE_KEY
+							, [sex] = dbo.Concatenate(1, sex.[sex_ind] + ':' + CONVERT(nvarchar(20), sex.[individualCount]), ' | ') 
+							, [individualCount] = sum(sex.[individualCount])
+							, [individualNotCount] = dbo.Concatenate(1, CASE WHEN LTRIM(RTRIM(sex.[individualNotCount]))  = '' THEN NULL ELSE sex.[individualNotCount] END  , ' | ' )
+							, [rauw] = dbo.Concatenate(1, sex.rauw , ' | ' ) 
+						FROM ( SELECT TAXON_OCCURRENCE_KEY
+								, [sex_ind] =  CASE WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME IN ('Adult Man', 'Man') THEN 'male'  
+											WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME IN ('Adult Vrouw', 'Vrouw') THEN 'female'  
+											--ELSE 'ArmeWeeskens'   
+											END
+																						 
+								, [individualCount]  = sum( CASE WHEN ISNUMERIC(taoMeas.DATA) = 1 AND MUMeas.SHORT_NAME = 'Count' THEN CONVERT(int , taoMeas.DATA) ELSE NULL END )
+								, [individualNotCount]  = dbo.Concatenate(1 , CASE WHEN dbo.isReallyNumeric(taoMeas.DATA) = 0 THEN taoMeas.DATA ELSE NULL END , ',' )
+								, rauw = dbo.Concatenate(1, MQMeas.SHORT_NAME + ' (' + taoMeas.DATA + ';' + taoMeas.ACCURACY + ')' , ' | ' )
+							FROM [dbo].[TAXON_OCCURRENCE_DATA] taoMeas 
+							LEFT JOIN dbo.MEASUREMENT_UNIT MUMeas ON  MUMeas.MEASUREMENT_UNIT_KEY = taoMeas.MEASUREMENT_UNIT_KEY 
+																	AND MUMeas.SHORT_NAME = 'Count' --> individualcount
+							    LEFT JOIN dbo.MEASUREMENT_QUALIFIER MQMeas ON  MQMeas.MEASUREMENT_QUALIFIER_KEY = taoMeas.MEASUREMENT_QUALIFIER_KEY
+							    LEFT JOIN dbo.MEASUREMENT_TYPE MTMeas ON  (MTMeas.MEASUREMENT_TYPE_KEY = MQMeas.MEASUREMENT_TYPE_KEY 
+																	AND  MTMeas.SHORT_NAME = 'Abundance') --
+							WHERE 1=1
+							--AND taoMeas.TAXON_OCCURRENCE_KEY = 'BFN0017900008HFS'
+							GROUP BY TAXON_OCCURRENCE_KEY
+								, CASE WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME IN ('Adult Man', 'Man') THEN 'male'  
+										WHEN MUMeas.SHORT_NAME = 'Count' AND MQMeas.SHORT_NAME IN ('Adult Vrouw', 'Vrouw') THEN 'female'  
+										--ELSE 'ArmeWeeskens'
+										END
+						) sex
+						GROUP BY  sex.TAXON_OCCURRENCE_KEY
+					)SexMeas ON SexMeas.TAXON_OCCURRENCE_KEY = tao.TAXON_OCCURRENCE_KEY
+		LEFT OUTER join [dbo].[SAMPLE_DATA] SDA on SDA.[SAMPLE_KEY]=SA.[SAMPLE_KEY]			
+
 WHERE S.[ITEM_NAME] =  'Saltabel'
 
 AND ISNUMERIC (Substring(LN.[ITEM_NAME],2,1)) = 0
@@ -244,77 +405,6 @@ AND TR.[SEQUENCE] >= 230
 AND LN.PREFERRED = 1
 AND TAO.CONFIDENTIAL = 0
 AND TAO.TAXON_OCCURRENCE_KEY NOT IN ('BFN0017900007ZKN','BFN0017900008DLI', 'BFN0017900008FNM','BFN0017900008RG5')
-GROUP BY TAO.[TAXON_OCCURRENCE_KEY]		
-		, LN.[ITEM_NAME]
-		, RT.[SHORT_NAME]
-		, CONVERT(Nvarchar(200),S.[ITEM_NAME]) 
-		, T.[ITEM_NAME] 
-		, NS.[RECOMMENDED_SCIENTIFIC_NAME] 
-		, NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
-		, NS.[RECOMMENDED_NAME_RANK] 
-		, NS.[RECOMMENDED_NAME_RANK_LONG] 
-		, RT.[SHORT_NAME] 
-		, SA.[VAGUE_DATE_START], SA.[VAGUE_DATE_END] , SA.[VAGUE_DATE_TYPE]
-		, SA.[SAMPLE_KEY]
-		, SDA.[DATA]
-		, COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])) ,'') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), '')  
-		, CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Lat ,0),5)) ) 
-		, CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Long,0),5)) )
-		, SA.SPATIAL_REF
-		, CASE WHEN SA.SPATIAL_REF_SYSTEM = 'BD72' THEN 'Lambert 72'
-										ELSE SA.SPATIAL_REF_SYSTEM 
-									END
-		, CONVERT (Nvarchar(500), LN.ITEM_NAME)
-		, SA.SPATIAL_REF_QUALIFIER
-		, convert(nvarchar(5),coalesce(case
-                                                                      when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 100m' then '70.71'
-                                                                      when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1km' then '707.1'
-                                                                      when SA.SPATIAL_REF_QUALIFIER='centroïd UTM 5km' then '3536'
-                                                                      when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 10km' then '7071'
-                                                                      when SA.SPATIAL_REF_QUALIFIER='XY from original rec' then '30'
-                                                                      else null
-                                                                  end,'70.71'))
-		, Case WHEN ( Left(Convert(Varchar(max), [TAO].COMMENT),7) = '{\rtf1\') THEN dbo.ufn_RtfToPlaintext(Convert(Varchar(max), [TAO].COMMENT))  
-		ELSE Convert(Varchar(max), [TAO].COMMENT) 
-		END 
-		, TAOC.[Collection]
---ORDER BY dbo.[ufn_RecordersPerSample](SA.[SAMPLE_KEY])
-
-;
-
-
-
-/*
-SELECT * 
-FROM SURVEY where ITEM_NAME lIKE '%Loop%'
-
-SELECT * FROM [ipt].[vwGBIF_Saltabel]
-
-SELECT * FROM dbo.SAMPLE WHERE Sample_KEY = 'BFN00179000025XV'
-
-SELECT * FROM dbo.TAXON_OCCURRENCE WHERE TAXON_OCCURRENCE_KEY = 'BFN0017900007XT2'
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
