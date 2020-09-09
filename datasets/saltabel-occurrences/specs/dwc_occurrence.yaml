@@ -191,10 +191,10 @@ verbatimCoordinates:
       empty: true
     - verbatimCoordinateSystem:
         allowed: UTM 1km
-      regex: '31U[D-G][S-T]\d\d\d\d' # UTM 1km for Flanders, e.g. 31UDS8748
+      regex: '(31U[D-G][Q-T]|32U[K-L][A-B])\d\d\d\d' # UTM 1km for Belgium, e.g. 31UDS8748, 32UKB9322
     - verbatimCoordinateSystem:
         allowed: UTM 5km
-      regex: '31U[D-G][S-T]\d\d[A-D]' # UTM 5km for Flanders, e.g. 31UDS76C
+      regex: '(31U[D-G][Q-T]|32U[K-L][A-B])\d\d[A-D]' # UTM 5km for Belgium, e.g. 31UDS76C, 32UKB9322
 
 verbatimLatitude: # Not in waarnemingen.be dataset
   empty: true
