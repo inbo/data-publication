@@ -88,38 +88,40 @@ SELECT
 		, [decimalLatitude]  =CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Lat ,0),5)) ) 
 		, [decimalLongitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Long,0),5)) )
 		, [geodeticDatum] = CONVERT(Nvarchar(10),'WGS84') 
-		, [verbatimCoordinates] = CASE SA.SPATIAL_REF_QUALIFIER  
-							WHEN 'Centrd UTM5 x dgmnte' THEN NULL                --sa.SPATIAL_REF
-							WHEN 'CentroÔd deelgemnte'  THEN NULL --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
-							WHEN IN ('CentroÔd UTM 1 km', 'CentroÔd UTM 5 km') AND LEFT(UPPER(SDA.DATA), 1) IN ('D', 'E', 'F', 'G') THEN '31U' + UPPER(SDA.DATA) -- 31U zone, e.g. UTM 1: 31UDS6858 / UTM 5: 31UDS66D
-							WHEN IN ('CentroÔd UTM 1 km', 'CentroÔd UTM 5 km') AND LEFT(UPPER(SDA.DATA), 1) IN ('K', 'L') THEN '32U' + UPPER(SDA.DATA) -- 32U zone, e.g. UTM 1: 32UKB9322 / UTM 5: 32UKB92A
-							WHEN 'Imported' THEN NULL -- sa.SPATIAL_REF
-							WHEN 'XY from original rec' THEN NULL --sa.SPATIAL_REF
-							ELSE SA.SPATIAL_REF
-							END
+		, [verbatimCoordinates] = CASE  
+						WHEN SA.SPATIAL_REF_QUALIFIER IN  ('Centro√Ød UTM 1 km', 'Centro√Ød UTM 5 km') AND LEFT(UPPER(SDA.DATA), 1) IN ('D', 'E', 'F', 'G') THEN '31U' + UPPER(SDA.DATA) -- 31U zone, e.g. UTM 1: 31UDS6858 / UTM 5: 31UDS66D
+						WHEN SA.SPATIAL_REF_QUALIFIER IN  ('Centro√Ød UTM 1 km', 'Centro√Ød UTM 5 km') AND LEFT(UPPER(SDA.DATA), 1) IN ('K', 'L') THEN '32U' + UPPER(SDA.DATA) -- 32U zone, e.g. UTM 1: 32UKB9322 / UTM 5: 32UKB92A
+						WHEN SA.SPATIAL_REF_QUALIFIER IN  ('Imported') THEN NULL -- sa.SPATIAL_REF
+						WHEN SA.SPATIAL_REF_QUALIFIER IN  ('XY from original rec') THEN NULL --sa.SPATIAL_REF
+						WHEN SA.SPATIAL_REF_QUALIFIER IN ('Centrd UTM5 x dgmnte') THEN NULL                --sa.SPATIAL_REF
+						WHEN SA.SPATIAL_REF_QUALIFIER IN ('Centro√Ød deelgemnte')  THEN NULL --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
+						WHEN SA.SPATIAL_REF_QUALIFIER IN ('Centro√Ød UTM 1 km') THEN '31U' + SDA.DATA
+						WHEN SA.SPATIAL_REF_QUALIFIER IN ('Centro√Ød UTM 5 km') THEN '31U' + SDA.DATA
+						ELSE SA.SPATIAL_REF
+						END
 		, [verbatimLongitude] = CASE  SA.SPATIAL_REF_QUALIFIER 
 							WHEN 'Centrd UTM5 x dgmnte' THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)                --sa.SPATIAL_REF
-							WHEN 'CentroÔd deelgemnte'  THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)                --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
-							WHEN 'CentroÔd UTM 1 km'    THEN NULL  --SDA.DATA
-							WHEN 'CentroÔd UTM 5 km'    THEN NULL  --SDA.DATA
+							WHEN 'Centro√Ød deelgemnte'  THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)                --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
+							WHEN 'Centro√Ød UTM 1 km'    THEN NULL  --SDA.DATA
+							WHEN 'Centro√Ød UTM 5 km'    THEN NULL  --SDA.DATA
 							WHEN 'Imported'             THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)               -- sa.SPATIAL_REF
 							WHEN 'XY from original rec' THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)               --sa.SPATIAL_REF
 							ELSE SA.SPATIAL_REF
 							END					
 		, [verbatimLatitude] = CASE  SA.SPATIAL_REF_QUALIFIER 
 							WHEN 'Centrd UTM5 x dgmnte' THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           --sa.SPATIAL_REF
-							WHEN 'CentroÔd deelgemnte'  THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
-							WHEN 'CentroÔd UTM 1 km'    THEN NULL  --SDA.DATA
-							WHEN 'CentroÔd UTM 5 km'    THEN NULL  --SDA.DATA
+							WHEN 'Centro√Ød deelgemnte'  THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
+							WHEN 'Centro√Ød UTM 1 km'    THEN NULL  --SDA.DATA
+							WHEN 'Centro√Ød UTM 5 km'    THEN NULL  --SDA.DATA
 							WHEN 'Imported'             THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           -- sa.SPATIAL_REF
 							WHEN 'XY from original rec' THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           --sa.SPATIAL_REF
 							ELSE SA.SPATIAL_REF
 							END
 		--, [verbatimcoordinatesCheck] = CASE SA.SPATIAL_REF_QUALIFIER  
 		--					WHEN 'Centrd UTM5 x dgmnte' THEN sa.SPATIAL_REF
-		--					WHEN 'CentroÔd deelgemnte'  THEN sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
-		--					WHEN 'CentroÔd UTM 1 km' THEN '31U' + SDA.DATA
-		--					WHEN 'CentroÔd UTM 5 km' THEN '31U' + SDA.DATA
+		--					WHEN 'Centro√Ød deelgemnte'  THEN sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
+		--					WHEN 'Centro√Ød UTM 1 km' THEN '31U' + SDA.DATA
+		--					WHEN 'Centro√Ød UTM 5 km' THEN '31U' + SDA.DATA
 		--					WHEN 'Imported' THEN sa.SPATIAL_REF
 		--					WHEN 'XY from original rec' THEN sa.SPATIAL_REF
 		--					ELSE SA.SPATIAL_REF
@@ -127,9 +129,9 @@ SELECT
 		
 		, [verbatimCoordinateSystem] = CASE SA.SPATIAL_REF_QUALIFIER  
 							WHEN 'Centrd UTM5 x dgmnte' THEN 'Lambert coordinates'
-							WHEN 'CentroÔd deelgemnte' THEN 'Lambert coordinates'
-							WHEN 'CentroÔd UTM 1 km' THEN 'UTM 1km'
-							WHEN 'CentroÔd UTM 5 km' THEN 'UTM 5km'
+							WHEN 'Centro√Ød deelgemnte' THEN 'Lambert coordinates'
+							WHEN 'Centro√Ød UTM 1 km' THEN 'UTM 1km'
+							WHEN 'Centro√Ød UTM 5 km' THEN 'UTM 5km'
 							WHEN 'Imported' THEN 'Lambert coordinates'
 							WHEN 'XY from original rec' THEN 'Lambert coordinates'
 							ELSE SA.SPATIAL_REF_QUALIFIER
@@ -137,9 +139,9 @@ SELECT
 
 		, [verbatimSRS] = CASE SA.SPATIAL_REF_QUALIFIER  
 							WHEN 'Centrd UTM5 x dgmnte' THEN 'Belgian Datum 1972'
-							WHEN 'CentroÔd deelgemnte' THEN 'Belgian Datum 1972'
-							WHEN 'CentroÔd UTM 1 km' THEN 'WGS84'
-							WHEN 'CentroÔd UTM 5 km' THEN 'WGS84'
+							WHEN 'Centro√Ød deelgemnte' THEN 'Belgian Datum 1972'
+							WHEN 'Centro√Ød UTM 1 km' THEN 'WGS84'
+							WHEN 'Centro√Ød UTM 5 km' THEN 'WGS84'
 							WHEN 'Imported' THEN 'Belgian Datum 1972'
 							WHEN 'XY from original rec' THEN 'Belgian Datum 1972'
 							ELSE SA.SPATIAL_REF_QUALIFIER
@@ -147,23 +149,23 @@ SELECT
 
 	   , [coordinateUncertaintyInMeters] = convert(nvarchar(5),coalesce(case
 																	WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN '3536'
-																	WHEN SA.SPATIAL_REF_QUALIFIER='CentroÔd deelgemnte' THEN '3536'
-																	WHEN SA.SPATIAL_REF_QUALIFIER='CentroÔd UTM 1 km' THEN '707'
-																	WHEN SA.SPATIAL_REF_QUALIFIER='CentroÔd UTM 5 km' THEN '3536'
+																	WHEN SA.SPATIAL_REF_QUALIFIER='Centro√Ød deelgemnte' THEN '3536'
+																	WHEN SA.SPATIAL_REF_QUALIFIER='Centro√Ød UTM 1 km' THEN '707'
+																	WHEN SA.SPATIAL_REF_QUALIFIER='Centro√Ød UTM 5 km' THEN '3536'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='XY from original rec' THEN '30'
-                                                                    when SA.SPATIAL_REF_QUALIFIER='CentroÔd UTM 100m' then '71'
-                                                                    when SA.SPATIAL_REF_QUALIFIER='CentroÔd UTM 1km' then '707'
-                                                                    when SA.SPATIAL_REF_QUALIFIER='centroÔd UTM 5km' then '3536'
-                                                                    when SA.SPATIAL_REF_QUALIFIER='CentroÔd UTM 10km' then '7071'
+                                                                    when SA.SPATIAL_REF_QUALIFIER='Centro√Ød UTM 100m' then '71'
+                                                                    when SA.SPATIAL_REF_QUALIFIER='Centro√Ød UTM 1km' then '707'
+                                                                    when SA.SPATIAL_REF_QUALIFIER='centro√Ød UTM 5km' then '3536'
+                                                                    when SA.SPATIAL_REF_QUALIFIER='Centro√Ød UTM 10km' then '7071'
                                                                     when SA.SPATIAL_REF_QUALIFIER='XY from original rec' then '30'
                                                                     else null
                                                                     end,'71')) 
 
 		, [georeferenceRemarks] = CASE SA.SPATIAL_REF_QUALIFIER  
 							WHEN 'Centrd UTM5 x dgmnte' THEN 'coordinates are centroid of 5km grid square and municipality intersection'
-							WHEN 'CentroÔd deelgemnte' THEN 'coordinates are centroid of municipality'
-							WHEN 'CentroÔd UTM 1 km' THEN 'coordinates are centroid of 1km grid square'
-							WHEN 'CentroÔd UTM 5 km' THEN 'coordinates are centroid of 5km grid square'
+							WHEN 'Centro√Ød deelgemnte' THEN 'coordinates are centroid of municipality'
+							WHEN 'Centro√Ød UTM 1 km' THEN 'coordinates are centroid of 1km grid square'
+							WHEN 'Centro√Ød UTM 5 km' THEN 'coordinates are centroid of 5km grid square'
 							WHEN 'Imported' THEN 'coordinates are centroid of 100m grid square'
 							WHEN 'XY from original rec' THEN 'coordinates are original point coordinates'
 							ELSE SA.SPATIAL_REF_QUALIFIER
