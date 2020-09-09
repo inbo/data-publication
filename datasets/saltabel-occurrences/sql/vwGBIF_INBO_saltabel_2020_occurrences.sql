@@ -88,11 +88,11 @@ SELECT
 		, [decimalLatitude]  =CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Lat ,0),5)) ) 
 		, [decimalLongitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Long,0),5)) )
 		, [geodeticDatum] = CONVERT(Nvarchar(10),'WGS84') 
-		, [verbatimcoordinates] = CASE SA.SPATIAL_REF_QUALIFIER  
+		, [verbatimCoordinates] = CASE SA.SPATIAL_REF_QUALIFIER  
 							WHEN 'Centrd UTM5 x dgmnte' THEN NULL                --sa.SPATIAL_REF
 							WHEN 'Centroïd deelgemnte'  THEN NULL --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
-							WHEN 'Centroïd UTM 1 km' THEN '31U' + SDA.DATA
-							WHEN 'Centroïd UTM 5 km' THEN '31U' + SDA.DATA
+							WHEN IN ('Centroïd UTM 1 km', 'Centroïd UTM 5 km') AND LEFT(UPPER(SDA.DATA), 1) IN ('D', 'E', 'F', 'G') THEN '31U' + UPPER(SDA.DATA) -- 31U zone, e.g. UTM 1: 31UDS6858 / UTM 5: 31UDS66D
+							WHEN IN ('Centroïd UTM 1 km', 'Centroïd UTM 5 km') AND LEFT(UPPER(SDA.DATA), 1) IN ('K', 'L') THEN '32U' + UPPER(SDA.DATA) -- 32U zone, e.g. UTM 1: 32UKB9322 / UTM 5: 32UKB92A
 							WHEN 'Imported' THEN NULL -- sa.SPATIAL_REF
 							WHEN 'XY from original rec' THEN NULL --sa.SPATIAL_REF
 							ELSE SA.SPATIAL_REF
@@ -125,7 +125,7 @@ SELECT
 		--					ELSE SA.SPATIAL_REF
 		--					END	
 		
-		, [verbatimcoordinateSystem] = CASE SA.SPATIAL_REF_QUALIFIER  
+		, [verbatimCoordinateSystem] = CASE SA.SPATIAL_REF_QUALIFIER  
 							WHEN 'Centrd UTM5 x dgmnte' THEN 'Lambert coordinates'
 							WHEN 'Centroïd deelgemnte' THEN 'Lambert coordinates'
 							WHEN 'Centroïd UTM 1 km' THEN 'UTM 1km'
