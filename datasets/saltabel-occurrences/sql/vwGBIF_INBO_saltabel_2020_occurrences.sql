@@ -1,7 +1,7 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_Saltabel_2020]    Script Date: 8/09/2020 10:26:28 ******/
+/****** Object:  View [ipt].[vwGBIF_Saltabel_2020]    Script Date: 9/09/2020 9:56:08 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,8 +11,9 @@ GO
 
 
 
-ALTER VIEW [ipt].[vwGBIF_Saltabel_2020]
-AS
+
+/**ALTER VIEW [ipt].[vwGBIF_Saltabel_2020]
+AS**/
 
 
 /*********************************************************/
@@ -65,24 +66,20 @@ SELECT
 	    , [datasetID] = CONVERT(Nvarchar(100),'https://doi.org/10.15468/1rcpsq')
 	    , [datasetName] = CONVERT(Nvarchar(200),S.ITEM_NAME) + ' - Orthoptera in Belgium' 
 		, [institutionCode] = CONVERT(Nvarchar(20),'INBO') 
-		-- , [dataGeneralizations] = CONVERT(Nvarchar(100),'Coordinate Uncertainty In Meters depends on original UTM1 or UTM5 squares.')
-
-		
+			
 
 		---EVENT---	
 
-		, [basisOfRecord] = CASE  WHEN RT.SHORT_NAME  IN ('Collection', 'Collection/auditory record', 'Collection/field record', 'Collection/reference' ) THEN 'PreservedSpecimen'
-						  WHEN RT.SHORT_NAME  IN ('field record', 'field record/photographed', 'None' ) THEN 'HumanObservation'
-						  ELSE 'HumanObservation' 
-						  END
+		, [basisOfRecord] = CASE	WHEN RT.SHORT_NAME  IN ('Collection', 'Collection/auditory record', 'Collection/field record', 'Collection/reference' )  OR TAOC.[Collection] is not NULL THEN 'PreservedSpecimen'
+									WHEN RT.SHORT_NAME  IN ('field record', 'field record/photographed', 'None' ) THEN 'HumanObservation'
+									ELSE 'HumanObservation' 
+									END
 		, [eventDate] = CASE  [inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 0)  --1 changed to 0 for dateranges
 								WHEN 'unknown' then NULL
 								ELSE [inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 0)
 								END
 	
-	--	, [verbatimEventDate] = [inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 0)
-		--, [eventRemarks] = 'nog iets zinnigs toe te voegen?' 
-		
+			
 ---- LOCATION -----
 		
 		, [continent] = N'Europe'
@@ -91,7 +88,6 @@ SELECT
 		, [decimalLatitude]  =CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Lat ,0),5)) ) 
 		, [decimalLongitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(Coalesce(SA.Long,0),5)) )
 		, [geodeticDatum] = CONVERT(Nvarchar(10),'WGS84') 
-	--	, [verbatimSRS] = N'BD72'
 		, [verbatimcoordinates] = CASE SA.SPATIAL_REF_QUALIFIER  
 							WHEN 'Centrd UTM5 x dgmnte' THEN NULL                --sa.SPATIAL_REF
 							WHEN 'Centroïd deelgemnte'  THEN NULL --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
@@ -101,28 +97,34 @@ SELECT
 							WHEN 'XY from original rec' THEN NULL --sa.SPATIAL_REF
 							ELSE SA.SPATIAL_REF
 							END
-		--, [lambert] = sa.SPATIAL_REF
 		, [verbatimLongitude] = CASE  SA.SPATIAL_REF_QUALIFIER 
-							WHEN 'Centrd UTM5 x dgmnte' THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),2)                --sa.SPATIAL_REF
-							WHEN 'Centroïd deelgemnte'  THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),2)                --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
+							WHEN 'Centrd UTM5 x dgmnte' THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)                --sa.SPATIAL_REF
+							WHEN 'Centroïd deelgemnte'  THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)                --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
 							WHEN 'Centroïd UTM 1 km'    THEN NULL  --SDA.DATA
 							WHEN 'Centroïd UTM 5 km'    THEN NULL  --SDA.DATA
-							WHEN 'Imported'             THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),2) -- sa.SPATIAL_REF
-							WHEN 'XY from original rec' THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),2) --sa.SPATIAL_REF
+							WHEN 'Imported'             THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)               -- sa.SPATIAL_REF
+							WHEN 'XY from original rec' THEN ROUND (substring(sa.spatial_REF, 1,charindex(',',sa.SPATIAL_REF)-1),0)               --sa.SPATIAL_REF
 							ELSE SA.SPATIAL_REF
 							END					
 		, [verbatimLatitude] = CASE  SA.SPATIAL_REF_QUALIFIER 
-							WHEN 'Centrd UTM5 x dgmnte' THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),2)                --sa.SPATIAL_REF
-							WHEN 'Centroïd deelgemnte'  THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),2)               --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
+							WHEN 'Centrd UTM5 x dgmnte' THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           --sa.SPATIAL_REF
+							WHEN 'Centroïd deelgemnte'  THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           --sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
 							WHEN 'Centroïd UTM 1 km'    THEN NULL  --SDA.DATA
 							WHEN 'Centroïd UTM 5 km'    THEN NULL  --SDA.DATA
-							WHEN 'Imported'             THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),2) -- sa.SPATIAL_REF
-							WHEN 'XY from original rec' THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),2) --sa.SPATIAL_REF
+							WHEN 'Imported'             THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           -- sa.SPATIAL_REF
+							WHEN 'XY from original rec' THEN ROUND ((substring(sa.spatial_REF, charindex(',',sa.SPATIAL_REF) +1 ,11)),0)           --sa.SPATIAL_REF
 							ELSE SA.SPATIAL_REF
-							END		
+							END
+		--, [verbatimcoordinatesCheck] = CASE SA.SPATIAL_REF_QUALIFIER  
+		--					WHEN 'Centrd UTM5 x dgmnte' THEN sa.SPATIAL_REF
+		--					WHEN 'Centroïd deelgemnte'  THEN sa.SPATIAL_REF  --  THEN CONVERT(Nvarchar(20),ROUND(sa.SPATIAL_REF,2))
+		--					WHEN 'Centroïd UTM 1 km' THEN '31U' + SDA.DATA
+		--					WHEN 'Centroïd UTM 5 km' THEN '31U' + SDA.DATA
+		--					WHEN 'Imported' THEN sa.SPATIAL_REF
+		--					WHEN 'XY from original rec' THEN sa.SPATIAL_REF
+		--					ELSE SA.SPATIAL_REF
+		--					END	
 		
-		
-		 
 		, [verbatimcoordinateSystem] = CASE SA.SPATIAL_REF_QUALIFIER  
 							WHEN 'Centrd UTM5 x dgmnte' THEN 'Lambert coordinates'
 							WHEN 'Centroïd deelgemnte' THEN 'Lambert coordinates'
@@ -132,47 +134,31 @@ SELECT
 							WHEN 'XY from original rec' THEN 'Lambert coordinates'
 							ELSE SA.SPATIAL_REF_QUALIFIER
 							END
+
 		, [verbatimSRS] = CASE SA.SPATIAL_REF_QUALIFIER  
-							WHEN 'Centrd UTM5 x dgmnte' THEN 'Belgian Date 1972'
-							WHEN 'Centroïd deelgemnte' THEN sa.SPATIAL_REF
+							WHEN 'Centrd UTM5 x dgmnte' THEN 'Belgian Datum 1972'
+							WHEN 'Centroïd deelgemnte' THEN 'Belgian Datum 1972'
 							WHEN 'Centroïd UTM 1 km' THEN 'WGS84'
 							WHEN 'Centroïd UTM 5 km' THEN 'WGS84'
 							WHEN 'Imported' THEN 'Belgian Datum 1972'
 							WHEN 'XY from original rec' THEN 'Belgian Datum 1972'
-							ELSE SA.SPATIAL_REF
+							ELSE SA.SPATIAL_REF_QUALIFIER
 							END
-		
-		
-		--	, [REFgrid] = SA.SPATIAL_REF_QUALIFIER
-	    
-	--	, sa.SPATIAL_REF
-	
-		, [coordinateUncertaintyInMeters] = convert(nvarchar(5),coalesce(case
+
+	   , [coordinateUncertaintyInMeters] = convert(nvarchar(5),coalesce(case
 																	WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN '3536'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd deelgemnte' THEN '3536'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1 km' THEN '707'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 5 km' THEN '3536'
 																	WHEN SA.SPATIAL_REF_QUALIFIER='XY from original rec' THEN '30'
-                                                                    when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 100m' then '70'
+                                                                    when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 100m' then '71'
                                                                     when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1km' then '707'
                                                                     when SA.SPATIAL_REF_QUALIFIER='centroïd UTM 5km' then '3536'
                                                                     when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 10km' then '7071'
                                                                     when SA.SPATIAL_REF_QUALIFIER='XY from original rec' then '30'
                                                                     else null
-                                                                    end,'70')) 
-		--, [verbatimCoordinateSystem] = convert(nvarchar,coalesce(case
-		--															WHEN SA.SPATIAL_REF_QUALIFIER = 'Centrd UTM5 x dgmnte' THEN 'UTM 5km'
-		--															WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd deelgemnte' THEN '3536'
-		--															WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1 km' THEN 'UTM 1km'
-		--															WHEN SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 5 km' THEN 'UTM 5km'
-		--															WHEN SA.SPATIAL_REF_QUALIFIER='XY from original rec' THEN 'Lambert coordinates'
-  --                                                                  when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 100m' then 'UTM 100m'
-  --                                                                  when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 1km' then 'UTM 1km'
-  --                                                                  when SA.SPATIAL_REF_QUALIFIER='centroïd UTM 5km' then 'UTM 5km'
-  --                                                                  when SA.SPATIAL_REF_QUALIFIER='Centroïd UTM 10km' then 'UTM 10km'
-  --                                                                  when SA.SPATIAL_REF_QUALIFIER='XY from original rec' then 'Lambert coordinates'
-  --                                                                  else null
-  --                                                                  end,'70')) 
+                                                                    end,'71')) 
+
 		, [georeferenceRemarks] = CASE SA.SPATIAL_REF_QUALIFIER  
 							WHEN 'Centrd UTM5 x dgmnte' THEN 'coordinates are centroid of 5km grid square and municipality intersection'
 							WHEN 'Centroïd deelgemnte' THEN 'coordinates are centroid of municipality'
@@ -203,8 +189,7 @@ SELECT
 									WHEN 'zeer talrijk' THEN 'abundance'
 									ELSE NULL
 									END
-		--, [organismQuantity] = taoMeas.DATA
-		--, [abutest2] =  SUM (CASE WHEN ISNUMERIC(taoMeas.DATA) = 1 AND taoMeas.ACCURACY = 'exact' THEN CONVERT(int , taoMeas.DATA) ELSE NULL END ) 
+		 
 		, [lifeStage] = CASE LifestageMeas.lifeStage
 							WHEN 'adult' THEN 'adult'
 							WHEN 'adult | juvenile' THEN 'adult | juvenile'
@@ -218,9 +203,7 @@ SELECT
 						  WHEN 'Zangpost' THEN 'stridulating'
 						  ELSE NULL
 						  END
-	--	, lifeStage5
-	--	, [lifeStage_ind]
-	--  , SexMeas.sex
+	
 	    , [sex] = CASE sexNoCount
 							WHEN 'male' THEN 'male'
 							WHEN 'female' THEN 'female'
@@ -229,21 +212,12 @@ SELECT
 							ELSE NULL
 							END
 						
-	--	, [occurrenceRemarks] = COALESCE(SexMeas.sex, '') + 
-			--Case when COALESCE(SexMeas.sex, '') <> '' AND COALESCE(LifestageMeas.lifeStage, '') <> ''  THEN ' | ' ELSE '' END +
-			--COALESCE ( LifestageMeas.lifeStage5, '' ) 
+ 
 		, [occurrenceRemarks] = COALESCE(SexMeas.sex, '') + 
 			Case when COALESCE(SexMeas.sex, '') <> '' AND COALESCE(LifestageMeas.lifeStage, '') <> ''  THEN ' | ' ELSE NULL END +
 			COALESCE ( LifestageMeas.lifeStage5, '' ) 
 		
-		
-		
-		
-		
-		--, LifestageMeas.rauw as LifestagRauw
-		-- , SexMeas.rauw as SexRauw
-		
-
+	
 -----Identification----
 
 		, [identifiedBy] = CASE WHEN LTRIM(RTRIM(COALESCE (RTRIM(LTRIM(I.[FORENAME])), RTRIM(LTRIM(I.[INITIALS])) ,'') + ' ' + COALESCE (RTRIM(LTRIM(I.[SURNAME])), ''))) = 'Unknown' THEN NULL
@@ -252,7 +226,7 @@ SELECT
 
 ---- Taxonomic Elements --
 		
-		--[originalNameUsage] = T.ITEM_NAME,
+		
 		, [scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME     --recommended scientific soort + genus 
 		, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '') 
 		, [taxonRank] = lower(NS.RECOMMENDED_NAME_RANK_LONG)   
@@ -445,6 +419,7 @@ AND TR.[SEQUENCE] >= 230
 AND LN.PREFERRED = 1
 AND TAO.CONFIDENTIAL = 0
 AND TAO.TAXON_OCCURRENCE_KEY NOT IN ('BFN0017900007ZKN','BFN0017900008DLI', 'BFN0017900008FNM','BFN0017900008RG5')
+
 
 
 
