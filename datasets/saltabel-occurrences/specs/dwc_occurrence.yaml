@@ -70,7 +70,7 @@ collectionCode: # Not in waarnemingen.be dataset
       empty: true # Sometimes collection is not known
     - basisOfRecord:
         allowed: HumanObservation
-      allowed: FSAG # Some records of this source are not certain to be PreservedSpecimen
+      allowed: ''
       empty: true # Most records
 
 datasetName:
@@ -131,8 +131,8 @@ lifeStage:
   delimitedvalues:
     delimiter: " | "
     allowed:
-      adult
-      juvenile
+      - adult
+      - juvenile
   if:
     - sex: # If sex is populated => lifeStage presumed to be adult (with additional juvenile)
         empty: false
@@ -183,6 +183,7 @@ municipality:
 # which is recorded with the observation.
 
 verbatimCoordinates:
+  empty: true
   if:
     - verbatimCoordinateSystem:
         allowed: Lambert coordinates
