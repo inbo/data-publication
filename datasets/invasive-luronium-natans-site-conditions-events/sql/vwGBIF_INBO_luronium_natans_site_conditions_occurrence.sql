@@ -1,7 +1,7 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_uitheemse_exoten_rivieren_vegetatieopnamen_occurrence]    Script Date: 30/09/2020 13:33:28 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Luronium natans standplaatsonderzoek_occurrence]    Script Date: 12/10/2020 11:19:45 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -12,22 +12,15 @@ GO
 
 
 
-
-
-
-
-
-
-
-
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-12-10  Ecologische waterlopen vegetatie starts DiB
 2019-01-20  Finaliseren Query
+2020-10-12  Luronium natans
 *********************************/
 
-CREATE View [ipt].[vwGBIF_INBO_Luronium natans standplaatsonderzoek_occurrence]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_Luronium natans standplaatsonderzoek_occurrence]
+AS**/
 
 SELECT 
       --- EVENT ---
@@ -39,30 +32,34 @@ SELECT
 	--- RECORD ---	
 	
 	, [type] = N'Event'
-	, [language] = N'en'
-	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
-	, [rightsHolder] = N'INBO'
-	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
-	, [datasetID] = N'https://doi.org/10.15468/lgu26x'
-	, [datasetName] = 'Invasive species - Invasive plants near waterways in West and East Flanders, Belgium'
-	, [institutionCode] = N'INBO'
 	, [basisOfRecord] = N'HumanObservation'
 
 		--- Occurrence---
 
 	, [occurrenceID] = N'INBO:NBN:' + TAO.[TAXON_OCCURRENCE_KEY]
 	, [recordedBy] = NAME_KEY
-	, [individualCount] = meas.DATA
---	, [organismQuantityType] = DataShortName
+	, [organismQuantity] = meas.DATA
+					 
+	, [organismQuantityType] = CASE DataShortName
+								WHEN 'p/a' THEN 'check'
+								WHEN 'BB' THEN 'CHECK'
+								WHEN 'Tansley' THEN 'Tansley'
+								WHEN 'Personal code' THEN 'Personal code'
+								WHEN 'Klasse LurNat2' THEN 'CHECK'
+								WHEN 'Range' THEN 'check'
+								WHEN 'None' THEN 'check'
+								WHEN '%' THEN 'check'
+								ELSE DataShortName
+								END
 --	, [occurrenceStatus] = N'present'
 	, [taxonRank] = CASE
 					 WHEN NS.RECOMMENDED_NAME_RANK_LONG = 'Species' THEN 'species'
 					 WHEN NS.RECOMMENDED_NAME_RANK_LONG = 'Species hybrid' THEN 'species'
 					 WHEN NS.RECOMMENDED_NAME_RANK_LONG = 'Genus' THEN 'genus'
-					ELSE NULL
+					ELSE NS.RECOMMENDED_NAME_RANK_LONG
 					END
 					
-	, [samplingProtocol] = CONVERT(Nvarchar(500),LOWER(ST.SHORT_NAME))
+	
 
 		--- TAXON ---
 
@@ -72,61 +69,10 @@ SELECT
 
 	
 
-/**	, [samplingEffort] =
-		CASE
-			WHEN SA.DURATION IS NOT NULL THEN '{"trapDurationInMinutes":' + CONVERT(Nvarchar(20),SA.DURATION) + '}' 
-			WHEN Durations.CommentContainsDuration = 1 AND DATEDIFF(mi,Convert(time, Durations.StartTime) ,  Convert(time, Durations.EndTime) ) > 0 THEN '{"trapDurationInMinutes":' + CONVERT(Nvarchar(20),DateDiff(mi,CONVERT(Time, Durations.StartTime), CONVERT(Time, Durations.EndTime))) + '}' 
-			ELSE NULL
-		END **/
 	
 	
 	--- LOCATION ---
-	, [continent] = N'Europe'
-	, [countryCode] = N'BE'
-	, [verbatimLocality] = COALESCE(CONVERT(Nvarchar(500), LN.ITEM_NAME) + ' ', '') + COALESCE(CONVERT(Nvarchar(4000), Sa.LOCATION_NAME),'')
-	, [verbatimLatitude] = LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))) -- Everything after , = y = latitude
-	, [verbatimLongitude] = SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)) -- Everything before , = x = longitude
-	, [verbatimCoordinateSystem] =
-		CASE
-			WHEN SA.SPATIAL_REF IS NOT NULL AND SA.SPATIAL_REF_SYSTEM = 'BD72' THEN N'Belgian Lambert 72'
-		END
-	, [verbatimSRS] = 
-		CASE 
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN N'Belgian Datum 1972'
-		END
-	, [decimalLatitude] = 
-		CASE
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN CONVERT(Nvarchar(20),CONVERT(decimal(12,5),ROUND(COALESCE(SA.Lat,0),5))) -- SA.SPATIAL_REF is needed, because NULL ones are translated to 0.000 in Lat and Long
-		END
-	, [decimalLongitude] = 
-		CASE
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN CONVERT(Nvarchar(20),CONVERT(decimal(12,5),ROUND(COALESCE(SA.Long,0),5)))
-		END
-	, [geodeticDatum] = 
-		CASE 
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN N'WGS84'
-		END
-	-- , [coordinateUncertaintyInMeters] = ... -- Polygonen en bronnen te verschillend om hier een nuttige schatting te maken
-    , [georeferenceSources] = 
-		CASE
-			WHEN SA.SPATIAL_REF IS NOT NULL THEN LOWER(SA.[SPATIAL_REF_QUALIFIER])
-		END
 	
-	/*, [wkt] =
-		CASE 
-			WHEN SA.SPATIAL_REF IS NULL THEN NULL 
-			ELSE 
-				Convert(Nvarchar(100),'POINT ( ' + Substring(LTRIM(Rtrim(SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)))), 1,
-				CASE
-					WHEN CHARINDEX('.', LTRIM(Rtrim(SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)))))-1 > 0 
-					THEN CHARINDEX('.', LTRIM(Rtrim(SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)))))-1 
-					ELSE LEN (LTRIM(Rtrim(SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)))))
-				END    ) 
-		+ ' '  
-		+ Substring( RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF)))) , 1, CASE WHEN CHARINDEX('.',  RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 > 0 THEN CHARINDEX('.', RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) -1 ELSE LEN(RTRIM(LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))))) END ) 
-		+ ' ) ' )
-		END
-	*/  
 FROM dbo.Survey S
 	
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
@@ -185,6 +131,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
 --	and ST.SHORT_NAME <> 'Weather' 
 	AND meas.DATA > '0'	
+
 
 
 
