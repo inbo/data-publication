@@ -99,7 +99,7 @@ write_csv(datasets, here::here("data", "datasets.csv"), na = "")
 KPIs:
 
 ```{r}
-kpi_year <- 2019
+kpi_year <- 2020
 ```
 
 ```{r}
