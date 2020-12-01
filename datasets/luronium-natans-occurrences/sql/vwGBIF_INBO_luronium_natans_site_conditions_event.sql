@@ -1,12 +1,14 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Luronium natans standplaatsonderzoek_event]    Script Date: 12/10/2020 10:59:56 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Luronium_natans_standplaatsonderzoek_event]    Script Date: 1/12/2020 14:43:14 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 
 
 
@@ -23,8 +25,8 @@ GO
 2020-10-12  changes for Luronium natans
 *********************************/
 
-ALTER View [ipt].[vwGBIF_INBO_Luronium natans standplaatsonderzoek_event]
-AS
+/**ALTER View [ipt].[vwGBIF_INBO_Luronium_natans_standplaatsonderzoek_event]
+AS**/
 
 SELECT 
 	  [eventID]= 'INBO:NBN:' + SA.[SAMPLE_KEY]
@@ -36,21 +38,21 @@ SELECT
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 	, [datasetID] = N'https://doi.org/completexxxxxx'
-	, [datasetName] = ' Invasive species - Luronium natans site condition Flanders, Belgium'
+	, [datasetName] = 'Invasive plants from a Luronium natans survey in Flanders, Belgium'
 	, [institutionCode] = N'INBO'
 
 	--- EVENT ---
 	, [parentEventID] ='INBO:NBN:' + SA.[survey_event_key]
 	, [samplingProtocol] = 
 		CASE CONVERT(Nvarchar(500),LOWER(ST.SHORT_NAME))
-			WHEN 'vegrec' THEN 'vegetation recording'
+			WHEN 'vegrec' THEN 'vegetation record'
 			WHEN 'site description' THEN 'site description'
 			WHEN 'Field observation' THEN 'casual observation'
 			WHEN 'streeplijst' THEN 'tally sheet'
 			WHEN 'Weather' THEN 'Weather report'
 			ELSE ST.SHORT_NAME
 		END 
-
+	, st.LONG_NAME
 	, [eventDate] = CONVERT(Nvarchar(23),[inbo].[LCReturnVagueDateGBIF]( SA.VAGUE_DATE_START, SA.VAGUE_DATE_END , SA.VAGUE_DATE_TYPE, 1),126)
 	
 	--- LOCATION ---
@@ -58,8 +60,9 @@ SELECT
 	, [continent] = N'Europe'
 	, [countryCode] = N'BE'
 	, [verbatimLocality] = COALESCE(CONVERT(Nvarchar(500), LN.ITEM_NAME) + ' ', '') + COALESCE(CONVERT(Nvarchar(4000), Sa.LOCATION_NAME),'')
-	, [verbatimLatitude] = LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))) -- Everything after , = y = latitude
-	, [verbatimLongitude] = SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)) -- Everything before , = x = longitude
+	, [verbatimLatitude] = ROUND( LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))), 0) -- Everything after , = y = latitude
+	, [verbatimLongitude] = ROUND (SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)),0) -- Everything before , = x = longitude
+	, [georeferenceRemarks] = 'coordinate is centroid of waterbody'
 	, [verbatimCoordinateSystem] =
 		CASE
 			WHEN SA.SPATIAL_REF IS NOT NULL AND SA.SPATIAL_REF_SYSTEM = 'BD72' THEN N'Belgian Lambert 72'
@@ -80,13 +83,13 @@ SELECT
 		CASE 
 			WHEN SA.SPATIAL_REF IS NOT NULL THEN N'WGS84'
 		END
-	-- , [coordinateUncertaintyInMeters] = ... -- Polygonen en bronnen te verschillend om hier een nuttige schatting te maken
+	, [coordinateUncertaintyInMeters] = '30' -- Polygonen en bronnen te verschillend om hier een nuttige schatting te maken
     , [georeferenceSources] = 
 		CASE
 			WHEN SA.SPATIAL_REF IS NOT NULL THEN LOWER(SA.[SPATIAL_REF_QUALIFIER])
 		END
 	
-	
+ 	
 FROM dbo.Survey S
 	INNER JOIN [dbo].[Survey_event] SE ON SE.[Survey_Key] = S.[Survey_Key]
 	LEFT OUTER JOIN [dbo].[Location] L ON L.[Location_Key] = SE.[Location_key]
@@ -102,6 +105,8 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 	and ST.SHORT_NAME <> 'Weather' **/
 	
+
+
 
 
 
