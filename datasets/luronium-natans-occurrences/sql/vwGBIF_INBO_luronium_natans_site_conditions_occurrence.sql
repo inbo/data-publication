@@ -1,7 +1,7 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Luronium natans standplaatsonderzoek_occurrence]    Script Date: 12/10/2020 11:19:45 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Luronium_natans_standplaatsonderzoek_occurrence]    Script Date: 7/12/2020 9:54:06 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -12,15 +12,19 @@ GO
 
 
 
+
+
+
 /**********************************
 2018-05-17  Maken generische querie voor TrIAS
 2018-12-10  Ecologische waterlopen vegetatie starts DiB
 2019-01-20  Finaliseren Query
 2020-10-12  Luronium natans
+2020-10-22  insert list of exotic waterplants
 *********************************/
 
-/**ALTER View [ipt].[vwGBIF_INBO_Luronium natans standplaatsonderzoek_occurrence]
-AS**/
+ALTER View [ipt].[vwGBIF_INBO_Luronium_natans_standplaatsonderzoek_occurrence]
+AS
 
 SELECT 
       --- EVENT ---
@@ -40,7 +44,7 @@ SELECT
 	, [recordedBy] = NAME_KEY
 	, [organismQuantity] = meas.DATA
 					 
-	, [organismQuantityType] = CASE DataShortName
+	, [organismQuantityType] = CASE DataLongName
 								WHEN 'p/a' THEN 'check'
 								WHEN 'BB' THEN 'CHECK'
 								WHEN 'Tansley' THEN 'Tansley'
@@ -49,9 +53,12 @@ SELECT
 								WHEN 'Range' THEN 'check'
 								WHEN 'None' THEN 'check'
 								WHEN '%' THEN 'check'
-								ELSE DataShortName
+								WHEN 'Klasse LurNat' THEN 'CHECK'
+								ELSE DataLongName
 								END
---	, [occurrenceStatus] = N'present'
+	
+	, DataShortName
+	, [occurrenceStatus] = N'present'
 	, [taxonRank] = CASE
 					 WHEN NS.RECOMMENDED_NAME_RANK_LONG = 'Species' THEN 'species'
 					 WHEN NS.RECOMMENDED_NAME_RANK_LONG = 'Species hybrid' THEN 'species'
@@ -129,15 +136,41 @@ WHERE
 /**	AND ISNUMERIC(LEFT (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1)-1)) = 1
 	AND CHARINDEX (',', SA.SPATIAL_REF, 1) > 5
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1 **/
---	and ST.SHORT_NAME <> 'Weather' 
+--	and ST.SHORT_NAME <> 'Weather'
+    AND DataShortName <> 'Personal code'
 	AND meas.DATA > '0'	
+	AND RECOMMENDED_SCIENTIFIC_NAME IN ('Acorus calamus','Alternanthera philoxeroides','Amaranthus blitum','Amaranthus hybridus'
+										,'Ambrosia artemisiifolia','Aponogeton distachyos','Azolla filiculoides'
+										,'bamboegroep: Bambusoideae','Bidens sp.','Bolboschoenus glaucus','Bolboschoenus yagara'
+										,'Cabomba caroliniana','Cabomba aquatica','Cabomba furcata','Cabomba sp.'
+										,'Crassula helmsii','Cyperus eragrostis','Cyperus alterniflorus','Cyperus congestus'
+										,'Egeria densa','Egeria najas','Eichhornia crassipes','Eichhornia azurea'
+										,'Eleocharis austriaca','Eleocharis engelmannii','Eleocharis obtusa','Elodea canadensis'
+										,'Elodea nuttallii','Elodea callitrichoides','Elodea sp','Fallopia baldschuanica'
+										,'Fallopia japonica','Fallopia sachalinensis','Fallopia x bohemica'
+										,'Glyceria canadensis','Glyceria striata','Gymnocoronis spilanthoides'
+										,'Heracleum mantegazzianum','Heracleum persicum','Heracleium sosnowskyi'
+										,'Heracleum sphondylium','Hydrilla verticillata','Hydrocotyle ranunculoides'
+										,'Hydrocotyle verticillata','Hydrocotyle leucocephala'
+										,'Hydrocotyle novae-zelandiae var. montana','Hydrocotyle sibthorpioides'
+										,'Hygrophila polysperma','Hygroryza aristata','Impatiens balfourii'
+										,'Impatiens capensis','Impatiens glandulifera','Impatiens parviflora'
+										,'Juncus canadensis','Juncus tenuis','Lagarosiphon major','Landoltia punctata'
+										,'Lemna minuta','Lemna turionifera','Limnobium laevigatum','Limnobium spongia'
+										,'Lindernia dubia','Ludwigia grandiflora','Ludwigia peploides','Lysichiton americanus'
+										,'Lysichiton camtschatcensis','Mimulus guttatus','Miscanthus X gigantea'
+										,'Miscanthus sinensis','Miscanthius sacchariflorus','Miscanthus sp.'
+										,'Myriophyllum aquaticum','Myriophyllum crispatum','Myriophyllum heterophyllum'
+										,'Myriophyllum robustum','Myriophyllum simulans','Myriophyllum sp. trade name brasiliensis'
+										,'Myriophyllum tetrandrum','Myriophyllum tuberculatum','Phyllanthus fluitans','Pistia stratiotes'
+										,'Pontederia cordata','Sagittaria latifolia','Salvinia auriculata-complex','Salvinia molesta','Salvinia natans'
+										,'Saururus cernuus','Schoenoplectiella bucharica','Spartina anglica','Thalia dealbata','Typha laxmannii'
+										,'Typha minima','Typha x provincialis','Vallisneria americana','Vallisneria sp.','Vallisneria spiralis'
+										,'Wolffia columbiana','Zizania latifolia','Zizania sp.','Azolla caroliniana','Reynoutria japonica'
+										,' Polygonum cuspidatum','Spirodela punctata','Salvinia molesta')
 
 
-
-
-
-
-
+ -- AND TAO.[TAXON_OCCURRENCE_KEY] in ('BFN001790000BPTR','BFN001790000BPTW','BFN001790000BQK0')
 
 
 

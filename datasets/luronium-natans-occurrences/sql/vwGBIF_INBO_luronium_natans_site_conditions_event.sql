@@ -1,12 +1,13 @@
 USE [D0017_00_NBNData]
 GO
 
-/****** Object:  View [ipt].[vwGBIF_INBO_Luronium_natans_standplaatsonderzoek_event]    Script Date: 1/12/2020 14:43:14 ******/
+/****** Object:  View [ipt].[vwGBIF_INBO_Luronium_natans_standplaatsonderzoek_event]    Script Date: 7/12/2020 10:05:29 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -37,7 +38,7 @@ SELECT
 	, [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
 	, [rightsHolder] = N'INBO'
 	, [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
-	, [datasetID] = N'https://doi.org/completexxxxxx'
+	, [datasetID] = N'https://doi.org/10.15468/tar6w7'
 	, [datasetName] = 'Invasive plants from a Luronium natans survey in Flanders, Belgium'
 	, [institutionCode] = N'INBO'
 
@@ -60,8 +61,8 @@ SELECT
 	, [continent] = N'Europe'
 	, [countryCode] = N'BE'
 	, [verbatimLocality] = COALESCE(CONVERT(Nvarchar(500), LN.ITEM_NAME) + ' ', '') + COALESCE(CONVERT(Nvarchar(4000), Sa.LOCATION_NAME),'')
-	, [verbatimLatitude] = ROUND( LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))), 0) -- Everything after , = y = latitude
-	, [verbatimLongitude] = ROUND (SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)),0) -- Everything before , = x = longitude
+	, [verbatimLatitude] = LTRIM(SUBSTRING(SA.SPATIAL_REF,CHARINDEX(',',SA.SPATIAL_REF)+1,LEN(SA.SPATIAL_REF))) -- Everything after , = y = latitude
+	, [verbatimLongitude] = SUBSTRING(SA.SPATIAL_REF,0,CHARINDEX(',',SA.SPATIAL_REF)) -- Everything before , = x = longitude
 	, [georeferenceRemarks] = 'coordinate is centroid of waterbody'
 	, [verbatimCoordinateSystem] =
 		CASE
@@ -105,6 +106,7 @@ WHERE
 	AND ISNUMERIC(SUBSTRING (SA.SPATIAL_REF, CHARINDEX(',', SA.SPATIAL_REF, 1 )+1, LEN(SA.SPATIAL_REF))) = 1
 	and ST.SHORT_NAME <> 'Weather' **/
 	
+
 
 
 
