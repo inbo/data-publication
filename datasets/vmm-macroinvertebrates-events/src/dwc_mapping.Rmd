@@ -1,0 +1,359 @@
+---
+title: "Darwin Core Mapping"
+subtitle: "VMM - Macroinvertebrate occurrences collected by VMM in Flanders, Belgium"
+author: "Dimitri Brosens"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+# Setup 
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = TRUE)
+```
+
+Load libraries:
+
+```{r message = FALSE}
+library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
+library(magrittr)       # To use %<>% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(readxl)         # To read Excel files
+library(rgbif)          # To use GBIF services
+```
+
+# Read source data
+
+```{r}
+input_event <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "210112FL_RV_events.xlsx"))
+
+input_occurrence <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "210112FL_RV_occurrence.xlsx"))
+
+input_meas <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "210112FL_RV_MeasurementOrFact.xlsx"))
+```
+
+Preview data:
+
+```{r}
+input_event %>% head()
+input_meas %>% head()
+input_occurrence %>% head()
+```
+
+# Preprocessing
+
+## Tidy data
+
+Clean data somewhat:
+
+```{r}
+input_event %<>% 
+  remove_empty("rows") %<>%
+  clean_names()
+
+input_meas %<>% 
+  remove_empty("rows") %<>%
+  clean_names()
+
+input_occurrence %<>% 
+  remove_empty("rows") %<>%
+  clean_names()
+```
+
+
+# Darwin Core mapping
+
+# occurrence
+
+Map the data to [Darwin Core Occurrence](http://rs.gbif.org/core/dwc_occurrence_2015-07-02.xml).
+
+```{r}
+head(input_occurrence, n =10)
+```
+
+
+```{r}
+occurrence <- input_occurrence
+```
+
+
+### eventID
+
+```{r}
+occurrence %<>% mutate(dwc_eventID = event_id)
+```
+
+
+### basisOfRecord
+
+```{r}
+occurrence %<>% mutate(dwc_basisOfRecord = "HumanObservation")
+```
+
+### occurrenceID
+
+
+```{r}
+occurrence %<>%  mutate(dwc_occurrenceID = occurrence_id)
+```
+
+### recordedBy
+
+**CHECK IN EMAILED FILE**
+
+```{r}
+#occurrence %<>% mutate(dwc_recordedBy = recorded_by)
+```
+
+### organismQuantity
+
+```{r}
+occurrence %<>% mutate(dwc_organismQuantity = individual_count)
+```
+
+### organismQuantityType
+
+```{r}
+occurrence %<>% mutate(dwc_organismQuantityType = "countRange")
+
+```
+
+### scientificName
+
+```{r}
+occurrence %<>% mutate(dwc_scientificName = scientific_name)
+```
+
+### kingdom
+
+```{r}
+occurrence %<>% mutate(dwc_kingdom = "Animalia")
+```
+
+### taxonRank
+
+```{r}
+occurrence %<>% mutate(dwc_taxonRank = taxon_rank)
+```
+
+### nomenclaturalCode
+
+```{r}
+occurrence %<>% mutate(dwc_nomenclaturalCode = "ICZN")
+```
+
+### taxonRemarks
+
+```{r}
+occurrence %<>% mutate(dwc_taxonRemarks = taxon_remarks)
+```
+
+# Event Core
+
+### type
+
+```{r}
+occurrence %<>% mutate(dwc_type = "Event")
+```
+
+### language
+
+```{r}
+occurrence %<>% mutate(dwc_language = "en")
+```
+
+### license
+
+```{r}
+occurrence %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/")
+```
+
+### rightsHolder
+
+```{r}
+occurrence %<>% mutate(dwc_rightsHolder = "VMM")
+```
+
+### accessRights
+
+```{r}
+occurrence %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-use") 
+```
+
+### datasetID
+
+```{r}
+occurrence %<>% mutate(dwc_datasetID = "insert doi")
+```
+
+### institutionCode
+
+```{r}
+occurrence %<>% mutate(dwc_institutionCode = "VMM")
+```
+
+### datasetName
+
+```{r}
+occurrence %<>% mutate(dwc_datasetName = "MICA - Muskrat occurrences collected by VMM in Flanders, Belgium")
+```
+
+
+
+
+
+
+### individualCount
+
+```{r}
+occurrence %<>% rename(dwc_individualCount = vangst_aantal) 
+```
+
+### occurrenceStatus
+
+```{r}
+occurrence %<>% mutate(dwc_occurrenceStatus = case_when(
+  dwc_individualCount > 0 ~ "present",
+  dwc_individualCount == 0 ~ "absent"
+))
+```
+
+### eventID
+
+```{r}
+occurrence %<>% mutate(dwc_eventID = str_c("MICA:VMM:EV:", registratie_id))
+```
+
+### eventDate
+
+```{r}
+occurrence %<>% mutate(dwc_eventDate = as.character(dag))
+```
+
+### samplingProtocol
+
+```{r}
+occurrence %<>% mutate(dwc_samplingProtocol = "rat trap") 
+```
+
+### locationID
+
+```{r}
+occurrence %<>% mutate(dwc_locationID = locatie_id)
+```
+
+### continent
+
+```{r}
+occurrence %<>% mutate(dwc_continent = "Europe")
+```
+
+### countryCode
+
+```{r}
+occurrence %<>% mutate(dwc_countryCode = "BE")
+```
+
+### stateProvince
+
+```{r}
+occurrence %<>% mutate(dwc_stateProvince = recode(provincie_omschrijving,
+  "Antwerpen" = "Antwerp",
+  "Limburg" = "Limburg",
+  "Oost-Vlaanderen" = "East Flanders",
+  "Vlaams-Brabant" = "Flemish Brabant",
+  "West-Vlaanderen" = "West Flanders",
+  "Onbekend" = NA_character_
+))
+```
+
+### municipality
+
+```{r}
+occurrence %<>% mutate(dwc_municipality = recode(gemeente_naam,
+  "Onbekend" = NA_character_
+))
+```
+
+### locationRemarks
+
+```{r}
+occurrence %<>% mutate(dwc_locationRemarks = recode(vha_categorie_omschrijving, 
+  "CAT2 - Onbevaarbaar cat. 2" = "CAT2 - not navigable cat. 2",
+  "CAT1 - Onbevaarbaar cat. 1" = "CAT1 - not navigable cat. 1",
+  "CAT3 - Onbevaarbaar cat. 3" = "CAT3 - not navigable cat. 3",
+  "CAT - Andere" = "CAT - other",
+  "ONB - Onbekend" = "ONB - unknown",
+  "BEV - Bevaarbaar" = "BEV - navigable"
+))
+```
+
+### decimalLatitude
+
+```{r}
+occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
+  "%.5f",
+  round(locatie_gps_breedte, digits = 5)
+))
+```
+
+### decimalLongitude
+
+```{r}
+occurrence %<>% mutate(dwc_decimalLongitude = sprintf(
+  "%.5f",
+  round(locatie_gps_lengte, digits = 5)
+))
+```
+
+### geodeticDatum
+
+```{r}
+occurrence %<>% mutate(dwc_geodeticDatum = "WGS84") 
+```
+
+### coordinateUncertaintyInMeters
+
+```{r}
+occurrence %<>% mutate(dwc_coordinateUncertaintyInMeters = "30")
+```
+
+
+
+
+
+### vernacularName
+
+```{r}
+occurrence %<>% mutate(dwc_vernacularName = vernacularName)
+```
+
+
+
+
+## Post-processing
+
+```{r}
+occurrence %<>% select(starts_with("dwc_"))
+colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
+```
+
+Preview data:
+
+```{r}
+occurrence %>% head()
+```
+
+Save to CSV:
+
+```{r}
+write_csv(occurrence, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "occurrence.csv"), na = "")
+```
