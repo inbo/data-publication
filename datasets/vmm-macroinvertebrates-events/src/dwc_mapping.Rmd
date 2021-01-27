@@ -414,11 +414,36 @@ measurements <- input_meas
 ### eventID
 
 
+```{r}
+measurements %<>% mutate(dwc_eventID = event_id)
+```
+
 ### measurementID
+
+```{r}
+measurements %<>% mutate(dwc_measurementID = measurement_id)
+```
 
 
 ### measurementType
 
+```{r}
+measurements %<>% mutate(dwc_measurementType = measurement_type)
+```
+
+### measurementValue
+
+```{r}
+measurements %<>% mutate(dwc_measurementValue = measurement_value)
+```
+
+
+
+### measurementUnit
+
+```{r}
+measurements %<>% mutate(dwc_measurementUnit = measurement_unit)
+```
 
 
 ## Post-processing
