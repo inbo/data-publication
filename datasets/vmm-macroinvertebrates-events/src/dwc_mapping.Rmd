@@ -472,11 +472,11 @@ measurements %>% head()
 Save to CSV:
 
 ```{r}
-write_csv(occurrence, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "occurrence.csv"), na = "")
+write_csv(occurrence, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "occurrence.csv"), na = "")
 
-write_csv(event, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "event.csv"), na = "")
+write_csv(event, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "event.csv"), na = "")
 
-write_csv(measurements, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "measurements.csv"), na = "")
+write_csv(measurements, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "measurements.csv"), na = "")
 ```
 
 
