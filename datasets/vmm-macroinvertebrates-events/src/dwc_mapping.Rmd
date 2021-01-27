@@ -451,16 +451,36 @@ measurements %<>% mutate(dwc_measurementUnit = measurement_unit)
 ```{r}
 occurrence %<>% select(starts_with("dwc_"))
 colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
+
+event %<>% select(starts_with("dwc_"))
+colnames(event) <- str_remove(colnames(event), "dwc_")
+
+measurements %<>% select(starts_with("dwc_"))
+colnames(measurements) <- str_remove(colnames(measurements), "dwc_")
+
+
 ```
 
 Preview data:
 
 ```{r}
 occurrence %>% head()
+event %>% head()
+measurements %>% head()
 ```
 
 Save to CSV:
 
 ```{r}
 write_csv(occurrence, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "occurrence.csv"), na = "")
+
+write_csv(event, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "event.csv"), na = "")
+
+write_csv(measurements, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "measurements.csv"), na = "")
 ```
+
+
+```{r}
+## end
+```
+
