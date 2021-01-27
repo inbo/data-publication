@@ -143,6 +143,14 @@ occurrence %<>% mutate(dwc_kingdom = "Animalia")
 ```{r}
 occurrence %<>% mutate(dwc_taxonRank = taxon_rank)
 ```
+### vernacularName
+
+```{r eval=FALSE, include=FALSE}
+occurrence %<>% mutate(dwc_vernacularName = vernacular_name)
+```
+
+
+
 
 ### nomenclaturalCode
 
@@ -155,117 +163,160 @@ occurrence %<>% mutate(dwc_nomenclaturalCode = "ICZN")
 ```{r}
 occurrence %<>% mutate(dwc_taxonRemarks = taxon_remarks)
 ```
-
-# Event Core
-
-### type
-
-```{r}
-occurrence %<>% mutate(dwc_type = "Event")
-```
-
-### language
-
-```{r}
-occurrence %<>% mutate(dwc_language = "en")
-```
-
-### license
-
-```{r}
-occurrence %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/")
-```
-
-### rightsHolder
-
-```{r}
-occurrence %<>% mutate(dwc_rightsHolder = "VMM")
-```
-
-### accessRights
-
-```{r}
-occurrence %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-use") 
-```
-
-### datasetID
-
-```{r}
-occurrence %<>% mutate(dwc_datasetID = "insert doi")
-```
-
-### institutionCode
-
-```{r}
-occurrence %<>% mutate(dwc_institutionCode = "VMM")
-```
-
-### datasetName
-
-```{r}
-occurrence %<>% mutate(dwc_datasetName = "MICA - Muskrat occurrences collected by VMM in Flanders, Belgium")
-```
-
-
-
-
-
-
 ### individualCount
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 occurrence %<>% rename(dwc_individualCount = vangst_aantal) 
 ```
 
 ### occurrenceStatus
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 occurrence %<>% mutate(dwc_occurrenceStatus = case_when(
   dwc_individualCount > 0 ~ "present",
   dwc_individualCount == 0 ~ "absent"
 ))
 ```
 
+
+
+
+
+# Event Core
+
+Map the data to [Darwin Core Event](https://rs.gbif.org/core/dwc_event_2016_06_21.xml).
+
+```{r}
+head(input_event, n =10)
+```
+
+
+```{r}
+event <- input_event
+```
+
+
 ### eventID
 
 ```{r}
-occurrence %<>% mutate(dwc_eventID = str_c("MICA:VMM:EV:", registratie_id))
+event %<>% mutate(dwc_eventID = event_id)
 ```
 
-### eventDate
+
+### type
+
+
 
 ```{r}
-occurrence %<>% mutate(dwc_eventDate = as.character(dag))
+event %<>% mutate(dwc_type = "Event")
+```
+
+### language
+
+```{r}
+event %<>% mutate(dwc_language = "en")
+```
+
+### license
+
+```{r}
+event %<>% mutate(dwc_license = "https://creativecommons.org/licenses/by/4.0/")
+```
+
+### rightsHolder
+
+```{r}
+event %<>% mutate(dwc_rightsHolder = "VMM")
+```
+
+### accessRights
+
+```{r}
+event %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-use") 
+```
+
+### datasetID
+
+```{r}
+event %<>% mutate(dwc_datasetID = "https://doi.org/10.15468/4cvbka")
+```
+
+### institutionCode
+
+```{r}
+event %<>% mutate(dwc_institutionCode = "VMM")
+```
+
+### datasetName
+
+```{r}
+event %<>% mutate(dwc_datasetName = "Inland water macroinvertebrate occurrences in Flanders, Belgium")
+```
+
+
+### dynamic properties
+
+```{r}
+event %<>% mutate(dwc_dynamicProperties = dynamic_properties)
 ```
 
 ### samplingProtocol
 
 ```{r}
-occurrence %<>% mutate(dwc_samplingProtocol = "rat trap") 
+event %<>% mutate(dwc_samplingProtocol = sampling_protocol) 
 ```
+
+### eventDate
+
+```{r}
+event %<>% mutate(dwc_eventDate = event_date)
+```
+
+### habitat
+
+```{r}
+event %<>% mutate(dwc_habitat = habitat)
+```
+
+
+### eventRemarks
+
+```{r}
+event %<>% mutate(dwc_eventRemarks = event_remarks)
+```
+
+
 
 ### locationID
 
 ```{r}
-occurrence %<>% mutate(dwc_locationID = locatie_id)
+event %<>% mutate(dwc_locationID = location_id)
 ```
 
 ### continent
 
 ```{r}
-occurrence %<>% mutate(dwc_continent = "Europe")
+event %<>% mutate(dwc_continent = "Europe" )
+```
+
+
+### waterBody
+
+```{r}
+event %<>% mutate(dwc_waterBody = water_body)
 ```
 
 ### countryCode
 
 ```{r}
-occurrence %<>% mutate(dwc_countryCode = "BE")
+event %<>% mutate(dwc_countryCode = country_code)
 ```
+
 
 ### stateProvince
 
-```{r}
-occurrence %<>% mutate(dwc_stateProvince = recode(provincie_omschrijving,
+```{r eval=FALSE, include=FALSE}
+event %<>% mutate(dwc_stateProvince = recode(provincie_omschrijving,
   "Antwerpen" = "Antwerp",
   "Limburg" = "Limburg",
   "Oost-Vlaanderen" = "East Flanders",
@@ -278,14 +329,33 @@ occurrence %<>% mutate(dwc_stateProvince = recode(provincie_omschrijving,
 ### municipality
 
 ```{r}
-occurrence %<>% mutate(dwc_municipality = recode(gemeente_naam,
-  "Onbekend" = NA_character_
-))
+event %<>% mutate(dwc_municipality = municipality)
 ```
+
+### verbatimLatitude
+
+```{r}
+event %<>% mutate(dwc_verbatimLatitude = verbatim_latitude)
+```
+
+### verbatimLongitude
+
+
+```{r}
+event %<>% mutate(dwc_verbatimLongitude = verbatim_longitude)
+```
+
+
+### verbatimCoordinateSystem
+
+```{r}
+event %<>% mutate(dwc_verbatimCoordinateSystem = verbatim_coordinate_system)
+```
+
 
 ### locationRemarks
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 occurrence %<>% mutate(dwc_locationRemarks = recode(vha_categorie_omschrijving, 
   "CAT2 - Onbevaarbaar cat. 2" = "CAT2 - not navigable cat. 2",
   "CAT1 - Onbevaarbaar cat. 1" = "CAT1 - not navigable cat. 1",
@@ -299,43 +369,55 @@ occurrence %<>% mutate(dwc_locationRemarks = recode(vha_categorie_omschrijving,
 ### decimalLatitude
 
 ```{r}
-occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
+event %<>% mutate(dwc_decimalLatitude = sprintf(
   "%.5f",
-  round(locatie_gps_breedte, digits = 5)
+  round(decimal_latitude, digits = 5)
 ))
 ```
 
 ### decimalLongitude
 
 ```{r}
-occurrence %<>% mutate(dwc_decimalLongitude = sprintf(
+event %<>% mutate(dwc_decimalLongitude = sprintf(
   "%.5f",
-  round(locatie_gps_lengte, digits = 5)
+  round(decimal_longitude, digits = 5)
 ))
 ```
 
 ### geodeticDatum
 
 ```{r}
-occurrence %<>% mutate(dwc_geodeticDatum = "WGS84") 
+event %<>% mutate(dwc_geodeticDatum = geodetic_datum) 
 ```
 
 ### coordinateUncertaintyInMeters
 
 ```{r}
-occurrence %<>% mutate(dwc_coordinateUncertaintyInMeters = "30")
+event %<>% mutate(dwc_coordinateUncertaintyInMeters = "30")
 ```
 
 
+## Measurements
 
 
-
-### vernacularName
+Map the data to [Darwin Core Measurements or Facts](https://rs.gbif.org/extension/dwc/measurements_or_facts.xml).
 
 ```{r}
-occurrence %<>% mutate(dwc_vernacularName = vernacularName)
+head(input_meas, n =10)
 ```
 
+
+```{r}
+measurements <- input_meas
+```
+
+### eventID
+
+
+### measurementID
+
+
+### measurementType
 
 
 
