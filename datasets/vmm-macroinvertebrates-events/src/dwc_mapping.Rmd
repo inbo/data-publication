@@ -107,10 +107,9 @@ occurrence %<>%  mutate(dwc_occurrenceID = occurrence_id)
 
 ### recordedBy
 
-**CHECK IN EMAILED FILE**
 
 ```{r}
-#occurrence %<>% mutate(dwc_recordedBy = recorded_by)
+occurrence %<>% mutate(dwc_recordedBy = "VMM")
 ```
 
 ### organismQuantity
@@ -171,10 +170,10 @@ occurrence %<>% rename(dwc_individualCount = vangst_aantal)
 
 ### occurrenceStatus
 
-```{r eval=FALSE, include=FALSE}
+```{r}
 occurrence %<>% mutate(dwc_occurrenceStatus = case_when(
-  dwc_individualCount > 0 ~ "present",
-  dwc_individualCount == 0 ~ "absent"
+  dwc_organismQuantity > 0 ~ "present",
+  dwc_organismQuantity == 0 ~ "absent"
 ))
 ```
 
