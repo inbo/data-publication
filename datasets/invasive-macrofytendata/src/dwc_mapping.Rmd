@@ -54,7 +54,11 @@ File exported to csv
 # test file copy Dimi
 #input_file <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ58vi2qvDmdupEwJxHjk2E0vRPq3MED9OfALGq#u01b8LJa9NchiK01WB3aSa5_99hxRj_ptOUbVw90/pub?output=csv")
 
-input_file <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSGAgbcqTbCYgtWpm9-wMnYdhbz_P4QkxG982Hks6rTeNFPWA-wBDq3OoF4YKqY0A/pub?gid=805046402&single=true&output=csv")
+#input_file <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSGAgbcqTbCYgtWpm9#-wMnYdhbz_P4QkxG982Hks6rTeNFPWA-wBDq3OoF4YKqY0A/pub?gid=805046402&single=true&output=csv")
+
+ 
+
+input_file <- read_excel(here::here("datasets", "invasive-macrofytendata", "data", "raw", "2020-09-22_exoten_macrofytendatabank_waterlopen.xlsx"))
 
 ```
 
@@ -170,6 +174,17 @@ We can safely substitute input_interim
 input_interim <- input_interim_df
 ```
 
+
+# use rownumbers as occurrenceID
+
+```{r}
+input_interim <-
+  input_interim %>%
+  rowid_to_column(var = "row_id") %>%
+  mutate(rowNumberID = str_c("INBO:MAFY:OCC:", row_id))
+```
+
+
 # Occurrence core
 
 ## Pre-processing
@@ -258,15 +273,10 @@ occurrence %<>% mutate(dwc_basisOfRecord = "HumanObservation")
 ### dataGeneralizations
 
 ### occurrenceID
-
-Since `registratie_id` is not unique for all records, we create an `occurrenceID` based on row number:
-
 ```{r}
-occurrence <-
-  occurrence %>%
-  rowid_to_column(var = "row_id") %>%
-  mutate(dwc_occurrenceID = str_c("INBO:MaFy:OCC:", row_id))
+occurrence %<>% mutate(dwc_occurrenceID = rowNumberID)
 ```
+
 
 ### recordedBy
 
@@ -308,7 +318,9 @@ occurrence %<>% mutate(samplingProtocol = 'inventory')
 ### eventDate
 
 ```{r}
-occurrence %<>% mutate(eventDate = ymd(Datum)) 
+head(occurrence)
+
+occurrence %<>% mutate(eventDate = datum) 
 ```
 
 ```{r}
