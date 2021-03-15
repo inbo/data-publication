@@ -105,8 +105,8 @@ The original X,Y will be used for creating decimalLatitude and decimalLongitude
 For this dataset this is part is obsolete (but fun to do!)
 
 ```{r}
-input_data %<>% mutate(verbatimLongitude = X) %>%
-                   mutate(verbatimLatitude = Y)
+input_data %<>% mutate(dwc_verbatimLongitude = X) %>%
+                   mutate(dwc_verbatimLatitude = Y)
 ```
 
 ### Create a spacial dataframe
@@ -309,7 +309,7 @@ occurrence %<>% mutate(dwc_organismQuantityType = opnameschaal)
 
 ```{r}
 
-occurrence %<>% mutate(samplingProtocol = 'inventory')
+occurrence %<>% mutate(dwc_samplingProtocol = 'inventory')
 
 ```
 
@@ -321,10 +321,10 @@ occurrence %<>% mutate(samplingProtocol = 'inventory')
 ```{r}
 head(occurrence)
 
-occurrence %<>% mutate(eventDate = datum) 
+occurrence %<>% mutate(dwc_eventDate = datum) 
 ```
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 occurrence %<>% mutate(year = year(eventDate)) %<>%
                 mutate(month = month(eventDate)) %<>%
                 mutate(day = day(eventDate)) %<>%
@@ -336,12 +336,9 @@ occurrence %<>% mutate(year = year(eventDate)) %<>%
 ```{r}
 head(occurrence)
 
-occurrence %<>% rename(decimalLongitude = X) %>%
-                rename(decimalLatitude = Y) %>%
-                mutate(geodeticDatum = "WGS84") %>%
-                mutate(coordinateUncertaintyInMeters = "30") %>%
-                mutate(countryCode = "DE")  %>%            
-                mutate(continent = "Europe")
+occurrence %<>% mutate(dwc_decimalLongitude = X) %>%
+                mutate(dwc_decimalLatitude = Y) 
+                
 ```
 
 ```{r}
@@ -349,28 +346,28 @@ head(occurrence, n = 5)
 occurrence %<>%
 #   mutate(verbatimLongitude = round(verbatimLongitude, digits = 0 )) %>%
 #   mutate(verbatimLatitude = round(verbatimLatitude, digits = 0)) %>%
-   mutate(decimalLongitude = round(decimalLongitude, digits = 5)) %>%
-   mutate(decimalLatitude = round(decimalLatitude, digits = 5))
+   mutate(dwc_decimalLongitude = round(dwc_decimalLongitude, digits = 5)) %>%
+   mutate(dwc_decimalLatitude = round(dwc_decimalLatitude, digits = 5))
 ```
 
 ```{r}
 occurrence %<>%   
-   mutate(decimalLatitude = as.character(format(decimalLatitude, nsmall = 5))) %>%
-   mutate(decimalLongitude = as.character(format(decimalLongitude, nsmall = 5))) %>%
-   mutate(verbatimLatitude = as.character(format(verbatimLatitude, nsmall = 5))) %>%
-   mutate(verbatimLongitude = as.character(format(verbatimLongitude, nsmall = 5)))
+   mutate(dwc_decimalLatitude = as.character(format(dwc_decimalLatitude, nsmall = 5))) %>%
+   mutate(dwc_decimalLongitude = as.character(format(dwc_decimalLongitude, nsmall = 5))) %>%
+   mutate(dwc_verbatimLatitude = as.character(format(dwc_verbatimLatitude, nsmall = 5))) %>%
+   mutate(dwc_verbatimLongitude = as.character(format(dwc_verbatimLongitude, nsmall = 5)))
 ```
 
 ### continent
 
 ```{r}
-##occurrence %<>% mutate(continent = "Europe") # e.g. "Belgium = BE"
+occurrence %<>% mutate(continent = "Europe") # e.g. "Belgium = BE"
 ```
 
 ### countryCode
 
 ```{r}
-#occurrence %<>% mutate(countryCode = "NL") # e.g. "Belgium = BE"
+occurrence %<>% mutate(countryCode = "BE") # e.g. "Belgium = BE"
 ```
 
 ### municipality
@@ -427,7 +424,16 @@ occurrence %<>%
 
 ### geodeticDatum
 
+```{r}
+occurrence %<>% mutate(geodeticDatum = "WGS84")
+```
+
 ### coordinateUncertaintyInMeters
+
+```{r}
+occurrence %<>% mutate(coordinateUncertaintyInMeters = "30")
+```
+
 
 ### georeferenceRemarks
 
@@ -479,6 +485,9 @@ occurrence %<>%
 ## Post-processing
 
 ```{r}
+
+
+occurrence %<>% select(starts_with("dwc_"))
 colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
  
 ```
