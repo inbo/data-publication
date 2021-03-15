@@ -75,17 +75,18 @@ input_file %>% head(n = 5)
 Clean data somewhat:
 
 ```{r}
-input_interim <- input_file %<>% remove_empty("rows")
+input_data <- input_file %<>% remove_empty("rows")
 ```
 
 ```{r}
-input_interim %>% head(n = 5)
+input_data %>% head(n = 5)
 ```
 
 # Georeference source data
 
 ## split column Standort (includes decimal Lan & long)
 Use separate for this
+No need in this dataset
 
 ```{r}
 #input_interim %<>% 
@@ -104,7 +105,7 @@ The original X,Y will be used for creating decimalLatitude and decimalLongitude
 For this dataset this is part is obsolete (but fun to do!)
 
 ```{r}
-input_interim %<>% mutate(verbatimLongitude = X) %>%
+input_data %<>% mutate(verbatimLongitude = X) %>%
                    mutate(verbatimLatitude = Y)
 ```
 
@@ -114,8 +115,8 @@ Create spatial dataframe and define the CRS (31370 is Belgian Lambert 72)(crs = 
 We indicate the x,y columns as coordinates and define the coordinate system
 
 ```{r}
-input_interim = st_as_sf(input_interim, coords = c("X","Y"), crs = 31370 , agr = "constant" )
-input_interim %>% head(n = 5)
+input_data = st_as_sf(input_data, coords = c("X","Y"), crs = 31370 , agr = "constant" )
+input_data %>% head(n = 5)
 ```
 
 ## Transform the data in WGS84
@@ -123,8 +124,8 @@ input_interim %>% head(n = 5)
 Now we transform the Lambert 72 in WGS84
 
 ```{r}
-input_interim <- st_transform(input_interim, crs = 4326)
-input_interim %>% head(n = 5)
+input_data <- st_transform(input_data, crs = 4326)
+input_data %>% head(n = 5)
 ```
 
 ### Create a dataframe with column decimalLatitude & decimalLongitude
@@ -132,16 +133,16 @@ input_interim %>% head(n = 5)
 In order to add the decimal coordinates into the original df we create an x_y dataframe
 
 ```{r}
-x_y <- as.data.frame(st_coordinates(input_interim))
+x_y <- as.data.frame(st_coordinates(input_data))
 x_y %>% head(n = 5)
 
-#write_csv(x_y, here::here("datasets", "mica-uvw-occurrences", "data", "interim/x_y.csv"), na = "")
+#write_csv(x_y, here::here("datasets", "invasive-macrofytendata", "data", "interim/x_y.csv"), na = "")
 ```
 
 # Create extra dataframe to work with 
 
 ```{r}
-input_interim_df <- input_interim
+input_interim_df <- input_data
 ```
 
 # Remove geometry from dataframe 'input_interim_df'
@@ -171,15 +172,15 @@ input_interim_df %>% head(n = 5)
 We can safely substitute input_interim 
 
 ```{r}
-input_interim <- input_interim_df
+input_data <- input_interim_df
 ```
 
 
 # use rownumbers as occurrenceID
 
 ```{r}
-input_interim <-
-  input_interim %>%
+input_data <-
+  input_data %>%
   rowid_to_column(var = "row_id") %>%
   mutate(rowNumberID = str_c("INBO:MAFY:OCC:", row_id))
 ```
@@ -192,7 +193,7 @@ input_interim <-
 Create a dataframe occurrence data only 
 
 ```{r}
-occurrence <- input_interim
+occurrence <- input_data
 ```
 
 ## Remove obsolete columns
@@ -381,11 +382,11 @@ municipality already in source file
 #  mutate(municipality = str_remove(municipality,"\\(BE\\)"))
 ```
 
-### verbatimLocality
+### waterBody
 
 ```{r}
 occurrence %<>%
-  mutate(verbatimLocality = Bereich)
+  mutate(dwc_waterBody = Waterloop)
 
 
 ```
@@ -440,7 +441,7 @@ occurrence %<>% mutate(identifiedBy = 'ITAW')
 
 ```{r}
 head(occurrence, n=5)
-occurrence %<>% mutate(scientificName = recode(Tier
+occurrence %<>% mutate(dwc_scientificName = recode(taxa
                    , "Nutria"  = "Myocastor coypus"
                    , "Bisam" = "Ondatra zibethicus"
                    , "Waschbär"  = "Procyon lotor"
@@ -453,33 +454,18 @@ occurrence %<>% mutate(scientificName = recode(Tier
 occurrence %<>% mutate(kingdom = "Animalia")
 ```
 
-### scientificNameAuthorship
+### taxonRank
+
+
 
 ```{r}
-occurrence %<>% mutate(scientificNameAuthorship = recode(Tier
-                  ,"Bisam" = "Linnaeus, 1766"
-                  ,"Nutria"  = "Molina, 1782"
-                  ,"Waschbär"  = "Linnaeus, 1758"
-                  
-                                       ))
-```
-
-### verbatimScientificName
-
-```{r}
-occurrence %<>% mutate(vernacularName = Tier)
-```
-
-# taxonRank
-
-```{r}
-occurrence %<>% mutate(taxonRank = "species")
+occurrence %<>% mutate(taxonRank = "speciesNeedstobechecked")
 ```
 
 # nomenclaturalCode
 
 ```{r}
-occurrence %<>% mutate(nomenclaturalCode = "ICZN") # e.g. "ICZN"
+occurrence %<>% mutate(nomenclaturalCode = "ICBN") # e.g. "ICZN"
 ```
 
 ### occurrenceStatus
@@ -487,36 +473,17 @@ occurrence %<>% mutate(nomenclaturalCode = "ICZN") # e.g. "ICZN"
 ```{r}
 occurrence %<>% 
     ##select(individualCount) %>%
-    mutate(occurrenceStatus = case_when(individualCount > 0 ~ "present",
-                              individualCount == 0 ~ "absent"
-                                 )
-                                )
+    mutate(occurrenceStatus = 'present')
 ```
 
 ## Post-processing
 
 ```{r}
 colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
-occurrence %<>% select(-c(UserName, UserEmail, Datum, Uhrzeit, Tier, "Anmerkung (nicht verpflichtend)",year, month, day, verbatimLongitude, verbatimLatitude, Bereich, Landschaft, Material ))  #remove collection columns
-          ##  rename(scientificName = verbatimScientificName) 
+ 
 ```
 
-Define the order of the output columns
 
-```{r}
-col_order <- c( "type","language","license","rightsHolder","accessRights","datasetID"
-               ,"institutionCode","datasetName","basisOfRecord","occurrenceID","recordedBy"
-               ,"individualCount","occurrenceStatus","eventDate","habitat", "continent","countryCode","verbatimLocality"
-               
-               ,"decimalLatitude","decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters"
-               ,"identifiedBy","scientificName","vernacularName","kingdom","scientificNameAuthorship","taxonRank"
-               ,"nomenclaturalCode"
-               ) 
-               # still needed for this dataset 
-               # removed for this dataset,"occurrenceRemarks","municipality","samplingProtocol","samplingEffort",                            ,"locationID", ,"verbatimLatitude","verbatimLongitude","verbatimSRS" ,"verbatimCoordinateSystem"
-
-occurrence <- occurrence[, col_order]
-```
 
 Preview data:
 
