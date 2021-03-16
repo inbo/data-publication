@@ -19,7 +19,7 @@ library(here)
 library(rgbif)
 ```
 
-Query metadata for all datasets on the [INBO IPT](https://www.gbif.org/installation/9f25fd85-85dc-4dcd-a1b4-b31165442e2b), which is the same as quering for INBO as hosting organization:
+Query metadata for all datasets on the [INBO IPT](https://www.gbif.org/installation/9f25fd85-85dc-4dcd-a1b4-b31165442e2b), which is the same as querying for INBO as hosting organization:
 
 ```{r get_metadata}
 datasets_metadata <-
@@ -99,7 +99,7 @@ write_csv(datasets, here::here("data", "datasets.csv"), na = "")
 KPIs:
 
 ```{r}
-kpi_year <- 2020
+kpi_year <- 2021
 ```
 
 ```{r}
