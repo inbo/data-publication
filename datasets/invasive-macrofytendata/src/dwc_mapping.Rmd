@@ -298,7 +298,10 @@ occurrence %<>% mutate(dwc_organismQuantity = code)
 ### organismQuentityType
 
 ```{r}
-occurrence %<>% mutate(dwc_organismQuantityType = opnameschaal) 
+occurrence %<>% mutate(dwc_organismQuantityType = recode(opnameschaal
+                                                  ,"Tansley KRW waterlopen" = "Tansley"
+                                                  ,"aanwezigheid" = "presence"
+                                                  ,"percentage" = "percentage")) 
 ```
 
 
