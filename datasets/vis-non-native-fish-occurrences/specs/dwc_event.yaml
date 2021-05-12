@@ -1,0 +1,82 @@
+# Scope: dwc-event
+# Author: Peter Desmet
+# Syntax version: 0.1
+
+id:
+  regex: 'INBO:MEETNET:EVENT:\d{6}'
+
+type:
+  allowed: Event
+
+language:
+  allowed: en
+
+license:
+  allowed: http://creativecommons.org/publicdomain/zero/1.0/
+
+rightsHolder:
+  allowed: INBO
+
+accessRights:
+  allowed: https://www.inbo.be/en/norms-data-use
+
+datasetID: # Dataset specific
+  allowed: "to complete"
+
+institutionCode:
+  allowed: INBO
+
+datasetName: # Dataset specific
+  allowed: Meetnetten.be - Fyke counts for Amphibia in Flanders, Belgium
+
+informationWithheld:
+  allowed: original locations available upon request
+
+dataGeneralizations:
+  regex: 'coordinates are generalized from a (POINT|LINESTRING|MULTILINESTRING|POLYGON|MULTIPOLYGON) to a UTM \d{1,2}(K|k)m grid'
+
+eventID:
+  regex: 'INBO:MEETNET:EVENT:\d{6}'
+
+parentEventID:
+  regex: 'INBO:MEETNET:VISITID:\d{6}'
+
+samplingProtocol: # Dataset specific
+  allowed: amphibia fykes
+
+eventDate:
+  dateformat: ['%Y-%m-%d'] # YYYY-MM-DD
+
+eventRemarks:
+  regex: 'data collected in the .*'
+
+locationID:
+  regex: 'INBO:MEETNET:LOCATION:\d{6}'
+
+continent:
+  allowed: Europe
+
+countryCode:
+  allowed: BE
+
+locality:
+  empty: false
+
+decimalLatitude:
+  numberformat: '.5'
+  min: 50.67 # SE Flanders
+  max: 51.51 # NW Belgium
+
+decimalLongitude:
+  numberformat: '.5'
+  min: 2.53 # NW Belgium
+  max: 5.94 # SE Flanders
+
+geodeticDatum:
+  allowed: WGS84
+
+coordinateUncertaintyInMeters: # Dataset specific
+  allowed: '7071' # Currently all UTM 10km
+
+georeferenceRemarks:
+  allowed: coordinates are centroid of used grid square

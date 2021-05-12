@@ -1,0 +1,60 @@
+# Scope: dwc-occurrence
+# Author: Dimitri Brosens
+# Syntax version: 0.1
+
+id:
+  regex: 'INBO:VIS:Ev:\d{8}'
+
+basisOfRecord:
+  allowed: HumanObservation
+
+collectionCode:
+  allowed: VIS
+
+occurrenceID:
+  regex: 'INBO:VIS:EXO:\d{8}'
+
+recordedBy:
+  allowed: Hugo Verreycken
+
+individualCount:
+  if:
+    - occurrenceStatus:
+        allowed: absent
+      allowed: '0'
+    - occurrenceStatus:
+        allowed: present
+      numberformat: x
+      min: 1
+      max: 500 # Dataset specific
+
+
+
+occurrenceStatus:
+  allowed: [present, absent]
+
+eventID:
+  regex: 'INBO:VIS:Ev:\d{6}'
+
+scientificName: # Dataset specific
+  empty: false
+    
+
+kingdom:
+  allowed: Animalia
+
+phylum: # Dataset specific
+  allowed: Chordata
+
+scientificNameAuthorship 
+  empty: false
+    
+
+taxonRank: # Dataset specific
+  allowed: species
+
+vernacularName: # Dataset specific
+  empty: false
+
+nomenclaturalCode: # Dataset specific
+  allowed: ICZN
