@@ -3,7 +3,7 @@
 # Syntax version: 0.1
 
 id:
-  regex: 'INBO:MEETNET:EVENT:\d{6}'
+  regex: 'INBO:VIS:Ev:\d{8}'
 
 type:
   allowed: Event
@@ -18,7 +18,7 @@ rightsHolder:
   allowed: INBO
 
 accessRights:
-  allowed: https://www.inbo.be/en/norms-data-use
+  allowed: https://www.vlaanderen.be/inbo/en-gb/norms-for-data-use/
 
 datasetID: # Dataset specific
   allowed: "to complete"
@@ -27,34 +27,31 @@ institutionCode:
   allowed: INBO
 
 datasetName: # Dataset specific
-  allowed: Meetnetten.be - Fyke counts for Amphibia in Flanders, Belgium
+  allowed: VIS - Non-native Fish in Flanders, Belgium
 
 informationWithheld:
-  allowed: original locations available upon request
+  allowed: Length and weight measurements available upon request.
 
-dataGeneralizations:
-  regex: 'coordinates are generalized from a (POINT|LINESTRING|MULTILINESTRING|POLYGON|MULTIPOLYGON) to a UTM \d{1,2}(K|k)m grid'
 
 eventID:
-  regex: 'INBO:MEETNET:EVENT:\d{6}'
+  regex: 'INBO:VIS:Ev:\d{8}'
 
-parentEventID:
-  regex: 'INBO:MEETNET:VISITID:\d{6}'
 
 samplingProtocol: # Dataset specific
-  allowed: amphibia fykes
+  empty: false
 
 eventDate:
-  dateformat: ['%Y-%m-%d'] # YYYY-MM-DD
+  dateformat: ['%Y-%m-%d/%Y-%m-%d'] # YYYY-MM-DD/YYYY-MM-DD
 
-eventRemarks:
-  regex: 'data collected in the .*'
 
 locationID:
-  regex: 'INBO:MEETNET:LOCATION:\d{6}'
+  regex: 'visbestanden:\d{8}'
 
 continent:
   allowed: Europe
+
+waterBody:
+  emplty: false
 
 countryCode:
   allowed: BE
@@ -76,7 +73,5 @@ geodeticDatum:
   allowed: WGS84
 
 coordinateUncertaintyInMeters: # Dataset specific
-  allowed: '7071' # Currently all UTM 10km
+  allowed: '30' # Currently all UTM 10km
 
-georeferenceRemarks:
-  allowed: coordinates are centroid of used grid square
