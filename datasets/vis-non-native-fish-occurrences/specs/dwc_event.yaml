@@ -20,29 +20,44 @@ rightsHolder:
 accessRights:
   allowed: https://www.vlaanderen.be/inbo/en-gb/norms-for-data-use/
 
-datasetID: # Dataset specific
-  allowed: "to complete"
+datasetID:
+  allowed: ""
 
 institutionCode:
   allowed: INBO
 
-datasetName: # Dataset specific
-  allowed: VIS - Non-native Fish in Flanders, Belgium
+# collectionCode: # see Occurrence extension
+
+datasetName:
+  allowed: VIS - Non-native fish in Flanders, Belgium
 
 informationWithheld:
   allowed: Length and weight measurements available upon request.
 
-
 eventID:
   regex: 'INBO:VIS:Ev:\d{8}'
 
+samplingProtocol:
+  allowed:
+    - angling
+    - dipnet
+    - eel fyke
+    - electrofishing with 1 anode by wading
+    - electrofishing with 2 anodes by boat
+    - electrofishing with 2 anodes by wading
+    - electrofishing with 3 anodes by wading
+    - electrofishing with 4 anodes by wading
+    - paired fyke nets
 
-samplingProtocol: # Dataset specific
-  empty: false
+samplingEffort:
+  empty: true
+  stringformat: json
 
 eventDate:
   dateformat: ['%Y-%m-%d/%Y-%m-%d'] # YYYY-MM-DD/YYYY-MM-DD
 
+habitat:
+  allowed: stream or river
 
 locationID:
   regex: 'visbestanden:\d{8}'
@@ -51,13 +66,29 @@ continent:
   allowed: Europe
 
 waterBody:
-  emplty: false
+  empty: false
 
 countryCode:
   allowed: BE
 
 locality:
   empty: false
+
+verbatimLatitude:
+  numberformat: x
+  min: 21829 # SE Belgium
+  max: 246072 # NW Belgium
+
+verbatimLongitude:
+  numberformat: x
+  min: 22344 # NW Belgium
+  max: 297889 # SE Belgium
+
+verbatimCoordinateSystem:
+  allowed: Lambert coordinates
+
+verbatimSRS:
+  allowed: Belgian Datum 1972
 
 decimalLatitude:
   numberformat: '.5'
@@ -72,6 +103,6 @@ decimalLongitude:
 geodeticDatum:
   allowed: WGS84
 
-coordinateUncertaintyInMeters: # Dataset specific
+coordinateUncertaintyInMeters:
   allowed: '30' # Currently all UTM 10km
 

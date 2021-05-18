@@ -28,30 +28,32 @@ individualCount:
       min: 1
       max: 500 # Dataset specific
 
-
-
 occurrenceStatus:
   allowed: [present, absent]
 
 eventID:
-  regex: 'INBO:VIS:Ev:\d{6}'
+  regex: 'INBO:VIS:Ev:\d{8}'
+
+identifiedBy:
+  allowed: Hugo Verreycken
 
 scientificName: # Dataset specific
   empty: false
     
-
 kingdom:
   allowed: Animalia
 
-phylum: # Dataset specific
-  allowed: Chordata
-
-scientificNameAuthorship 
+scientificNameAuthorship:
   empty: false
-    
 
 taxonRank: # Dataset specific
-  allowed: species
+  allowed:
+    - species
+    - subspecies
+  if:
+    - scientificName:
+        allowed: Salmo trutta fario
+      allowed: subspecies
 
 vernacularName: # Dataset specific
   empty: false
