@@ -1,6 +1,6 @@
 ---
 title: "Darwin Core mapping"
-subtitle: "For: my_dataset_title"
+subtitle: "For: Libellen checklist"
 author:
 - author_1
 - author_2
