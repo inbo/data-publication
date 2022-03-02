@@ -53,7 +53,7 @@ library(rgbif)          # To use GBIF services
 Create a data frame `input_data` from the source data:
 
 ```{r}
-input_data <- read_excel(path = here("data", "raw", "checklist.xlsx")) 
+input_data <- read_excel(path = here("datasets","rl-libellen-checklist","data", "raw", "Odonata_Checklist.xlsx")) 
 ```
 
 Preview data:
@@ -72,13 +72,24 @@ Clean data somewhat:
 input_data %<>% remove_empty("rows")
 ```
 
+```{r}
+input_data %<>% clean_names()
+```
+
+
+```{r}
+input_data %<>% mutate(scientificName = wetenschappelijke_naam)
+```
+
+
+
 ## Scientific names
 
 Use the [GBIF nameparser](https://www.gbif.org/tools/name-parser) to retrieve nomenclatural information for the scientific names in the checklist:
 
 ```{r}
 parsed_names <- input_data %>%
-  distinct(scientific_name) %>%
+  distinct(scientificName) %>%
   pull() %>% # Create vector from dataframe
   parsenames() # An rgbif function
 ```
@@ -93,7 +104,7 @@ parsed_names %>%
 
 Correct names and reparse:
 
-```{r correct and reparse}
+```{r correct and reparse, eval=FALSE, include=FALSE}
 input_data %<>% mutate(scientific_name = recode(scientific_name,
   "AseroÙ rubra" = "Asero rubra"
 ))
@@ -116,7 +127,7 @@ The nameparser function also provides information about the rank of the taxon (i
 input_data %<>% left_join(
   parsed_names %>%
   select(scientificname, rankmarker),
-  by = c("scientific_name" = "scientificname"))
+  by = c("scientificName" = "scientificname"))
 ```
 
 ## Taxon IDs
@@ -128,7 +139,7 @@ vdigest <- Vectorize(digest) # Vectorize digest function to work with vectors
 input_data %<>% mutate(taxon_id = paste(
   "my_dataset_shortname", # e.g. "alien-fishes-checklist"
   "taxon",
-  vdigest(paste(scientific_name, kingdom), algo = "md5"),
+  vdigest(paste(scientificName, kingdom), algo = "md5"),
   sep = ":"
 ))
 ```
@@ -172,19 +183,19 @@ Start with record-level terms which contain metadata about the dataset (which is
 ### language
 
 ```{r}
-taxon %<>% mutate(dwc_language = "my_language") # e.g. "en"
+taxon %<>% mutate(dwc_language = "en") # e.g. "en"
 ```
 
 ### license
 
 ```{r}
-taxon %<>% mutate(dwc_license = "my_license") # e.g. "http://creativecommons.org/publicdomain/zero/1.0/"
+taxon %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/") # e.g. "http://creativecommons.org/publicdomain/zero/1.0/"
 ```
 
 ### rightsHolder
 
 ```{r}
-taxon %<>% mutate(dwc_rightsHolder = "my_rights_holder") # e.g. "INBO"
+taxon %<>% mutate(dwc_rightsHolder = "INBOr") # e.g. "INBO"
 ```
 
 ### datasetID
@@ -196,7 +207,7 @@ taxon %<>% mutate(dwc_datasetID = "my_dataset_doi") # e.g. "https://doi.org/10.1
 ### institutionCode
 
 ```{r}
-taxon %<>% mutate(dwc_institutionCode = "my_institution_code") # e.g. "INBO"
+taxon %<>% mutate(dwc_institutionCode = "INBO") # e.g. "INBO"
 ```
 
 ### datasetName
