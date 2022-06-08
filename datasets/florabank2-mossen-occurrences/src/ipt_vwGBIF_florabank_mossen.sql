@@ -1,12 +1,15 @@
 USE [D0012_00_Flora]
 GO
 
-/****** Object:  View [ipt].[vwGBif_mossen]    Script Date: 2/06/2022 13:18:12 ******/
+/****** Object:  View [ipt].[vwGBif_mossen]    Script Date: 8/06/2022 14:40:16 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
+
 
 
 
@@ -21,7 +24,7 @@ AS
 /*                                                       
 ChangeLog IPT (2013-01-07) 
 	add (Fixed) term [type] =  '.....'
-	Cahnged (Fixed) term  [Language] = 'NL'
+	Cahnged (Fixed) term  [Language] = 'EN'
 	add (Fixed) term [Rightsholder] =  'INBO'
 	add (Fixed) term [bibliographicCitation] = '....'
 	add (Fixed) term [DatasetID]
@@ -50,44 +53,45 @@ CHANGE IPT (2015-08-17)
 
 SELECT  
 		[occurrenceID] = 'INBO:FLORA:' + Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8) 
-		, [modified] = CASE 
-			WHEN tW.WRNG_USR_CRE_DTE  IS NOT NULL
-				AND tW.WRNG_USR_CRE_DTE >= COALESCE(tMt.METI_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tW.WRNG_USR_CRE_DTE >= COALESCE(tMt.METI_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tW.WRNG_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				THEN CONVERT(Date, tW.WRNG_USR_CRE_DTE ,120) 
+		--, [modified] = CASE 
+		--	WHEN tW.WRNG_USR_CRE_DTE  IS NOT NULL
+		--		AND tW.WRNG_USR_CRE_DTE >= COALESCE(tMt.METI_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		AND tW.WRNG_USR_CRE_DTE >= COALESCE(tMt.METI_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		AND tW.WRNG_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		THEN CONVERT(Date, tW.WRNG_USR_CRE_DTE ,120) 
 				
-			WHEN tW.WRNG_USR_UPD_DTE  IS NOT NULL
-				AND tW.WRNG_USR_UPD_DTE >= COALESCE(tMt.METI_USR_CRE_DTE , CONVERT(Date,'1900-01-01',120) )
-				AND tW.WRNG_USR_UPD_DTE >= COALESCE(tMt.METI_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tW.WRNG_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				THEN CONVERT(Date, tW.WRNG_USR_UPD_DTE ,120) 	
+		--	WHEN tW.WRNG_USR_UPD_DTE  IS NOT NULL
+		--		AND tW.WRNG_USR_UPD_DTE >= COALESCE(tMt.METI_USR_CRE_DTE , CONVERT(Date,'1900-01-01',120) )
+		--		AND tW.WRNG_USR_UPD_DTE >= COALESCE(tMt.METI_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		AND tW.WRNG_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		THEN CONVERT(Date, tW.WRNG_USR_UPD_DTE ,120) 	
 						
-			WHEN tMt.METI_USR_CRE_DTE IS NOT NULL
-				AND tMt.METI_USR_CRE_DTE >= COALESCE(tMt.METI_USR_UPD_DTE , CONVERT(Date,'1900-01-01',120) )
-				AND tMt.METI_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tMt.METI_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				THEN CONVERT(Date, tMt.METI_USR_CRE_DTE ,120) 
+		--	WHEN tMt.METI_USR_CRE_DTE IS NOT NULL
+		--		AND tMt.METI_USR_CRE_DTE >= COALESCE(tMt.METI_USR_UPD_DTE , CONVERT(Date,'1900-01-01',120) )
+		--		AND tMt.METI_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		AND tMt.METI_USR_CRE_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		THEN CONVERT(Date, tMt.METI_USR_CRE_DTE ,120) 
 				
-			WHEN tMt.METI_USR_UPD_DTE IS NOT NULL
-				AND tMt.METI_USR_UPD_DTE >= COALESCE(tMt.METI_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tMt.METI_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
-				AND tMt.METI_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
-				THEN CONVERT(Date, tMt.METI_USR_UPD_DTE ,120) 
+		--	WHEN tMt.METI_USR_UPD_DTE IS NOT NULL
+		--		AND tMt.METI_USR_UPD_DTE >= COALESCE(tMt.METI_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		AND tMt.METI_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		AND tMt.METI_USR_UPD_DTE >= COALESCE(tW.WRNG_USR_UPD_DTE, CONVERT(Date,'1900-01-01',120) )
+		--		THEN CONVERT(Date, tMt.METI_USR_UPD_DTE ,120) 
 				
-			ELSE CONVERT(Date, GETDATE(),120) 
-		END 
+		--	ELSE CONVERT(Date, GETDATE(),120) 
+		--END 
 
 		, [verbatimLocality] = tW.WRNG_OPM 
 		
 		, [basisOfRecord] = CONVERT(Nvarchar(20),'HumanObservation')
 		, [institutionCode] = CONVERT(Nvarchar(20),'INBO') 
 		, [language] = CONVERT(Nvarchar(20),'EN') 
-		, [catalogNumber] = Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8)
+	--	, [catalogNumber] = Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8)
 		, [collectionCode] = 'IFBL'
 -- Taxonomic Elements --
 		--, [originalNameUsage] = tT.TAXN_NAM_WET 
 		, [scientificName] = ns.RECOMMENDED_SCIENTIFIC_NAME    --recommended scientific soort + genus 
+		, [vernacularName] = tT.TAXN_NAM_NED
 ---		NULL::text AS HigherTaxon,
 		, [kingdom] = CONVERT(Nvarchar(10),'Plantae')
 --- 	NULL::text AS Phylum, 
@@ -97,7 +101,7 @@ SELECT
 ---		tg.name::text AS Genus, 
 ---		ts.name::text AS SpecificEpithet, 
 		--, [verbatimTaxonRank] = NS.RECOMMENDED_NAME_RANK  -- recomended rank 
-		, [taxonRank] = NS.RECOMMENDED_NAME_RANK_LONG 
+		, [taxonRank] = LOWER (NS.RECOMMENDED_NAME_RANK_LONG)
 ---		NULL::text AS InfraSpecificEpithet,
 		, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
 		--, NS. 	-- recommended auth 
@@ -106,19 +110,20 @@ SELECT
 -- Identification Elements --
 
 -- Locality Elements --
-		, [country] = CONVERt(Nvarchar(20),'BELGIUM') 
+	--	, [country] = CONVERt(Nvarchar(20),'BELGIUM') 
 		, [countryCode] = CONVERt(Nvarchar(20),'BE')  
 -- Collecting Event Elements --
-		, [verbatimEventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  + '/' + CONVERT(Nvarchar(12) , tW.WRNG_END_DTE , 120)  
-		, [eventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  
+		, [eventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  + '/' + CONVERT(Nvarchar(12) , tW.WRNG_END_DTE , 120)  
+	--	, [eventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  
 		, [recordedBy] = dbo.ufn_MedewerkersPerWaarneming(tW.WRNG_ID) 
+		, [occurrenceStatus] = 'present'
 -- Biological Elements --
 
 -- References Elements --
 
 		
 -- Curatorial Extension --
-		, [catalogNumberNumeric] = tMt.METI_ID 
+	--	, [catalogNumberNumeric] = tMt.METI_ID 
 		
 
 
@@ -154,13 +159,20 @@ SELECT
 	    , [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
         , [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 		, [type] = CONVERT(Nvarchar(20),'Event')
-		, [bibliographicCitation] = CONVERT(Nvarchar(300),'Van Landuyt W, Vanhecke L, Brosens D (2012) Florabank 1: a grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region). PhytoKeys 12: 59–67. doi: team.3897/phytokeys.12.2849' )
-		, [datasetID] = CONVERT(Nvarchar(100),'https://doi.org/10.3897/phytokeys.12.2849')
+		, [bibliographicCitation] = CONVERT(Nvarchar(300),'to complete' )
+		, [datasetID] = CONVERT(Nvarchar(100),'to complete')
 		
-		, [datasetName] = CONVERT(Nvarchar(200),'FLORABANK 1: a grid-based database on vascular plant distribution in the northern part of Belgium (Flanders and the Brussels Capital region)')
+		, [datasetName] = CONVERT(Nvarchar(200),'FLORABANK 2: a grid-based database on the distribution of mosses in the northern part of Belgium (Flanders and the Brussels Capital region)')
 	--	, [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
-		, [dataGeneralizations] = CONVERT(Nvarchar(100),'The centroid coördinates of the IFBL square containing the occurence were given')
-		, [occurrenceRemarks] = cB.BRON_DES 
+		, [georeferenceRemarks] = CONVERT(Nvarchar(100),'The centroid coördinates of the IFBL square containing the occurence were given')
+		, [occurrenceRemarks] = CASE cB.BRON_DES 
+									WHEN 'literatuur' THEN 'occurrence derived from literature'
+									WHEN 'losse waarneming' THEN 'casual observation'
+									WHEN 'Biologische Waarderingskaart' THEN 'biological valuation map'
+									WHEN 'Gewestelijke Bosinventarisatie' THEN 'forest inventarisation'
+									WHEN 'Monitoring bosreservaten' THEN 'monitoring forest reserves'
+									ELSE  cB.BRON_DES
+									END
 		, [continent] = 'Europe'
 		
 		
@@ -194,6 +206,9 @@ SELECT
 --	('biesvaren', 'wolfsklauw', 'varen', 'paardenstaart', 'ginkgo', 'conifeer', 'bloemplant')
 	--ORDER BY tW.WRNG_ID, tMt.METI_ID
 		
+
+
+
 
 
 
