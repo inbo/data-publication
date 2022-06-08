@@ -1,0 +1,105 @@
+# Scope: dwc-occurrence
+# Author: Peter Desmet
+# Syntax version: 0.1
+
+id:
+  regex: 'INBO:FLORA:\d{8}'
+
+type:
+  allowed: Event
+
+language:
+  allowed: en
+
+license:
+  allowed: http://creativecommons.org/publicdomain/zero/1.0/
+
+rightsHolder:
+  allowed: INBO
+
+accessRights:
+  allowed: https://www.inbo.be/en/norms-data-use
+
+datasetID: # Dataset specific
+  allowed: "doi"
+
+institutionCode:
+  allowed: INBO
+
+datasetName: # Dataset specific
+  allowed: FLORABANK 2: a grid-based database on the distribution of mosses in the northern part of Belgium (Flanders and the Brussels Capital region)
+
+eventDate:
+  dateformat: ['%Y-%m-%d'] # YYYY-MM-DD
+
+eventRemarks:
+  empty: false
+
+
+continent:
+  allowed: Europe
+
+countryCode:
+  allowed: BE
+
+verbatimlocality:
+  empty: false
+
+decimalLatitude:
+  numberformat: '.5'
+  min: 50.67 # SE Flanders
+  max: 51.51 # NW Belgium
+
+decimalLongitude:
+  numberformat: '.5'
+  min: 2.53 # NW Belgium
+  max: 5.94 # SE Flanders
+
+geodeticDatum:
+  allowed: WGS84
+
+coordinateUncertaintyInMeters: # Dataset specific
+  allowed: ['700','2800','10000','3500']
+
+verbatimCoordinates:
+  empty: fasle
+
+georeferenceRemarks:
+  regex: The centroid coördinates of the IFBL square containing the occurence were given
+
+collectionCode:
+  allowed: IFBL
+
+basisOfRecord:
+  allowed: HumanObservation
+
+occurrenceID:
+  regex: 'INBO:FLORA:\d{6,7}'
+
+recordedBy:
+  empty: false
+
+occurrenceStatus:
+  allowed: [present, absent]
+  
+scientificName: # Dataset specific
+  empty: false
+
+kingdom:
+  allowed: Plantae
+
+taxonRank: # Dataset specific
+  allowed: [species]
+  
+scientificNameAuthorship:
+   empty: false
+  
+occurrenceRemarks:
+   empty: false
+
+vernacularName: # Dataset specific
+  empty: false
+
+nomenclaturalCode: # Dataset specific
+  allowed: ICBN
+
