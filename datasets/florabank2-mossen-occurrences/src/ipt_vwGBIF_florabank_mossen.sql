@@ -1,7 +1,7 @@
 USE [D0012_00_Flora]
 GO
 
-/****** Object:  View [ipt].[vwGBif_mossen]    Script Date: 8/06/2022 14:40:16 ******/
+/****** Object:  View [ipt].[vwGBif_mossen]    Script Date: 17/06/2022 9:03:09 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -15,8 +15,9 @@ GO
 
 
 
-ALTER VIEW [ipt].[vwGBif_mossen] 
-AS
+
+/**ALTER VIEW [ipt].[vwGBif_mossen] 
+AS**/
 
 
 
@@ -81,11 +82,11 @@ SELECT
 		--	ELSE CONVERT(Date, GETDATE(),120) 
 		--END 
 
-		, [verbatimLocality] = tW.WRNG_OPM 
+		, [locality] = tW.WRNG_OPM 
 		
 		, [basisOfRecord] = CONVERT(Nvarchar(20),'HumanObservation')
 		, [institutionCode] = CONVERT(Nvarchar(20),'INBO') 
-		, [language] = CONVERT(Nvarchar(20),'EN') 
+		, [language] = CONVERT(Nvarchar(20),'en') 
 	--	, [catalogNumber] = Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8)
 		, [collectionCode] = 'IFBL'
 -- Taxonomic Elements --
@@ -101,11 +102,19 @@ SELECT
 ---		tg.name::text AS Genus, 
 ---		ts.name::text AS SpecificEpithet, 
 		--, [verbatimTaxonRank] = NS.RECOMMENDED_NAME_RANK  -- recomended rank 
-		, [taxonRank] = LOWER (NS.RECOMMENDED_NAME_RANK_LONG)
+		, [taxonRank] = CASE (NS.RECOMMENDED_NAME_RANK_LONG)
+							WHEN 'Genus' THEN 'genus'
+							WHEN 'Species' THEN 'species'
+							WHEN 'Subspecies' THEN 'subspecies'
+							WHEN 'Variety' THEN 'veriety' 
+							WHEN 'Species aggregate' THEN 'speciesAggregate'
+							ELSE  (NS.RECOMMENDED_NAME_RANK_LONG)
+							END
+
 ---		NULL::text AS InfraSpecificEpithet,
 		, [scientificNameAuthorship] = NS.RECOMMENDED_NAME_AUTHORITY + ISNULL ( ' ' + NS.RECOMMENDED_NAME_QUALIFIER , '')
 		--, NS. 	-- recommended auth 
-		, [nomenclaturalCode] = CONVERT(Nvarchar(20),'ICBN')
+---		, [nomenclaturalCode] = CONVERT(Nvarchar(20),'ICBN')
 		--tT.TAXN_NAM_WET , -debugging
 -- Identification Elements --
 
@@ -115,7 +124,8 @@ SELECT
 -- Collecting Event Elements --
 		, [eventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  + '/' + CONVERT(Nvarchar(12) , tW.WRNG_END_DTE , 120)  
 	--	, [eventDate] = CONVERT(Nvarchar(12) , tW.WRNG_BEG_DTE , 120)  
-		, [recordedBy] = dbo.ufn_MedewerkersPerWaarneming(tW.WRNG_ID) 
+		, [recordedBy] = REPLACE ( dbo.ufn_MedewerkersPerWaarneming(tW.WRNG_ID), ';', ' | ') 
+		, [recordedByHash] = HASHBYTES ('MD5', (dbo.ufn_MedewerkersPerWaarneming(tW.WRNG_ID))) 
 		, [occurrenceStatus] = 'present'
 -- Biological Elements --
 
@@ -159,15 +169,16 @@ SELECT
 	    , [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
         , [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
 		, [type] = CONVERT(Nvarchar(20),'Event')
-		, [bibliographicCitation] = CONVERT(Nvarchar(300),'to complete' )
+--		, [bibliographicCitation] = CONVERT(Nvarchar(300),'to complete' )
 		, [datasetID] = CONVERT(Nvarchar(100),'to complete')
 		
-		, [datasetName] = CONVERT(Nvarchar(200),'FLORABANK 2: a grid-based database on the distribution of mosses in the northern part of Belgium (Flanders and the Brussels Capital region)')
+		, [datasetName] = CONVERT(Nvarchar(200),'Florabank2 - A grid-based database on the distribution of mosses in the northern part of Belgium (Flanders and the Brussels Capital region)')
 	--	, [ownerInstitutionCode] = CONVERT(Nvarchar(20),'INBO') 
-		, [georeferenceRemarks] = CONVERT(Nvarchar(100),'The centroid coördinates of the IFBL square containing the occurence were given')
+		, [georeferenceRemarks] = CONVERT(Nvarchar(100),'coordinates are centroid of used grid square')
 		, [occurrenceRemarks] = CASE cB.BRON_DES 
 									WHEN 'literatuur' THEN 'occurrence derived from literature'
 									WHEN 'losse waarneming' THEN 'casual observation'
+									WHEN 'losse waarnemingen' THEN 'casual observation'
 									WHEN 'Biologische Waarderingskaart' THEN 'biological valuation map'
 									WHEN 'Gewestelijke Bosinventarisatie' THEN 'forest inventarisation'
 									WHEN 'Monitoring bosreservaten' THEN 'monitoring forest reserves'
@@ -196,9 +207,9 @@ SELECT
 	WHERE 1=1 
 	--AND tW.WRNG_ID = 20
 	--AND tMt.METI_USR_CRE_DTE IS NOT NULL
-	AND  (tW.WRNG_BEG_DTE >= CONVERT(Date , '1972-01-01' , 120)
-		OR (tW.WRNG_BEG_DTE < CONVERT(Date , '1972-01-01' , 120) 
-			AND cB.BRON_DES not like '%streep%') )
+	--AND  (tW.WRNG_BEG_DTE >= CONVERT(Date , '1972-01-01' , 120)
+	--	OR (tW.WRNG_BEG_DTE < CONVERT(Date , '1972-01-01' , 120) ))
+	--	--	AND cB.BRON_DES not like '%streep%') )
 	AND cMS.MEST_CDE in ( 'GDGA','GDGK' )
 	AND cW.WGST_CDE = 'GCTR'
 	AND NS.[INFORMAL GROUP] IN ('mos','hauwmos','korstmos','levermos')
@@ -206,6 +217,7 @@ SELECT
 --	('biesvaren', 'wolfsklauw', 'varen', 'paardenstaart', 'ginkgo', 'conifeer', 'bloemplant')
 	--ORDER BY tW.WRNG_ID, tMt.METI_ID
 		
+
 
 
 
