@@ -1,7 +1,3 @@
-# Scope: dwc-occurrence
-# Author: Peter Desmet
-# Syntax version: 0.1
-
 id:
   regex: 'INBO:FLORA:\d{8}'
 
@@ -18,23 +14,37 @@ rightsHolder:
   allowed: INBO
 
 accessRights:
-  allowed: https://www.inbo.be/en/norms-data-use
+  allowed: http://www.inbo.be/en/norms-for-data-use
 
-datasetID: # Dataset specific
-  allowed: "doi"
+datasetID:
+  allowed: ''
 
 institutionCode:
   allowed: INBO
 
-datasetName: # Dataset specific
-  allowed: FLORABANK 2: a grid-based database on the distribution of mosses in the northern part of Belgium (Flanders and the Brussels Capital region)
+collectionCode:
+  allowed: IFBL
+
+datasetName:
+  allowed: 'Florabank2 - A grid-based database on the distribution of mosses in the northern part of Belgium (Flanders and the Brussels Capital region)'
+
+basisOfRecord:
+  allowed: HumanObservation
+
+occurrenceID:
+  regex: 'INBO:FLORA:\d{8}'
+
+recordedBy:
+  empty: false
+
+occurrenceStatus:
+  allowed: present
+
+occurrenceRemarks:
+  empty: false
 
 eventDate:
   dateformat: ['%Y-%m-%d'] # YYYY-MM-DD
-
-eventRemarks:
-  empty: false
-
 
 continent:
   allowed: Europe
@@ -42,7 +52,7 @@ continent:
 countryCode:
   allowed: BE
 
-verbatimlocality:
+locality:
   empty: false
 
 decimalLatitude:
@@ -58,48 +68,44 @@ decimalLongitude:
 geodeticDatum:
   allowed: WGS84
 
-coordinateUncertaintyInMeters: # Dataset specific
-  allowed: ['700','2800','10000','3500']
+coordinateUncertaintyInMeters:
+  if:
+    - verbatimCoordinateSystem:
+        allowed: IFBL 1km
+      allowed:
+        '707'
+    - verbatimCoordinateSystem:
+        allowed: IFBL 4km
+      allowed:
+        '2828'
 
 verbatimCoordinates:
-  empty: fasle
-
-georeferenceRemarks:
-  regex: The centroid coördinates of the IFBL square containing the occurence were given
-
-collectionCode:
-  allowed: IFBL
-
-basisOfRecord:
-  allowed: HumanObservation
-
-occurrenceID:
-  regex: 'INBO:FLORA:\d{6,7}'
-
-recordedBy:
   empty: false
 
-occurrenceStatus:
-  allowed: [present, absent]
-  
-scientificName: # Dataset specific
+verbatimCoordinateSystem:
+  allowed:
+    - IFBL 1km
+    - IFBL 4km
+
+verbatimSRS:
+  empty: false
+
+georeferenceRemarks:
+  regex: coordinates are centroid of used grid square
+
+scientificName:
   empty: false
 
 kingdom:
   allowed: Plantae
 
-taxonRank: # Dataset specific
-  allowed: [species]
-  
+taxonRank:
+  allowed:
+    - genus
+    - species
+    - subspecies
+    - variety
+    - speciesAggregate
+
 scientificNameAuthorship:
-   empty: false
-  
-occurrenceRemarks:
-   empty: false
-
-vernacularName: # Dataset specific
   empty: false
-
-nomenclaturalCode: # Dataset specific
-  allowed: ICBN
-
