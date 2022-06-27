@@ -162,7 +162,7 @@ occurrence <- input_interim
 ## remove obsolete columns
 
 ```{r}
-occurrence %<>% select(-c(domain_fr, domain_en, domain_nl, kind_fr, kind_en))
+occurrence %<>% select(-c(ADRES))
 ```
 ## filter for muskrat & bruine rat
 
