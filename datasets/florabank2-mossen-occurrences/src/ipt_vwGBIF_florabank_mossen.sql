@@ -1,7 +1,7 @@
 USE [D0012_00_Flora]
 GO
 
-/****** Object:  View [ipt].[vwGBif_mossen]    Script Date: 24/06/2022 9:40:13 ******/
+/****** Object:  View [ipt].[vwGBif_mossen]    Script Date: 27/06/2022 9:38:38 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -18,8 +18,9 @@ GO
 
 
 
-ALTER VIEW [ipt].[vwGBif_mossen] 
-AS
+
+/**ALTER VIEW [ipt].[vwGBif_mossen] 
+AS**/
 
 /*********************************************************/
 /*                                                       
@@ -47,6 +48,8 @@ CHANGE IPT (2015-08-17)
 
 --Modif 20150908 => Eventdate to Single date ( no range ), range => [verbatimEventDate]
 -- Aanpasing 20160113 tblNameServer_12 => NameServer_12
+
+-- adapt query for mosses 20220601
 
 */
 /*********************************************************/
@@ -137,11 +140,11 @@ SELECT
 									WHEN 'losse waarneming' THEN 'casual observation'
 									WHEN 'losse waarnemingen' THEN 'casual observation'
 									WHEN 'Biologische Waarderingskaart' THEN 'observation'
-									WHEN 'Gewestelijke Bosinventarisatie' THEN 'forest inventarisation'
-									WHEN 'Monitoring bosreservaten' THEN 'monitoring forest reserves'
-									WHEN 'Databank mossen Leo Andriessen' THEN 'imported'
+									WHEN 'Gewestelijke Bosinventarisatie' THEN 'observation'
+									WHEN 'Monitoring bosreservaten' THEN 'observation'
+									WHEN 'Databank mossen Leo Andriessen' THEN ''
 									WHEN 'Detailkartering Rode-Lijstsoorten' THEN 'observation'
-									WHEN 'digitale streeplijst' THEN 'checklist'
+									WHEN 'digitale streeplijst' THEN 'digital tally sheet'
 									WHEN 'forest inventarisation' THEN 'observation'
 									WHEN 'Herbarium Andre Sotiaux' THEN 'herbarium sampling'
 									WHEN 'Herbarium Dirk De Beer' THEN 'herbarium sampling'
@@ -230,7 +233,7 @@ SELECT
 									WHEN 'Databank mossen Leo Andriessen' THEN 'imported from database Leo Andriessen'
 									WHEN 'Detailkartering Rode-Lijstsoorten' THEN ''
 									WHEN 'digitale streeplijst' THEN ''
-									WHEN 'forest inventarisation' THEN ''
+									WHEN 'forest inventarisation' THEN 'occurrence derived from forest inventarisation'
 									ELSE  cB.BRON_DES
 									END
 		, [continent] = 'Europe'
@@ -256,9 +259,9 @@ SELECT
 	WHERE 1=1 
 	--AND tW.WRNG_ID = 20
 	--AND tMt.METI_USR_CRE_DTE IS NOT NULL
-	AND  (tW.WRNG_BEG_DTE >= CONVERT(Date , '1972-01-01' , 120)
-		OR (tW.WRNG_BEG_DTE < CONVERT(Date , '1972-01-01' , 120) 
-			AND cB.BRON_DES not like '%streep%') )
+	--AND  (tW.WRNG_BEG_DTE >= CONVERT(Date , '1972-01-01' , 120)
+	--	OR (tW.WRNG_BEG_DTE < CONVERT(Date , '1972-01-01' , 120) 
+	--		AND cB.BRON_DES not like '%streep%') )
 	AND cMS.MEST_CDE in ( 'GDGA','GDGK' )
 	AND cW.WGST_CDE = 'GCTR'
 	AND NS.[INFORMAL GROUP] IN ('mos','hauwmos','korstmos','levermos')
@@ -266,6 +269,7 @@ SELECT
 --	('biesvaren', 'wolfsklauw', 'varen', 'paardenstaart', 'ginkgo', 'conifeer', 'bloemplant')
 	--ORDER BY tW.WRNG_ID, tMt.METI_ID
 		
+
 
 
 
