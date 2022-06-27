@@ -1,7 +1,7 @@
 USE [D0012_00_Flora]
 GO
 
-/****** Object:  View [ipt].[vwGBif_mossen]    Script Date: 17/06/2022 9:03:09 ******/
+/****** Object:  View [ipt].[vwGBif_mossen]    Script Date: 24/06/2022 9:40:13 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,10 +16,10 @@ GO
 
 
 
-/**ALTER VIEW [ipt].[vwGBif_mossen] 
-AS**/
 
 
+ALTER VIEW [ipt].[vwGBif_mossen] 
+AS
 
 /*********************************************************/
 /*                                                       
@@ -54,6 +54,9 @@ CHANGE IPT (2015-08-17)
 
 SELECT  
 		[occurrenceID] = 'INBO:FLORA:' + Right( '000000000' + CONVERT(nvarchar(20),tMt.METI_ID),8) 
+	--   ,[eventID_1] = 'INBO:FLORA:EV' +  Right( '000000000' + CONVERT(nvarchar(20),Tw.WRNG_IFBL_ID),8)
+	--   ,[eventID_2] = 'INBO:FLORA:EV' +  Right( '000000000' + CONVERT(nvarchar(20),Tw.WRNG_ID),8)
+
 		--, [modified] = CASE 
 		--	WHEN tW.WRNG_USR_CRE_DTE  IS NOT NULL
 		--		AND tW.WRNG_USR_CRE_DTE >= COALESCE(tMt.METI_USR_CRE_DTE, CONVERT(Date,'1900-01-01',120) )
@@ -106,7 +109,7 @@ SELECT
 							WHEN 'Genus' THEN 'genus'
 							WHEN 'Species' THEN 'species'
 							WHEN 'Subspecies' THEN 'subspecies'
-							WHEN 'Variety' THEN 'veriety' 
+							WHEN 'Variety' THEN 'varietas' 
 							WHEN 'Species aggregate' THEN 'speciesAggregate'
 							ELSE  (NS.RECOMMENDED_NAME_RANK_LONG)
 							END
@@ -128,7 +131,47 @@ SELECT
 		, [recordedByHash] = HASHBYTES ('MD5', (dbo.ufn_MedewerkersPerWaarneming(tW.WRNG_ID))) 
 		, [occurrenceStatus] = 'present'
 -- Biological Elements --
-
+        , [individualCount] = '1'
+		, [samplingProtocol] = CASE cB.BRON_DES 
+									WHEN 'literatuur' THEN ''
+									WHEN 'losse waarneming' THEN 'casual observation'
+									WHEN 'losse waarnemingen' THEN 'casual observation'
+									WHEN 'Biologische Waarderingskaart' THEN 'observation'
+									WHEN 'Gewestelijke Bosinventarisatie' THEN 'forest inventarisation'
+									WHEN 'Monitoring bosreservaten' THEN 'monitoring forest reserves'
+									WHEN 'Databank mossen Leo Andriessen' THEN 'imported'
+									WHEN 'Detailkartering Rode-Lijstsoorten' THEN 'observation'
+									WHEN 'digitale streeplijst' THEN 'checklist'
+									WHEN 'forest inventarisation' THEN 'observation'
+									WHEN 'Herbarium Andre Sotiaux' THEN 'herbarium sampling'
+									WHEN 'Herbarium Dirk De Beer' THEN 'herbarium sampling'
+									WHEN 'Herbarium Filip Verloove' THEN 'herbarium sampling'
+									WHEN 'Herbarium Geert Raeymaekers' THEN 'herbarium sampling'
+									WHEN 'Herbarium Josse Gielen' THEN 'herbarium sampling'
+									WHEN 'Herbarium Koen Vandekerckhove' THEN 'herbarium sampling'
+									WHEN 'Herbarium Leo Andriessen' THEN 'herbarium sampling'
+									WHEN 'Herbarium Luc Lenaerts' THEN 'herbarium sampling'
+									WHEN 'Herbarium Ludo Smets' THEN 'herbarium sampling'
+									WHEN 'Herbarium Nationale Plantentuin van België' THEN 'herbarium sampling'
+									WHEN 'Herbarium Serge Hoste' THEN 'herbarium sampling'
+									WHEN 'Herbarium Universiteit Gent' THEN 'herbarium sampling'
+									WHEN 'Herbarium Universiteit Louvain-La-Neuve' THEN 'herbarium sampling'
+									WHEN 'Herbarium Universiteit Luik' THEN 'herbarium sampling'
+									WHEN 'Herbarium Van Heurck' THEN 'herbarium sampling'
+									WHEN 'Hoogveenrelicten provincie Antwerpen' THEN 'observation'
+									WHEN 'HPG polderkartering' THEN 'observation'
+									WHEN 'monitoring forest reserves' THEN 'monitoring'
+									WHEN 'Streeplijst flower 1995' THEN 'tally sheet'
+									WHEN 'Streeplijst IFB. Mod. 1962' THEN 'tally sheet'
+									WHEN 'Streeplijst lichenen 2010' THEN 'tally sheet'
+									WHEN 'Streeplijst Limburg mod. 1973' THEN 'tally sheet'
+									WHEN 'Streeplijst mossen 2010' THEN 'tally sheet'
+									WHEN 'Streeplijst Natuurpunt West-Vlaanderen' THEN 'tally sheet'
+									WHEN 'Streeplijst polders Leo Vanhecke' THEN 'tally sheet'
+									WHEN 'Typologie Waterlopen / UIA' THEN 'observation'
+									WHEN 'Waarnemingen.be' THEN 'casual observation'
+									ELSE  cB.BRON_DES
+									END 
 -- References Elements --
 
 		
@@ -141,13 +184,14 @@ SELECT
 		, [decimalLatitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(tI84.IFBL_LAT,5)) )
 		, [decimalLongitude] = CONVERT(Nvarchar(20),convert(decimal(12,5),round(tI84.IFBL_LONG,5)) ) 
 		, [GeodeticDatum] = CONVERT(Nvarchar(10),'WGS84') 
+		, [locationID] = tih.IFBL_ID
 		--CONVERT(Nvarchar(10),ROUND(tIH.IFBL_COR_Y,3)) AS verbatimLatitude, 
 		--CONVERT(Nvarchar(10),ROUND(tIH.IFBL_COR_X,3)) AS verbatimLongitude, 
 		--CONVERT(Nvarchar(10),'EPSG:31370') AS verbatimCoordinateSystem, 
 		, [coordinateUncertaintyInMeters] = CONVERT(Nvarchar(5),
 			CONVERT(INT, CASE 
-				WHEN cHP.HOPR_CDE = 1 THEN 	700  --zeker kmhok
-				WHEN cHP.HOPR_CDE = 2 THEN 	2800  --zeker uurhok
+				WHEN cHP.HOPR_CDE = 1 THEN 	707  --zeker kmhok
+				WHEN cHP.HOPR_CDE = 2 THEN 	2828  --zeker uurhok
 				WHEN cHP.HOPR_CDE = 3 THEN 	10000  --onzeker uurhok
 				WHEN cHP.HOPR_CDE = 4 THEN 	1000  --voorkeur kmhok
 				WHEN cHP.HOPR_CDE = 5 THEN 	3500  --voorkeur uurhok			
@@ -163,11 +207,12 @@ SELECT
 				WHEN LEN([tIH].[IFBL_CDE]) > 5 THEN 'IFBL 1km'
 				ELSE 'IFBL 4km'
 			END 	
-		--, [VerbatimSRS] = 'ED50' --/ WGS84 --BD72
+		, [VerbatimSRS] = 'BD72' --/ WGS84 --BD72
 		
 		
 	    , [license] = N'http://creativecommons.org/publicdomain/zero/1.0/'
         , [accessRights] = N'http://www.inbo.be/en/norms-for-data-use'
+		, [rightsHolder] = 'INBO'
 		, [type] = CONVERT(Nvarchar(20),'Event')
 --		, [bibliographicCitation] = CONVERT(Nvarchar(300),'to complete' )
 		, [datasetID] = CONVERT(Nvarchar(100),'to complete')
@@ -177,11 +222,15 @@ SELECT
 		, [georeferenceRemarks] = CONVERT(Nvarchar(100),'coordinates are centroid of used grid square')
 		, [occurrenceRemarks] = CASE cB.BRON_DES 
 									WHEN 'literatuur' THEN 'occurrence derived from literature'
-									WHEN 'losse waarneming' THEN 'casual observation'
-									WHEN 'losse waarnemingen' THEN 'casual observation'
-									WHEN 'Biologische Waarderingskaart' THEN 'biological valuation map'
-									WHEN 'Gewestelijke Bosinventarisatie' THEN 'forest inventarisation'
-									WHEN 'Monitoring bosreservaten' THEN 'monitoring forest reserves'
+									WHEN 'losse waarneming' THEN ''
+									WHEN 'losse waarnemingen' THEN ''
+									WHEN 'Biologische Waarderingskaart' THEN 'occurrence derived from biological valuation map'
+									WHEN 'Gewestelijke Bosinventarisatie' THEN 'occurrence derived from forest inventarisation'
+									WHEN 'Monitoring bosreservaten' THEN 'occurrence derived from monitoring forest reserves'
+									WHEN 'Databank mossen Leo Andriessen' THEN 'imported from database Leo Andriessen'
+									WHEN 'Detailkartering Rode-Lijstsoorten' THEN ''
+									WHEN 'digitale streeplijst' THEN ''
+									WHEN 'forest inventarisation' THEN ''
 									ELSE  cB.BRON_DES
 									END
 		, [continent] = 'Europe'
@@ -207,9 +256,9 @@ SELECT
 	WHERE 1=1 
 	--AND tW.WRNG_ID = 20
 	--AND tMt.METI_USR_CRE_DTE IS NOT NULL
-	--AND  (tW.WRNG_BEG_DTE >= CONVERT(Date , '1972-01-01' , 120)
-	--	OR (tW.WRNG_BEG_DTE < CONVERT(Date , '1972-01-01' , 120) ))
-	--	--	AND cB.BRON_DES not like '%streep%') )
+	AND  (tW.WRNG_BEG_DTE >= CONVERT(Date , '1972-01-01' , 120)
+		OR (tW.WRNG_BEG_DTE < CONVERT(Date , '1972-01-01' , 120) 
+			AND cB.BRON_DES not like '%streep%') )
 	AND cMS.MEST_CDE in ( 'GDGA','GDGK' )
 	AND cW.WGST_CDE = 'GCTR'
 	AND NS.[INFORMAL GROUP] IN ('mos','hauwmos','korstmos','levermos')
@@ -217,6 +266,9 @@ SELECT
 --	('biesvaren', 'wolfsklauw', 'varen', 'paardenstaart', 'ginkgo', 'conifeer', 'bloemplant')
 	--ORDER BY tW.WRNG_ID, tMt.METI_ID
 		
+
+
+
 
 
 
