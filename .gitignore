@@ -65,7 +65,9 @@ datasets/watervogels-occurrences/datapaper/Watervogels - Wintering waterbirds in
 datasets/watervogels-occurrences/datapaper/Bibtex.bib
 datasets/watervogels-occurrences/datapaper/2020_02_07_38265_lastProof.pdf
 *.pdf
-datasets/eikenprocessierups-occurrences/*csv
+datasets/eikenprocessierups-occurrences/data/raw/*csv
+datasets/eikenprocessierups-occurrences/data/raw/2022_gegevens_EPR_1.xlsx
+
 
 # folders
 
