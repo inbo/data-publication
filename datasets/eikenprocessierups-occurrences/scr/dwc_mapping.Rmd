@@ -45,7 +45,7 @@ The source data was provided in Excel
 ```{r}
 input_interimExcel <- read_excel(here::here("datasets", "eikenprocessierups-occurrences", "data", "raw", "2022_gegevens_EPR_1.xlsx" ))
 
-input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "raw", "2022_gegevens_EPR_1_a.csv" ),';')
+input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "EPRgegevensRAWRefine.csv" ),',')
 
 ```
 
@@ -164,16 +164,6 @@ occurrence <- input_interim
 ```{r}
 occurrence %<>% select(-c(ADRES))
 ```
-## filter for muskrat & bruine rat
-
-```{r}
-occurrence %<>%
-        filter(kind_nl == 'Bruine rat' | kind_nl == 'Muskusrat') 
-        
-head (occurrence, n = 5 )
-
-```
-
 
 
 # Term mapping
@@ -187,7 +177,7 @@ Start with record-level terms which contain metadata about the dataset (which is
 ### datasetID
 
 ```{r}
-occurrence %<>% mutate(datasetID = "https://doi.org/10.15468/5fps96")
+occurrence %<>% mutate(datasetID = "to complete")
 ```
 
 ### add row numbers to genrate occurrenceID unique
@@ -220,7 +210,7 @@ occurrence %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1
 ### rightsHolder
 
 ```{r}
-occurrence %<>% mutate(rightsHolder = "RATO") # e.g. "INBO"
+occurrence %<>% mutate(rightsHolder = "Provincie Oost Vlaanderen") # e.g. "INBO"
 ```
 ### accessRights
 
@@ -237,13 +227,13 @@ occurrence %<>% mutate(accessRights = "http://www.inbo.be/en/norms-for-data-use"
 ### institutionCode
 
 ```{r}
-occurrence %<>% mutate(institutionCode = "INBO") # e.g. "INBO"
+occurrence %<>% mutate(institutionCode = "Provincie Oost Vlaanderen") # e.g. "INBO"
 ```
 
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(datasetName = "MICA - Muskrat occurrences collected by RATO in East Flanders, Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+occurrence %<>% mutate(datasetName = "Eikenprocessierups in East Flanders, Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
 ```
 
 The following terms contain information about the taxon:
