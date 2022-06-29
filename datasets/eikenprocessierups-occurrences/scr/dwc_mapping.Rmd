@@ -324,6 +324,13 @@ eventDate already ok in source file (should be)
 head(occurrence, n = 5)
 ```
 
+# verbatimEventDate
+
+```{r}
+occurrence %<>% mutate(dwc_verbatimEventDate = verbatimEventDate )
+```
+
+
 # Location
 
 ```{r}
@@ -343,14 +350,14 @@ head(occurrence, n = 5)
 occurrence %<>%
   mutate(dwc_verbatimLongitude = round(verbatimLongitude)) %>%
   mutate(dwc_verbatimLatitude = round(verbatimLatitude)) %>%
-  mutate(dwc_decimalLongitude = round(decimalLongitude, digits = 5)) %>%
-  mutate(dwc_decimalLatitude = round(decimalLatitude, digits = 5))
+  mutate(dwc_decimalLongitude = round(dwc_decimalLongitude, digits = 5)) %>%
+  mutate(dwc_decimalLatitude = round(dwc_decimalLatitude, digits = 5))
 ```
 
 ```{r}
 occurrence %<>%   
-   mutate(decimalLatitude = as.character(format(decimalLatitude, nsmall = 5))) %>%
-   mutate(decimalLongitude = as.character(format(decimalLongitude, nsmall = 5)))
+   mutate(dwc_decimalLatitude = as.character(format(dwc_decimalLatitude, nsmall = 5))) %>%
+   mutate(dwc_decimalLongitude = as.character(format(dwc_decimalLongitude, nsmall = 5)))
 ```
 
 ### continent
@@ -367,12 +374,10 @@ occurrence %<>%
 
 ### municipality
 
-municipality already in source file
-
 ```{r}
-occurrence %<>%
-  mutate(municipality = str_remove(municipality,"\\(BE\\)"))
+occurrence %<>% mutate(dwc_municipality = Gemeente) # e.g. "Belgium = BE"
 ```
+
 
 ### verbatimcoordinates
 
@@ -383,7 +388,7 @@ occurrence %<>%
 ### verbatimcoordinatesystem
 
 ```{r}
-#occurrence %<>% mutate(verbatimcoordinatesystem = "Lambert coordinates") # 
+#occurrence %<>% mutate(dwc_verbatimcoordinatesystem = "Lambert coordinates") # 
 ```
 
 ### verbatimSRS
@@ -455,6 +460,13 @@ occurrence %<>%
 ## Post-processing
 
 ```{r}
+
+occurrence %<>% select(starts_with("dwc_"))
+```
+
+
+
+```{r}
 colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
 
 ```
@@ -463,20 +475,6 @@ colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
 occurrence <- mutate_all(occurrence, as.character())
 ```
 
-Define the order of the output columns
-
-```{r}
-col_order <- c( "type","language","license","rightsHolder","accessRights","datasetID"
-               ,"institutionCode","datasetName","basisOfRecord","occurrenceID","recordedBy"
-               ,"individualCount","organismQuantity","organismQuantityType","occurrenceStatus","occurrenceRemarks"
-               ,"samplingProtocol","samplingEffort"
-               ,"eventDate","continent","countryCode","municipality"
-               ,"verbatimLatitude","verbatimLongitude","verbatimCoordinateSystem","verbatimSRS"
-               ,"decimalLatitude","decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters"
-               ,"identifiedBy","scientificName","kingdom","scientificNameAuthorship","taxonRank","nomenclaturalCode"
-               )
-occurrence <- occurrence[, col_order]
-```
 
 Preview data:
 
@@ -487,5 +485,5 @@ occurrence %>% head()
 Save to CSV:
 
 ```{r}
-write_csv(occurrence, here::here("datasets", "mica-rato-occurrences", "data", "processed", "occurrence.csv"), na = "")
+write_csv(occurrence, here::here("datasets", "eikenprocessierups-occurrences", "data", "processed", "occurrence.csv"), na = "")
 ```
