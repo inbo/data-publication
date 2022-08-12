@@ -1,0 +1,486 @@
+---
+title: "Darwin Core Mapping"
+subtitle: "For: Bullfrog occurrences script"
+author: "Dimitri Brosens"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+# Setup 
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = TRUE)
+```
+
+Load libraries:
+
+```{r message = FALSE}
+library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
+library(magrittr)       # To use %<>% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(readxl)         # To read Excel files
+library(digest)         # To generate hashes
+library(rgbif)          # To use GBIF services
+library(sp)             # coordinate transformation
+library(leaflet)        # coordinate transformation
+library(widgetframe)    # coordinate transformation
+library(sf)             # coordinate transformation
+library(lubridate)      # date transformation
+library(googlesheets4)         # read gsheets
+library(dplyr)
+library(RCurl)         #read csv from github
+```
+
+# Read source data
+
+Create a data frame `input_data` from the source data:
+The source data was corrected in Excel
+Muskrat occurrences opened in openRefine
+Obsolete columns removed
+some columns renamed to DwC term
+File exported to csv
+
+```{r}
+
+x <- getURL("https://raw.githubusercontent.com/inbo/sk-analyse/3_create_datacleaning/interim/afvangsten_per_fuik.csv")
+input_interim <- read.csv(text = x)
+```
+
+
+Preview data:
+
+```{r}
+input_interim %>% head(n = 5)
+```
+
+# Process source data
+
+## Tidy data
+
+Clean data somewhat:
+
+```{r}
+input_interim <- input_interim %<>% remove_empty("rows")
+```
+
+```{r}
+input_interim %>% head(n = 5)
+```
+
+
+# Occurrence core
+
+## Pre-processing
+
+Create a dataframe occurrence data only 
+
+```{r}
+occurrence <- input_interim
+```
+
+## Remove obsolete columns
+
+```{r}
+#occurrence %<>% select(-c(kind_nl,day, month, year))
+```
+
+# Term mapping
+
+Map the data to [Darwin Core Occurrence](http://rs.gbif.org/core/dwc_occurrence_2015-07-02.xml).
+
+Start with record-level terms which contain metadata about the dataset (which is generally the same for all records).
+
+# Event
+
+### datasetID
+
+```{r}
+occurrence %<>% mutate(datasetID = "https://doi.orgXXXXXXX") # e.g. "to complete"
+```
+
+### type
+
+```{r}
+occurrence %<>% mutate(type = "Event")
+```
+
+### language
+
+```{r}
+occurrence %<>% mutate(language = "en") # e.g. "en"
+```
+
+### license
+
+```{r}
+occurrence %<>% mutate(license = "http://creativecommons.org/publicdomain/zero/1.0/") 
+# e.g. "http://creativecommons.org/publicdomain/zero/1.0/"
+```
+
+### rightsHolder
+
+```{r}
+occurrence %<>% mutate(rightsHolder = "ITAW") # e.g. "INBO"
+```
+
+### accessRights
+
+```{r}
+occurrence %<>% mutate(accessRights = "http://www.inbo.be/en/norms-for-data-use") 
+```
+
+### datasetID
+
+```{r}
+##occurrence %<>% mutate(datasetID = "https:/to complete") 
+```
+
+### institutionCode
+
+```{r}
+occurrence %<>% mutate(institutionCode = "ITAW") # e.g. "INBO"
+```
+
+### datasetName
+
+```{r}
+occurrence %<>% mutate(datasetName = "MICA - Muskrat and Coypu occurrences collected by ITAW in Germany") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+```
+
+The following terms contain information about the taxon:
+
+### basisOfRecord
+
+```{r}
+occurrence %<>% mutate(basisOfRecord = "HumanObservation")
+```
+
+### informationWithHeld
+
+### dataGeneralizations
+
+### occurrenceID
+
+**This need to be fixed**
+
+```{r}
+occurrence %<>% rename(occurrenceID = 'ID') 
+#                mutate(occurrenceID = str_c("UVW:", occurrenceID))
+```
+
+### recordedBy
+
+```{r}
+occurrence %<>% mutate(recordedBy = 'ITAW')
+```
+
+### individualCount
+
+```{r}
+occurrence %<>% rename(individualCount = Vangë) 
+```
+
+### organismQuantity
+
+### organismQuentityType
+
+### sex
+no sex available in this dataset
+
+```{r}
+#occurrence %<>% mutate(sex = recode(Gender, ***))
+```
+
+### lifeStage
+
+```{r}
+#occurrence %<>% mutate(lifeStage = recode(Age,
+#"Muskusrat" = "Muskusrat",
+#                   "moer"  = "female",
+#                   "ram" = "male",
+#                   "Onbekend" = "",
+#                                   ))
+```
+
+### behavior
+
+### occurrenceRemarks
+
+```{r}
+# occurrence %<>% rename(occurrenceRemarks = 'action_en')
+```
+
+### habitat
+
+```{r}
+occurrence %<>% mutate(occurrenceRemarks = recode(Landschaft
+                                        
+                                      , "Graben"      = "in a hole"
+                                      , "Teich/Altarm" = "near Pond / oxbow lake"
+                                      , "Bach" = "near stream"
+                                      , "Teichanlage (Fischerei)" = "near fishing pond"
+                                      , "Binnensee" = "near lake"))
+```
+
+
+### samplingProtocol
+
+```{r}
+
+occurrence %<>% mutate(samplingProtocol = recode(Material,
+                    
+                            "1" =	 "metal box trap (Grimm)"
+                          , "2" =  "shot"
+                          , "3" =  "funnel trap (Weka invasiv)"
+                          , "4" =  "wire box trap"
+                          , "5" =  "Funnel trap (Trapperneozoen)"
+                          , "6" =  "wooden box trap"
+                          , "7" =  "killing trap (model Hausmann)"
+                          , "8" =  "drowning cage trap"
+                          , "9" =  "killing trap (model Conibear)"
+                          , "10" = "killing trap (model Leprich)"
+                          , "11" = "round killing trap"
+                          , "12" = "killing trap (model Kerschl)"))
+
+```
+
+
+### samplingEffort
+
+### eventDate
+
+```{r}
+occurrence %<>% mutate(eventDate = ymd(Datum)) 
+```
+
+```{r}
+occurrence %<>% mutate(year = year(eventDate)) %<>%
+                mutate(month = month(eventDate)) %<>%
+                mutate(day = day(eventDate)) %<>%
+                mutate(eventDate = date(eventDate))
+```
+
+# Location
+
+```{r}
+head(occurrence)
+
+occurrence %<>% rename(decimalLongitude = X) %>%
+                rename(decimalLatitude = Y) %>%
+                mutate(geodeticDatum = "WGS84") %>%
+                mutate(coordinateUncertaintyInMeters = "30") %>%
+                mutate(countryCode = "DE")  %>%            
+                mutate(continent = "Europe")
+```
+
+```{r}
+head(occurrence, n = 5)
+occurrence %<>%
+#   mutate(verbatimLongitude = round(verbatimLongitude, digits = 0 )) %>%
+#   mutate(verbatimLatitude = round(verbatimLatitude, digits = 0)) %>%
+   mutate(decimalLongitude = round(decimalLongitude, digits = 5)) %>%
+   mutate(decimalLatitude = round(decimalLatitude, digits = 5))
+```
+
+```{r}
+occurrence %<>%   
+   mutate(decimalLatitude = as.character(format(decimalLatitude, nsmall = 5))) %>%
+   mutate(decimalLongitude = as.character(format(decimalLongitude, nsmall = 5))) %>%
+   mutate(verbatimLatitude = as.character(format(verbatimLatitude, nsmall = 5))) %>%
+   mutate(verbatimLongitude = as.character(format(verbatimLongitude, nsmall = 5)))
+```
+
+### continent
+
+```{r}
+##occurrence %<>% mutate(continent = "Europe") # e.g. "Belgium = BE"
+```
+
+### countryCode
+
+```{r}
+#occurrence %<>% mutate(countryCode = "NL") # e.g. "Belgium = BE"
+```
+
+### municipality
+
+municipality already in source file
+
+```{r}
+#occurrence %<>%
+#  mutate(municipality = str_remove(municipality,"\\(BE\\)"))
+```
+
+### verbatimLocality
+
+```{r}
+occurrence %<>%
+  mutate(verbatimLocality = Bereich)
+
+
+```
+
+
+
+### locationID
+
+```{r}
+# occurrence %<>% mutate(locationID = SubAreaName)
+```
+
+### verbatimCoordinates
+
+```{r}
+# occurrence %<>% mutate(locationID = HourSquareName)
+```
+
+### verbatimLatitude
+
+### verbatimLongitude
+
+### verbatimCoordinateSystem
+
+```{r}
+#occurrence %<>% mutate(verbatimcoordinatesystem = "Amersfoort/RD new") # 
+```
+
+### verbatimSRS
+
+```{r}
+#occurrence %<>% mutate(verbatimSRS = "EPSG:28992")
+```
+
+### decimalLatitude
+
+### decimalLongitude
+
+### geodeticDatum
+
+### coordinateUncertaintyInMeters
+
+### georeferenceRemarks
+
+### identifiedBy
+
+```{r}
+occurrence %<>% mutate(identifiedBy = 'ITAW')
+```
+
+### scientificName 
+
+```{r}
+head(occurrence, n=5)
+occurrence %<>% mutate(scientificName = recode(Tier
+                   , "Nutria"  = "Myocastor coypus"
+                   , "Bisam" = "Ondatra zibethicus"
+                   , "Waschbär"  = "Procyon lotor"
+                                                    ))
+```
+
+### kingdom
+
+```{r}
+occurrence %<>% mutate(kingdom = "Animalia")
+```
+
+### scientificNameAuthorship
+
+```{r}
+occurrence %<>% mutate(scientificNameAuthorship = recode(Tier
+                  ,"Bisam" = "Linnaeus, 1766"
+                  ,"Nutria"  = "Molina, 1782"
+                  ,"Waschbär"  = "Linnaeus, 1758"
+                  
+                                       ))
+```
+
+### verbatimScientificName
+
+```{r}
+occurrence %<>% mutate(vernacularName = Tier)
+```
+
+# taxonRank
+
+```{r}
+occurrence %<>% mutate(taxonRank = "species")
+```
+
+# nomenclaturalCode
+
+```{r}
+occurrence %<>% mutate(nomenclaturalCode = "ICZN") # e.g. "ICZN"
+```
+
+### occurrenceStatus
+
+```{r}
+occurrence %<>% 
+    ##select(individualCount) %>%
+    mutate(occurrenceStatus = case_when(individualCount > 0 ~ "present",
+                              individualCount == 0 ~ "absent"
+                                 )
+                                )
+```
+
+## Post-processing
+
+filter for 0 lat-long
+
+```{r}
+head(occurrence)
+
+occurrence %<>% filter(decimalLongitude != " 0.00000")
+```
+
+
+```{r}
+colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
+occurrence %<>% select(-c(UserName, UserEmail, Datum, Uhrzeit, Tier, "Anmerkung (nicht verpflichtend)",year, month, day, verbatimLongitude, verbatimLatitude, Bereich, Landschaft, Material ))  #remove collection columns
+          ##  rename(scientificName = verbatimScientificName) 
+```
+
+Define the order of the output columns
+
+```{r}
+col_order <- c( "type","language","license","rightsHolder","accessRights","datasetID"
+               ,"institutionCode","datasetName","basisOfRecord","samplingProtocol", "occurrenceID","recordedBy"
+               ,"individualCount","occurrenceStatus","occurrenceRemarks","eventDate","continent","countryCode","verbatimLocality"
+               
+               ,"decimalLatitude","decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters"
+               ,"identifiedBy","scientificName","vernacularName","kingdom","scientificNameAuthorship","taxonRank"
+               ,"nomenclaturalCode"
+               ) 
+               # still needed for this dataset 
+               # removed for this dataset,"occurrenceRemarks","municipality","samplingProtocol","samplingEffort",                            ,"locationID", ,"verbatimLatitude","verbatimLongitude","verbatimSRS" ,"verbatimCoordinateSystem"
+
+occurrence <- occurrence[, col_order]
+```
+
+Preview data:
+
+```{r}
+occurrence %>% head()
+```
+
+Save to CSV:
+
+```{r}
+write_csv(occurrence, here::here("datasets/mica-itaw-occurrences", "data", "processed", "occurrence.csv"), na = "")
+
+
+
+```
+
+```{r}
+#end
+```
+
