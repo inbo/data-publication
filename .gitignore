@@ -54,6 +54,7 @@ rsconnect/
 *.qix
 *.docx
 *.zip
+*.JPG
 datasets/invasive-plants-waterways-occurrences/information/rtf-invasive-plants-waterways-occurrences-v1.0.rtf
 datasets/invasive-plants-waterways-occurrences/information/rtf-invasive-plants-waterways-occurrences-v1.0_AVK_FV.rtf
 datasets/invasive-plants-waterways-occurrences/information/~$f-invasive-plants-waterways-occurrences-v1.0_AVK_FV.rtf
@@ -73,3 +74,5 @@ datasets/eikenprocessierups-occurrences/data/raw/2022_gegevens_EPR_1.xlsx
 
 FolderList.txt
 datasets/watervogels-occurrences/localities/localities2022.qmd
+
+
