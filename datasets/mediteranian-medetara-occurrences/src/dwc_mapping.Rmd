@@ -235,23 +235,14 @@ occurrence %<>% mutate(dwc_municipality = municipality_pt_nm)
 
 ### locationRemarks
 
-```{r}
-occurrence %<>% mutate(dwc_locationRemarks = recode(vha_categorie_omschrijving, 
-  "CAT2 - Onbevaarbaar cat. 2" = "CAT2 - not navigable cat. 2",
-  "CAT1 - Onbevaarbaar cat. 1" = "CAT1 - not navigable cat. 1",
-  "CAT3 - Onbevaarbaar cat. 3" = "CAT3 - not navigable cat. 3",
-  "CAT - Andere" = "CAT - other",
-  "ONB - Onbekend" = "ONB - unknown",
-  "BEV - Bevaarbaar" = "BEV - navigable"
-))
-```
+
 
 ### decimalLatitude
 
 ```{r}
 occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
   "%.5f",
-  round(locatie_gps_breedte, digits = 5)
+  round(decimal_latitude, digits = 5)
 ))
 ```
 
@@ -260,7 +251,7 @@ occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
 ```{r}
 occurrence %<>% mutate(dwc_decimalLongitude = sprintf(
   "%.5f",
-  round(locatie_gps_lengte, digits = 5)
+  round(decimal_latitude, digits = 5)
 ))
 ```
 
@@ -279,7 +270,7 @@ occurrence %<>% mutate(dwc_coordinateUncertaintyInMeters = "30")
 ### scientificName
 
 ```{r}
-occurrence %<>% mutate(dwc_scientificName = scientificName)
+occurrence %<>% mutate(dwc_scientificName = species_nm_full)
 ```
 
 ### kingdom
@@ -290,9 +281,6 @@ occurrence %<>% mutate(dwc_kingdom = "Animalia")
 
 ### vernacularName
 
-```{r}
-occurrence %<>% mutate(dwc_vernacularName = vernacularName)
-```
 
 ### taxonRank
 
