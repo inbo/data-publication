@@ -128,7 +128,7 @@ occurrence %<>% mutate(dwc_basisOfRecord = "HumanObservation")
 
 
 ```{r}
-occurrence %<>% mutate(dwc_occurrenceID = occurrence_id)
+occurrence %<>% mutate(dwc_occurrenceID = str_c("Med:med:" , occurrence_id))
 ```
 
 
@@ -169,25 +169,43 @@ occurrence %<>% mutate(dwc_occurrenceStatus = case_when(
 ### eventID
 
 ```{r}
-occurrence %<>% mutate(dwc_eventID = str_c("MICA:VMM:EV:", registratie_id))
+occurrence %<>% mutate(dwc_eventID = str_c("Med:MED:ev", sample_cd))
 ```
 
 ### eventDate
 
 ```{r}
-occurrence %<>% mutate(dwc_eventDate = as.character(dag))
+occurrence %<>% mutate(dwc_eventDate_begin = as.Date(sampling_date_e))
+```
+```{r}
+occurrence %<>% mutate(dwc_eventDate_end = as.Date(sampling_date_b))
 ```
 
 ### samplingProtocol
 
 ```{r}
-occurrence %<>% mutate(dwc_samplingProtocol = "rat trap") 
+occurrence %<>% mutate(dwc_samplingProtocol = recode(method_cd
+                                                     ,"SW" = "sweep"
+                                                     ,"YPT" = "..."
+                                                     ,"MT" = "..."
+                                                     ,"RsPT" = "..."
+                                                     ,"HC" = "..."
+                                                     ,"YPT/RPT" = "..."
+                                                     ,"WPT" = "..."
+                                                     ,"BPT" = "..."
+                                                     )) 
 ```
-
 ### locationID
 
 ```{r}
-occurrence %<>% mutate(dwc_locationID = locatie_id)
+occurrence %<>% mutate(dwc_locationID = sampling_site_cd)
+```
+
+
+### locality
+
+```{r}
+occurrence %<>% mutate(dwc_locality = locality_nm)
 ```
 
 ### continent
@@ -199,28 +217,20 @@ occurrence %<>% mutate(dwc_continent = "Europe")
 ### countryCode
 
 ```{r}
-occurrence %<>% mutate(dwc_countryCode = "BE")
+occurrence %<>% mutate(dwc_countryCode = country_cd)
 ```
 
 ### stateProvince
 
 ```{r}
-occurrence %<>% mutate(dwc_stateProvince = recode(provincie_omschrijving,
-  "Antwerpen" = "Antwerp",
-  "Limburg" = "Limburg",
-  "Oost-Vlaanderen" = "East Flanders",
-  "Vlaams-Brabant" = "Flemish Brabant",
-  "West-Vlaanderen" = "West Flanders",
-  "Onbekend" = NA_character_
-))
+occurrence %<>% mutate(dwc_stateProvince = province_cd
+)
 ```
 
 ### municipality
 
 ```{r}
-occurrence %<>% mutate(dwc_municipality = recode(gemeente_naam,
-  "Onbekend" = NA_character_
-))
+occurrence %<>% mutate(dwc_municipality = municipality_pt_nm)
 ```
 
 ### locationRemarks
