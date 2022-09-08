@@ -1,0 +1,335 @@
+---
+title: "Darwin Core Mapping"
+subtitle: "Mediterranean Medetera"
+author: "Dimitri Brosens"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+# Setup 
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = TRUE)
+```
+
+Load libraries:
+
+```{r message = FALSE}
+library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
+library(magrittr)       # To use %<>% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(readxl)         # To read Excel files
+library(rgbif)          # To use GBIF services
+library(uuid)           # To generate UUID's
+```
+
+# Read source data
+
+```{r}
+input_data <- read_delim(here::here("datasets", "mediteranian-medetara-occurrences", "data", "interim", "Medetera_occurrences_complete.txt"), "\t")
+```
+
+Preview data:
+
+```{r}
+input_data %>% head()
+```
+
+# Preprocessing
+
+## Tidy data
+
+Clean data somewhat:
+
+```{r}
+input_data %<>% 
+  remove_empty("rows") %<>%
+  clean_names()
+```
+
+
+
+
+### fix unique ID issue
+
+```{r}
+input_data <- mutate_all(input_data, as.character())
+```
+
+
+# Darwin Core mapping
+
+Map the data to [Darwin Core Occurrence](http://rs.gbif.org/core/dwc_occurrence_2015-07-02.xml).
+
+```{r}
+occurrence <- input_data
+```
+
+### type
+
+```{r}
+occurrence %<>% mutate(dwc_type = "Event")
+```
+
+### language
+
+```{r}
+occurrence %<>% mutate(dwc_language = "en")
+```
+
+### license
+
+```{r}
+occurrence %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/")
+```
+
+### rightsHolder
+
+```{r}
+occurrence %<>% mutate(dwc_rightsHolder = "Marc Pollet")
+```
+
+### accessRights
+
+```{r}
+occurrence %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-use") 
+```
+
+### datasetID
+
+```{r}
+occurrence %<>% mutate(dwc_datasetID = "")
+```
+
+### institutionCode
+
+
+### datasetName
+
+```{r}
+occurrence %<>% mutate(dwc_datasetName = "Mediteranian Medetera")
+```
+
+### basisOfRecord
+
+```{r}
+occurrence %<>% mutate(dwc_basisOfRecord = "HumanObservation")
+```
+
+### occurrenceID
+
+
+```{r}
+occurrence %<>% mutate(dwc_occurrenceID = occurrence_id)
+```
+
+
+
+
+### recordedBy
+
+```{r}
+occurrence %<>% mutate(dwc_recordedBy = collector_nm)
+```
+
+### individualCount
+
+```{r}
+#mutate(occurrence$mm)as.numeric()
+  
+occurrence %<>% mutate(male = occurrence$mm <- as.numeric(as.character(occurrence$mm)))  %<>%
+                mutate(female = occurrence$mm <- as.numeric(as.character(occurrence$ff)))  
+
+
+```
+```{r}
+occurrence %<>% mutate(dwc_individualCount = male + female)
+```
+
+
+
+
+### occurrenceStatus
+
+```{r}
+occurrence %<>% mutate(dwc_occurrenceStatus = case_when(
+  dwc_individualCount > 0 ~ "present",
+  dwc_individualCount == 0 ~ "absent"
+))
+```
+
+### eventID
+
+```{r}
+occurrence %<>% mutate(dwc_eventID = str_c("MICA:VMM:EV:", registratie_id))
+```
+
+### eventDate
+
+```{r}
+occurrence %<>% mutate(dwc_eventDate = as.character(dag))
+```
+
+### samplingProtocol
+
+```{r}
+occurrence %<>% mutate(dwc_samplingProtocol = "rat trap") 
+```
+
+### locationID
+
+```{r}
+occurrence %<>% mutate(dwc_locationID = locatie_id)
+```
+
+### continent
+
+```{r}
+occurrence %<>% mutate(dwc_continent = "Europe")
+```
+
+### countryCode
+
+```{r}
+occurrence %<>% mutate(dwc_countryCode = "BE")
+```
+
+### stateProvince
+
+```{r}
+occurrence %<>% mutate(dwc_stateProvince = recode(provincie_omschrijving,
+  "Antwerpen" = "Antwerp",
+  "Limburg" = "Limburg",
+  "Oost-Vlaanderen" = "East Flanders",
+  "Vlaams-Brabant" = "Flemish Brabant",
+  "West-Vlaanderen" = "West Flanders",
+  "Onbekend" = NA_character_
+))
+```
+
+### municipality
+
+```{r}
+occurrence %<>% mutate(dwc_municipality = recode(gemeente_naam,
+  "Onbekend" = NA_character_
+))
+```
+
+### locationRemarks
+
+```{r}
+occurrence %<>% mutate(dwc_locationRemarks = recode(vha_categorie_omschrijving, 
+  "CAT2 - Onbevaarbaar cat. 2" = "CAT2 - not navigable cat. 2",
+  "CAT1 - Onbevaarbaar cat. 1" = "CAT1 - not navigable cat. 1",
+  "CAT3 - Onbevaarbaar cat. 3" = "CAT3 - not navigable cat. 3",
+  "CAT - Andere" = "CAT - other",
+  "ONB - Onbekend" = "ONB - unknown",
+  "BEV - Bevaarbaar" = "BEV - navigable"
+))
+```
+
+### decimalLatitude
+
+```{r}
+occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
+  "%.5f",
+  round(locatie_gps_breedte, digits = 5)
+))
+```
+
+### decimalLongitude
+
+```{r}
+occurrence %<>% mutate(dwc_decimalLongitude = sprintf(
+  "%.5f",
+  round(locatie_gps_lengte, digits = 5)
+))
+```
+
+### geodeticDatum
+
+```{r}
+occurrence %<>% mutate(dwc_geodeticDatum = "WGS84") 
+```
+
+### coordinateUncertaintyInMeters
+
+```{r}
+occurrence %<>% mutate(dwc_coordinateUncertaintyInMeters = "30")
+```
+
+### scientificName
+
+```{r}
+occurrence %<>% mutate(dwc_scientificName = scientificName)
+```
+
+### kingdom
+
+```{r}
+occurrence %<>% mutate(dwc_kingdom = "Animalia")
+```
+
+### vernacularName
+
+```{r}
+occurrence %<>% mutate(dwc_vernacularName = vernacularName)
+```
+
+### taxonRank
+
+```{r}
+occurrence %<>% mutate(dwc_taxonRank = "species")
+```
+
+### nomenclaturalCode
+
+```{r}
+occurrence %<>% mutate(dwc_nomenclaturalCode = "ICZN")
+```
+
+## Post-processing
+
+```{r}
+occurrence %<>% select(starts_with("dwc_"))
+colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
+```
+
+```{r}
+occurrence <- mutate_all(occurrence, as.character())
+```
+
+```{r}
+#occurrence %<>% distinct(occurrenceID2, .keep_all = TRUE)
+```
+
+Preview data:
+
+```{r}
+occurrence %>% head()
+```
+
+Save to CSV:
+
+```{r}
+write_csv(occurrence, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "occurrence.csv"), na = "")
+```
+
+# Checks
+
+```{r}
+test <- length(unique(occurrence$eventID))
+test2 <- length(unique(occurrence$occurrenceID))
+
+n_occur <- data.frame(table(occurrence$occurrenceID))
+
+```
+
