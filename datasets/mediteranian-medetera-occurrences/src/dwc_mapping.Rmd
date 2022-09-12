@@ -36,12 +36,36 @@ library(uuid)           # To generate UUID's
 ```{r}
 input_data <- read_delim(here::here("datasets", "mediteranian-medetara-occurrences", "data", "interim", "Medetera_occurrences_complete.txt"), "\t")
 ```
+```{r}
+input_data_habitat <- read_delim(here::here("datasets", "mediteranian-medetara-occurrences", "data", "raw", "occID_habitat2.csv"), ";")
+```
+
 
 Preview data:
 
 ```{r}
 input_data %>% head()
 ```
+
+
+```{r}
+
+input_data_habitat %>% head()
+
+```
+```{r}
+input_data %<>% inner_join(input_data_habitat,
+  by = NULL,
+  copy = FALSE,
+  suffix = c(".x", ".y"),
+  keep = FALSE
+)
+```
+
+
+
+
+
 
 # Preprocessing
 
@@ -115,7 +139,7 @@ occurrence %<>% mutate(dwc_datasetID = "")
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(dwc_datasetName = "Mediteranian Medetera")
+occurrence %<>% mutate(dwc_datasetName = "New Mediterranean Medetera with eye colour patterns")
 ```
 
 ### basisOfRecord
@@ -169,7 +193,7 @@ occurrence %<>% mutate(dwc_occurrenceStatus = case_when(
 ### eventID
 
 ```{r}
-occurrence %<>% mutate(dwc_eventID = str_c("Med:MED:ev", sample_cd))
+occurrence %<>% mutate(dwc_eventID = str_replace_all(sample_cd, '/', ':'))
 ```
 
 ### eventDate
@@ -180,19 +204,24 @@ occurrence %<>% mutate(dwc_eventDate_begin = as.Date(sampling_date_e))
 ```{r}
 occurrence %<>% mutate(dwc_eventDate_end = as.Date(sampling_date_b))
 ```
+### habitat
+
+```{r}
+occurrence %<>% mutate(dwc_habitat = sampling_site_desc)
+```
 
 ### samplingProtocol
 
 ```{r}
 occurrence %<>% mutate(dwc_samplingProtocol = recode(method_cd
-                                                     ,"SW" = "sweep"
-                                                     ,"YPT" = "..."
-                                                     ,"MT" = "..."
-                                                     ,"RsPT" = "..."
-                                                     ,"HC" = "..."
-                                                     ,"YPT/RPT" = "..."
-                                                     ,"WPT" = "..."
-                                                     ,"BPT" = "..."
+                                                     ,"SW" = "sweepnet"
+                                                     ,"YPT" = "yellow pan tras"
+                                                     ,"MT" = "Malaise trap"
+                                                     ,"RsPT" = "pink pan traps"
+                                                     ,"HC" = "collected by hand"
+                                                     ,"YPT/RPT" = "yellow and red pan traps"
+                                                     ,"WPT" = "white pan traps"
+                                                     ,"BPT" = "blue pan traps"
                                                      )) 
 ```
 ### locationID
