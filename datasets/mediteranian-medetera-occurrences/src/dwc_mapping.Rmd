@@ -34,10 +34,10 @@ library(uuid)           # To generate UUID's
 # Read source data
 
 ```{r}
-input_data <- read_delim(here::here("datasets", "mediteranian-medetara-occurrences", "data", "interim", "Medetera_occurrences_complete.txt"), "\t")
+input_data <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "interim", "Medetera_occurrences_complete.txt"), "\t")
 ```
 ```{r}
-input_data_habitat <- read_delim(here::here("datasets", "mediteranian-medetara-occurrences", "data", "raw", "occID_habitat2.csv"), ";")
+input_data_habitat <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "raw", "occID_habitat2.csv"), ";")
 ```
 
 
@@ -224,6 +224,22 @@ occurrence %<>% mutate(dwc_samplingProtocol = recode(method_cd
                                                      ,"BPT" = "blue pan traps"
                                                      )) 
 ```
+### sex
+
+```{r}
+occurrence %<>% mutate(dwc_sex = recode(method_cd
+                                                     ,"SW" = "sweepnet"
+                                                     ,"YPT" = "yellow pan tras"
+                                                     ,"MT" = "Malaise trap"
+                                                     ,"RsPT" = "pink pan traps"
+                                                     ,"HC" = "collected by hand"
+                                                     ,"YPT/RPT" = "yellow and red pan traps"
+                                                     ,"WPT" = "white pan traps"
+                                                     ,"BPT" = "blue pan traps"
+                                                     )) 
+```
+
+
 ### locationID
 
 ```{r}
@@ -236,6 +252,11 @@ occurrence %<>% mutate(dwc_locationID = sampling_site_cd)
 ```{r}
 occurrence %<>% mutate(dwc_locality = locality_nm)
 ```
+```{r}
+occurrence %<>% mutate(dwc_verbatimElevation = altitude)
+```
+
+
 
 ### continent
 
@@ -347,7 +368,7 @@ occurrence %>% head()
 Save to CSV:
 
 ```{r}
-write_csv(occurrence, here::here("datasets", "mica-vmm-occurrences", "data", "processed", "occurrence.csv"), na = "")
+write_csv(occurrence, here::here("datasets", "mediteranian-medetera-occurrences", "data", "processed", "occurrence.csv"), na = "")
 ```
 
 # Checks
