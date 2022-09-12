@@ -227,16 +227,13 @@ occurrence %<>% mutate(dwc_samplingProtocol = recode(method_cd
 ### sex
 
 ```{r}
-occurrence %<>% mutate(dwc_sex = recode(method_cd
-                                                     ,"SW" = "sweepnet"
-                                                     ,"YPT" = "yellow pan tras"
-                                                     ,"MT" = "Malaise trap"
-                                                     ,"RsPT" = "pink pan traps"
-                                                     ,"HC" = "collected by hand"
-                                                     ,"YPT/RPT" = "yellow and red pan traps"
-                                                     ,"WPT" = "white pan traps"
-                                                     ,"BPT" = "blue pan traps"
-                                                     )) 
+occurrence %<>% mutate(dwc_sex = case_when (
+                       mm > 0 & ff > 0 ~ paste(occurrence$male, "male |", occurrence$female, "female")
+                    ,mm == 0 & ff > 0 ~ paste(occurrence$female, "female")
+                    ,mm > 0 & ff == 0 ~ paste(occurrence$male, "male")
+))
+
+
 ```
 
 
