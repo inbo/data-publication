@@ -193,17 +193,22 @@ occurrence %<>% mutate(dwc_occurrenceStatus = case_when(
 ### eventID
 
 ```{r}
-occurrence %<>% mutate(dwc_eventID = str_replace_all(sample_cd, '/', ':'))
+occurrence %<>% mutate(dwc_eventID = sample_cd)
 ```
 
 ### eventDate
 
 ```{r}
-occurrence %<>% mutate(dwc_eventDate_begin = as.Date(sampling_date_e))
+occurrence %<>% mutate(dwc_eventDate_begin = as.Date(sampling_date_b))
 ```
 ```{r}
-occurrence %<>% mutate(dwc_eventDate_end = as.Date(sampling_date_b))
+occurrence %<>% mutate(dwc_eventDate_end = as.Date(sampling_date_e))
 ```
+```{r}
+occurrence %<>% mutate(dwc_eventDate = paste(occurrence$sampling_date_b, "/" , occurrence$sampling_date_e))
+```
+
+
 ### habitat
 
 ```{r}
@@ -242,13 +247,37 @@ occurrence %<>% mutate(dwc_sex = case_when (
 ```{r}
 occurrence %<>% mutate(dwc_locationID = sampling_site_cd)
 ```
+### stateProvince
+
+```{r}
+occurrence %<>% mutate(dwc_stateProvince = province_cd)
+
+```
 
 
 ### locality
 
 ```{r}
 occurrence %<>% mutate(dwc_locality = locality_nm)
+
 ```
+
+### location
+
+```{r}
+occurrence %<>% mutate(dwc_location = location_nm)
+
+```
+
+### locationID
+
+```{r}
+occurrence %<>% mutate(dwc_locationID = sampling_site_cd)
+
+```
+
+### altitude
+
 ```{r}
 occurrence %<>% mutate(dwc_verbatimElevation = altitude)
 ```
@@ -351,6 +380,18 @@ colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
 ```{r}
 occurrence <- mutate_all(occurrence, as.character())
 ```
+
+```{r}
+occurrence$eventDate <- str_replace_all(occurrence$eventDate, "NA", "")
+```
+
+
+```{r}
+#occurrence <-  mutate_at(c(occurrence$eventDate), ~replace_na(.,""))
+
+```
+
+
 
 ```{r}
 #occurrence %<>% distinct(occurrenceID2, .keep_all = TRUE)
