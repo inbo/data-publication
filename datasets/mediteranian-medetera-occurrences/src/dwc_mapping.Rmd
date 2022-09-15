@@ -118,7 +118,7 @@ occurrence %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/ze
 ### rightsHolder
 
 ```{r}
-occurrence %<>% mutate(dwc_rightsHolder = "Marc Pollet")
+occurrence %<>% mutate(dwc_rightsHolder = "dataset authors")
 ```
 
 ### accessRights
