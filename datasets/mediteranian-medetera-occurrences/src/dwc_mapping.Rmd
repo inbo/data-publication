@@ -34,7 +34,7 @@ library(uuid)           # To generate UUID's
 # Read source data
 
 ```{r}
-input_data <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "interim", "Medetera_occurrences_complete.txt"), "\t")
+input_data <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "interim", "GBIF-Medetera-degrees-complete2022_09_22.tsv"), "\t")
 ```
 ```{r}
 input_data_habitat <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "raw", "occID_habitat2.csv"), ",")
@@ -327,7 +327,7 @@ occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
 ```{r}
 occurrence %<>% mutate(dwc_decimalLongitude = sprintf(
   "%.5f",
-  round(decimal_latitude, digits = 5)
+  round(decimal_longitude, digits = 5)
 ))
 ```
 
