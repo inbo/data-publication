@@ -342,6 +342,27 @@ occurrence %<>% mutate(dwc_geodeticDatum = "WGS84")
 ```{r}
 occurrence %<>% mutate(dwc_coordinateUncertaintyInMeters = "30")
 ```
+### Identification
+
+```{r}
+occurrence %<>% mutate(dwc_typeStatus = "type")
+```
+
+```{r}
+occurrence %<>% mutate(dwc_identifiedBy = identified_by)
+```
+
+```{r}
+occurrence %<>% mutate(dwc_identifiedByID = "https://orcid.org/0000-0001-5198-5928")
+```
+
+
+```{r}
+occurrence %<>% mutate(dwc_dateIdentified = identified_date)
+```
+
+
+
 
 ### scientificName
 
