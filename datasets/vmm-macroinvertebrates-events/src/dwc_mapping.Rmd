@@ -33,11 +33,11 @@ library(rgbif)          # To use GBIF services
 # Read source data
 
 ```{r}
-input_event <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "210112FL_RV_events.xlsx"))
+input_event <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2022events.xlsx"))
 
-input_occurrence <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "210112FL_RV_occurrence.xlsx"))
+input_occurrence <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2022occurrence.xlsx"))
 
-input_meas <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "210112FL_RV_MeasurementOrFact.xlsx"))
+input_meas <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2022MeasurementOrFact.xlsx"))
 ```
 
 Preview data:
