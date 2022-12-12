@@ -45,7 +45,11 @@ The source data was provided in Excel
 ```{r}
 input_interimExcel <- read_excel(here::here("datasets", "eikenprocessierups-occurrences", "data", "raw", "2022_gegevens_EPR_1.xlsx" ))
 
-input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "EPRgegevensRAWRefine.csv" ),',')
+input_interimRef <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "EPRgegevensRAWRefine.csv" ),',')
+
+input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "2022_12_12EPRgegevensRAWRefine.csv" ),',')
+
+
 
 ```
 
@@ -71,6 +75,23 @@ input_interim %>% head(n = 5)
 
 # Georeference source data
 
+```{r}
+input_interimDec <- input_interim 
+```
+
+# keep only decimal data lat long
+
+```{r}
+input_interimDec %<>% mutate(verbatimLongitude = X) %>%
+                   mutate(verbatimLatitude = Y) 
+                   
+```
+
+```{r}
+input_interimDec  %<>% filter(!is.na(decimallongitude))
+```
+
+
 
 ## Lambert to Decimals
 
@@ -91,7 +112,12 @@ Create spatial dataframe and define the CRS (31370 is Belgian Lambert 72)
 We indicate the x,y columns as coordinates and define the coordinate system
 
 ```{r}
-input_interim = st_as_sf(input_interim, coords = c("X","Y"), crs = 31370 , agr = "constant" )
+input_interim  %<>% filter(!is.na(X))
+```
+
+
+```{r}
+input_interim = st_as_sf(input_interim, coords = c("X","Y"), crs = 31370 , agr = "constant", na.fail = TRUE )
 input_interim %>% head(n = 5)
 ```
 
@@ -143,10 +169,37 @@ input_interim_df %>% head(n = 5)
 
 ### Integrate x-y coordinates in original dataframe
 
+### collate the dec-lat rows
+
+
+
 We can safely substitute input_interim 
 
 ```{r}
 input_interim <- input_interim_df
+```
+
+
+
+reinstitute the missing rows
+
+```{r}
+head(input_interimDec)
+
+head(input_interim)
+```
+
+
+```{r}
+input_interim <- union(input_interim, input_interimDec)
+```
+
+
+```{r}
+input_interim %<>% mutate(dwc_decimalLatitude2 = coalesce(Y, decimalLatitude ))
+```
+```{r}
+input_interim %<>% mutate(dwc_decimalLongitude2 = coalesce(X, decimallongitude ))
 ```
 
 # Occurrence core
@@ -162,7 +215,7 @@ occurrence <- input_interim
 ## remove obsolete columns
 
 ```{r}
-occurrence %<>% select(-c(ADRES))
+occurrence %<>% select(-c(ADRES, decimallongitude, decimalLatitude, adres2, Melder, X, Y))
 ```
 
 
@@ -232,13 +285,13 @@ occurrence %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-
 ### institutionCode
 
 ```{r}
-occurrence %<>% mutate(dwc_institutionCode = "Province East-Flanders") # e.g. "INBO"
+occurrence %<>% mutate(dwc_institutionCode = "POV") # e.g. "INBO"
 ```
 
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(dwc_datasetName = "Eikenprocessierups in East-Flanders, Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+occurrence %<>% mutate(dwc_datasetName = "Monitoring of Oak processionary (Thaumetopoea processionea) in the province of East Flanders, Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
 ```
 
 The following terms contain information about the taxon:
@@ -264,7 +317,7 @@ occurrence %<>% rename(dwc_occurrenceID = 'Nr') %>%
 ### recordedBy
 
 ```{r}
-occurrence %<>% mutate(dwc_recordedBy = 'Province East-Flanders')
+occurrence %<>% mutate(dwc_recordedBy = 'POV')
 ```
 
 ### individualCount
@@ -296,7 +349,7 @@ occurrence %<>%  mutate(dwc_organismQuantityType = 'number of nests in a tree')
 ### occurrenceRemarks
 
 ```{r}
-occurrence %<>% mutate(dwc_occurrenceRemarks = str_c('number of infected trees: ', aantalBomen ))
+#occurrence %<>% mutate(dwc_occurrenceRemarks = str_c('number of infected trees: ', aantalBomen ))
 ```
 
 ## samplingProtocol
@@ -315,6 +368,7 @@ eventDate already ok in source file (should be)
 
 ```{r}
 
+occurrence %<>% mutate(dwc_eventDate = eventDate )
 
 #occurrence %<>% ymd(date)
 
@@ -335,8 +389,8 @@ occurrence %<>% mutate(dwc_verbatimEventDate = verbatimEventDate )
 
 ```{r}
 occurrence %<>%
-  mutate(dwc_decimalLongitude = X) %>%
-  mutate(dwc_decimalLatitude = Y) %>%
+  mutate(dwc_decimalLongitude = dwc_decimalLongitude2) %>%
+  mutate(dwc_decimalLatitude = dwc_decimalLatitude2) %>%
   mutate(dwc_geodeticDatum = "WGS84") %>%
   mutate(dwc_coordinateUncertaintyInMeters = "30") %>%
   mutate(dwc_verbatimCoordinateSystem = "Lambert coordinates") %>%
@@ -469,6 +523,12 @@ occurrence %<>% select(starts_with("dwc_"))
 ```{r}
 colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
 
+```
+
+## remove obsolete columns
+
+```{r}
+occurrence %<>% select(-c(decimalLatitude2, decimalLongitude2))
 ```
 
 ```{r}
