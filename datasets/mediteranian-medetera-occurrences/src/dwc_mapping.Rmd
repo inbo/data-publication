@@ -34,7 +34,7 @@ library(uuid)           # To generate UUID's
 # Read source data
 
 ```{r}
-input_data <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "interim", "GBIF-Medetera-degrees-complete2022_09_22.tsv"), "\t")
+input_data <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "interim", "GBIF-Medetera-degrees-complete2022_10_25.tsv"), "\t")
 ```
 ```{r}
 input_data_habitat <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "raw", "occID_habitat2.csv"), ",")
@@ -161,7 +161,8 @@ occurrence %<>% mutate(dwc_occurrenceID = str_c("Med:med:" , occurrence_id))
 ### recordedBy
 
 ```{r}
-occurrence %<>% mutate(dwc_recordedBy = collector_nm)
+occurrence %<>% mutate(dwc_recordedBy = recode(collector_nm
+                                              , "Piluca Álvarez" = "Piluca Álvarez Fidalgo	"))
 ```
 
 ### individualCount
@@ -220,13 +221,14 @@ occurrence %<>% mutate(dwc_habitat = sampling_site_desc)
 ```{r}
 occurrence %<>% mutate(dwc_samplingProtocol = recode(method_cd
                                                      ,"SW" = "sweepnet"
-                                                     ,"YPT" = "yellow pan tras"
+                                                     ,"YPT" = "yellow pan traps"
                                                      ,"MT" = "Malaise trap"
                                                      ,"RsPT" = "pink pan traps"
                                                      ,"HC" = "collected by hand"
                                                      ,"YPT/RPT" = "yellow and red pan traps"
                                                      ,"WPT" = "white pan traps"
                                                      ,"BPT" = "blue pan traps"
+                                                     ,"PT" = "pan traps"
                                                      )) 
 ```
 ### sex
