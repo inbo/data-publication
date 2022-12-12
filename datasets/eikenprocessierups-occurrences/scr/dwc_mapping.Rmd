@@ -464,7 +464,7 @@ occurrence %<>% mutate(dwc_municipality = Gemeente) # e.g. "Belgium = BE"
 ### identifiedBy
 
 ```{r}
-occurrence %<>% mutate(dwc_identifiedBy = 'Province East-Flanders')
+occurrence %<>% mutate(dwc_identifiedBy = 'Province East Flanders')
 ```
 
 ### scientificName 
@@ -545,5 +545,7 @@ occurrence %>% head()
 Save to CSV:
 
 ```{r}
-write_csv(occurrence, here::here("datasets", "eikenprocessierups-occurrences", "data", "processed", "occurrence.csv"), na = "")
+write_delim(occurrence, here::here("datasets", "eikenprocessierups-occurrences", "data", "processed", "occurrence.csv"), na = "", delim = ';')
 ```
+
+
