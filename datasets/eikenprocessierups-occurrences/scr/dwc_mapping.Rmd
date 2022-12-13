@@ -50,7 +50,6 @@ input_interimRef <- read_delim(here::here("datasets", "eikenprocessierups-occurr
 input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "2022_12_12EPRgegevensRAWRefine.csv" ),',')
 
 
-
 ```
 
 Preview data:
@@ -64,6 +63,25 @@ input_interim %>% head(n = 5)
 ## Tidy data
 
 Clean data somewhat:
+
+
+```{r}
+input_interim <-
+  here::here(
+    "datasets",
+    "eikenprocessierups-occurrences",
+    "data",
+    "interim",
+    "2022_12_12EPRgegevensRAWRefine.csv"
+  ) %>% readr::read_csv() %>%
+  mutate(across(everything(),  ~ stringr::str_replace(.x, "\n", " ")))
+```
+```{r}
+
+input_interim <- mutate_all(input_interim, as.character)
+
+```
+
 
 ```{r}
 input_interim %<>% remove_empty("rows")
@@ -188,10 +206,21 @@ head(input_interimDec)
 
 head(input_interim)
 ```
+```{r}
+input_interim <- mutate_all(input_interim, as.character)
+```
 
 
 ```{r}
-input_interim <- union(input_interim, input_interimDec)
+head(input_interimDec)
+
+head(input_interim)
+```
+
+
+
+```{r}
+input_interim <- union(input_interimDec, input_interim)
 ```
 
 
@@ -401,13 +430,12 @@ occurrence %<>%
 
 ```{r}
 head(occurrence, n = 5)
-occurrence %<>%
-  mutate(dwc_verbatimLongitude = round(verbatimLongitude)) %>%
-  mutate(dwc_verbatimLatitude = round(verbatimLatitude)) %>%
-  mutate(dwc_decimalLongitude = round(dwc_decimalLongitude, digits = 5)) %>%
-  mutate(dwc_decimalLatitude = round(dwc_decimalLatitude, digits = 5))
+#occurrence %<>%
+ # mutate(dwc_verbatimLongitude = round(verbatimLongitude)) %>%
+ # mutate(dwc_verbatimLatitude = round(verbatimLatitude)) %>%
+ # mutate(dwc_decimalLongitude = round(dwc_decimalLongitude, digits = 5)) %>%
+  #mutate(dwc_decimalLatitude = round(dwc_decimalLatitude, digits = 5))
 ```
-
 ```{r}
 occurrence %<>%   
    mutate(dwc_decimalLatitude = as.character(format(dwc_decimalLatitude, nsmall = 5))) %>%
@@ -534,6 +562,7 @@ occurrence %<>% select(-c(decimalLatitude2, decimalLongitude2))
 ```{r}
 occurrence <- mutate_all(occurrence, as.character())
 ```
+
 
 
 Preview data:
