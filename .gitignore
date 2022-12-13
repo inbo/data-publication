@@ -79,4 +79,5 @@ datasets/mediteranian-medetara-occurrences/data/
 FolderList.txt
 datasets/watervogels-occurrences/localities/localities2022.qmd
 
-
+# except specific csv
+!datasets/eikenprocessierups-occurrences/data/processed/occurrence_no_linebreaks.csv
