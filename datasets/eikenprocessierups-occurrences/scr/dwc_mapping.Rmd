@@ -393,6 +393,11 @@ occurrence %<>%  mutate(dwc_organismQuantityType = 'number of nests in a tree')
 
 ### samplingEffort
 
+### year
+
+```{r}
+occurrence %<>% mutate(dwc_year = year)
+```
 
 
 ### eventDate
@@ -401,11 +406,11 @@ eventDate already ok in source file (should be)
 
 ```{r}
 
-#occurrence %<>% mutate(dwc_eventDate = eventDate )
+occurrence %<>% mutate(dwc_eventDate = eventDate)
 
 #occurrence %<>% mutate(dwc_eventDate = as_date(ymd(eventDate) , format = "%Y-%m-%d")) 
 
-#occurrence %<>% mutate(dwc_eventDate3 = str_replace(dwc_eventDate, " ", "LKJ"))
+#occurrence %<>% mutate(dwc_eventDate2 = str_replace_all(dwc_eventDate, " ", "0"))
 
 #occurrence %<>% ymd(date)
 
