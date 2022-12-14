@@ -47,7 +47,7 @@ input_interimExcel <- read_excel(here::here("datasets", "eikenprocessierups-occu
 
 input_interimRef <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "EPRgegevensRAWRefine.csv" ),',')
 
-input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "2022_12_13EPRgegevensRAWRefine.csv" ),',')
+input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "2022_12_14EPRgegevensRAWRefine.csv" ),',')
 
 
 ```
@@ -401,7 +401,11 @@ eventDate already ok in source file (should be)
 
 ```{r}
 
-occurrence %<>% mutate(dwc_eventDate = eventDate )
+#occurrence %<>% mutate(dwc_eventDate = eventDate )
+
+#occurrence %<>% mutate(dwc_eventDate = as_date(ymd(eventDate) , format = "%Y-%m-%d")) 
+
+#occurrence %<>% mutate(dwc_eventDate3 = str_replace(dwc_eventDate, " ", "LKJ"))
 
 #occurrence %<>% ymd(date)
 
@@ -578,7 +582,7 @@ occurrence %>% head()
 Save to CSV:
 
 ```{r}
-write_delim(occurrence, here::here("datasets", "eikenprocessierups-occurrences", "data", "processed", "occurrence.csv"), na = "", delim = ';')
+write_delim(occurrence, here::here("datasets", "eikenprocessierups-occurrences", "data", "processed", "occurrence.csv"), na = "", delim = ',')
 ```
 
 
