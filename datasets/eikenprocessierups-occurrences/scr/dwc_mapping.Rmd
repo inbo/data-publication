@@ -55,7 +55,7 @@ input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrenc
 Preview data:
 
 ```{r}
-input_interim %>% head(n = 5)
+#input_interim %>% head(n = 5)
 ```
 
 # Process source data
@@ -324,7 +324,7 @@ occurrence %<>% mutate(dwc_institutionCode = "POV") # e.g. "INBO"
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(dwc_datasetName = "Monitoring of Oak processionary (Thaumetopoea processionea) in the province of East Flanders, Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+occurrence %<>% mutate(dwc_datasetName = "Monitoring of Oak processionary larvae (Thaumetopoea processionea) in the province of East Flanders, Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
 ```
 
 The following terms contain information about the taxon:
