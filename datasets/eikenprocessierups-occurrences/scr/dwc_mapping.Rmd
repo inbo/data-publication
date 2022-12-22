@@ -42,12 +42,12 @@ Create a data frame `input_data` from the source data:
 The source data was provided in Excel
 
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 input_interimExcel <- read_excel(here::here("datasets", "eikenprocessierups-occurrences", "data", "raw", "2022_gegevens_EPR_1.xlsx" ))
 
 input_interimRef <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "EPRgegevensRAWRefine.csv" ),',')
 
-input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "2022_14_12_TODATEgegevensEPRV2.csv" ),',')
+input_interim <- read_delim(here::here("datasets", "eikenprocessierups-occurrences", "data", "interim", "2022_12_20_TODATEgegevensEPRV2.csv" ),',')
 
 
 ```
@@ -72,7 +72,7 @@ input_interim <-
     "eikenprocessierups-occurrences",
     "data",
     "interim",
-    "2022_12_12EPRgegevensRAWRefine.csv"
+    "2022_12_20_TODATEgegevensEPRV2.csv"
   ) %>% readr::read_csv() %>%
   mutate(across(everything(),  ~ stringr::str_replace(.x, "\n", " ")))
 ```
@@ -376,6 +376,13 @@ occurrence %<>%  mutate(dwc_organismQuantityType = 'number of nests in a tree')
 ### sex
 
 ### lifeStage
+
+```{r}
+occurrence %<>%  mutate(dwc_lifeStage = 'larvae') 
+
+
+```
+
 
 ### behavior
 
