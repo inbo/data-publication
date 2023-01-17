@@ -1,6 +1,6 @@
 ---
 title: "Darwin Core Mapping"
-subtitle: "Eikenprocessierups in East-Flanders, Belgium"
+subtitle: "Eikenprocessierups in East Flanders, Belgium"
 author: "Dimitri Brosens"
 date: "`r Sys.Date()`"
 output:
@@ -301,7 +301,7 @@ occurrence %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/ze
 ### rightsHolder
 
 ```{r}
-occurrence %<>% mutate(dwc_rightsHolder = "Province East-Flanders") # e.g. "INBO"
+occurrence %<>% mutate(dwc_rightsHolder = "Province East Flanders") # e.g. "INBO"
 ```
 ### accessRights
 
