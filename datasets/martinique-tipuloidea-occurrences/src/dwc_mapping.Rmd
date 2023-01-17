@@ -1,0 +1,431 @@
+---
+title: "Darwin Core Mapping"
+subtitle: "Martinique Tipuloidea"
+author: "Dimitri Brosens"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+# Setup 
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = TRUE)
+```
+
+Load libraries:
+
+```{r message = FALSE}
+library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
+library(magrittr)       # To use %<>% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(readxl)         # To read Excel files
+library(rgbif)          # To use GBIF services
+library(uuid)           # To generate UUID's
+```
+
+# Read source data
+
+```{r}
+input_data <- read_delim(here::here("datasets", "martinique-tipuloidea-occurrences", "data", "interim", "occ_martinique2.csv"), ",")
+```
+```{r}
+#input_data_habitat <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "raw", "occID_habitat2.csv"), ",")
+```
+
+
+Preview data:
+
+```{r}
+input_data %>% head()
+```
+
+
+
+
+
+# Preprocessing
+
+## Tidy data
+
+Clean data somewhat:
+
+```{r}
+input_data %<>% 
+  remove_empty("rows") %<>%
+  clean_names()
+```
+
+
+
+
+### fix unique ID issue
+
+```{r}
+input_data <- mutate_all(input_data, as.character())
+```
+
+
+# Darwin Core mapping
+
+Map the data to [Darwin Core Occurrence](http://rs.gbif.org/core/dwc_occurrence_2015-07-02.xml).
+
+```{r}
+occurrence <- input_data
+```
+
+### type
+
+```{r}
+occurrence %<>% mutate(dwc_type = "Event")
+```
+
+### language
+
+```{r}
+occurrence %<>% mutate(dwc_language = "en")
+```
+
+### license
+
+```{r}
+occurrence %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/")
+```
+
+### rightsHolder
+
+```{r}
+occurrence %<>% mutate(dwc_rightsHolder = "dataset authors")
+```
+
+### accessRights
+
+```{r}
+occurrence %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-use") 
+```
+
+### datasetID
+
+```{r}
+occurrence %<>% mutate(dwc_datasetID = "")
+```
+
+### institutionCode
+
+
+### datasetName
+
+```{r}
+occurrence %<>% mutate(dwc_datasetName = "Tipuloidea from Martinique")
+```
+
+### basisOfRecord
+
+```{r}
+occurrence %<>% mutate(dwc_basisOfRecord = "preservedSpecimen")
+```
+
+### occurrenceID
+
+
+```{r}
+occurrence %<>% mutate(dwc_occurrenceID = str_c("Mart:tipu:" , specimen_id))
+```
+
+
+
+
+### recordedBy
+
+```{r}
+occurrence %<>% mutate(dwc_recordedBy = collector_nm)
+```
+
+### individualCount
+
+```{r}
+#mutate(occurrence$mm)as.numeric()
+  
+occurrence %<>% mutate(male = occurrence$mm <- as.numeric(as.character(occurrence$mm)))  %<>%
+                mutate(female = occurrence$mm <- as.numeric(as.character(occurrence$ff))) %<>%
+                mutate(unknown = occurrence$mm <- as.numeric(as.character(occurrence$no_spm_unsexed)))
+  
+
+```
+
+```{r}
+occurrence %<>% mutate(dwc_individualCount = male + female + no_spm_unsexed)
+```
+
+
+
+
+### occurrenceStatus
+
+```{r}
+occurrence %<>% mutate(dwc_occurrenceStatus = case_when(
+  dwc_individualCount > 0 ~ "present",
+  dwc_individualCount == 0 ~ "absent"
+))
+```
+
+### eventID
+
+```{r}
+occurrence %<>% mutate(dwc_eventID = sample_cd)
+```
+
+### eventDate
+
+```{r}
+occurrence %<>% mutate(dwc_eventDate_begin = as.Date(date_b))
+```
+```{r}
+occurrence %<>% mutate(dwc_eventDate_end = as.Date(date_e))
+```
+
+```{r}
+occurrence %<>% mutate(dwc_eventDate = paste(occurrence$date_b, "/" , occurrence$date_e))
+```
+
+
+### habitat
+
+```{r}
+occurrence %<>% mutate(dwc_habitat = sampling_site_desc)
+```
+
+### samplingProtocol
+
+```{r}
+occurrence %<>% mutate(dwc_samplingProtocol = recode(method_cd
+                                                     ,"SW" = "sweepnet"
+                                                     ,"YPT" = "yellow pan traps"
+                                                     ,"MT" = "Malaise trap"
+                                                     ,"RsPT" = "pink pan traps"
+                                                     ,"HC" = "collected by hand"
+                                                     ,"YPT/RPT" = "yellow and red pan traps"
+                                                     ,"WPT" = "white pan traps"
+                                                     ,"BPT" = "blue pan traps"
+                                                     ,"PT" = "pan traps"
+                                                     ,"MSW" = "municipal solid waste sampling"
+                                                     )) 
+```
+### sex
+
+```{r}
+occurrence %<>% mutate(dwc_sex = case_when (
+                       mm > 0 & ff > 0 ~ paste(occurrence$male, "male |", occurrence$female, "female")
+                    ,mm == 0 & ff > 0 ~ paste(occurrence$female, "female")
+                    ,mm > 0 & ff == 0 ~ paste(occurrence$male, "male")
+))
+
+
+```
+
+
+### locationID
+
+```{r}
+occurrence %<>% mutate(dwc_locationID = sampling_site_cd)
+```
+### stateProvince
+
+```{r}
+occurrence %<>% mutate(dwc_stateProvince = state_province)
+
+```
+
+
+### locality
+
+```{r}
+occurrence %<>% mutate(dwc_locality = locality_nm)
+
+```
+
+### location
+
+```{r}
+occurrence %<>% mutate(dwc_location = toponym_nm)
+
+```
+
+### locationID
+
+```{r}
+occurrence %<>% mutate(dwc_locationID = sampling_site_cd)
+
+```
+
+### altitude
+
+```{r}
+occurrence %<>% mutate(dwc_verbatimElevation = altitude)
+```
+
+
+
+### continent
+
+```{r}
+occurrence %<>% mutate(dwc_continent = "North America")
+```
+
+### countryCode
+
+```{r}
+occurrence %<>% mutate(dwc_countryCode = "FR")
+```
+
+### stateProvince
+
+
+
+### municipality
+
+
+### locationRemarks
+
+
+
+### decimalLatitude
+
+```{r}
+occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
+  "%.5f",
+  round(decimal_latitude, digits = 5)
+))
+```
+
+### decimalLongitude
+
+```{r}
+occurrence %<>% mutate(dwc_decimalLongitude = sprintf(
+  "%.5f",
+  round(decimal_longitude, digits = 5)
+))
+```
+
+### geodeticDatum
+
+```{r}
+occurrence %<>% mutate(dwc_geodeticDatum = "WGS84") 
+```
+
+### coordinateUncertaintyInMeters
+
+```{r}
+occurrence %<>% mutate(dwc_coordinateUncertaintyInMeters = "30")
+```
+### Identification
+
+```{r}
+#occurrence %<>% mutate(dwc_typeStatus = "type")
+```
+
+```{r}
+occurrence %<>% mutate(dwc_identifiedBy = identified_by)
+```
+
+```{r}
+#occurrence %<>% mutate(dwc_identifiedByID = "https://orcid.org/0000-0001-5198-5928")
+```
+
+
+```{r}
+#occurrence %<>% mutate(dwc_dateIdentified = identified_date)
+```
+
+
+
+
+### scientificName
+
+```{r}
+occurrence %<>% mutate(dwc_scientificName = species_cd)
+```
+
+### kingdom
+
+```{r}
+occurrence %<>% mutate(dwc_kingdom = "Animalia")
+```
+
+### kingdom
+
+```{r}
+occurrence %<>% mutate(dwc_family = family_nm)
+```
+
+### vernacularName
+
+
+### taxonRank
+
+```{r}
+occurrence %<>% mutate(dwc_taxonRank = "species")
+```
+
+### nomenclaturalCode
+
+```{r}
+occurrence %<>% mutate(dwc_nomenclaturalCode = "ICZN")
+```
+
+## Post-processing
+
+```{r}
+occurrence %<>% select(starts_with("dwc_"))
+colnames(occurrence) <- str_remove(colnames(occurrence), "dwc_")
+```
+
+```{r}
+occurrence <- mutate_all(occurrence, as.character())
+```
+
+```{r}
+occurrence$eventDate <- str_replace_all(occurrence$eventDate, "NA", "")
+```
+
+
+```{r}
+#occurrence <-  mutate_at(c(occurrence$eventDate), ~replace_na(.,""))
+
+```
+
+
+
+```{r}
+#occurrence %<>% distinct(occurrenceID2, .keep_all = TRUE)
+```
+
+Preview data:
+
+```{r}
+occurrence %>% head()
+```
+
+Save to CSV:
+
+```{r}
+write_csv(occurrence, here::here("datasets", "martinique-tipuloidea-occurrences", "data", "processed", "occurrence.csv"), na = "")
+```
+
+# Checks
+
+```{r}
+test <- length(unique(occurrence$eventID))
+test2 <- length(unique(occurrence$occurrenceID))
+
+n_occur <- data.frame(table(occurrence$occurrenceID))
+
+```
+
