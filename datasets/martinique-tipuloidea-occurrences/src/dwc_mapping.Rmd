@@ -215,7 +215,7 @@ occurrence %<>% mutate(dwc_samplingProtocol = recode(method_cd
                                                      ,"WPT" = "white pan traps"
                                                      ,"BPT" = "blue pan traps"
                                                      ,"PT" = "pan traps"
-                                                     ,"MSW" = "municipal solid waste sampling"
+                                                     ,"MSW" = "sweepnet with storage/collection of entire sample"
                                                      )) 
 ```
 ### sex
