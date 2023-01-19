@@ -185,14 +185,15 @@ occurrence %<>% mutate(dwc_eventID = sample_cd)
 ### eventDate
 
 ```{r}
-occurrence %<>% mutate(dwc_eventDate_begin = as.Date(date_b))
+occurrence %<>% mutate(dwc_eventDate_begin = as.Date(date_b, format = "%d/%m/%Y"))
+
 ```
 ```{r}
-occurrence %<>% mutate(dwc_eventDate_end = as.Date(date_e))
+occurrence %<>% mutate(dwc_eventDate_end = as.Date(date_e, format = "%d/%m/%Y" ))
 ```
 
 ```{r}
-occurrence %<>% mutate(dwc_eventDate = paste(occurrence$date_b, "/" , occurrence$date_e))
+occurrence %<>% mutate(dwc_eventDate = paste(occurrence$dwc_eventDate_begin, "/" , occurrence$dwc_eventDate_end))
 ```
 
 
