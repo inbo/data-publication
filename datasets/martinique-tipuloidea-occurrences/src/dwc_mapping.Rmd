@@ -185,16 +185,28 @@ occurrence %<>% mutate(dwc_eventID = sample_cd)
 ### eventDate
 
 ```{r}
-occurrence %<>% mutate(dwc_eventDate_begin = as.Date(date_b, format = "%d/%m/%Y"))
+occurrence %<>% mutate(eventDate_begin = as.Date(date_b, format = "%d/%m/%Y"))
 
 ```
 ```{r}
-occurrence %<>% mutate(dwc_eventDate_end = as.Date(date_e, format = "%d/%m/%Y" ))
+occurrence %<>% mutate(eventDate_end = as.Date(date_e, format = "%d/%m/%Y" ))
 ```
 
 ```{r}
-occurrence %<>% mutate(dwc_eventDate = paste(occurrence$dwc_eventDate_begin, "/" , occurrence$dwc_eventDate_end))
+occurrence %<>% mutate(eventDate1 = paste(occurrence$eventDate_begin, "/" , occurrence$eventDate_end)) 
 ```
+
+
+```{r}
+
+occurrence %<>% mutate(dwc_eventDate = recode(eventDate1
+                        ,"NA / 2016-10-26" = "2016-10-26"
+                        ,"NA / 2018-01-24" = "2018-01-24"
+                        ,"NA / 2018-02-02" = "2018-02-02"
+                        ,"NA / 2018-01-30" = "2018-01-30"
+                        ,"NA / 2018-02-01" = "2018-02-01"))
+```
+
 
 
 ### habitat
@@ -393,8 +405,9 @@ occurrence <- mutate_all(occurrence, as.character())
 ```
 
 ```{r}
-occurrence$eventDate <- str_replace_all(occurrence$eventDate, "NA", "")
+occurrence$eventDate <- str_replace_all(occurrence$eventDate, " ", "")
 ```
+
 
 
 ```{r}
