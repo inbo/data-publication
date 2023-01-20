@@ -384,7 +384,18 @@ occurrence %<>% mutate(dwc_family = family_nm)
 ### taxonRank
 
 ```{r}
-occurrence %<>% mutate(dwc_taxonRank = "species")
+occurrence %<>% mutate(dwc_taxonRank = case_when(dwc_scientificName == 'Geranomyia sp.1'   ~ "morfospecies"
+                                                 ,dwc_scientificName == 'Geranomyia sp.2'   ~ "morfospecies"
+                                                 ,dwc_scientificName == 'Geranomyia sp.3'   ~ "morfospecies"
+                                                 ,dwc_scientificName == 'Geranomyia sp.4'   ~ "morfospecies"
+                                                 ,dwc_scientificName == 'Geranomyia sp.5'   ~ "morfospecies"
+                                                 ,dwc_scientificName == 'Toxorhina (Toxorhina) sp.1'   ~ "morfospecies"
+                                                 ,dwc_scientificName == 'Toxorhina (Toxorhina) sp.2'   ~ "morfospecies"
+                                                 ,TRUE ~ "species"
+                                                 ))
+
+
+
 ```
 
 ### nomenclaturalCode
