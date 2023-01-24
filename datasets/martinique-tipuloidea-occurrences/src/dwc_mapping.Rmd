@@ -34,8 +34,12 @@ library(uuid)           # To generate UUID's
 # Read source data
 
 ```{r}
-input_data <- read_delim(here::here("datasets", "martinique-tipuloidea-occurrences", "data", "interim", "occ_martinique2.csv"), ",")
+#input_data <- read_delim(here::here("datasets", "martinique-tipuloidea-occurrences", "data", "interim", "occ_martinique2.csv"), ",")
 ```
+```{r}
+input_data <- read_delim(here::here("datasets", "martinique-tipuloidea-occurrences", "data", "interim", "occurrence4.csv"), ",")
+```
+
 ```{r}
 #input_data_habitat <- read_delim(here::here("datasets", "mediteranian-medetera-occurrences", "data", "raw", "occID_habitat2.csv"), ",")
 ```
@@ -312,9 +316,16 @@ occurrence %<>% mutate(dwc_countryCode = "FR")
 ### decimalLatitude
 
 ```{r}
+occurrence %<>% mutate(decimalLatitude = occurrence$decimal_latitude <- as.numeric(occurrence$decimal_latitude))  %<>%
+                mutate(decimalLongitude = occurrence$decimal_longitude <- as.numeric(as.character(occurrence$decimal_longitude))) 
+  
+```
+
+
+```{r}
 occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
   "%.5f",
-  round(decimal_latitude, digits = 5)
+  round(decimalLatitude, digits = 5)
 ))
 ```
 
@@ -323,7 +334,7 @@ occurrence %<>% mutate(dwc_decimalLatitude = sprintf(
 ```{r}
 occurrence %<>% mutate(dwc_decimalLongitude = sprintf(
   "%.5f",
-  round(decimal_longitude, digits = 5)
+  round(decimalLongitude, digits = 5)
 ))
 ```
 
@@ -363,7 +374,13 @@ occurrence %<>% mutate(dwc_identifiedBy = identified_by)
 ### scientificName
 
 ```{r}
-occurrence %<>% mutate(dwc_scientificName = species_cd)
+occurrence %<>% mutate(dwc_scientificName = recode(species_cd
+                                                   ,"Rhipidia subcostalis Alexander, 1922" = "Rhipidia (Rhipidia) subcostalis Alexander, 1922"
+                                                   ,"Rhipidia subpectinata subpectinata Williston, 1896" = "Rhipidia (Rhipidia) subpectinata Williston, 1896"
+                                                   ,"Rhipidia willistoniana (Alexander, 1929)" = "Rhipidia (Rhipidia) willistoniana (Alexander, 1929)"
+                                                   ,"Teucholabis annulata Williston, 1896" = "Teucholabis (Teucholabis) annulata Williston, 1896"
+                                                    ))
+
 ```
 
 ### kingdom
