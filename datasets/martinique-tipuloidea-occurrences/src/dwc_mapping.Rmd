@@ -127,7 +127,7 @@ occurrence %<>% mutate(dwc_datasetID = "")
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(dwc_datasetName = "Tipuloidea from Martinique")
+occurrence %<>% mutate(dwc_datasetName = "Tipulidoidea of Martinique - 2016-2018")
 ```
 
 ### basisOfRecord
@@ -401,13 +401,13 @@ occurrence %<>% mutate(dwc_family = family_nm)
 ### taxonRank
 
 ```{r}
-occurrence %<>% mutate(dwc_taxonRank = case_when(dwc_scientificName == 'Geranomyia sp.1'   ~ "morfospecies"
-                                                 ,dwc_scientificName == 'Geranomyia sp.2'   ~ "morfospecies"
-                                                 ,dwc_scientificName == 'Geranomyia sp.3'   ~ "morfospecies"
-                                                 ,dwc_scientificName == 'Geranomyia sp.4'   ~ "morfospecies"
-                                                 ,dwc_scientificName == 'Geranomyia sp.5'   ~ "morfospecies"
-                                                 ,dwc_scientificName == 'Toxorhina (Toxorhina) sp.1'   ~ "morfospecies"
-                                                 ,dwc_scientificName == 'Toxorhina (Toxorhina) sp.2'   ~ "morfospecies"
+occurrence %<>% mutate(dwc_taxonRank = case_when(dwc_scientificName == 'Geranomyia sp.1'   ~ "morphospecies"
+                                                 ,dwc_scientificName == 'Geranomyia sp.2'   ~ "morphospecies"
+                                                 ,dwc_scientificName == 'Geranomyia sp.3'   ~ "morphospecies"
+                                                 ,dwc_scientificName == 'Geranomyia sp.4'   ~ "morphospecies"
+                                                 ,dwc_scientificName == 'Geranomyia sp.5'   ~ "morphospecies"
+                                                 ,dwc_scientificName == 'Toxorhina (Toxorhina) sp.1'   ~ "morphospecies"
+                                                 ,dwc_scientificName == 'Toxorhina (Toxorhina) sp.2'   ~ "morphospecies"
                                                  ,TRUE ~ "species"
                                                  ))
 
