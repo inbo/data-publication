@@ -127,7 +127,7 @@ occurrence %<>% mutate(dwc_datasetID = "")
 ### datasetName
 
 ```{r}
-occurrence %<>% mutate(dwc_datasetName = "Tipulidoidea of Martinique - 2016-2018")
+occurrence %<>% mutate(dwc_datasetName = "Tipuloidea of Martinique - 2016-2018")
 ```
 
 ### basisOfRecord
