@@ -33,11 +33,11 @@ library(rgbif)          # To use GBIF services
 # Read source data
 
 ```{r}
-input_event <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2022events.xlsx"))
+input_event <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2024events.xlsx"))
 
-input_occurrence <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2022occurrence.xlsx"))
+input_occurrence <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2024Occurrences.xlsx"))
 
-input_meas <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2022MeasurementOrFact.xlsx"))
+input_meas <- read_excel(here::here("datasets", "vmm-macroinvertebrates-events", "data", "interim", "2024MeasurementOrFact.xlsx"))
 ```
 
 Preview data:
@@ -471,11 +471,11 @@ measurements %>% head()
 Save to CSV:
 
 ```{r}
-write_csv(occurrence, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "occurrence.csv"), na = "")
+write_csv(occurrence, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "occurrence24.csv"), na = "")
 
-write_csv(event, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "event.csv"), na = "")
+write_csv(event, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "event24.csv"), na = "")
 
-write_csv(measurements, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "measurements.csv"), na = "")
+write_csv(measurements, here::here("datasets", "vmm-macroinvertebrates-events", "data", "processed", "measurements24.csv"), na = "")
 ```
 
 
