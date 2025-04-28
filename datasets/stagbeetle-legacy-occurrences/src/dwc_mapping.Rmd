@@ -1,6 +1,6 @@
 ---
 title: "Darwin Core Mapping"
-subtitle: "FOURCAST legacy data publication: Nematoda"
+subtitle: "Stag Beetle legacy data publication: Stag Beetle"
 author: "Dimitri Brosens"
 date: "`r Sys.Date()`"
 output:
@@ -45,30 +45,10 @@ Create a data frame `input_data1` & `input_data2` from the source data:
 
 
 ```{r}
-input_data1 <- read_excel(here::here("datasets", "nematoda", "data", "raw", "Nematoda_Total_JV_TC_diB.xlsx"))
+input_data <- read_csv(here::here("datasets", "stagbeetle-legacy-occurrences", "data", "interim", "Stag-beetle-legacy-refined.csv"))
 
 ```
 
-```{r}
-input_data2 <- read_excel(here::here("datasets", "nematoda", "data", "raw", "EB_Site_Table.xlsx"))
-
-```
-
-
-Pivot original dataframe `pivot longer`
-
-
-```{r}
-
-input_data1 %<>% 
-pivot_longer(cols = !scientificName, names_to = "Site", values_to = "count")
-```
-
-Join both dataframes 
-
-```{r}
-input_data <- inner_join(input_data1, input_data2, by = NULL)
-```
 
 
 Preview data:
@@ -92,59 +72,11 @@ input_data %>% head(n = 5)
 ```
 
 
-
-## Lambert to Decimals
-
-### Keep original x,Y as verbatimcoordinates
-
-
-
-### Create a spacial dataframe
-
-Create spatial dataframe and define the CRS (31370 is Belgian Lambert 72)
-We indicate the x,y columns as coordinates and define the coordinate system
-
-
-## Transform the data in WGS84
-
-Now we transform the Lambert 72 in WGS84
-
-
-### Create a dataframe with column decimalLatitude & decimalLongitude
-
-In order to add the decimal coordinates into the original df we create an x_y dataframe
-
-
-# Create extra dataframe to work with 
-
-
-
-# Remove geometry from dataframe 'input_interim_df'
-
-
-
-### Bind columns x_y and input_interim_df
-
-Join both df's to have the decimalLat & Lon
-
-
-### Integrate x-y coordinates in original dataframe
-
-We can safely substitute input_interim 
-
-
 # Occurrence core
 
-## Pre-processing
-
-Create a dataframe EVENT data only 
-
 ```{r}
-event <- input_data
+occurrence <- input_data
 ```
-
-## remove obsolete columns
-
 
 # Term mapping
 
@@ -157,36 +89,36 @@ Start with record-level terms which contain metadata about the dataset (which is
 ### datasetID
 
 ```{r}
-event %<>% mutate(dwc_datasetID = "https://doi.org/10.15468/XXXXX")
+occurrence %<>% mutate(dwc_datasetID = "complete this")
 ```
 ### type
 
 ```{r}
-event %<>% mutate(dwc_type = "Event")
+occurrence %<>% mutate(dwc_type = "Event")
 ```
 
 ### language
 
 ```{r}
-event %<>% mutate(dwc_language = "en") # e.g. "en"
+occurrence %<>% mutate(dwc_language = "en") # e.g. "en"
 ```
 
 ### license
 
 ```{r}
-event %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/") 
+occurrence %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/") 
 # e.g. "http://creativecommons.org/publicdomain/zero/1.0/"
 ```
 
 ### rightsHolder
 
 ```{r}
-event %<>% mutate(dwc_rightsHolder = "INBO") # e.g. "INBO"
+occurrence %<>% mutate(dwc_rightsHolder = "INBO") # e.g. "INBO"
 ```
 ### accessRights
 
 ```{r}
-event %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-use") 
+occurrence %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-use") 
 ```
 
 ### datasetID
@@ -198,91 +130,55 @@ event %<>% mutate(dwc_accessRights = "http://www.inbo.be/en/norms-for-data-use")
 ### institutionCode
 
 ```{r}
-event %<>% mutate(dwc_institutionCode = "INBO") # e.g. "INBO"
+occurrence %<>% mutate(dwc_institutionCode = "INBO") # e.g. "INBO"
 ```
 
-### CollectionCode
 
-
-```{r}
-event %<>% mutate(dwc_collectionCode = "FSFN")
-```
 
 
 ### datasetName
 
 ```{r}
-event %<>% mutate(dwc_datasetName = "FSFN: Forest soil classification - Nematoda, Flanders, Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+occurrence %<>% mutate(dwc_datasetName = "Legacy observations of the stag beetle (Lucanus cervus) in Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
 ```
 
 
 ### ownerInstitutionCode
 
 ```{r}
-event %<>% mutate(dwc_ownerInstitutionCode = "INBO | Ugent | UAntwerp")
+occurrence %<>% mutate(dwc_ownerInstitutionCode = "INBO")
 ```
 
 
 ### eventDate
 
 
-```{r}
-event %<>% mutate(dwc_eventDate = '1997-05')
-
-```
-
 
 ### eventID
 
 
-
-
-```{r}
-event %<>% mutate(dwc_eventID = str_c("SOIL:FSFN:EV:", dwc_eventDate, Site ))
-```
-
 ## samplingProtocol
 
 
-```{r}
-event %<>% mutate(dwc_samplingProtocol = 'pitfall traps') 
-
-```
 
 ### samplingEffort
 
-```{r}
-event %<>% mutate(dwc_samplingEffort = 'pitfall traps')
-
-```
 
 # Location
 
 ### locationID
 
-Need to create an eventID based on name and site ID
 
 ```{r}
-event %<>% mutate(dwc_locationID = Site)
-```
-
-```{r}
-event %<>%
-  rename(dwc_decimalLongitude = Longitude) %>%
-  rename(dwc_decimalLatitude = Latitude) %>%
+occurrence %<>%
   mutate(dwc_geodeticDatum = "WGS84") %>%
-  mutate(dwc_coordinateUncertaintyInMeters = "18")
+  mutate(dwc_coordinateUncertaintyInMeters = "30")
   
 ```
 
-```{r}
-event %<>%
-  mutate(dwc_decimalLongitude = round(dwc_decimalLongitude, digits = 5)) %>%
-  mutate(dwc_decimalLatitude = round(dwc_decimalLatitude, digits = 5))
-```
 
 ```{r}
-event %<>%   
+occurrence %<>%   
    mutate(dwc_decimalLatitude = as.character(format(dwc_decimalLatitude, nsmall = 5))) %>%
    mutate(dwc_decimalLongitude = as.character(format(dwc_decimalLongitude, nsmall = 5)))
 ```
@@ -290,22 +186,15 @@ event %<>%
 ### continent
 
 ```{r}
-event %<>% mutate(dwc_continent = "Europe") # e.g. "Belgium = BE"
+occurrence %<>% mutate(dwc_continent = "Europe") # e.g. "Belgium = BE"
 ```
 
 ### countryCode
 
-```{r}
-event %<>% mutate(dwc_countryCode = "BE") # e.g. "Belgium = BE"
-```
 
 ### municipality
 
 ### verbatimLocality
-
-```{r}
-event %<>% mutate(dwc_verbatimLocality = 'Site Name') 
-```
 
 ### verbatimcoordinates
 
@@ -315,15 +204,8 @@ event %<>% mutate(dwc_verbatimLocality = 'Site Name')
 
 ### verbatimcoordinatesystem
 
-```{r}
-event %<>% mutate(dwc_verbatimcoordinatesystem = "Lambert coordinates") # 
-```
 
 ### verbatimSRS
-
-```{r}
-event %<>% mutate(dwc_verbatimSRS = "Belgian Datum 1972")
-```
 
 ### decimalLatitude
 
@@ -339,102 +221,6 @@ event %<>% mutate(dwc_verbatimSRS = "Belgian Datum 1972")
 
 ## formation
 
-
-```{r}
-event %<>% mutate(dwc_formation = `Observation Region`)
-
-```
-## Post-processing
-
-Only keep the Darwin Core columns:
-
-```{r}
-event %<>% select(starts_with("dwc_"))
-```
-
-Drop the `dwc_` prefix:
-
-```{r}
-colnames(event) <- str_remove(colnames(event), "dwc_")
-```
-
-Preview data:
-
-```{r}
-event %>% head()
-```
-
-```{r}
-event <- mutate_all(event, as.character())
-```
-
-```{r}
-event %<>% unique()
-```
-
-Save to CSV:
-
-```{r}
-write_csv(event, here::here("datasets", "nematoda", "data", "processed", "event.csv"), na = "")
-```
-
-
-
-
-Create a dataframe OCCURRENCE data only 
-
-```{r}
-occurrence <- input_data
-```
-
-
-The following terms contain information about the taxon:
-
-### add row numbers to genrate occurrenceID unique
-
-
-```{r}
-occurrence %<>% mutate(ID_row = row_number())
-```
-
-
-### basisOfRecord
-
-
-```{r}
-occurrence %<>% mutate(dwc_basisOfRecord = "HumanObservation")
-```
-
-### informationWithHeld
-
-### dataGeneralizations
-
-### occurrenceID
-
-```{r}
-occurrence %<>% mutate(occurrenceID = row_number()) %<>%
-                mutate(dwc_occurrenceID = str_c("SOIL:NEMATODA:", occurrenceID))
-  
-```
-
-
-### recordedBy
-
-```{r}
-occurrence %<>% mutate(dwc_recordedBy = 'Luc De Bruyn | Wim Jacobs | Frans Janssens')
-```
-
-### individualCount
-
-```{r}
-occurrence %<>%  mutate(dwc_individualCount = count) %<>%
-                 mutate(dwc_individualCount = ifelse(is.na(dwc_individualCount), 0, dwc_individualCount))
-                
-```
-
-
-### occurrenceStatus
-
 ```{r}
 occurrence %<>% 
     ##select(individualCount) %>%
@@ -443,71 +229,22 @@ occurrence %<>%
                                         is.na(dwc_individualCount) ~ "Absent" ))
 
 ```
-
-
-## eventID
-
-Need to create an eventID based on name and site ID
-
-```{r}
-occurrence %<>% mutate(dwc_eventDate = '1997-05')
-
-```
-
-
-```{r}
-
-occurrence %<>% mutate(dwc_eventID = str_c("SOIL:FSFN:EV:", dwc_eventDate, Site ))
-```
-
-mutate(dwc_eventID = str_c("SOIL:FSFN:EV", dwc_eventDate, Site ))
-
-
-# identification
-
-## identifiedBy
-
-```{r}
-occurrence %<>% mutate(dwc_identifiedBy = 'Bart De Schutter | Jozef Coosemans	')
-```
-### CollectionCode
-
-
-```{r}
-occurrence %<>% mutate(dwc_collectionCode = "FSFN")
-```
-
-
-#taxon
-
-### scientificName 
-
-```{r}
-occurrence %<>% mutate(dwc_scientificName = scientificName)
-```
-
 ### kingdom
 
 ```{r}
 occurrence %<>% mutate(dwc_kingdom = "Animalia")
 ```
-
-### scientificNameAuthorship
-
-
 ### taxonRank
 
 ```{r}
-occurrence %<>% mutate(taxonRank = "species")
+occurrence %<>% mutate(dwc_taxonRank = "species")
 ```
 
 ### nomenclaturalCode
 
 ```{r}
-occurrence %<>% mutate(nomenclaturalCode = "ICZN") # e.g. "ICZN"
+occurrence %<>% mutate(dwc_nomenclaturalCode = "ICZN") # e.g. "ICZN"
 ```
-
-
 
 ## Post-processing
 
@@ -533,27 +270,91 @@ occurrence %>% head()
 occurrence <- mutate_all(occurrence, as.character())
 ```
 
-Define the order of the output columns
-
-
-Preview data:
+```{r}
+occurrence %<>% unique()
+```
 
 ```{r}
-occurrence %>% head()
+occurrence %<>% mutate(ID_row = row_number())
 ```
+
 
 Save to CSV:
 
 ```{r}
-write_csv(occurrence, here::here("datasets", "nematoda", "data", "processed", "occurrence.csv"), na = "")
+write_csv(occurrence, here::here("datasets", "stagbeetle-legacy-occurrences", "data", "processed", "occurrence.csv"), na = "")
 ```
+
+
+
+
+
+### basisOfRecord
+
+
+
+### informationWithHeld
+
+### dataGeneralizations
+
+### occurrenceID
+
+### recordedBy
+
+### individualCount
+
+
+### occurrenceStatus
+
+
+
+## eventID
+
+## identification
+
+## identifiedBy
+
+
+### CollectionCode
+
+
+#taxon
+
+### scientificName 
+
+
+
+### scientificNameAuthorship
+
+
+
+
+
+
+
+
+## Post-processing
+
 
 
 Visualize data on a map
 
 ```{r}
-occurrenceMap <- event
+occurrenceMap <- occurrence
 ```
+
+```{r}
+occurrenceMap <- occurrenceMap %>%
+  filter(decimalLatitude != " ") %>%           # Eerst spaties verwijderen
+  mutate(decimalLatitude = as.numeric(decimalLatitude))  # Dan pas omzetten naar numeriek
+```
+```{r}
+occurrenceMap <- occurrenceMap %>%
+  filter(decimalLongitude != " ") %>%           # Eerst spaties verwijderen
+  mutate(decimalLongitude = as.numeric(decimalLongitude))  # Dan pas omzetten naar numeriek
+```
+
+
 
 ```{r}
 occurrenceMap$decimalLatitude <- as.numeric(occurrenceMap$decimalLatitude)
@@ -567,27 +368,16 @@ occurrenceMap$decimalLongitude <- as.numeric(occurrenceMap$decimalLongitude)
 head(occurrenceMap)
 ```
 
-
-
-
 ```{r}
-occurrence_extended <- inner_join(occurrence, event, by = NULL)
-```
-```{r}
-occurrence_extended$decimalLatitude <- as.numeric(occurrence_extended$decimalLatitude)
-```
 
-```{r}
-occurrence_extended$decimalLongitude <- as.numeric(occurrence_extended$decimalLongitude)
 ```
 
 
 
-
 ```{r}
-head(occurrence_extended)
+head(occurrence)
 
-mapview(occurrence_extended, xcol = "decimalLongitude", ycol = "decimalLatitude", crs = 4269, grid = FALSE)
+mapview(occurrenceMap, xcol = "decimalLongitude", ycol = "decimalLatitude", crs = 4269, grid = FALSE)
 
 ```
 
