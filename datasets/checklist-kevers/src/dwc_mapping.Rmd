@@ -1,0 +1,529 @@
+---
+title: "Darwin Core mapping"
+subtitle: "For: kevers checklist"
+author:
+- author_1
+- author_2
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+#  pdf_document:
+#    df_print: kable
+#    number_sections: yes
+#    toc: yes
+#    toc_depth: 3
+---
+
+# Setup 
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = TRUE)
+```
+
+Install required libraries (only if the libraries have not been installed before):
+
+```{r}
+installed <- rownames(installed.packages())
+required <- c("tidyverse", "tidylog", "magrittr", "here", "janitor", "readxl", "digest", "rgbif")
+if (!all(required %in% installed)) {
+  install.packages(required[!required %in% installed])
+}
+```
+
+Load libraries:
+
+```{r message = FALSE}
+library(tidyverse)      # To do data science
+library(tidylog)        # To provide feedback on dplyr functions
+library(magrittr)       # To use %<>% pipes
+library(here)           # To find files
+library(janitor)        # To clean input data
+library(readxl)         # To read Excel files
+library(digest)         # To generate hashes
+library(rgbif)          # To use GBIF services
+```
+
+# Read source data
+
+Create a data frame `input_data` from the source data:
+
+```{r}
+input_data <- read_excel(path = here("datasets","checklist-kevers","data", "raw", "Checklist_coleoptera.xlsx")) 
+```
+
+Preview data:
+
+```{r}
+input_data %>% head(n = 5)
+```
+
+# Process source data
+
+## Tidy data
+
+Clean data somewhat:
+
+```{r}
+input_data %<>% remove_empty("rows")
+```
+
+```{r}
+input_data %<>% clean_names()
+```
+
+# better solution tahn paste(genus, ... ), deals with the NA's in subspecies
+
+```{r}
+input_data %<>%
+  unite("scientificName", genus, species, subspecies, species_auctor,
+        sep = " ", na.rm = TRUE, remove = FALSE)
+```
+
+
+```{r}
+input_data %<>% mutate(kingdom = 'animalia')
+```
+```{r}
+duplicates <- input_data %>%
+  group_by(scientificName) %>%
+  filter(n() > 1) %>%
+  arrange(scientificName)
+```
+
+
+
+## Scientific names
+
+Use the [GBIF nameparser](https://www.gbif.org/tools/name-parser) to retrieve nomenclatural information for the scientific names in the checklist:
+
+```{r}
+parsed_names <- input_data %>%
+  distinct(scientificName) %>%
+  pull() %>% # Create vector from dataframe
+  parsenames() # An rgbif function
+```
+
+Show scientific names with nomenclatural issues, i.e. not of `type = SCIENTIFIC` or that could not be fully parsed. Note: these are not necessarily incorrect.
+
+```{r}
+parsed_names %>%
+  select(scientificname, type, parsed, parsedpartially, rankmarker) %>%
+  filter(!(type == "SCIENTIFIC" & parsed == "TRUE" & parsedpartially == "FALSE"))
+```
+
+```{r}
+parsed_names2 <- parsed_names %>%
+  select(scientificname, type, parsed, parsedpartially, rankmarker) %>%
+  filter(!(type == "SCIENTIFIC" & parsed == "TRUE" & parsedpartially == "TRUE"))
+```
+
+Correct names and reparse:
+
+```{r correct and reparse, eval=FALSE, include=FALSE}
+input_data %<>% mutate(scientific_name = recode(scientific_name,
+  "AseroÙ rubra" = "Asero rubra"
+))
+# Redo parsing
+parsed_names <- input_data %>%
+  distinct(scientific_name) %>%
+  pull() %>%
+  parsenames()
+# Show names with nomenclatural issues again
+parsed_names %>%
+  select(scientificname, type, parsed, parsedpartially, rankmarker) %>%
+  filter(!(type == "SCIENTIFIC" & parsed == "TRUE" & parsedpartially == "FALSE"))
+```
+
+## Taxon ranks
+
+The nameparser function also provides information about the rank of the taxon (in `rankmarker`). Here we join this information with our checklist. Cleaning these ranks will done in the Taxon Core mapping:
+
+```{r}
+input_data %<>% left_join(
+  parsed_names %>%
+  select(scientificname, rankmarker),
+  by = c("scientificName" = "scientificname"))
+```
+```{r}
+Duplicates_taxonID <- input_data %>%
+  group_by(taxonID) %>%
+  filter(n() > 1) %>%
+  arrange(taxonID)
+```
+
+
+
+## Taxon IDs
+
+To link taxa with information in the extension(s), each taxon needs a unique and relatively stable `taxonID`. Here we create one in the form of `dataset_shortname:taxon:hash`, where `hash` is unique code based on scientific name and kingdom (that will remain the same as long as scientific name and kingdom remain the same):
+
+```{r}
+vdigest <- Vectorize(digest) # Vectorize digest function to work with vectors
+input_data %<>% mutate(taxon_id = paste(
+  "checklist_coleoptera", # e.g. "alien-fishes-checklist"
+  "taxon",
+  vdigest(paste(scientificName, kingdom), algo = "md5"),
+  sep = ":"
+))
+```
+
+## Preview data
+
+Show the number of taxa and distributions per kingdom and rank:
+
+```{r}
+input_data %>%
+  group_by(kingdom, rankmarker) %>%
+  summarize(
+    `# taxa` = n_distinct(taxon_id),
+    `# distributions` = n()
+  ) %>%
+  adorn_totals("row")
+```
+
+Preview data:
+
+```{r}
+input_data %>% head()
+```
+
+# Taxon core
+
+```{r}
+
+duplicates <- input_data[duplicated(input_data), ]
+```
+
+```{r}
+duplicates <- input_data %>%
+  group_by(across(everything())) %>%
+  filter(n() > 1)
+```
+
+
+## Pre-processing
+
+Create a dataframe with unique taxa only (ignoring multiple distribution rows):
+
+```{r}
+taxon <- input_data %>% distinct(taxon_id, .keep_all = TRUE)
+
+```
+# show duplicate rows (the ones removed by distinct)
+
+```{r}
+
+duplicates <- input_data[duplicated(input_data), ]
+```
+
+
+
+## Term mapping
+
+Map the data to [Darwin Core Taxon](http://rs.gbif.org/core/dwc_taxon_2015-04-24.xml).
+
+Start with record-level terms which contain metadata about the dataset (which is generally the same for all records).
+
+### language
+
+```{r}
+taxon %<>% mutate(dwc_language = "en") # e.g. "en"
+```
+
+### license
+
+```{r}
+taxon %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.0/") # e.g. "http://creativecommons.org/publicdomain/zero/1.0/"
+```
+
+### rightsHolder
+
+```{r}
+taxon %<>% mutate(dwc_rightsHolder = "INBOr") # e.g. "INBO"
+```
+
+### datasetID
+
+```{r}
+taxon %<>% mutate(dwc_datasetID = "my_dataset_doi") # e.g. "https://doi.org/10.15468/xvuzfh"
+```
+
+### institutionCode
+
+```{r}
+taxon %<>% mutate(dwc_institutionCode = "INBO") # e.g. "INBO"
+```
+
+### datasetName
+
+```{r}
+taxon %<>% mutate(dwc_datasetName = "my_dataset_title") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+```
+
+The following terms contain information about the taxon:
+
+### taxonID
+
+```{r}
+taxon %<>% mutate(dwc_taxonID = taxon_id)
+```
+
+### scientificName
+
+```{r}
+taxon %<>% mutate(dwc_scientificName = scientific_name)
+```
+
+### kingdom
+
+Inspect values:
+
+```{r}
+taxon %>%
+  group_by(kingdom) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+taxon %<>% mutate(dwc_kingdom = kingdom)
+```
+
+### taxonRank
+
+Inspect values:
+
+```{r}
+taxon %>%
+  group_by(rankmarker) %>%
+  count()
+```
+
+Map values by recoding to the [GBIF rank vocabulary](http://rs.gbif.org/vocabulary/gbif/rank_2015-04-24.xml):
+
+```{r}
+taxon %<>% mutate(dwc_taxonRank = recode(rankmarker,
+  "agg."      = "speciesAggregate",
+  "infrasp."  = "infraspecificname",
+  "sp."       = "species",
+  "var."      = "variety",
+  .default    = "",
+  .missing    = ""
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+taxon %>%
+  group_by(rankmarker, dwc_taxonRank) %>%
+  count()
+```
+
+### nomenclaturalCode
+
+```{r}
+taxon %<>% mutate(dwc_nomenclaturalCode = "my_nomenclaturalCode") # e.g. "ICZN"
+```
+
+## Post-processing
+
+Only keep the Darwin Core columns:
+
+```{r}
+taxon %<>% select(starts_with("dwc_"))
+```
+
+Drop the `dwc_` prefix:
+
+```{r}
+colnames(taxon) <- str_remove(colnames(taxon), "dwc_")
+```
+
+Preview data:
+
+```{r}
+taxon %>% head()
+```
+
+Save to CSV:
+
+```{r}
+write_csv(taxon, here("data", "processed", "taxon.csv"), na = "")
+```
+
+# Distribution extension
+
+## Pre-processing
+
+Create a dataframe with all data:
+
+```{r}
+distribution <- input_data
+```
+
+## Term mapping
+
+Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/distribution.xml).
+
+### taxonID
+
+```{r}
+distribution %<>% mutate(dwc_taxonID = taxon_id)
+```
+
+### locality
+
+Inspect values:
+
+```{r}
+distribution %>%
+  group_by(country_code, locality) %>%
+  count()
+```
+
+Map values to `locality` if provided, otherwise use the country name:
+
+```{r}
+distribution %<>% mutate(dwc_locality = case_when(
+  !is.na(locality) ~ locality,
+  country_code == "BE" ~ "Belgium",
+  country_code == "GB" ~ "United Kingdom",
+  country_code == "MK" ~ "Macedonia",
+  country_code == "NL" ~ "The Netherlands",
+  TRUE ~ "" # In other cases leave empty
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  group_by(country_code, locality, dwc_locality) %>%
+  count()
+```
+
+### countryCode
+
+Inspect values:
+
+```{r}
+distribution %>%
+  group_by(country_code) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(dwc_countryCode = country_code) 
+```
+
+### occurrenceStatus
+
+Inspect values:
+
+```{r}
+distribution %>%
+  group_by(occurrence_status) %>%
+  count()
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(dwc_occurrenceStatus = occurrence_status) 
+```
+
+### threatStatus
+
+Inspect values:
+
+```{r}
+distribution %>%
+  group_by(threat_status) %>%
+  count()
+```
+
+Map values by recoding to the [IUCN threat status vocabulary](http://rs.gbif.org/vocabulary/iucn/threat_status.xml):
+
+```{r}
+distribution %<>% mutate(dwc_threatStatus = recode(threat_status,
+  "endangered" = "EN",
+  "vulnerable" = "VU"
+))
+```
+
+Inspect mapped values: 
+
+```{r}
+distribution %>%
+  group_by(threat_status, dwc_threatStatus) %>%
+  count()
+```
+
+### source
+
+Inspect values:
+
+```{r}
+distribution %>%
+  group_by(source) %>%
+  count() %>%
+  head() # Remove to show all values
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(dwc_source = source) 
+```
+
+### occurrenceRemarks
+
+Inspect values:
+
+```{r}
+distribution %>%
+  group_by(remarks) %>%
+  count() %>%
+  head() # Remove to show all values
+```
+
+Map values:
+
+```{r}
+distribution %<>% mutate(dwc_occurrenceRemarks = remarks) 
+```
+
+## Post-processing
+
+Only keep the Darwin Core columns:
+
+```{r}
+distribution %<>% select(starts_with("dwc_"))
+```
+
+Drop the `dwc_` prefix:
+
+```{r}
+colnames(distribution) <- str_remove(colnames(distribution), "dwc_")
+```
+
+Preview data:
+
+```{r}
+distribution %>% head()
+```
+
+Save to CSV:
+
+```{r}
+write_csv(distribution, here("data", "processed", "distribution.csv"), na = "")
+```
