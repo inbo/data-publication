@@ -149,12 +149,9 @@ input_data %<>% left_join(
   select(scientificname, rankmarker),
   by = c("scientificName" = "scientificname"))
 ```
-```{r}
-Duplicates_taxonID <- input_data %>%
-  group_by(taxonID) %>%
-  filter(n() > 1) %>%
-  arrange(taxonID)
-```
+
+
+
 
 
 
@@ -172,6 +169,13 @@ input_data %<>% mutate(taxon_id = paste(
 ))
 ```
 
+
+```{r}
+Duplicates_taxonID <- input_data %>%
+  group_by(taxon_id) %>%
+  filter(n() > 1) %>%
+  arrange(taxon_id)
+```
 ## Preview data
 
 Show the number of taxa and distributions per kingdom and rank:
@@ -244,7 +248,7 @@ taxon %<>% mutate(dwc_license = "http://creativecommons.org/publicdomain/zero/1.
 ### rightsHolder
 
 ```{r}
-taxon %<>% mutate(dwc_rightsHolder = "INBOr") # e.g. "INBO"
+taxon %<>% mutate(dwc_rightsHolder = "INBO") # e.g. "INBO"
 ```
 
 ### datasetID
@@ -262,7 +266,7 @@ taxon %<>% mutate(dwc_institutionCode = "INBO") # e.g. "INBO"
 ### datasetName
 
 ```{r}
-taxon %<>% mutate(dwc_datasetName = "my_dataset_title") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
+taxon %<>% mutate(dwc_datasetName = "Checklist of Coleoptera in Belgium") # e.g. "Checklist of non-native freshwater fishes in Flanders, Belgium"
 ```
 
 The following terms contain information about the taxon:
@@ -276,7 +280,7 @@ taxon %<>% mutate(dwc_taxonID = taxon_id)
 ### scientificName
 
 ```{r}
-taxon %<>% mutate(dwc_scientificName = scientific_name)
+taxon %<>% mutate(dwc_scientificName = scientificName)
 ```
 
 ### kingdom
@@ -329,7 +333,7 @@ taxon %>%
 ### nomenclaturalCode
 
 ```{r}
-taxon %<>% mutate(dwc_nomenclaturalCode = "my_nomenclaturalCode") # e.g. "ICZN"
+taxon %<>% mutate(dwc_nomenclaturalCode = "ICZN") # e.g. "ICZN"
 ```
 
 ## Post-processing
@@ -355,7 +359,7 @@ taxon %>% head()
 Save to CSV:
 
 ```{r}
-write_csv(taxon, here("data", "processed", "taxon.csv"), na = "")
+write_csv(taxon, here("datasets","checklist-kevers","data", "processed", "taxon.csv"), na = "")
 ```
 
 # Distribution extension
@@ -380,13 +384,13 @@ distribution %<>% mutate(dwc_taxonID = taxon_id)
 
 ### locality
 
+```{r}
+distribution %<>% mutate(dwc_countryCode = "BE")
+```
+
 Inspect values:
 
-```{r}
-distribution %>%
-  group_by(country_code, locality) %>%
-  count()
-```
+
 
 Map values to `locality` if provided, otherwise use the country name:
 
@@ -399,6 +403,12 @@ distribution %<>% mutate(dwc_locality = case_when(
   country_code == "NL" ~ "The Netherlands",
   TRUE ~ "" # In other cases leave empty
 ))
+```
+
+```{r}
+distribution %>%
+  group_by(dwc_countryCode, locality) %>%
+  count()
 ```
 
 Inspect mapped values: 
