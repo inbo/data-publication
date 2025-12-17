@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = TRUE)
 
 Install required libraries (only if the libraries have not been installed before):
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 installed <- rownames(installed.packages())
 required <- c("tidyverse", "tidylog", "magrittr", "here", "janitor", "readxl", "digest", "rgbif")
 if (!all(required %in% installed)) {
@@ -46,6 +46,8 @@ library(janitor)        # To clean input data
 library(readxl)         # To read Excel files
 library(digest)         # To generate hashes
 library(rgbif)          # To use GBIF services
+library(fuzzyjoin)
+library(stringdist)
 ```
 
 # Read source data
@@ -53,8 +55,14 @@ library(rgbif)          # To use GBIF services
 Create a data frame `input_data` from the source data:
 
 ```{r}
-input_data <- read_excel(path = here("datasets","checklist-kevers","data", "raw", "Checklist_coleoptera.xlsx")) 
+input_data <- read_excel(path = here("datasets","checklist-kevers","data", "raw", "Checklist_coleoptera_update.xlsx")) 
 ```
+
+```{r}
+reference_data <- read_excel(path = here("datasets","checklist-kevers","data", "raw", "referenties2025_GBIF_ok.xlsx")) 
+```
+
+
 
 Preview data:
 
@@ -88,6 +96,8 @@ input_data %<>%
 ```{r}
 input_data %<>% mutate(kingdom = 'animalia')
 ```
+
+
 ```{r}
 duplicates <- input_data %>%
   group_by(scientificName) %>%
@@ -277,11 +287,37 @@ The following terms contain information about the taxon:
 taxon %<>% mutate(dwc_taxonID = taxon_id)
 ```
 
+```{r}
+taxon %<>% mutate(
+  dwc_establishmentMeans = case_when(
+    is.na(non_native)          ~ "native",        # true NA (missing value)
+    non_native == "NA"         ~ "not applied",   # literal string "NA"
+    non_native == "N"          ~ "non native",    # code for non-native
+    non_native == "Non-native" ~ "non native", 
+    TRUE                     ~ ""               # default (optional)
+  )
+)
+```
+
+
+
+
+
+
 ### scientificName
 
 ```{r}
 taxon %<>% mutate(dwc_scientificName = scientificName)
 ```
+
+
+
+```{r}
+taxon %<>% mutate(dwc_scientificNameAuthorship = species_auctor)
+```
+
+
+
 
 ### kingdom
 
@@ -298,6 +334,26 @@ Map values:
 ```{r}
 taxon %<>% mutate(dwc_kingdom = kingdom)
 ```
+
+
+
+```{r}
+taxon %<>% mutate(dwc_genus = genus)
+```
+```{r}
+taxon %<>% mutate(dwc_family = family)
+```
+
+
+
+```{r}
+taxon %<>% mutate(dwc_subfamily = subfamily)
+```
+
+```{r}
+taxon %<>% mutate(dwc_infraspecificEpithet = subspecies)
+```
+
 
 ### taxonRank
 
@@ -381,6 +437,22 @@ Map the data to [Species Distribution](http://rs.gbif.org/extension/gbif/1.0/dis
 ```{r}
 distribution %<>% mutate(dwc_taxonID = taxon_id)
 ```
+### remarks occurrence
+
+```{r}
+distribution %<>% mutate(dwc_occurrenceRemarks = remarks)
+```
+```{r}
+distribution %<>% mutate(
+  dwc_establishmentMeans = case_when(
+    is.na(non_native)          ~ "native",        # true NA (missing value)
+    non_native == "NA"         ~ "not applied",   # literal string "NA"
+    non_native == "N"          ~ "non native",    # code for non-native
+    non_native == "Non-native" ~ "non native", 
+    TRUE                     ~ ""               # default (optional)
+  )
+)
+```
 
 ### locality
 
@@ -388,7 +460,22 @@ distribution %<>% mutate(dwc_taxonID = taxon_id)
 distribution %<>% mutate(dwc_countryCode = "BE")
 ```
 
+```{r}
+distribution <- distribution %>%
+  pivot_longer(
+    cols = c(bel, vla, bru, wal),
+    names_to = "dwc_stateProvince",
+    values_to = "dwc_eventDate"
+  ) %>%
+  filter(!is.na(year))  # optioneel: NA-records wegfilteren
+```
+
+
+
+
 Inspect values:
+
+
 
 
 
@@ -396,144 +483,218 @@ Map values to `locality` if provided, otherwise use the country name:
 
 ```{r}
 distribution %<>% mutate(dwc_locality = case_when(
-  !is.na(locality) ~ locality,
-  country_code == "BE" ~ "Belgium",
-  country_code == "GB" ~ "United Kingdom",
-  country_code == "MK" ~ "Macedonia",
-  country_code == "NL" ~ "The Netherlands",
+  !is.na(dwc_countryCode) ~ dwc_countryCode,
+  dwc_countryCode == "BE" ~ "Belgium",
+  dwc_countryCode == "GB" ~ "United Kingdom",
+  dwc_countryCode == "MK" ~ "Macedonia",
+  dwc_countryCode == "NL" ~ "The Netherlands",
   TRUE ~ "" # In other cases leave empty
 ))
 ```
 
 ```{r}
 distribution %>%
-  group_by(dwc_countryCode, locality) %>%
+  group_by(dwc_countryCode, dwc_locality) %>%
   count()
 ```
 
 Inspect mapped values: 
 
-```{r}
-distribution %>%
-  group_by(country_code, locality, dwc_locality) %>%
-  count()
-```
+
 
 ### countryCode
 
-Inspect values:
-
-```{r}
-distribution %>%
-  group_by(country_code) %>%
-  count()
-```
-
-Map values:
-
-```{r}
-distribution %<>% mutate(dwc_countryCode = country_code) 
-```
 
 ### occurrenceStatus
 
 Inspect values:
 
-```{r}
-distribution %>%
-  group_by(occurrence_status) %>%
-  count()
-```
 
 Map values:
 
 ```{r}
-distribution %<>% mutate(dwc_occurrenceStatus = occurrence_status) 
-```
-
-### threatStatus
-
-Inspect values:
-
-```{r}
-distribution %>%
-  group_by(threat_status) %>%
-  count()
-```
-
-Map values by recoding to the [IUCN threat status vocabulary](http://rs.gbif.org/vocabulary/iucn/threat_status.xml):
-
-```{r}
-distribution %<>% mutate(dwc_threatStatus = recode(threat_status,
-  "endangered" = "EN",
-  "vulnerable" = "VU"
-))
-```
-
-Inspect mapped values: 
-
-```{r}
-distribution %>%
-  group_by(threat_status, dwc_threatStatus) %>%
-  count()
+distribution %<>% mutate(dwc_occurrenceStatus = case_when(
+              !is.na(dwc_eventDate) ~ "present",
+              is.na(dwc_eventDate) ~ "absent" ))
 ```
 
 ### source
 
-Inspect values:
+
 
 ```{r}
-distribution %>%
-  group_by(source) %>%
-  count() %>%
-  head() # Remove to show all values
+distribution %<>% mutate(dwc_source = coalesce(previous_checklist_used, reference, additional_new_reference, family_subfamily_reference) )
 ```
+### split in 3 distribution files BE-wal-VL
 
-Map values:
 
 ```{r}
-distribution %<>% mutate(dwc_source = source) 
+distribution %<>% mutate(dwc_stateProvince = case_when(
+    dwc_stateProvince == "bel" ~ "Belgium",
+    dwc_stateProvince == "vla" ~ "Flanders",
+    dwc_stateProvince == "wal" ~ "Wallonia",
+    dwc_stateProvince == "bru" ~ "Brussels",
+    TRUE ~ NA_character_
+  ))
 ```
-
-### occurrenceRemarks
-
-Inspect values:
 
 ```{r}
-distribution %>%
-  group_by(remarks) %>%
-  count() %>%
-  head() # Remove to show all values
+distribution_flanders <- distribution %>% 
+  filter(dwc_stateProvince == "Flanders")
+
 ```
-
-Map values:
-
 ```{r}
-distribution %<>% mutate(dwc_occurrenceRemarks = remarks) 
+
+
+distribution_wallonia <- distribution %>% 
+  filter(dwc_stateProvince == "Wallonia")
+
+distribution_brussels <- distribution %>% 
+  filter(dwc_stateProvince == "Brussels")
+
+distribution_belgium <- distribution %>% 
+  filter(dwc_stateProvince == "Belgium")
+
 ```
+
 
 ## Post-processing
 
 Only keep the Darwin Core columns:
 
 ```{r}
-distribution %<>% select(starts_with("dwc_"))
+distribution_belgium %<>% select(starts_with("dwc_"))
+
+distribution_flanders %<>% select(starts_with("dwc_"))
+
+distribution_brussels %<>% select(starts_with("dwc_"))
+
+distribution_wallonia %<>% select(starts_with("dwc_"))
 ```
 
 Drop the `dwc_` prefix:
 
 ```{r}
-colnames(distribution) <- str_remove(colnames(distribution), "dwc_")
+colnames(distribution_belgium) <- str_remove(colnames(distribution_belgium), "dwc_")
+
+colnames(distribution_flanders) <- str_remove(colnames(distribution_flanders), "dwc_")
+
+colnames(distribution_brussels) <- str_remove(colnames(distribution_brussels), "dwc_")
+
+colnames(distribution_wallonia) <- str_remove(colnames(distribution_wallonia), "dwc_")
 ```
 
 Preview data:
 
+
 ```{r}
-distribution %>% head()
+distribution_flanders %>% head()
+```
+
+```{r}
+distribution_belgium %>% head()
 ```
 
 Save to CSV:
 
 ```{r}
-write_csv(distribution, here("data", "processed", "distribution.csv"), na = "")
+write_csv(distribution_flanders, here("datasets" ,"checklist-kevers", "data", "processed", "distribution_flanders.csv"), na = "")
 ```
+
+```{r}
+write_csv(distribution_belgium, here("datasets" ,"checklist-kevers", "data", "processed", "distribution_belgium.csv"), na = "")
+```
+
+```{r}
+write_csv(distribution_wallonia, here("datasets" ,"checklist-kevers", "data", "processed", "distribution_wallonia.csv"), na = "")
+```
+
+```{r}
+write_csv(distribution_brussels, here("datasets" ,"checklist-kevers", "data", "processed", "distribution_brussels.csv"), na = "")
+```
+
+
+
+### references
+
+```{r}
+references <- input_data %>% distinct(taxon_id, .keep_all = TRUE)
+
+```
+```{r}
+references %<>% mutate(dwc_source = coalesce(previous_checklist_used, reference, additional_new_reference, family_subfamily_reference, "unknown") )
+```
+
+## fuzzy join reference_data
+
+```{r}
+references$dwc_source <- as.character(references$dwc_source)
+reference_data$ScienticAuthorship <- as.character(reference_data$ScienticAuthorship)
+```
+
+```{r}
+references <- references %>%
+  mutate(
+    match_input = coalesce(dwc_source, reference, "Unknown")
+  )
+```
+```{r}
+dist_mat <- stringdistmatrix(
+  a = references$match_input,
+  b = reference_data$ScientificAuthorship,
+  method = "osa"   # Optimal String Alignment
+)
+```
+
+```{r}
+best_match_idx <- apply(dist_mat, 1, which.min)
+best_dist <- apply(dist_mat, 1, min)
+```
+
+
+```{r}
+references_matched <- references %>%
+  mutate(
+    matched_reference = reference_data$ScientificAuthorship[best_match_idx],
+    match_distance = best_dist
+  )
+```
+
+
+```{r}
+references_matched <- stringdist_left_join(
+  references,          # linker dataframe: alles behouden
+  reference_data,      # rechter dataframe: fuzzy match tegen deze kolom
+  by = c("dwc_source" = "ScientificAuthorship"),
+  max_dist = 2,        # maximale fuzzy afstand
+  distance_col = "dist"
+)
+```
+
+
+
+```{r}
+
+references_match <- references %>%
+  stringdist_left_join(reference_data,
+                       by = c("ScienticAuthorship" = "dwc_source" ),
+                       max_dist = 2,          # pas aan: hoe tolerant wil je zijn?
+                       distance_col = "dist") %>%
+  select(-col) %>%
+  group_by(ScienticAuthorship) %>%
+  slice_min(dist, n = 1) %>%   # kies de beste match per record
+  ungroup()
+
+```
+
+```{r}
+test <- fuzzyjoin::stringdist_inner_join(
+  references,
+  reference_data,
+  by = c("ScientificAuthorship" = "dwc_source"),
+  max_dist = 2,
+  distance_col = "dist"
+)
+```
+
+
