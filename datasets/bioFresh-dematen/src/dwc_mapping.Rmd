@@ -383,7 +383,7 @@ event %<>% mutate(nomenclaturalCode = "ICZN") # e.g. "ICZN"
 
 
 ```{r}
-event <- mutate_all(occurrence, as.character())
+event <- mutate_all(event, as.character())
 ```
 
 Define the order of the output columns
