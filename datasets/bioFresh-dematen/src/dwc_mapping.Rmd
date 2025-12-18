@@ -175,6 +175,47 @@ occurrence <- input_interim_occ
 ```
 
 
+```{r}
+occurrence %<>% mutate(organismQuantityType = "CPUE, Number of Specimens per Fike per Day")
+```
+
+
+```{r}
+# Step 1: convert scientificName to character first
+occurrence$scientificName <- as.character(occurrence$scientificName)
+
+
+```
+
+
+```{r}
+# Replace invalid bytes with a placeholder or remove them
+occurrence$scientificName <- iconv(occurrence$scientificName, from = "", to = "UTF-8", sub = "")
+```
+
+```{r}
+occurrence %<>% mutate (verbatimScientificNAme = scientificName)
+```
+# .*$ → everything after it until the end of the string
+
+
+```{r}
+# Step 2: clean 'spec.', 'sp.', 'spp.' only in character strings
+occurrence <- occurrence %>%
+  mutate(
+    scientificName = ifelse(
+      is.na(scientificName),
+      NA_character_,
+      trimws(gsub("\\s+(spec|sp|spp)\\.*$", "", scientificName, ignore.case = TRUE))
+    ),
+    occurrenceStatus = case_when(
+      is.na(organismQuantity) ~ NA_character_,
+      organismQuantity > 0 ~ "present",
+      TRUE ~ "absent"
+    )
+  )
+```
+
 
 ## remove obsolete columns
 
