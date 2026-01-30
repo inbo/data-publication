@@ -1,0 +1,507 @@
+---
+title: "Marternetwerk Obs. small & medium-sized carnivores"
+subtitle: "INBO data mobilization from SQL db to DarwinCore mapping"
+author: "Stijn Cooleman"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    df_print: paged
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    code_folding: hide
+---
+
+Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = TRUE)
+```
+
+```{r libraries, include=FALSE}
+# Load libraries:
+library(tidyverse)      # to do data science
+library(here)           # to work easily with paths
+library(sf)             # to work with geospatial vector data
+library(leaflet)        # to make dynamic leaflet maps
+library(mapview)        # to view occurrences on map for basic QC
+library(stringr)        # to adjust strings
+remotes::install_github("hrbrmstr/mgrs")
+library(mgrs)
+```
+
+# Marternetwerk (MNW) data mobilization
+
+Hereby, we will:
+
+1.  read and explore MNW data
+2.  preprocess MNW data
+3.  create occurrence.csv files with dwc-mapping for high and low resolution versions of the dataset
+
+
+## Read and explore MNW data
+
+### Read MNW data exported from SQL database based on R script internally shared at the inbo github in the fis-carnivoren folder 
+Regarding the project Marternetwerk output: [Marternetwerk-observations-sql-export-in-csv.Rmd](https://github.com/inbo/fis-carnivoren/tree/main/Projecten/Marternetwerk/Output/Marternetwerk-observations-sql-export-in-csv.Rmd)
+```{r}
+ds_mnw_all_obs <- read.csv("./ds_mnw_all_obs.csv")
+```
+
+### Browse some data records
+```{r}
+# Preview with the first 30 rows of the dataset:
+head(ds_mnw_all_obs, n = 30)
+```
+
+This dataset currently contains `r nrow(ds_mnw_all_obs)` relevant records in total. 
+
+### Taxonomic information
+```{r}
+# Taxa present in the dataset:
+ds_mnw_all_obs %>% count(scientificName, vernacularName, taxonRank, name = "n") %>%
+  arrange(desc(n))
+```
+
+## Preprocess MNW data
+
+### Converting Lambert X & Y to decimal lon & lat
+```{r}
+# Select subdataset of records with Lambert X & Y filled in
+sbs_mnw_all_BD72 <- ds_mnw_all_obs %>% filter(LambertX > 0)
+```
+
+```{r}
+# Preview with the first 30 rows of that subdataset:
+head(sbs_mnw_all_BD72, n = 30)
+```
+
+```{r Converting Lambert X&Y to decimal lon&lat, include=FALSE}
+# Copy Lambert X & Y in extra variables to retain those verbatim coordinates in the dataset
+mnw_dfr <- sbs_mnw_all_BD72 %>% 
+   mutate(verbatimLongitude = LambertX) %>% 
+   mutate(verbatimLatitude = LambertY) %>% 
+   mutate(verbatimCoordinateSystem = 'Belgian Lambert 72')
+
+# Define spatial data input: Lambert X & Y belong to the 'Belgian Lambert 72' coordinatesystem (EPSG:31370) 
+mnw_L <- st_as_sf(mnw_dfr,
+                coords = c("LambertX", "LambertY"),
+                crs = 31370)
+
+# Transform the data in WGS84 (EPSG:4326)
+mnw_L_WGS84 <- mnw_L %>% st_transform(crs = 4326)   
+
+# Extract the new coordinates 
+sds_mnw_L_WGS84 <- mnw_L_WGS84 %>% mutate(
+  # Column 1 is Longitude, Column 2 is Latitude. Both are positive in Flanders.
+  decimalLongitude = st_coordinates(.)[, 1],
+  decimalLatitude  = st_coordinates(.)[, 2]
+) %>%
+  st_drop_geometry() %>% 
+  mutate(geodeticDatum = "WGS84") %>% 
+  relocate(coordinateUncertaintyInMeters, .before = geodeticDatum)  # last_col())
+```
+
+
+### Optional visual QC: checking point localities on leaflet-map
+```{r QC leaflet 1, include=TRUE}
+# Prepare details
+sds_mnw_L_WGS84_geo <- st_as_sf(sds_mnw_L_WGS84,
+                coords = c("decimalLongitude","decimalLatitude"),
+                crs = 4326)
+# Create leaflet-map
+leaflet(data = sds_mnw_L_WGS84_geo) %>%
+  addTiles() %>% 
+  addCircles() 
+```
+### Converting MGRS to decimal geocoordinates
+```{r Converting MGRS to decimal lon&lat, include=FALSE}
+
+# Read MGRS data exported from SQL database
+data_mgrs <- read.csv("./data_mgrs.csv")
+
+# Filter the rows with correct MGRS-values
+df_mgrs_a <- data_mgrs %>% filter(!str_detect(MGRS_1km, "0000")) %>% 
+  filter(!str_detect(MGRS_1km, "XX"))
+
+# Convert MGRS to WGS84
+s_mgrs_df <- df_mgrs_a %>%
+  dplyr::mutate(x = lapply(MGRS_1m, mgrs_to_latlng, include_mgrs_ref = FALSE)) %>%
+  tidyr::unnest(x) %>%
+  sf::st_as_sf(coords = c("lng", "lat"), crs = 4326)
+
+s_mgrs_dfa <- s_mgrs_df %>% mutate(
+  # Column 1 is Longitude, Column 2 is Latitude. Both are positive in Flanders.
+  decimalLongitude = st_coordinates(.)[, 1],
+  decimalLatitude  = st_coordinates(.)[, 2]
+) %>%
+  st_drop_geometry() %>% 
+  mutate(geodeticDatum = "WGS84")
+
+# Filter subdataset of records without Lambert X&Y
+sds_mnw_utm <- ds_mnw_all_obs %>% 
+  filter(LambertX == 0 | is.na(LambertX)) %>% 
+  filter(!str_detect(UTMVierkant,"onbek"))
+
+# Left join to add decimal lon&lat to that subdataset
+mnw_utm_decL <- sds_mnw_utm %>% 
+  left_join(s_mgrs_dfa) %>% 
+  select(-c(Locatiestraal))   # Yet to compare with uncertaintyCoordinateMeters               
+
+# Filter all records with geocoordinates 
+mnw_utm_decL_W <- mnw_utm_decL %>% filter(geodeticDatum == "WGS84") %>% 
+  select(-c(MGRS_1km,MGRS_1m)) %>% 
+  mutate(LambertX = NA) %>% 
+  mutate(LambertY = NA) %>% 
+  mutate(verbatimLongitude = NA) %>% 
+  mutate(verbatimLatitude = NA) %>% 
+  mutate(verbatimCoordinateSystem = "UTM lines' intersection in 31U zone") %>% 
+  relocate(verbatimLongitude, .after = institutionCode) %>% 
+  relocate(verbatimLatitude, .after = verbatimLongitude) %>%
+  relocate(verbatimCoordinateSystem, .after = verbatimLatitude) %>% 
+  relocate(coordinateUncertaintyInMeters, .after = decimalLatitude) %>% 
+  select(-c(LambertX,LambertY))
+
+# Filter all records without geocoordinates (thus initially including few (4) records without geocoordinates)
+mnw_utm_decL_nW <- mnw_utm_decL %>% filter(!geodeticDatum %in% "WGS84") %>%
+  select(-c(MGRS_1km,MGRS_1m)) %>% 
+  mutate(LambertX = NA) %>% 
+  mutate(LambertY = NA) %>% 
+  mutate(verbatimLongitude = NA) %>% 
+  mutate(verbatimLatitude = NA) %>% 
+  mutate(verbatimCoordinateSystem = NA) %>% 
+  mutate(coordinateUncertaintyInMeters = NA) %>% 
+  relocate(verbatimLongitude, .after = institutionCode) %>% 
+  relocate(verbatimLatitude, .after = verbatimLongitude) %>%
+  relocate(verbatimCoordinateSystem, .after = verbatimLatitude) %>% 
+  relocate(coordinateUncertaintyInMeters, .after = decimalLatitude)
+```
+
+### Rbind all relevant subdatasets with decimal geocoordinates set in WGS84
+```{r}
+# PREP. blurring (to centroid of # km UTM, based on detailed decimalLongitude & decimalLatitude):
+
+# rbind both files with geocoordinates:
+sds_mnw_dec <- bind_rows(sds_mnw_L_WGS84, mnw_utm_decL_W)
+
+# read the remaining (2) dataframes without geocoordinates:
+
+# df incl. all (11) records without coordinates:
+# same dataframe format for other subdataset without geocoordinates:
+# toepassen voor subdataset van records zonder pt.loc. in Lambert X&Y
+
+sds_mnw_nocoord <- ds_mnw_all_obs %>% 
+  filter(LambertX == 0 | is.na(LambertX)) %>% 
+  filter(str_detect(UTMVierkant,"onbek"))
+
+sds_mnw_nocoord_f <- sds_mnw_nocoord %>%
+  select(-c(LambertX,LambertY)) %>% 
+  mutate(verbatimLongitude = NA) %>% 
+  mutate(verbatimLatitude = NA) %>% 
+  mutate(verbatimCoordinateSystem = NA) %>%
+  relocate(verbatimLongitude, .after = institutionCode) %>% 
+  relocate(verbatimLatitude, .after = verbatimLongitude) %>%
+  relocate(verbatimCoordinateSystem, .after = verbatimLatitude) %>% 
+  mutate(decimalLongitude = NA) %>% 
+  mutate(decimalLatitude = NA) %>%   
+  mutate(coordinateUncertaintyInMeters = NA) %>% 
+  mutate(geodeticDatum = NA) %>% 
+  relocate(coordinateUncertaintyInMeters, .after = decimalLatitude) 
+
+# df incl. the few (4) records without (converted) coordinates:
+sds_mnw_utm_decL_nW <- mnw_utm_decL_nW %>% select(-c(LambertX,LambertY))
+
+# prep. by defining all values of organismQuantity as integer
+sds_mnw_nocoord_f$organismQuantity <- as.integer(sds_mnw_nocoord_f$organismQuantity)
+sds_mnw_utm_decL_nW$organismQuantity <- as.integer(sds_mnw_utm_decL_nW$organismQuantity)
+sds_mnw_dec$organismQuantity <- as.integer(sds_mnw_dec$organismQuantity)
+
+# rbind all those relevant (3) dataframes:
+ds_mnw_vbp <- bind_rows(sds_mnw_dec,sds_mnw_nocoord_f,sds_mnw_utm_decL_nW)
+
+# refine by resetting organismQuantityType if organismQuantity is NA
+ds_mnw_vbp$organismQuantityType <- ifelse(
+  is.na(ds_mnw_vbp$organismQuantity), # Check: Is organismQuantity NA?
+  NA,                                   # Yes: Set organismQuantityType to NA (delete its value)
+  ds_mnw_vbp$organismQuantityType     # No: Keep the original value
+)
+
+# refine details: round coordinateUncertaintyInMeters and delete irrelevant data fields
+# round all values to 0 digits after comma = to 1 m = al integer number = realistic 
+ds_mnw_vbp_r <- ds_mnw_vbp %>% 
+  mutate(coordinateUncertaintyInMeters = round(coordinateUncertaintyInMeters, 0)) %>% 
+  mutate(kingdom = 'Animalia') %>% 
+  mutate(nomenclaturalCode = 'ICZN') %>% 
+  mutate(rightsHolder = 'INBO') %>% 
+  select(-c(id,waarnemingscode,UTMZone,UTMVierkant,UTMxPrefix,UTMxLijn,UTMxSchaallat,UTMyPrefix,UTMyLijn,UTMySchaallat,InformatieVolledig))
+```
+
+#### Preview dataframe
+```{r}
+# Preview with the first 30 rows of the dataset:
+head(ds_mnw_vbp_r, n = 30)
+```
+
+#### Check this subdataset on leaflet-map
+```{r QC leaflet 2, include=TRUE}
+# obv: QC visual extra defining for checking points on map in R:
+ds_mnw_vbp_g <- ds_mnw_vbp_r %>% filter(geodeticDatum == "WGS84")
+ds_mnw_vbp_geo <- st_as_sf(ds_mnw_vbp_g,
+                                coords = c("decimalLongitude","decimalLatitude"),
+                                crs = 4326)
+# Create Leaflet-map
+leaflet(data = ds_mnw_vbp_geo) %>%
+  addTiles() %>% 
+  addCircles() 
+```
+
+
+```{r deleting record(s) with inaccurate point localities, include=FALSE}
+ds_mnw_vbp_s <- ds_mnw_vbp_r %>% 
+  filter(!occurrenceID %in% c("INBO:MNW:OCC:008766"))
+```
+
+#### Recheck this subdataset on leaflet-map
+```{r QC leaflet 3, include=TRUE}
+# obv: QC visual extra defining for checking points on map in R:
+ds_mnw_vbp_g <- ds_mnw_vbp_s %>% filter(geodeticDatum == "WGS84")
+ds_mnw_vbp_geo <- st_as_sf(ds_mnw_vbp_g,
+                                coords = c("decimalLongitude","decimalLatitude"),
+                                crs = 4326)
+# Create Leaflet-map
+leaflet(data = ds_mnw_vbp_geo) %>%
+  addTiles() %>% 
+  addCircles() 
+```
+
+#### View dataframe
+```{r}
+View(ds_mnw_vbp_s)
+```
+
+## Create occurrence.csv files with dwc-mapping for high and low resolution versions of the dataset
+
+### Create HIGH RESOLUTION (highres) occurrence.csv for restricted access in VBP through devIPT only:
+```{r}
+## change occ.IDs and add relevant static dwc terms for high resolution (highres) dataframe: 
+ds_mnw_vbp_hires <- ds_mnw_vbp_s %>% 
+  select(-WaarnemingType) %>% 
+  mutate(occurrenceID = str_replace(occurrenceID, "(INBO:MNW:OCC:)", "\\1SEN:")) %>% 
+  mutate(dynamicProperties = '{"rbac":true,"rbac_allowed":"HIGHRES"}') %>% 
+  mutate(license = 'By accessing this dataset, you agree to use it solely for internal analysis. You may not reproduce, distribute, or share the data.') %>% 
+  mutate(accessRights = 'only for internal use') %>% 
+  mutate(institutionID = 'https://ror.org/00j54wy13') %>% 
+  mutate(datasetName = 'Marternetwerk - Observations of small and medium-sized carnivores in Flanders, Belgium (Hoge resolutie)')
+
+## if coordinateUncertaintyInMeters = 0, then replace 0 by NA 
+ds_mnw_vbp_hires$coordinateUncertaintyInMeters <- ifelse(
+  ds_mnw_vbp_hires$coordinateUncertaintyInMeters == 0, # Check: Is coordinateUncertaintyInMeters 0?
+  NA,                                               # Yes: Set coordinateUncertaintyInMeters to NA (delete its value)
+  ds_mnw_vbp_hires$coordinateUncertaintyInMeters       # No: Keep the original value
+)
+
+View(ds_mnw_vbp_highres)
+write_csv(ds_mnw_vbp_highres,"ds_mnw_vbp_highres.csv",na = "")
+```
+
+### Create LOW RESOLUTION (lowres) occurrence.csv for public access in GBIF through generic IPT:
+```{r}
+# create GBIF blurred LOW_RES csv file (still incl. [WaarnemingType]) to filter on further:
+
+## initially delete further strictly irrelevant variables:
+ds_mnw_vbp_b <- ds_mnw_vbp_s 
+
+## select (1) medium-sensitive species (boommarter, otter, wilde kat) and (2) camera-trap records of all species except those with larger blur (such as Badger) to blur on 1x1 km UTM squares' centroids based on decimalLongitude & decimalLatitude:
+sds_mnw_all_recs_1km <- ds_mnw_vbp_b %>% 
+  filter(vernacularName %in% c("Boommarter","Otter","Wilde kat") | (WaarnemingType %in% c("Opname fotoval") & !vernacularName %in% c("Das","Boommarter","Otter","Wilde kat")))
+
+## deselect records with NA (missing values) in coordinates (they're not allowed in sf function)
+sds_mnw_recs_1km_WGS84 <- sds_mnw_all_recs_1km %>% filter(geodeticDatum == "WGS84")
+
+## Set as sf object with WGS84
+sf_points_1 <- st_as_sf(sds_mnw_recs_1km_WGS84, coords = c("decimalLongitude", "decimalLatitude"), crs = 4326)
+
+## Transform to UTM zone 31N (for Belgium) = 32631 (UTM 31N) is common, many Belgian institutions (like the National Geographic Institute) use EPSG:31370 (Belge 1972 / Belgian Lambert 72) according to Gemini
+sf_utm_1 <- st_transform(sf_points_1, crs = 32631)
+
+## Extract UTM x/y
+coords_1 <- st_coordinates(sf_utm_1)
+
+## Add the 2 variables 'utm_easting' & 'utm_northing' 
+sds_mnw_recs_1km_WGS84$utm_easting <- coords_1[,1]                
+sds_mnw_recs_1km_WGS84$utm_northing <- coords_1[,2]
+View(sds_mnw_recs_1km_WGS84)
+
+## Calculate the centroid of the 1 km square
+
+sds_mnw_recs_1km_WGS84$utm_centroid_easting <- floor(sds_mnw_recs_1km_WGS84$utm_easting / 1000) * 1000 + 500
+sds_mnw_recs_1km_WGS84$utm_centroid_northing <- floor(sds_mnw_recs_1km_WGS84$utm_northing / 1000) * 1000 + 500
+
+## Convert the UTM coordinates back to WGS84 (decimal); in this instance, 2 new variables utm_centroid_easting & utm_centroid_northing:
+
+sf_points_utm_c <- st_as_sf(sds_mnw_recs_1km_WGS84, coords = c("utm_centroid_easting","utm_centroid_northing"), crs = 32631)        #cf. if coords = decimalLongitude & decimalLatitude, then crs = 4326
+
+sf_utm_points_utm_c <- st_transform(sf_points_utm_c, crs = 4326)      #cf. if converting geocoordinates to UTM zone 31N (Belgium), then crs = 31370
+
+## Extract UTM x/y
+
+coords_c <- st_coordinates(sf_utm_points_utm_c)
+
+## Add the two final blurred WGS84 variables to the dataframe ('decimalLongitude_utm_c' & decimalLatitude_utm_c')
+sds_mnw_recs_1km_WGS84$decimalLongitude_utm_c <- coords_c[,1]                
+sds_mnw_recs_1km_WGS84$decimalLatitude_utm_c <- coords_c[,2]
+View(sds_mnw_recs_1km_WGS84)
+
+## Fine-tuning uncertainty based on given margins 
+sds_mnw_recs_1km_WGS84_ar <- sds_mnw_recs_1km_WGS84 %>% 
+  mutate(coordinateUncertaintyInMeters = coordinateUncertaintyInMeters + 707) 
+View(sds_mnw_recs_1km_WGS84_ar)
+
+## vervangen van initiële, exacte geocoordinaten door vervaagde geocoordinaten v. centroid
+
+sds_mnw_recs_1km <- sds_mnw_recs_1km_WGS84_ar %>% select(-c(decimalLongitude,decimalLatitude,utm_easting,utm_northing,utm_centroid_easting,utm_centroid_northing)) %>% 
+  rename(decimalLongitude = decimalLongitude_utm_c) %>% 
+  rename(decimalLatitude = decimalLatitude_utm_c) %>% 
+  relocate(decimalLongitude, .before = coordinateUncertaintyInMeters) %>% 
+  relocate(decimalLatitude, .after = decimalLongitude) %>% 
+  mutate(dataGeneralizations = "coordinates are generalized from a POINT to a UTM 1km grid") %>% 
+  mutate(informationWithheld = "original locations available upon request") 
+
+# filter very-sensitive Badger records: new nests records vs. other records (filter based on extra variables)
+## filter all badger records:
+sds_mnw_badger_5km <- ds_mnw_vbp_b %>% filter(vernacularName %in% c("Das"))
+
+# BLUR to centroid of containing 5x5 km UTM 
+
+## 1. Transform WGS84 to UTM Zone 31N with CRS = 32631 (UTM 31N) is common, many Belgian institutions (like the National Geographic Institute) use EPSG:31370 (Belge 1972 / Belgian Lambert 72) according to Gemini
+
+# Convert the dataframe to an sf object, defining the original CRS as WGS84 (4326)
+sf_points_badger_5km <- st_as_sf(sds_mnw_badger_5km, coords = c("decimalLongitude", "decimalLatitude"), crs = 4326)
+
+# Transform the points from WGS84 (degrees) to UTM 31N (meters)
+sf_utm_badger_5km <- st_transform(sf_points_badger_5km, crs = 32631)
+
+# Extract the UTM Easting (x) and Northing (y) coordinates
+coords_badger_5km <- st_coordinates(sf_utm_badger_5km)
+
+# Add the UTM coordinates back to the original dataframe
+sds_mnw_badger_5km$utm_easting <- coords_badger_5km[,1]
+sds_mnw_badger_5km$utm_northing <- coords_badger_5km[,2]
+
+
+## 2. Calculate the Centroid of the 5x5 km Square (The Blurring Step)
+  
+# **CRUCIAL CHANGE:** Use 5000m as the grid size and 2500m as the offset.
+# floor(UTM / 5000) * 5000 gives the bottom-left corner of the 5km square.
+# + 2500 shifts it to the center (centroid).
+sds_mnw_badger_5km$utm_centroid_easting <- floor(sds_mnw_badger_5km$utm_easting / 5000) * 5000 + 2500
+sds_mnw_badger_5km$utm_centroid_northing <- floor(sds_mnw_badger_5km$utm_northing / 5000) * 5000 + 2500
+
+
+## 3. Re-transform the Centroid Coordinates back to WGS84
+  
+# Convert the dataframe using the new UTM centroid coordinates, defining the CRS as UTM 31N (31370)
+sf_points_badger_5km_utm_c <- st_as_sf(sds_mnw_badger_5km, coords = c("utm_centroid_easting","utm_centroid_northing"), crs = 32631)
+
+# Transform the new UTM coordinates back to WGS84 (4326)
+sf_utm_points_badger_5km_utm_c <- st_transform(sf_points_badger_5km_utm_c, crs = 4326)
+
+# Extract the final blurred WGS84 coordinates
+coords_badger_5km_utm_c <- st_coordinates(sf_utm_points_badger_5km_utm_c)
+
+# Add the two final blurred WGS84 variables to the dataframe
+sds_mnw_badger_5km$decimalLongitude_utm_c <- coords_badger_5km_utm_c[,1]
+sds_mnw_badger_5km$decimalLatitude_utm_c <- coords_badger_5km_utm_c[,2]
+
+
+## Fine-tuning uncertainty based on given margins 
+sds_mnw_badger_5km_ar <- sds_mnw_badger_5km %>% 
+  mutate(coordinateUncertaintyInMeters = coordinateUncertaintyInMeters + 3536) 
+View(sds_mnw_badger_5km_ar)
+
+
+## verwijderen van initiële, exacte geocoordinaten en behouden van vervaagde geocoordinaten v. centroid
+
+## +refine by just selecting essential variables:
+
+sds_mnw_meles_5km <- sds_mnw_badger_5km_ar %>% select(-c(decimalLongitude,decimalLatitude,utm_easting,utm_northing,utm_centroid_easting,utm_centroid_northing)) %>% 
+  rename(decimalLongitude = decimalLongitude_utm_c) %>% 
+  rename(decimalLatitude = decimalLatitude_utm_c) %>% 
+  relocate(decimalLongitude, .before = coordinateUncertaintyInMeters) %>% 
+  relocate(decimalLatitude, .after = decimalLongitude) %>% 
+  mutate(dataGeneralizations = "coordinates are generalized from a POINT to a UTM 5km grid") %>% 
+  mutate(informationWithheld = "original locations available upon request")
+
+# select remaining subdataset (without geocoordinates) of those sensitive species (blurred to 1km & 5km UTM)
+sds_mnw_sens_recs_without_geocoords <- ds_mnw_vbp_b %>% 
+  filter(!geodeticDatum %in% "WGS84") %>% 
+  filter(vernacularName %in% c("Boommarter","Otter","Wilde kat","Das") | WaarnemingType %in% c("Opname fotoval")) %>% 
+  mutate(dataGeneralizations = as.character(NA)) %>% 
+  mutate(informationWithheld = as.character(NA))
+
+# rbind van alle blurred subdatasets (van sensitive species "Boommarter","Otter","Wilde kat","Das" en camera traps) tot: sds_mnw_sensitive_recs
+sds_mnw_sen_recs <- bind_rows(sds_mnw_recs_1km,sds_mnw_meles_5km,sds_mnw_sens_recs_without_geocoords)
+
+#### omzetten van alle values naar NA (= NULL in R) vd. volgende geo-gerelateerde variabelen voor de sensitive records (recs met geo.blurring + record zonder geocoords):
+
+##### 'verbatimLongitude' en 'verbatimLatitude'  
+sds_mnw_sen_recs$verbatimLongitude <- NA
+sds_mnw_sen_recs$verbatimLatitude <- NA
+
+##### 'municipality' en 'location'
+sds_mnw_sen_recs$municipality <- NA
+sds_mnw_sen_recs$locality <- NA
+
+# select all non-blurred records = subdataset of non-sensitive species records without blurring:
+sds_mnw_no_sen_recs <- ds_mnw_vbp_b %>% 
+  filter(!(vernacularName %in% c("Boommarter","Otter","Wilde kat","Das") | WaarnemingType %in% c("Opname fotoval"))) %>% 
+  mutate(dataGeneralizations = as.character(NA)) %>% 
+  mutate(informationWithheld = as.character(NA))
+
+#rbind van alle subdatasets = alle vervaagde en niet-vervaagde subdatasets:
+ds_mnw_all_recs <- bind_rows(sds_mnw_sen_recs,sds_mnw_no_sen_recs)
+                
+# create GBIF LOW_RES csv file:
+## delete further irrelevant variables and add dwc_dynamicProperties: 
+#1) deselect alle overige irrelevant geworden datavelden: -c(WaarnemingType) - eerder al -Locatie
+#2) adding dwc_dynamicProperties and other relevant terms for low resolution df: 
+ds_mnw_all <- ds_mnw_all_recs %>% 
+  select(-c(WaarnemingType)) %>% 
+  mutate(dynamicProperties = '{"rbac":false,"rbac_allowed":"HIGHRES"}') %>% 
+  mutate(license = 'http://creativecommons.org/publicdomain/zero/1.0/') %>% 
+  mutate(accessRights ='http://www.inbo.be/en/norms-for-data-use') %>% 
+  mutate(institutionID = 'https://ror.org/00j54wy13') %>% 
+  mutate(datasetID = 'https://doi.org/10.15468/zabztj') %>% 
+  mutate(datasetName = 'Marternetwerk - Observations of small and medium-sized carnivores in Flanders, Belgium')
+
+## additional refining: 
+
+##### if coordinateUncertaintyInMeters = 0, then replace 0 by NA 
+ds_mnw_all$coordinateUncertaintyInMeters <- ifelse(
+  ds_mnw_all$coordinateUncertaintyInMeters == 0, # Check: Is coordinateUncertaintyInMeters 0?
+  NA,                                               # Yes: Set coordinateUncertaintyInMeters to NA (delete its value)
+  ds_mnw_all$coordinateUncertaintyInMeters       # No: Keep the original value
+)
+
+View(ds_mnw_all_lr)     
+
+write_csv(ds_mnw_all_lr,"ds_mnw_lowres.csv",na = "") 
+```
+
+### Check this dataset in mapview
+```{r}
+# Visualize data on a map
+sds_mnw_all_lr_geo <- ds_mnw_all_lr %>% filter(geodeticDatum %in% "WGS84") 
+
+occurrenceMap <- sds_mnw_all_lr_geo
+
+occurrenceMap$decimalLatitude <- as.numeric(occurrenceMap$decimalLatitude)
+
+occurrenceMap$decimalLongitude <- as.numeric(occurrenceMap$decimalLongitude)
+
+head(occurrenceMap)
+
+
+#head(occurrence)
+mapview(occurrenceMap, xcol = "decimalLongitude", ycol = "decimalLatitude", crs = 4326, grid = FALSE)
+```
